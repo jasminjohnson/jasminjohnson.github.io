@@ -74,13 +74,27 @@ body {
     margin-right: 3px;
 }
 
-a, a:hover {
+h1 a{
     color: inherit;
 }
 
-.entry-content a {
-    text-decoration: none;
+.toc a{
+    color: inherit;
     border-bottom: 1px dotted;
+}
+
+.summary a:not(.btn){
+    color: inherit;
+    border-bottom: 1px dotted;
+}
+
+.summary a:not(.btn):hover{
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+pre {
+    color: inherit;
 }
 
 .entry-content a:hover {
@@ -163,7 +177,8 @@ figure.floatcenter, .align-center {
 
 .categories-timestamp {
     color: #AAAAAA;
-    font-size: 0.9em;
+    font-family: monospace;
+/*    font-size: 0.9em;*/
     margin-right: 10px;
 }
 
