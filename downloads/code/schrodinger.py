@@ -301,9 +301,9 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=frames, interval=30, blit=True)
 
 
-# uncomment the following line to save the video in mp4 format.  This
+# uncomment the following line to articles the video in mp4 format.  This
 # requires either mencoder or ffmpeg to be installed on your system
 
-#anim.save('schrodinger_barrier.mp4', fps=15, extra_args=['-vcodec', 'libx264'])
+#anim.articles('schrodinger_barrier.mp4', fps=15, extra_args=['-vcodec', 'libx264'])
 
 pl.show()
