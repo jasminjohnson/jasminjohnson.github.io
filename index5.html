@@ -434,7 +434,26 @@ article .meta a.comments_btn:hover {
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/AnimationEmbedding.ipynb cells[2:] %}</p>
+      
+
+<p>I've spent a lot of time on this blog working with matplotlib animations
+(see the basic tutorial
+<a href="http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/">here</a>,
+as well as my examples of animating
+<a href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/">a quantum system</a>,
+<a href="http://jakevdp.github.io/blog/2012/09/26/optical-illusions-in-matplotlib/">an optical illusion</a>,
+<a href="http://jakevdp.github.io/blog/2013/02/16/animating-the-lorentz-system-in-3d/">the Lorenz system in 3D</a>,
+and <a href="http://jakevdp.github.io/blog/2013/01/13/hacking-super-mario-bros-with-python/">recreating Super Mario</a>).
+Up until now, I've not have not combined the animations with IPython notebooks.
+The problem is that so far the integration of IPython with matplotlib is
+entirely static, while animations are by their nature dynamic.  There are some
+efforts in the IPython and matplotlib development communities to remedy this,
+but it's still not an ideal setup.</p>
+<p>I had an idea the other day about how one might get around this limitation
+in the case of animations.  By creating a function which saves an animation
+and embeds the binary data into an HTML string, you can fairly easily create
+automatically-embedded animations within a notebook.</p>
+
     </div>
 
     <div class="meta">
@@ -499,7 +518,15 @@ and <a href="http://getpelican.com">Pelican</a> in particular).</p>
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/TreeBench.ipynb cells[2:] %}</p>
+      
+
+<p>I recently submitted a scikit-learn <a href="https://github.com/scikit-learn/scikit-learn/pull/1732">pull request</a>
+containing a brand new ball tree and kd-tree for fast nearest neighbor searches in python.
+In this post I want to highlight some of the features of the new ball tree and kd-tree
+code that's part of this pull request, compare it to what's available in the
+<code>scipy.spatial.cKDTree</code> implementation, and run a few benchmarks showing the
+performance of these methods on various data sets.</p>
+
     </div>
 
     <div class="meta">
@@ -524,7 +551,52 @@ and <a href="http://getpelican.com">Pelican</a> in particular).</p>
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/SudokuCodeGolf.ipynb cells[2:] %}</p>
+      
+<em>Edit: based on suggestions from readers, the best solution is down to 162 characters!
+Read to the end to see how</em></p>
+
+
+
+
+
+
+
+
+<p>A highlight of PyCon each year for me is working on the little coding
+challenges offered by companies in the expo center.
+I love testing my Python prowess against the problems they pose (and
+being rewarded with a branded mug or T-shirt!)
+This year, several of the challenges involved what's become known as
+<a href="http://codegolf.com/">code golf</a>: writing a solution with minimal keystrokes.</p>
+<p>By way of example, take a look at this function definition:</p>
+
+
+
+
+
+
+
+
+    
+
+<span class="nb">set</span><span class="p">(</span><span class="err">`</span><span class="mi">5</span><span class="o">**</span><span class="mi">18</span><span class="err">`</span><span class="p">)</span><span class="o">-</span><span class="p">{(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">)</span><span class="o">%</span><span class="k">9</span>*(i/9^j/9)*(i/27^j/27|i%9/3^j%9/3)or
+<span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">81</span><span class="p">)}</span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])),[</span><span class="n">p</span><span class="p">]][</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span>
+</pre>
+
+
+
+
+
+
+
+
+
+
+<p>This is a valid function definition (in Python 2.7) which executes a
+particular task.  I'll give more information on the workings of this
+script later on, but for now I'll leave it to the reader to ponder
+over what it might do.</p>
+
     </div>
 
     <div class="meta">
@@ -645,7 +717,7 @@ example of a chaotic system: the Lorenz equations.</p>
 on mac (and any other system) is to use the
 <a href="https://store.continuum.io/">anaconda</a> package offered by Continuum
 Analytics.  It's free, full-featured, and extremely easy to use.</em></p>
-<p><img class="left" title="'OSX 10.8 Logo'" alt="'OSX 10.8 Logo'" src="/images/OSX10.8.png"> A few weeks ago,
+<p><img alt="'OSX 10.8 Logo'" class="left" src="/images/OSX10.8.png" title="'OSX 10.8 Logo'"> A few weeks ago,
 after years of using Linux exclusively for all my computing,
 I started a research fellowship in a new department
 and found a brand new Macbook Pro on my
