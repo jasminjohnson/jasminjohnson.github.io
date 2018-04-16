@@ -429,62 +429,6 @@ article .meta a.comments_btn:hover {
 
   <article>
     <header>
-      <h2><a href="http://jasminjohnson.github.io/blog/2014/09/02/on-frequentism-and-fried-chicken/">On Frequentism and Fried Chicken</a></h2>
-      <time datetime="" title="2014-09-02T16:00:00-04:00" pubdate>Tue 02 September 2014</time>
-    </header>
-
-    <div class="article_content">
-      
-
-<p>My recent series of posts on <a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Frequentism and Bayesianism</a> have drawn a lot of comments, but recently Frederick J. Ross, a UW colleague whom I have not yet had the pleasure of meeting, penned a particularly strong-worded critique: <a href="http://madhadron.com/posts/2014-08-30-frequentist_and_bayesian_statistics.html">Bayesian vs frequentist: squabbling among the ignorant</a>. Here I want to briefly explore and respond to the points he makes in the post.
-
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="http://jasminjohnson.github.io/blog/2014/09/02/on-frequentism-and-fried-chicken/" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="http://jasminjohnson.github.io/tag/frequentism.html" class="tag">frequentism</a>
-            <a href="http://jasminjohnson.github.io/tag/bayesianism.html" class="tag">bayesianism</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator"></div>
-  <article>
-    <header>
-      <h2><a href="http://jasminjohnson.github.io/blog/2014/08/22/hacking-academia/">Hacking Academia: Data Science and the University</a></h2>
-      <time datetime="" title="2014-08-22T08:00:00-04:00" pubdate>Fri 22 August 2014</time>
-    </header>
-
-    <div class="article_content">
-      
-
-<p><em>A reflection on our <a href="http://www.digital-science.com/sciencefoo/">SciFoo</a> breakout session, where we discussed issues of data science within academia.</em></p>
-<p>Almost a year ago, I wrote a post I called the <a href="http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/">Big Data Brain Drain</a>, lamenting the ways that academia is neglecting the skills of modern data-intensive research, and in doing so is driving away many of the men and women who are perhaps best equipped to enable progress in these fields. This seemed to strike a chord with a wide range of people, and has led me to some incredible opportunities for conversation and collaboration on the subject. One of those conversations took place at the recent SciFoo conference, and this article is my way of recording some reflections on that conversation.</p>
-<p><a href="http://www.digital-science.com/sciencefoo/">SciFoo</a> is an annual gathering of several hundred scientists, writers, and thinkers sponsored by Digital Science, Nature, O'Reilly Media &amp; Google. SciFoo brings together an incredibly eclectic group of people: I met philosophers, futurists, alien hunters, quantum physicists, mammoth cloners, magazine editors, science funders, astrophysicists, musicians, mycologists, mesmerists, and many many more: the list could go on and on. The conference is about as unstructured as it can be: the organizers simply provide food, drink, and a venue for conversation, and attendees put together breakout discussions on nearly any imaginable topic. If you ever get the chance to go, my advice is to drop everything else and attend. It was one of the most quirky and intellectually stimulating weekends I've ever spent.</p>
-
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="http://jasminjohnson.github.io/blog/2014/08/22/hacking-academia/" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="http://jasminjohnson.github.io/tag/opinion.html" class="tag">opinion</a>
-            <a href="http://jasminjohnson.github.io/tag/academia.html" class="tag">academia</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator"></div>
-  <article>
-    <header>
       <h2><a href="http://jasminjohnson.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Frequentism and Bayesianism IV: How to be a Bayesian in Python</a></h2>
       <time datetime="" title="2014-06-14T09:30:00-04:00" pubdate>Sat 14 June 2014</time>
     </header>
@@ -785,13 +729,74 @@ to modify your matplotlib plots in almost any imaginable way.</p>
 
   </article>
   <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/">A D3 Viewer for Matplotlib Visualizations</a></h2>
+      <time datetime="" title="2013-12-19T13:00:00-05:00" pubdate>Thu 19 December 2013</time>
+    </header>
+
+    <div class="article_content">
+      
+
+<p>I've spent a lot of time recently attempting to push the boundaries of tools for interactive data exploration within the IPython notebook.  I have worked on animations, including an <a href="http://jakevdp.github.io/blog/2013/05/12/embedding-matplotlib-animations/">HTML5 embedding</a> and a <a href="http://jakevdp.github.io/blog/2013/05/19/a-javascript-viewer-for-matplotlib-animations/">Javascript Viewer</a>.  I have worked on <a href="http://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/">javascript/python kernel interaction</a> and <a href="http://jakevdp.github.io/blog/2013/12/05/static-interactive-widgets/">static javascript widgets</a>.  But I would say that the holy grail of interactive data visualization in the IPython notebook is, as I've <a href="http://jakevdp.github.io/blog/2013/03/23/matplotlib-and-the-future-of-visualization-in-python/">mentioned previously</a>, a truly interactive in-browser matplotlib display.</p>
+<p>There are many people pushing in this direction in the Python world. <a href="http://continuum.io/blog/painless_streaming_plots_w_bokeh">Bokeh</a> and <a href="https://plot.ly/">Plotly</a> are new visualization packages which have built Python APIs from scratch.  The demos are beautiful and impressive, and the APIs are clean and intuitive.  But, because matplotlib is so well-established in the Python world, it would be nice to be able to continue using it even in the age of browser-based visualization. To this end, some of the matplotlib core devs have been working on a <a href="http://mdboom.github.io/blog/2012/10/11/matplotlib-in-the-browser-its-coming/">WebGL viewer</a> for matplotlib figures.  I've seen a working demo, and it's very cool, but last I heard it still has a long way to go.</p>
+<p>I've been wondering for a while whether it might be possible to create a solution using D3.js.  D3 (short for <a href="http://d3js.org/">data-driven documents</a>) is a framework which facilitates the easy creation and manipulation of groups of HTML objects.  Combined with the native SVG support of modern web browsers, it provides an extremely powerful and flexible low-level interface to creating interactive graphics on the web.  I've long wondered what it would take to write a D3 backend or frontend for matplotlib, but I'd never experimented with the idea. It was a couple weeks ago at <a href="http://seattle.beerandcode.org/">Seattle Beer &amp;&amp; Code</a> meetup that I chatted with some expert Javascript hackers who pointed out where I might start.</p>
+<p>I started to try things out, and over the course of a few late nights, came up with a first attempt at a partial interactive D3 viewer for matplotlib images: the result is the <code>mpld3</code> package, available on <a href="http://github.com/jakevdp/mpld3">my GitHub page</a>.</p>
+
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
+            <a href="http://jasminjohnson.github.io/tag/mpld3.html" class="tag">mpld3</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2013/12/05/static-interactive-widgets/">Static Interactive Widgets for IPython Notebooks</a></h2>
+      <time datetime="" title="2013-12-05T19:00:00-05:00" pubdate>Thu 05 December 2013</time>
+    </header>
+
+    <div class="article_content">
+      
+
+<p>The inspiration of my previous <a href="http://jakevdp.github.io/blog/2013/12/01/kernel-density-estimation/">kernel density estimation post</a> was a blog post by <a href="http://www.mglerner.com/blog/?p=28">Michael Lerner</a>, who used my <a href="http://jakevdp.github.io/blog/2013/05/19/a-javascript-viewer-for-matplotlib-animations/">JSAnimation</a> tools to do a nice interactive demo of the relationship between kernel density estimation and histograms.</p>
+<p>This was on the heels of <a href="https://twitter.com/ellisonbg">Brian Granger</a>'s excellent <a href="http://vimeo.com/79832657">PyData NYC Keynote</a> where he live-demoed the brand new IPython interactive tools.  This new functionality is very cool.  Wes McKinney <a href="https://twitter.com/wesmckinn/status/399560987415965696">remarked</a> that day on Twitter that "IPython's interact machinery is going to be a huge deal".
+I completely agree: the ability to quickly generate interactive widgets to explore your data is going to change the way a lot of people do their daily scientific computing work.</p>
+<p>But there's one issue with the new widget framework as it currently stands: unless you're connected to an IPython kernel (i.e. actually running IPython to view your notebook), the widgets are useless.  Don't get me wrong: they're incredibly cool when you're actually interacting with data.  But the bread-and-butter of this blog and many others is static notebook views: for this purpose, widgets with callbacks to the Python kernel aren't so helpful.</p>
+<p>This is where <code>ipywidgets</code> comes in.</p>
+
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2013/12/05/static-interactive-widgets/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
+            <a href="http://jasminjohnson.github.io/tag/javascript.html" class="tag">javascript</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
 
   <nav class="pagination row">
     <div class="col-xs-6 left">
-        <a class="prev" href="http://jasminjohnson.github.io/category/articles4.html">&#8592; Past</a>
+        <a class="prev" href="http://jasminjohnson.github.io/category/save4.html">&#8592; Past</a>
     </div>
     <div class="col-xs-6 right">
-        <a class="next" href="http://jasminjohnson.github.io/category/articles2.html">Future &#8594;</a>
+        <a class="next" href="http://jasminjohnson.github.io/category/save2.html">Future &#8594;</a>
     </div>
   </nav>
 

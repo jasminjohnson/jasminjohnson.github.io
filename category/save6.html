@@ -429,83 +429,6 @@ article .meta a.comments_btn:hover {
 
   <article>
     <header>
-      <h2><a href="http://jasminjohnson.github.io/blog/2012/12/19/sparse-svds-in-python/">Sparse SVDs in Python</a></h2>
-      <time datetime="" title="2012-12-19T08:21:00-05:00" pubdate>Wed 19 December 2012</time>
-    </header>
-
-    <div class="article_content">
-      
-
-<p>After <a href="http://fseoane.net/blog/2012/singular-value-decomposition-in-scipy/">Fabian's post</a> on the topic, I have recently returned to thinking about the
-subject of sparse singular value decompositions (SVDs) in Python.</p>
-<p>For those who haven't used it, the SVD is an extremely powerful technique.
-It is the core routine of many applications,
-from filtering to dimensionality
-reduction to graph analysis to supervised classification and much, much more.</p>
-<p>I first came across the need for a fast sparse SVD when applying a technique
-called Locally Linear Embedding (LLE) to astronomy spectra: it was the first
-astronomy paper I published, and you can read it <a href="http://adsabs.harvard.edu/abs/2009AJ....138.1365V">here</a>.  In LLE, one visualizes the nonlinear relationship
-between high-dimensional observations.  The computational cost is extreme: for
-<em>N</em> objects, one must compute the null space (intimately related to the SVD)
-of a <em>N</em> by <em>N</em> matrix.  Using direct methods (e.g. LAPACK), this can scale
-as bad as $\mathcal{O}[N^3]$ in both memory and speed!</p>
-
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="http://jasminjohnson.github.io/blog/2012/12/19/sparse-svds-in-python/" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="http://jasminjohnson.github.io/tag/linear-algebra.html" class="tag">linear algebra</a>
-            <a href="http://jasminjohnson.github.io/tag/benchmarks.html" class="tag">benchmarks</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator"></div>
-  <article>
-    <header>
-      <h2><a href="http://jasminjohnson.github.io/blog/2012/12/06/minesweeper-in-matplotlib/">Minesweeper in Matplotlib</a></h2>
-      <time datetime="" title="2012-12-06T18:23:00-05:00" pubdate>Thu 06 December 2012</time>
-    </header>
-
-    <div class="article_content">
-      
-
-<p>Lately I've been playing around with interactivity in matplotlib.  A couple
-weeks ago, I discussed briefly how to use event callbacks to implement
-<a href="/blog/2012/11/24/simple-3d-visualization-in-matplotlib/">simple 3D visualization</a>
-and later used this as a base for creating a
-<a href="/blog/2012/11/26/3d-interactive-rubiks-cube-in-python">working 3D Rubik's cube</a>
-entirely in matplotlib.</p>
-<p>Today I have a different goal: re-create
-<a href="http://en.wikipedia.org/wiki/Minesweeper_%28computer_game%29">minesweeper</a>,
-that ubiquitous single-player puzzle game that most of us will admit to
-having binged on at least once or twice in their lives.  In minesweeper, the
-goal is to discover and avoid hidden mines within a gridded minefield, and
-the process takes some logic and quick thinking.</p>
-<p><img src="/images/minesweeper_2.gif" width="800"></p>
-
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="http://jasminjohnson.github.io/blog/2012/12/06/minesweeper-in-matplotlib/" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <div>
-            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
-      </div>
-
-    </div>
-
-  </article>
-  <div class="separator"></div>
-  <article>
-    <header>
       <h2><a href="http://jasminjohnson.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/">A Primer on Python Metaclasses</a></h2>
       <time datetime="" title="2012-12-01T07:25:00-05:00" pubdate>Sat 01 December 2012</time>
     </header>
@@ -1376,13 +1299,103 @@ world, Python is here to stay.</p>
 
   </article>
   <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2012/09/12/dynamic-programming-in-python/">Dynamic Programming in Python: Bayesian Blocks</a></h2>
+      <time datetime="" title="2012-09-12T19:02:00-04:00" pubdate>Wed 12 September 2012</time>
+    </header>
+
+    <div class="article_content">
+      
+
+<p>Of all the programming styles I have learned,
+<a href="http://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a>
+is perhaps the most beautiful.  It can take problems that, at first glance,
+look ugly and intractable, and solve the problem with clean, concise code.
+Where a simplistic algorithm might accomplish something by brute force,
+dynamic programming steps back, breaks the task into a smaller set of
+sequential parts, and then proceeds in the most efficient way possible.</p>
+<h3>Bayesian Blocks</h3>
+<p>I'll go through an example here where the ideas of dynamic programming
+are vital to some very cool data analysis resuts.
+This post draws heavily from a recent
+<a href="http://adsabs.harvard.edu/abs/2012arXiv1207.5578S">paper</a> by Jeff Scargle
+and collaborators (this is the Scargle of <em>Lomb-Scargle Periodogram</em>
+fame), as well as some conversations I had with Jeff at
+<a href="http://www.astro.caltech.edu/ai12/">Astroinformatics 2012</a>.
+The paper discusses
+a framework called <em>Bayesian Blocks</em>, which is essentially a method of
+creating histograms with bin sizes that adapt to the data (there's a bit
+more to it than that: here we'll focus on histograms for simplicity).</p>
+
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2012/09/12/dynamic-programming-in-python/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/tutorial.html" class="tag">tutorial</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2012/09/05/quantum-python/">Quantum Python: Animating the Schrodinger Equation</a></h2>
+      <time datetime="" title="2012-09-05T20:12:00-04:00" pubdate>Wed 05 September 2012</time>
+    </header>
+
+    <div class="article_content">
+      
+
+<p><em>Update: a reader contributed some improvements to the Python code presented
+ below.  Please see the
+<a href="https://github.com/jakevdp/pySchrodinger">pySchrodinger</a> github repository
+for updated code</em></p>
+<p>In a <a href="/blog/2012/08/18/matplotlib-animation-tutorial/">previous post</a>
+I explored the new animation capabilities of the latest
+<a href="http://matplotlib.sourceforge.net">matplotlib</a> release.
+It got me wondering whether it would be possible to simulate more complicated
+physical systems in real time in python.  Quantum Mechanics was the first
+thing that came to mind.  It turns out that by mixing a bit of Physics
+knowledge with a bit of computing knowledge, it's quite straightforward
+to simulate and animate a simple quantum mechanical system with python.</p>
+<h2>The Schrodinger Equation</h2>
+<p>The dynamics of a one-dimensional quantum system are governed by the
+time-dependent Schrodinger equation:</p>
+<p>$$
+i\hbar\frac{\partial \psi}{\partial t}
+  = \frac{-\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V \psi
+$$</p>
+
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2012/09/05/quantum-python/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
+            <a href="http://jasminjohnson.github.io/tag/animation.html" class="tag">animation</a>
+            <a href="http://jasminjohnson.github.io/tag/simulation.html" class="tag">simulation</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
 
   <nav class="pagination row">
     <div class="col-xs-6 left">
-        <a class="prev" href="http://jasminjohnson.github.io/category/articles7.html">&#8592; Past</a>
+        <a class="prev" href="http://jasminjohnson.github.io/category/save7.html">&#8592; Past</a>
     </div>
     <div class="col-xs-6 right">
-        <a class="next" href="http://jasminjohnson.github.io/category/articles5.html">Future &#8594;</a>
+        <a class="next" href="http://jasminjohnson.github.io/category/save5.html">Future &#8594;</a>
     </div>
   </nav>
 
