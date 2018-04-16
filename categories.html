@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
 
 
     <link href="https://lj020326.github.io//static/binary.png" rel="icon">
@@ -19,6 +20,7 @@
         <meta property="og:title" content="Lee's Journal"/>
         <meta property="og:url" content="https://lj020326.github.io"/>
         <meta property="og:description" content="Lee's Journal"/>
+
 
 
     <!-- Bootstrap -->
@@ -38,9 +40,9 @@
 
 </head>
 <body>
-<a href="https://github.com/kamyanskiy"><img class="fork-me-on-github" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -68,8 +70,11 @@ Lee's Journal            </a>
         <!-- /.navbar-collapse -->
     </div>
 </div> <!-- /.navbar -->
+
 <!-- Banner -->
 <!-- End Banner -->
+
+<!-- Content Container -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -155,6 +160,8 @@ Lee's Journal            </a>
         </div>
     </div>
 </div>
+<!-- End Content Container -->
+
 <footer>
    <div class="container">
       <hr>
@@ -162,7 +169,16 @@ Lee's Journal            </a>
          <div class="col-xs-10">&copy; 2018 Lee Johnson
             &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<p>
+  <span id="busuanzi_container_site_pv"><small>
+  Total Views: <span id="busuanzi_value_site_pv"></span>,
+  Visitors: <span id="busuanzi_value_site_uv"></span>,
+  Current: <span id="busuanzi_value_page_pv"></span></small>
+  </span>
+<p>
+                <p><small>  <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
     Content
   licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution-ShareAlike 4.0 International License</a>, except where indicated otherwise.
 </small></p>
@@ -171,6 +187,17 @@ Lee's Journal            </a>
       </div>
    </div>
 </footer>
+<script type="text/javascript">
+    function changeThemeColor() {
+        var elements = document.getElementsByClassName('navbar-fixed-top');
+        if(elements){
+        	var theme_color = window.getComputedStyle(elements[0], null).color;
+            var metaThemeColor = document.querySelector("meta[name=theme-color]");
+            metaThemeColor.setAttribute("content", theme_color);
+        }
+    };
+    changeThemeColor();
+</script>
 <script src="https://lj020326.github.io/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -178,6 +205,7 @@ Lee's Journal            </a>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="https://lj020326.github.io/theme/js/respond.min.js"></script>
+
 
 
 
