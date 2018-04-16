@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>notebook - Lee's Journal</title>
+    <title>Jacobi Identity for Classical Possion Bracket - Lee's Journal</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -11,16 +11,21 @@
 
     <link href="https://lj020326.github.io//static/binary.png" rel="icon">
 
+<link rel="canonical" href="https://lj020326.github.io/jacobi-identity.html">
 
-    <meta name="author" content="Lee Johnson" />
-    <meta name="keywords" content="notebook" />
+        <meta name="author" content="Lee Johnson" />
+        <meta name="keywords" content="Mechanics" />
+        <meta name="description" content="\(\newcommand{\pp}{\partial} \newcommand{\sgn}{\mathrm{sgn}} \newcommand{\mdef}{\overset{\mathrm{def}}{=}}\) Definition of Classical Possion Bracket: $$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Lee's Journal" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Lee's Journal"/>
-        <meta property="og:url" content="https://lj020326.github.io"/>
-        <meta property="og:description" content="Lee's Journal"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Jacobi Identity for Classical Possion Bracket"/>
+        <meta property="og:url" content="https://lj020326.github.io/jacobi-identity.html"/>
+        <meta property="og:description" content="\(\newcommand{\pp}{\partial} \newcommand{\sgn}{\mathrm{sgn}} \newcommand{\mdef}{\overset{\mathrm{def}}{=}}\) Definition of Classical Possion Bracket: $$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac …if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
+        <meta property="article:published_time" content="2016-10-30" />
+            <meta property="article:section" content="Physics" />
+            <meta property="article:tag" content="Mechanics" />
+            <meta property="article:author" content="Lee Johnson" />
 
 
 
@@ -38,6 +43,8 @@
 
 
 
+        <link href="https://lj020326.github.io/feeds/physics.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Lee's Journal Physics ATOM Feed"/>
 
 </head>
 <body>
@@ -79,83 +86,143 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <ol class="breadcrumb">
-        <li><a href="https://lj020326.github.io" title="Lee's Journal"><i class="fa fa-home fa-lg"></i></a></li>
-        <li><a href="https://lj020326.github.io/tags.html" title="Tags">Tags</a></li>
-        <li class="active">notebook</li>
-    </ol>
-            <article>
-                <h2 class="article-list"><a href="https://lj020326.github.io/Seaborn demo.html">First Blog</a></h2>
-                    <div class="well well-sm">
+            <ol class="breadcrumb">
+                <li><a href="https://lj020326.github.io" title="Lee's Journal"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="https://lj020326.github.io/categories.html" title="Lee's Journal Categories">Categories</a></li>
+                <li><a href="https://lj020326.github.io/category/physics.html" title="Physics">Physics</a></li>
+                <li class="active">Jacobi Identity for Classical Possion Bracket</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://lj020326.github.io/jacobi-identity.html"
+                       rel="bookmark"
+                       title="Permalink to Jacobi Identity for Classical Possion Bracket">
+                        Jacobi Identity for Classical Possion Bracket
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2018-04-16T11:00:00-04:00"> Mon 16 April 2018</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-10-30T00:00:00-04:00"> Sun 30 October 2016</time>
     </span>
           <span class="label label-default">Modified</span>
             <span class="modified">
-                <i class="fa fa-calendar"></i><time datetime="2018-04-16T11:29:30.503880"> Mon 16 April 2018</time>
+                <i class="fa fa-calendar"></i><time datetime="2018-04-16T13:54:11.819650"> Sun 30 October 2016</time>
             </span>
 
 
             <span class="label label-default">By</span>
-            <a href="https://lj020326.github.io/author/jake-vanderplas.html"><i class="fa fa-user"></i> Jake VanderPlas</a>
+            <a href="https://lj020326.github.io/author/lee-johnson.html"><i class="fa fa-user"></i> Lee Johnson</a>
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://lj020326.github.io/tag/python.html">python</a>
-        /
-	<a href="https://lj020326.github.io/tag/jupyter.html">jupyter</a>
-        /
-	<a href="https://lj020326.github.io/tag/notebook.html">notebook</a>
+	<a href="https://lj020326.github.io/tag/mechanics.html">Mechanics</a>
     
 </footer><!-- /.post-info -->                    </div>
-                <div class="summary">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Seaborn-demo-per-Jake-VanderPlas-below">Seaborn demo per Jake VanderPlas below<a class="anchor-link" href="#Seaborn-demo-per-Jake-VanderPlas-below">¶</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-                    <a class="btn btn-default btn-xs" href="https://lj020326.github.io/Seaborn demo.html">more ...</a>
                 </div>
-            </article>
-            <hr/>
+                <p><span class="mathmacros" style="display:none;">
+<span class="math">\(\newcommand{\pp}{\partial}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)</span></span>
+Definition of Classical Possion Bracket:
+</p>
+<div class="math">$$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac{\pp f}{\pp q_i}\frac{\pp g}{\pp p_i}\right)$$</div>
+<p>If we define <span class="math">\(p_{-i}\mdef q_{i}\)</span>, and
+<span class="math">\(I=\{\pm 1, \pm, 2,\ldots, \pm n\}\)</span>, we can rewrite it:
+</p>
+<div class="math">$$[f, g]=\sum_{i\in I} \sgn(i) \frac{\pp f}{\pp p_i}\frac{\pp g}{\pp p_{-i}}$$</div>
+<p>Jacobi Identity is <span class="math">\([f,[g,h]]+[g,[h,f]]+[h,[f,g]]=0\)</span>. With the new
+notation, we can rewrite it as </p>
+<div class="math">$$\begin{aligned}
+\sum_{\overrightarrow{fgh}}[f,[g,h]]
+  &amp;=\sum_{\overrightarrow{fgh}}\sum_{i\in I}\sgn(i)\frac{\pp f}{\pp p_i}\frac{\pp}{\pp p_{-i}}\left(\sum_{j\in I}\sgn(j)\frac{\pp g}{\pp p_j}\frac{\pp h}{\pp p_{-j}}\right)\\
+ &amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp f}{{\pp p_{i}}}\frac{\pp g}{{\pp p_{j}}}\frac{\pp^2h}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp h}{{\pp p_{i}}}\frac{\pp f}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ -\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}\right)\\
+ &amp;=0\end{aligned}$$</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-  <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
         "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
         "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
         "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'], ['\\\\(', '\\\\)'] ], " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
         "        displayMath: [ ['$$','$$'] ]," +
         "        processEscapes: true," +
-        "        processEnvironments: true," +
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
-        " linebreaks: { automatic: true, width: '95% container' }, " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-   }
-  </script>
+}
+</script>
+            </div>
+            <!-- /.entry-content -->
+<ul class="pager">
+    <li class="previous"><a href="https://lj020326.github.io/from-dalembert-to-lagrange.html">&larr; From d’Alembert to Lagrange</a></li>
+    <li class="next"><a href="https://lj020326.github.io/invariance-of-euler-lagrange-equations.html">Invariance of Euler-Lagrange Equations &rarr;</a></li>
+</ul><section class="well" id="related-posts">
+    <h4>Related Posts:</h4>
+    <ul>
+        <li><a href="https://lj020326.github.io/invariance-of-euler-lagrange-equations.html">Invariance of Euler-Lagrange Equations</a></li>
+        <li><a href="https://lj020326.github.io/from-dalembert-to-lagrange.html">From d’Alembert to Lagrange</a></li>
+        <li><a href="https://lj020326.github.io/integrable-constraint.html">Integrable Constraint</a></li>
+    </ul>
+</section>
+        </article>
+    </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lee's Journal</title><link href="https://lj020326.github.io/" rel="alternate"></link><link href="https://lj020326.github.io/feeds/all.atom.xml" rel="self"></link><id>https://lj020326.github.io/</id><updated>2018-04-16T11:29:30-04:00</updated><entry><title>First Blog</title><link href="https://lj020326.github.io/Seaborn%20demo.html" rel="alternate"></link><published>2018-04-16T11:00:00-04:00</published><updated>2018-04-16T11:29:30-04:00</updated><author><name>Jake VanderPlas</name></author><id>tag:lj020326.github.io,2018-04-16:/Seaborn demo.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lee's Journal</title><link href="https://lj020326.github.io/" rel="alternate"></link><link href="https://lj020326.github.io/feeds/all.atom.xml" rel="self"></link><id>https://lj020326.github.io/</id><updated>2018-04-16T13:54:11-04:00</updated><entry><title>First Blog</title><link href="https://lj020326.github.io/Seaborn%20demo.html" rel="alternate"></link><published>2018-04-16T11:00:00-04:00</published><updated>2018-04-16T11:29:30-04:00</updated><author><name>Jake VanderPlas</name></author><id>tag:lj020326.github.io,2018-04-16:/Seaborn demo.html</id><summary type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -6430,4 +6430,1194 @@ AAAAAMDj0LgEAAAAAAAA4HFoXAIAAAAAAADwOP8HnVbko1kBeHoAAAAASUVORK5CYII=
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category><category term="jupyter"></category><category term="notebook"></category></entry></feed>
+</content><category term="python"></category><category term="jupyter"></category><category term="notebook"></category></entry><entry><title>One way quantum computer</title><link href="https://lj020326.github.io/one-way-quantum-computer.html" rel="alternate"></link><published>2017-02-18T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-02-18:/one-way-quantum-computer.html</id><summary type="html">&lt;p&gt;The one-way or measurement based quantum computer (MBQC) is a method of quantum computing that first prepares an entangled resource state, usually a cluster state or graph state, then performs single qubit measurements on it. It is "one-way" because the resource state is destroyed by the measurements.&lt;/p&gt;</summary><content type="html">&lt;p&gt;There are some discrepancies between the results here and the paper. But
+the results are basically the same. &lt;/p&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\def\braket#1{\mathinner{\langle{#1}\rangle}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\tr}{\mathrm{tr}}\)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="rotation-gates"&gt;Rotation Gates&lt;/h2&gt;
+&lt;p&gt;This part corresond to the Gates in paper 0301052v2.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$S_{ab}=\frac{1+Z_a}{2}+\frac{1-Z_a}{2}Z_b=U_a+D_aZ_b$$&lt;/div&gt;
+&lt;p&gt;The &lt;span class="math"&gt;\(u_i, d_i\)&lt;/span&gt; are defined by &lt;span class="math"&gt;\(\ket{\psi_i}=u_i\ket{0_i}+d_i\ket{1_i}\)&lt;/span&gt;.
+And we have &lt;span class="math"&gt;\(Z_b\ket{+_b}=\ket{-_b}\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\mathcal{R}&amp;amp;=\bra{\psi_1}\bra{\psi_2}\bra{\psi_3}\bra{\psi_4}S_{12}S_{23}S_{34}S_{45}\ket{+_2}\ket{+_3}\ket{+_4}\ket{+_5}\\
+&amp;amp;=\left(\ket{+_5}\bra{\psi_4}U_4+\ket{-_5}\bra{\psi_4}D_4\right) \bra{\psi_1}\bra{\psi_2}\bra{\psi_3}S_{12}S_{23}S_{34}\ket{+_2}\ket{+_3}\ket{+_4}\\
+&amp;amp;=\prod_{i=4}^1 \Big(\ket{+_{i+1}}\bra{0_i}u_i+\ket{-_{i+1}}\bra{1_i}d_i\Big)\\
+&amp;amp;=\prod_{i=4}^1  {\frac{1}{\sqrt{2}}\begin{bmatrix}u_i &amp;amp; d_i\\-u_i &amp;amp; -d_i\end{bmatrix}}=\prod_{i=4}^1  H\begin{bmatrix}u_i &amp;amp; \\ &amp;amp; d_i\end{bmatrix}\\
+&amp;amp;=\prod_{i=4}^1  H\mathcal{Z}_{\phi_i},\quad \mathcal{Z}_\phi=\exp(-\ii \phi Z/2)\\
+&amp;amp;=(H\mathcal{Z}_\zeta H)\mathcal{Z}_\eta (H\mathcal{Z}_\xi H)\\
+&amp;amp;=\mathcal{X}_\zeta\mathcal{Z}_\eta\mathcal{X}_\xi\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;In the
+basis of &lt;span class="math"&gt;\(Z_1\rightarrow Z_5\)&lt;/span&gt;. If all measurement results &lt;span class="math"&gt;\(\psi_i\)&lt;/span&gt; are
+positive for directions &lt;span class="math"&gt;\((0, \xi,\eta,\zeta)\)&lt;/span&gt;, respectively, we can
+verify that the rotation matrix &lt;span class="math"&gt;\(\mathcal{R}\)&lt;/span&gt; is equivalent to
+&lt;span class="math"&gt;\(\exp(-\ii \zeta X/2)\exp(-\ii \eta Z/2)\exp(-\ii \xi X/2)\)&lt;/span&gt;. Hadamard
+gate is simply a special case.&lt;/p&gt;
+&lt;h2 id="cnot-gates"&gt;CNOT Gates&lt;/h2&gt;
+&lt;p&gt;This part corresponds to PRL.86.5188(Page 3, upper left corner), so we
+are using a different &lt;span class="math"&gt;\(S\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$S_{ab}=1-\frac{(1+Z_{a})(1-Z_{b})}{2}=D_a+U_aZ_b=U_b-D_bZ_a$$&lt;/div&gt;
+&lt;p&gt; So
+&lt;/p&gt;
+&lt;div class="math"&gt;$$S_{ab}S_{bc}=\frac{Z_c-Z_a}{2}+\frac{Z_c+Z_a}{2}Z_b=U_bZ_c-D_bZ_a$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\mathcal{C}&amp;amp;=\bra{\psi_1}\bra{\psi_2}S_{12}S_{23}S_{24}\ket{+_2}\ket{+_3}\\
+&amp;amp;=\Big(\ket{+_{3}}\bra{1_2}d_2+\ket{-_3}\bra{0_2}u_2\Big)\bra{\psi_1}S_{12}S_{24}\ket{+_2}\\
+&amp;amp;=\Big(\ket{+_{3}}\bra{1_2}d_2+\ket{-_3}\bra{0_2}u_2\Big)\bra{\psi_1}U_2Z_4-D_2Z_1\ket{+_2}\\
+&amp;amp;=\Big(\pm_2\ket{+_{3}}\bra{1_2}+\ket{-_3}\bra{0_2}\Big)\Big(\ket{0_2}\bra{\psi_1}Z_4-\ket{1_2}\bra{\psi_1}Z_1\Big)/2\\
+&amp;amp;=\Big( \mp_2\ket{+_{3}}\bra{\mp_1}+\ket{-_3}\bra{\pm_1}Z_4\Big)/2 \\\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;If &lt;span class="math"&gt;\(s_1=1, s_2=1\)&lt;/span&gt;, then
+&lt;span class="math"&gt;\(\mathcal{C}_n=\ket{-_{3}}\bra{-_1}Z_4+\ket{+_3}\bra{+_1}I_4\)&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\mathcal{C}=I_4\otimes\begin{bmatrix}
+1&amp;amp; 1\\
+1&amp;amp; 1
+\end{bmatrix}+Z_4\otimes\begin{bmatrix}
+1&amp;amp; -1\\
+-1&amp;amp; 1
+\end{bmatrix}=\begin{bmatrix}
+1&amp;amp; &amp;amp;&amp;amp;\\
+&amp;amp; 1&amp;amp;&amp;amp;\\
+&amp;amp;&amp;amp;&amp;amp;1\\
+&amp;amp;&amp;amp;1&amp;amp;\\
+\end{bmatrix}$$&lt;/div&gt;
+&lt;p&gt; In the basis of
+&lt;span class="math"&gt;\(Z_4\otimes Z_1\rightarrow Z_4\otimes Z_3\)&lt;/span&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry><entry><title>Renyi entropy of the wormholes</title><link href="https://lj020326.github.io/renyi-entropy-of-the-wormholes.html" rel="alternate"></link><published>2017-01-17T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-01-17:/renyi-entropy-of-the-wormholes.html</id><summary type="html">&lt;p&gt;In information theory, the Rényi entropy generalizes the Hartley entropy, the Shannon entropy, the collision entropy and the min entropy. Entropies quantify the diversity, uncertainty, or randomness of a system. The Rényi entropy is named after Alfréd Rényi.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\)&lt;/span&gt;
+&lt;/span&gt;
+R&amp;eacute;nyi entropy is defined as: 
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    S_n(\alpha)&amp;amp;:=\frac{1}{1-\alpha}\log\left({\sum_{a_{1\to n}}}\sum_{\mu=1}^{N}\left(\frac{p_{a_1a_2\cdots a_n}}{N}\right)^\alpha\right) \\
+    &amp;amp;=\frac{1}{1-\alpha}\log\left(\frac{1}{\mathcal{D}^{2\alpha(n-1)}}{{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\right) \\
+    &amp;amp;=\frac{1}{1-\alpha}\left[\log\left({{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\right)-\alpha(n-1)\log \mathcal{D}^2\right]\\
+    &amp;amp;=\frac{\alpha(n-1)\log \mathcal{D}^2-\log t_n(\alpha)}{\alpha-1}
+\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
+We are using &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    t_n(\alpha)&amp;amp;:={{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\\
+    &amp;amp;= {\sum_{a_{1\to n}}}{\sum_{x_{1\to n-1}}}N_{x_0a_1}^{x_1}N_{x_1a_2}^{x_2}\cdots N_{x_{n-1}a_n}^{x_n}{\prod_{i=1}^n d_{a_i}^\alpha},\quad x_0=x_n=1\\
+    &amp;amp;= {\sum_{x_{1\to n-1}}}\prod_{i=1}^n\left({\sum_{a_{1\to n}}}d_{a_i}^\alpha N_{x_{i-1}a_i}^{x_i}\right)\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
+Define &lt;/p&gt;
+&lt;div class="math"&gt;$$T_{bc}(\alpha):=\sum_ad_a^\alpha N_{ba}^c$$&lt;/div&gt;
+&lt;p&gt; Then
+&lt;/p&gt;
+&lt;div class="math"&gt;$$t_n(\alpha)={\sum_{x_{1\to n-1}}}\prod_{i=1}^nT_{x_{i-1}x_i}(\alpha)\left[\bm T^n(\alpha)\right]_{x_0x_n}=\left[\bm T^n(\alpha)\right]_{11}
+\label{t11}$$&lt;/div&gt;
+&lt;p&gt; It&amp;rsquo;s obvious that &lt;span class="math"&gt;\(T\)&lt;/span&gt; is an elementwise positive matrix.
+Moreover, &lt;span class="math"&gt;\(T\)&lt;/span&gt; is normal: &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\label{key}
+T_{ab}T_{cb}&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b N_{xa}^b N_{yc}^b\\
+&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b N_{x\bar b}^{\bar a} N_{y\bar b}^{\bar c}\\
+&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b  N_{\bar y b}^{c}N_{\bar xb}^{a}\\
+&amp;amp;=T_{ba}T_{bc}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt; Thus, the eigenvectors correspond to
+distinct eigenvalues must be orthogonal. Assume the eigenvalues and
+orthonormal eigenvectors are &lt;span class="math"&gt;\(\bm x_i\)&lt;/span&gt; with eigenvalue
+&lt;span class="math"&gt;\(\lambda_i(\alpha)\)&lt;/span&gt;. The eigenvector &lt;span class="math"&gt;\(\bm x_m:=d_i\bm e_i/\mathcal{D}\)&lt;/span&gt;
+has the maximum eigenvalue because its all components are positive. The
+eigenvalue is
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\lambda_{\max}(\alpha)=\sum_a d_a^{\alpha+1}, \quad\lambda_{\max}(1)=\mathcal{D}^2$$&lt;/div&gt;
+&lt;p&gt;We decompose &lt;span class="math"&gt;\(\bm e_1\)&lt;/span&gt; into &lt;span class="math"&gt;\(\bm x_i\)&lt;/span&gt; to calculate &lt;span class="math"&gt;\([\bm{T}^n]_{11}\)&lt;/span&gt;:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\bm e_1&amp;amp;=\sum_i c_i\bm x_i,\quad c_i=\bm e_1\cdot \bm x_i\\
+[\bm{T}_\alpha^n]_{11}&amp;amp;=\bm{e}_1^T\bm{T}_\alpha^n \bm{e}_1=\sum_i c_i^2\lambda_i^n\\
+&amp;amp;=c_m^2\lambda_{\max}^n\left[1+\sum_{i\neq m}\frac{c_i^2}{c_m^2}\left( \frac{\lambda_i}{\lambda_{\max}}\right) ^n\right]\\
+&amp;amp;=\frac{\lambda_{\max}^n}{\mathcal{D}^2}\left[1+\Theta(k^n)\right],\quad k:=\frac{\lambda_{\mathrm{sub}}}{\lambda_{\max}}&amp;lt;1\end{aligned}$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+S_n(\alpha)&amp;amp;=\frac{\alpha(n-1)\log \mathcal{D}^2-\log [\bm{T}_\alpha^n]_{11}}{\alpha-1}\\
+&amp;amp;=n\left[\frac{\alpha\log \lambda_{\max}(1)-\log \lambda_{\max}(\alpha)}{\alpha-1}\right]-\log \mathcal{D}^2+\Theta(k^n)\label{al}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;In the &lt;span class="math"&gt;\(\alpha=1\)&lt;/span&gt; case, there is no other nontrivial eigenvector except
+&lt;span class="math"&gt;\(\bm x_m\)&lt;/span&gt; because &lt;span class="math"&gt;\(\bm T=\bm x_m\bm x_m^\mathsf{T}\)&lt;/span&gt;. So the
+&lt;span class="math"&gt;\(\Theta(k^n)\)&lt;/span&gt; term in [al] reduce to zero.&lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+S_{n}(1)&amp;amp;=n\frac{\dd}{\dd\alpha}\Big|_{\alpha=1}\Big[\alpha\log \lambda_{\max}(1)-\log \lambda_{\max}(\alpha)\Big] -\log \mathcal{D}^2\\
+&amp;amp;=n\Big[\log \mathcal{D}^2-\sum_a \frac{d_a^2\log d_a}{\mathcal{D}^2}\Big]-\log \mathcal{D}^2\\
+&amp;amp;=(n-1)\log \mathcal{D}^2-n\sum_a p_a\log d_a\end{aligned}$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content></entry><entry><title>Geometrical Optics in Continuum</title><link href="https://lj020326.github.io/geometrical-optics-in-continuum.html" rel="alternate"></link><published>2017-01-05T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-01-05:/geometrical-optics-in-continuum.html</id><summary type="html">&lt;h2 id="fermats-principle"&gt;Fermat&amp;rsquo;s Principle&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\partial}\)&lt;/span&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Fermat&amp;rsquo;s Principle is &lt;/p&gt;
+&lt;div class="math"&gt;$$\delta s=\delta\int n\dd \ell=0$$&lt;/div&gt;
+&lt;p&gt; If we choose
+the path connecting two points to be
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bm r=\bm r(t),\quad t_0\leq t\leq t_1$$&lt;/div&gt;
+&lt;p&gt; We can write
+&lt;/p&gt;
+&lt;div class="math"&gt;$$s …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h2 id="fermats-principle"&gt;Fermat&amp;rsquo;s Principle&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\partial}\)&lt;/span&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Fermat&amp;rsquo;s Principle is &lt;/p&gt;
+&lt;div class="math"&gt;$$\delta s=\delta\int n\dd \ell=0$$&lt;/div&gt;
+&lt;p&gt; If we choose
+the path connecting two points to be
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bm r=\bm r(t),\quad t_0\leq t\leq t_1$$&lt;/div&gt;
+&lt;p&gt; We can write
+&lt;/p&gt;
+&lt;div class="math"&gt;$$s=\int n\frac{\dd \ell}{\dd t}\dd t, \quad \frac{\dd \ell}{\dd t}=|\dot{\bm r}|$$&lt;/div&gt;
+&lt;p&gt;
+The Lagrangian about parameter &lt;span class="math"&gt;\(t\)&lt;/span&gt; is
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L=n\frac{\dd \ell}{\dd t}=n(\bm r)|\bm{\dot r}|$$&lt;/div&gt;
+&lt;p&gt; then the
+Euler-Lagrange Equation is &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+&amp;amp;\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\bm{\dot r}}-\frac{\pp}{\pp\bm{r}}\right)L=0\\
+\bm p&amp;amp;=\frac{\pp L}{\pp \bm{\dot r}}=n \hat\tau,\quad\hat{\tau}=\frac{\pp |\dot{\bm r}|}{\pp \bm{\dot r}}=\bm{\dot r}/|\bm{\dot r}|=\frac{\dd\bm r}{\dd\ell}\\
+\frac{\dd \bm p}{\dd t}&amp;amp;=\frac{\pp L}{\pp \bm{r}}=\frac{\dd\ell}{\dd t}\nabla n\\
+\frac{\dd \bm p}{\dd \ell}&amp;amp;=\nabla n=\bm F\end{aligned}$$&lt;/div&gt;
+&lt;p&gt; Generalized
+Momentum &lt;span class="math"&gt;\(\bm p\)&lt;/span&gt; is independent of the choice of &lt;span class="math"&gt;\(t\)&lt;/span&gt;, and&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;h3 id="rectangular-coordinates"&gt;Rectangular Coordinates&lt;/h3&gt;
+&lt;div class="math"&gt;$$n(x,y,z)=f(x,y),\quad\bm F=\frac{\pp f}{\pp x}\hat x+\frac{\pp f}{\pp y}\hat y$$&lt;/div&gt;
+&lt;p&gt;It is obvious that &lt;span class="math"&gt;\(p_z\)&lt;/span&gt; are conserved.&lt;/p&gt;
+&lt;h3 id="central-gradient"&gt;Central Gradient&lt;/h3&gt;
+&lt;p&gt;Define &lt;span class="math"&gt;\(\bm L=\bm r\times \bm p\)&lt;/span&gt;, &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+    \frac{\dd \bm L}{\dd \ell}&amp;amp;=\frac{\dd\bm r}{\dd \ell}\times\bm p+\bm r\times\frac{\dd\bm p}{\dd \ell}
+    \\&amp;amp;=\hat{\tau}\times \bm p+\bm r\times\bm F
+    \\&amp;amp;=\bm r\times\bm F\end{aligned}$$&lt;/div&gt;
+&lt;p&gt; &lt;span class="math"&gt;\(\bm L\)&lt;/span&gt; is conserved for a
+spherical symmetric distribution
+&lt;/p&gt;
+&lt;div class="math"&gt;$$n(\bm r)=f(r),\quad \bm r\times\bm F=\bm 0$$&lt;/div&gt;
+&lt;p&gt; &lt;span class="math"&gt;\(L_z\)&lt;/span&gt; is conserved for
+&lt;/p&gt;
+&lt;div class="math"&gt;$$n(\bm r)=f(r,\theta),\quad (\bm r\times\bm F)_z=0$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Calculus of Variations"></category></entry><entry><title>Invariance of Euler-Lagrange Equations</title><link href="https://lj020326.github.io/invariance-of-euler-lagrange-equations.html" rel="alternate"></link><published>2016-10-30T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-30:/invariance-of-euler-lagrange-equations.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
+E-L is deduced from the Hamilton&amp;rsquo;s principle
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta S=\delta\int L(\bm q, \dot{\bm q}, t)dt=0$$&lt;/div&gt;
+&lt;p&gt;It is easy to find that, for &lt;span class="math"&gt;\(L'=L+\dd f(\bm q, t)/\dd t\)&lt;/span&gt; or change of …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
+E-L is deduced from the Hamilton&amp;rsquo;s principle
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta S=\delta\int L(\bm q, \dot{\bm q}, t)dt=0$$&lt;/div&gt;
+&lt;p&gt;It is easy to find that, for &lt;span class="math"&gt;\(L'=L+\dd f(\bm q, t)/\dd t\)&lt;/span&gt; or change of
+variables &lt;span class="math"&gt;\(\bm q\to\bm Q\)&lt;/span&gt;, the min of &lt;span class="math"&gt;\(\delta S\)&lt;/span&gt; will not change. Here
+we want to prove it the hard way&amp;mdash;using E-L equations.&lt;/p&gt;
+&lt;p&gt;The original E-L Equations are:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)L=0$$&lt;/div&gt;
+&lt;h2 id="commutator-left-dfracmathrmdmathrmd-t-dfracpartialpartial-q_iright-fmathbf-q-t0"&gt;Commutator &lt;span class="math"&gt;\(\left [\dfrac{\mathrm{d}}{\mathrm{d} t}, \dfrac{\partial}{\partial q_i}\right ]f(\mathbf q, t)=0\)&lt;/span&gt;&lt;/h2&gt;
+&lt;h3 id="proof"&gt;Proof&lt;/h3&gt;
+&lt;div class="math"&gt;$$\left[\frac{\dd}{\dd t},\frac{\pp}{\pp q_i}\right]f(\bm q, t) = \left[\dot q_i\frac{\pp}{\pp q_i}+\frac{\pp}{\pp t},\frac{\pp}{\pp q_i}\right]f(\bm q, t)=0$$&lt;/div&gt;
+&lt;h2 id="condition-lldfracmathrmd-fmathbf-q-tmathrmd-t_1"&gt;Condition &lt;span class="math"&gt;\(L'=L+\dfrac{\mathrm{d} f(\mathbf q, t)}{\mathrm{d} t}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)L'
+&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)\frac{\dd f}{\dd t}\\
+&amp;amp;=\frac{\dd}{\dd t}\frac{\pp}{\pp q_i}f-\frac{\pp}{\pp q_i}\frac{\dd}{\dd t}f\\
+&amp;amp;=\left[\frac{\dd}{\dd t},\frac{\pp}{\pp q_i}\right]f\\
+&amp;amp;=0\end{aligned}$$&lt;/div&gt;
+&lt;h2 id="condition-mathbf-qtomathbf-q"&gt;Condition &lt;span class="math"&gt;\(\mathbf q\to\mathbf Q\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;We we change generalized coordinates &lt;span class="math"&gt;\(\bm q\to\bm Q\)&lt;/span&gt;, the Lagrangian:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$L(\bm q, \dot{\bm q}, t)\to L'(\bm Q, \dot{\bm Q}, t)=L\big[\bm q(\bm Q, t), \dot{\bm q}(\bm Q, \dot{\bm Q}, t), t\big]$$&lt;/div&gt;
+&lt;p&gt;We want to prove:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot Q_i}-\frac{\pp}{\pp Q_i}\right)L'=0$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\mathrm{LHS}
+&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp \dot q_j}{\pp \dot Q_i}\frac{\pp}{\pp \dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\frac{\pp \dot q_j}{\pp Q_i}\frac{\pp }{\pp\dot q_j}\right)L\\
+&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp q_j}{\pp Q_i}\frac{\pp}{\pp\dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\frac{\pp \dot q_j}{\pp Q_i}\frac{\pp }{\pp\dot q_j}\right)L\\
+&amp;amp;=\left[\left(\frac{\dd}{\dd t}\frac{\pp}{\pp Q_i}q_j\right)\frac{\pp}{\pp \dot q_j}+\frac{\pp q_j}{\pp Q_i}\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\left(\frac{\pp}{\pp Q_i}\frac{\dd}{\dd t}q_j\right)\frac{\pp }{\pp\dot q_j}\right]L\\
+&amp;amp;=\left(\left[\frac{\dd}{\dd t}, \frac{\pp}{\pp Q_i}\right]q_j\right)\frac{\pp}{\pp \dot q_j}L+\frac{\pp q_j}{\pp Q_i}\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_j}-\frac{\pp }{\pp q_j}\right)L\\
+&amp;amp;=0\end{aligned}$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Mechanics"></category><category term="Calculus of Variations"></category></entry><entry><title>Jacobi Identity for Classical Possion Bracket</title><link href="https://lj020326.github.io/jacobi-identity.html" rel="alternate"></link><published>2016-10-30T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-30:/jacobi-identity.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\pp}{\partial}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;&lt;/span&gt;
+Definition of Classical Possion Bracket:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\pp}{\partial}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;&lt;/span&gt;
+Definition of Classical Possion Bracket:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac{\pp f}{\pp q_i}\frac{\pp g}{\pp p_i}\right)$$&lt;/div&gt;
+&lt;p&gt;If we define &lt;span class="math"&gt;\(p_{-i}\mdef q_{i}\)&lt;/span&gt;, and
+&lt;span class="math"&gt;\(I=\{\pm 1, \pm, 2,\ldots, \pm n\}\)&lt;/span&gt;, we can rewrite it:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$[f, g]=\sum_{i\in I} \sgn(i) \frac{\pp f}{\pp p_i}\frac{\pp g}{\pp p_{-i}}$$&lt;/div&gt;
+&lt;p&gt;Jacobi Identity is &lt;span class="math"&gt;\([f,[g,h]]+[g,[h,f]]+[h,[f,g]]=0\)&lt;/span&gt;. With the new
+notation, we can rewrite it as &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\sum_{\overrightarrow{fgh}}[f,[g,h]]
+  &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i\in I}\sgn(i)\frac{\pp f}{\pp p_i}\frac{\pp}{\pp p_{-i}}\left(\sum_{j\in I}\sgn(j)\frac{\pp g}{\pp p_j}\frac{\pp h}{\pp p_{-j}}\right)\\
+ &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp f}{{\pp p_{i}}}\frac{\pp g}{{\pp p_{j}}}\frac{\pp^2h}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp h}{{\pp p_{i}}}\frac{\pp f}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ +\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
+ &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
+ -\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}\right)\\
+ &amp;amp;=0\end{aligned}$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Mechanics"></category></entry><entry><title>From d’Alembert to Lagrange</title><link href="https://lj020326.github.io/from-dalembert-to-lagrange.html" rel="alternate"></link><published>2016-10-01T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-01:/from-dalembert-to-lagrange.html</id><summary type="html">&lt;h2 id="nowtonian"&gt;Nowtonian&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\pp}{\partial}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;
+&lt;/span&gt;
+Assume &lt;span class="math"&gt;\(\bm F\)&lt;/span&gt; is active force and &lt;span class="math"&gt;\(\bm R\)&lt;/span&gt; is constraint force. Then for
+&lt;span class="math"&gt;\(i\)&lt;/span&gt;th body we have Newton&amp;rsquo;s Second Law:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bm F^\mathrm{tot}_i=\bm F_i+\bm R_i=m\bm …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h2 id="nowtonian"&gt;Nowtonian&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\pp}{\partial}
+\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;
+&lt;/span&gt;
+Assume &lt;span class="math"&gt;\(\bm F\)&lt;/span&gt; is active force and &lt;span class="math"&gt;\(\bm R\)&lt;/span&gt; is constraint force. Then for
+&lt;span class="math"&gt;\(i\)&lt;/span&gt;th body we have Newton&amp;rsquo;s Second Law:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\bm F^\mathrm{tot}_i=\bm F_i+\bm R_i=m\bm a_i$$&lt;/div&gt;
+&lt;p&gt; With a virtual
+displacement &lt;span class="math"&gt;\(\delta \bm x_i\)&lt;/span&gt;, we define:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta W_i=\bm F^\mathrm{tot}_i\cdot\delta\bm x_i,\quad
+\delta K_i=m\bm a_i\cdot\delta\bm x_i$$&lt;/div&gt;
+&lt;p&gt; Then we have
+&lt;span class="math"&gt;\(\delta W_i=\delta K_i\)&lt;/span&gt;. Define
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta W=\sum_i\delta W_i,\quad\delta K=\sum_i\delta K_i$$&lt;/div&gt;
+&lt;p&gt; and
+obviously&lt;/p&gt;
+&lt;div class="math"&gt;$$\delta W=\delta K$$&lt;/div&gt;
+&lt;p&gt; As the constraints will not do work, we
+can rewrite &lt;/p&gt;
+&lt;div class="math"&gt;$$\delta W=\sum_i\bm F_i\cdot\delta\bm x_i$$&lt;/div&gt;
+&lt;h2 id="lagrangian"&gt;Lagrangian&lt;/h2&gt;
+&lt;h3 id="statics-delta-k0"&gt;Statics &lt;span class="math"&gt;\(\delta K=0\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;Principle of Virtual Work: &lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\delta W}{\delta q}=0$$&lt;/div&gt;
+&lt;p&gt; i.e. Minimal
+Potential Energy &lt;/p&gt;
+&lt;div class="math"&gt;$$Q\mdef-\frac{\delta V}{\delta q}=0$$&lt;/div&gt;
+&lt;h3 id="dynamics"&gt;Dynamics&lt;/h3&gt;
+&lt;p&gt;d&amp;rsquo;Alembert&amp;rsquo;s Principle&amp;mdash;Counterpart of Principle of Virtual Work:
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\delta W}{\delta q}=\frac{\delta K}{\delta q}$$&lt;/div&gt;
+&lt;p&gt;i.e. &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+Q\mdef\bm F_i\cdot\frac{\pp \bm x_i}{\pp q}&amp;amp;=m_i\bm a_i\cdot\frac{\pp \bm x_i}{\pp q}\\
+&amp;amp;=m_i\frac{\dd \bm v_i}{\dd t}\cdot\frac{\pp \bm x_i}{\pp q}\\
+&amp;amp;=m_i\frac{\dd}{\dd t}\left( \bm v\cdot\frac{\pp \bm x_i}{\pp q}\right)-m_i\bm v\cdot\frac{\dd}{\dd t}\frac{\pp}{\pp q}\bm x_i\\
+&amp;amp;=m_i\frac{\dd}{\dd t}\left(\bm v\cdot\frac{\pp \dot{\bm x_i}}{\pp\dot q}\right)-m_i\bm v\cdot\frac{\pp}{\pp q}\frac{\dd}{\dd t}\bm x_i\\
+&amp;amp;=\frac{\dd}{\dd t}\left(m_i\bm v_i\cdot\frac{\pp\bm v_i}{\pp\dot q}\right)-m_i\bm v_i\cdot\frac{\pp \bm v_i}{\pp q}\\
+&amp;amp;=\frac{\dd}{\dd t}\frac{\pp T}{\pp\dot q}-\frac{\pp T}{\pp q}\\
+&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)T\label{T}\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;For conservative or monogenic system,&lt;/p&gt;
+&lt;div class="math"&gt;$$Q=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)V\label{V}$$&lt;/div&gt;
+&lt;p&gt;As a result of last two equations, if we define &lt;span class="math"&gt;\(L=T-V\)&lt;/span&gt;, we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)L=0$$&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Mechanics"></category></entry><entry><title>Use C++ Template Programming to find int of least byte width</title><link href="https://lj020326.github.io/use-c-template-programming-to-find-int-of-least-byte-width.html" rel="alternate"></link><published>2016-05-01T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-05-01:/use-c-template-programming-to-find-int-of-least-byte-width.html</id><summary type="html">&lt;p&gt;Also see &lt;a href="https://gist.github.com/peijunz/580c39932aed134c53c80d2c55101490"&gt;gist&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;cstdint&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;static_assert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Length beyond range 1&amp;lt;N&amp;lt;9!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;typename&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int8_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int16_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_ …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Also see &lt;a href="https://gist.github.com/peijunz/580c39932aed134c53c80d2c55101490"&gt;gist&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;cstdint&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;static_assert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Length beyond range 1&amp;lt;N&amp;lt;9!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;typename&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int8_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int16_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int32_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int64_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="n"&gt;i5&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Size of i5 is %d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i5&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="C++"></category></entry><entry><title>Energy of Electrostatic Field in a Triangle</title><link href="https://lj020326.github.io/energy-of-electrostatic-field-in-a-triangle.html" rel="alternate"></link><published>2014-01-15T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2014-01-15:/energy-of-electrostatic-field-in-a-triangle.html</id><summary type="html">&lt;h2 id="energy-of-a-triangle"&gt;Energy of a triangle&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
+For a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;, assume the points have potential
+&lt;span class="math"&gt;\(\varphi_a,\varphi_b,\varphi_c\)&lt;/span&gt;. As shown in Fig. ???,
+&lt;span class="math"&gt;\(AB'\perp AC, AC'\perp AB\)&lt;/span&gt;, combine the components of &lt;span class="math"&gt;\(\nabla\varphi\)&lt;/span&gt;,
+we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$(\nabla\varphi)^2=\frac{1}{\sin^2 A}\left(\frac …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h2 id="energy-of-a-triangle"&gt;Energy of a triangle&lt;/h2&gt;
+&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
+\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
+For a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;, assume the points have potential
+&lt;span class="math"&gt;\(\varphi_a,\varphi_b,\varphi_c\)&lt;/span&gt;. As shown in Fig. ???,
+&lt;span class="math"&gt;\(AB'\perp AC, AC'\perp AB\)&lt;/span&gt;, combine the components of &lt;span class="math"&gt;\(\nabla\varphi\)&lt;/span&gt;,
+we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$(\nabla\varphi)^2=\frac{1}{\sin^2 A}\left(\frac{\varphi_{ab}^2}{c^2}+\frac{\varphi_{ac}^2}{b^2}-\frac{2\varphi_{ab}\varphi_{ac}\cos A}{bc}\right)$$&lt;/div&gt;
+&lt;p&gt;The area of triangle is &lt;/p&gt;
+&lt;div class="math"&gt;$$S=\frac{bc\sin A}{2}$$&lt;/div&gt;
+&lt;p&gt;The energy of this triangle is &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+ E_{\triangle}&amp;amp;\propto S(\nabla\varphi)^2\\
+ &amp;amp;\propto \frac{bc}{\sin A}\left(\frac{\varphi_{ab}^2}{c^2}+\frac{\varphi_{ac}^2}{b^2}-\frac{2\varphi_{ab}\varphi_{ac}\cos A}{bc}\right)\end{aligned}$$&lt;/div&gt;
+&lt;p&gt;
+对&lt;span class="math"&gt;\(\varphi_a\)&lt;/span&gt;求导得到：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\pp E_\triangle}{\pp \varphi_a}\propto \left(\frac{b}{c\sin A}-\cot A\right)\varphi_{ab}+\left(\frac{c}{b\sin A}-\cot A\right)\varphi_{ac}\label{a}$$&lt;/div&gt;
+&lt;p&gt;
+其中：
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{b}{c\sin A}-\cot A=\frac{b-c\cos A}{c\sin A}=\frac{a\cos C}{a\sin C}=\cot C$$&lt;/div&gt;
+&lt;p&gt;
+同理&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{c}{b\sin A}-\cot A=\cot B$$&lt;/div&gt;
+&lt;p&gt; 故偏导化为
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\pp E_\triangle}{\pp \varphi_a}\propto \varphi_{ab}\cot C+\varphi_{ac}\cot B
+ \label{comp}$$&lt;/div&gt;
+&lt;h2 id="stationary-point-equation-for-energy-minimum"&gt;Stationary point equation for energy minimum&lt;/h2&gt;
+&lt;p&gt;Let &lt;span class="math"&gt;\(E\)&lt;/span&gt; be the total energy and use &lt;span class="math"&gt;\(i\)&lt;/span&gt; to mark all triangles containing
+&lt;span class="math"&gt;\(A\)&lt;/span&gt;. &lt;span class="math"&gt;\(B_i, C_i\)&lt;/span&gt; are other points in triangle &lt;span class="math"&gt;\(i\)&lt;/span&gt;. In the stationary
+point, we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\frac{\pp E}{\pp \varphi_a}=\sum_i\frac{\pp  E_i}{\pp \varphi_a}
+ \propto\sum_i \varphi_{ab_i}\cot C_i+\varphi_{ac_i}\cot B_i=0$$&lt;/div&gt;
+&lt;p&gt; So,
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\sum_i\left(\cot C_i+\cot B_i\right)\varphi_{a}=\sum_i\left(  \varphi_{b_i}\cot C_i+\varphi_{c_i}\cot B_i\right)$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\Rightarrow\varphi_a=\frac{\sum_i \varphi_{b_i}\cot C_i+\varphi_{c_i}\cot B_i}{\sum_i\cot C_i+\cot B_i}$$&lt;/div&gt;
+&lt;p&gt;Assume we know coordinates of a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;. To calculate &lt;span class="math"&gt;\(\cot A\)&lt;/span&gt;,
+we define &lt;span class="math"&gt;\(\bm b=\overrightarrow{AB}, \bm c=\overrightarrow{AC}\)&lt;/span&gt;.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\cot A=\frac{bc\cos A}{bc\sin A}=\frac{\bm{b\cdot c}}{|\bm{b\times c}|}=\frac{\bm{b\cdot c}}{2S}$$&lt;/div&gt;
+&lt;p&gt;The denominator &lt;span class="math"&gt;\(2S\)&lt;/span&gt; is the same for a triangle.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Calculus of Variations"></category></entry><entry><title>Integrable Constraint</title><link href="https://lj020326.github.io/integrable-constraint.html" rel="alternate"></link><published>2013-12-12T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2013-12-12:/integrable-constraint.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\mathrm{p}}\)&lt;/span&gt;
+&lt;/span&gt;
+In N dimension, &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\bm f\times\bm g&amp;amp;\rightarrow f_a\times g_b=[f_ag_b]_{ab}\\
+\bm f\cdot\bm g\times\bm h&amp;amp;\rightarrow(f_a, g_b, h_c)=[f_ag_bh_c]_{abc}
+    \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Suppose &lt;span class="math"&gt;\(\bm f(\bm r …&lt;/span&gt;&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
+&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\mathrm{p}}\)&lt;/span&gt;
+&lt;/span&gt;
+In N dimension, &lt;/p&gt;
+&lt;div class="math"&gt;$$\begin{aligned}
+\bm f\times\bm g&amp;amp;\rightarrow f_a\times g_b=[f_ag_b]_{ab}\\
+\bm f\cdot\bm g\times\bm h&amp;amp;\rightarrow(f_a, g_b, h_c)=[f_ag_bh_c]_{abc}
+    \end{aligned}$$&lt;/div&gt;
+&lt;p&gt;Suppose &lt;span class="math"&gt;\(\bm f(\bm r)=f_i\hat e_i\)&lt;/span&gt;, and a constraint &lt;span class="math"&gt;\(f_i\dd r_i=0\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Even if the &lt;span class="math"&gt;\(\nabla\times\bm f\neq 0\)&lt;/span&gt;, we may find some function
+&lt;span class="math"&gt;\(\varphi\)&lt;/span&gt; which is nonzero at the nonzero points of &lt;span class="math"&gt;\(\bm f\)&lt;/span&gt; s.t.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\nabla\times(\varphi\bm f)=\nabla\varphi\times\bm f+\varphi\nabla\times\bm f=0$$&lt;/div&gt;
+&lt;p&gt;Dotted by &lt;span class="math"&gt;\(\bm f\)&lt;/span&gt;, we find
+&lt;/p&gt;
+&lt;div class="math"&gt;$$\varphi\bm f\cdot\nabla \times\bm f=(\bm f,\nabla\varphi, \bm f)\propto [f_i\pp_j f_k]_{ijk} =0$$&lt;/div&gt;
+&lt;p&gt;E.g. For a 2D function, &lt;span class="math"&gt;\(A_{ijk}\equiv 0\)&lt;/span&gt;, so there is always a
+solution.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Mechanics"></category><category term="math"></category></entry><entry><title>班级讲座——LaTeX排版介绍</title><link href="https://lj020326.github.io/LaTeX-intro-lecture.html" rel="alternate"></link><published>2013-12-06T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2013-12-06:/LaTeX-intro-lecture.html</id><summary type="html">&lt;p&gt;这是在班级LaTeX讲座上的&lt;a href="https://lj020326.github.io/intro-latex.pdf"&gt;LaTeX简介&lt;/a&gt;幻灯片，内容涵盖:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LaTeX基本历史&lt;/li&gt;
+&lt;li&gt;LaTeX基本结构&lt;/li&gt;
+&lt;li&gt;排版学的基础知识&lt;/li&gt;
+&lt;li&gt;数学公式&lt;/li&gt;
+&lt;li&gt;图表&lt;/li&gt;
+&lt;li&gt;宏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相关的USTC个人主页链接已经失效。幻灯片源代码已亡佚。&lt;/p&gt;</summary><content type="html">&lt;p&gt;这是在班级LaTeX讲座上的&lt;a href="https://lj020326.github.io/intro-latex.pdf"&gt;LaTeX简介&lt;/a&gt;幻灯片，内容涵盖:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LaTeX基本历史&lt;/li&gt;
+&lt;li&gt;LaTeX基本结构&lt;/li&gt;
+&lt;li&gt;排版学的基础知识&lt;/li&gt;
+&lt;li&gt;数学公式&lt;/li&gt;
+&lt;li&gt;图表&lt;/li&gt;
+&lt;li&gt;宏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相关的USTC个人主页链接已经失效。幻灯片源代码已亡佚。&lt;/p&gt;</content><category term="LaTeX"></category></entry></feed>
