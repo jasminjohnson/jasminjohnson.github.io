@@ -1,1192 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lee's Journal</title><link href="https://lj020326.github.io/" rel="alternate"></link><link href="https://lj020326.github.io/feeds/all.atom.xml" rel="self"></link><id>https://lj020326.github.io/</id><updated>2018-04-16T13:54:11-04:00</updated><entry><title>One way quantum computer</title><link href="https://lj020326.github.io/one-way-quantum-computer.html" rel="alternate"></link><published>2017-02-18T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-02-18:/one-way-quantum-computer.html</id><summary type="html">&lt;p&gt;The one-way or measurement based quantum computer (MBQC) is a method of quantum computing that first prepares an entangled resource state, usually a cluster state or graph state, then performs single qubit measurements on it. It is "one-way" because the resource state is destroyed by the measurements.&lt;/p&gt;</summary><content type="html">&lt;p&gt;There are some discrepancies between the results here and the paper. But
-the results are basically the same. &lt;/p&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\def\bra#1{\mathinner{\langle{#1}|}}
-\def\ket#1{\mathinner{|{#1}\rangle}}
-\def\braket#1{\mathinner{\langle{#1}\rangle}}
-\newcommand{\ii}{\mathrm{i}}
-\newcommand{\tr}{\mathrm{tr}}\)&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id="rotation-gates"&gt;Rotation Gates&lt;/h2&gt;
-&lt;p&gt;This part corresond to the Gates in paper 0301052v2.
-&lt;/p&gt;
-&lt;div class="math"&gt;$$S_{ab}=\frac{1+Z_a}{2}+\frac{1-Z_a}{2}Z_b=U_a+D_aZ_b$$&lt;/div&gt;
-&lt;p&gt;The &lt;span class="math"&gt;\(u_i, d_i\)&lt;/span&gt; are defined by &lt;span class="math"&gt;\(\ket{\psi_i}=u_i\ket{0_i}+d_i\ket{1_i}\)&lt;/span&gt;.
-And we have &lt;span class="math"&gt;\(Z_b\ket{+_b}=\ket{-_b}\)&lt;/span&gt;&lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\mathcal{R}&amp;amp;=\bra{\psi_1}\bra{\psi_2}\bra{\psi_3}\bra{\psi_4}S_{12}S_{23}S_{34}S_{45}\ket{+_2}\ket{+_3}\ket{+_4}\ket{+_5}\\
-&amp;amp;=\left(\ket{+_5}\bra{\psi_4}U_4+\ket{-_5}\bra{\psi_4}D_4\right) \bra{\psi_1}\bra{\psi_2}\bra{\psi_3}S_{12}S_{23}S_{34}\ket{+_2}\ket{+_3}\ket{+_4}\\
-&amp;amp;=\prod_{i=4}^1 \Big(\ket{+_{i+1}}\bra{0_i}u_i+\ket{-_{i+1}}\bra{1_i}d_i\Big)\\
-&amp;amp;=\prod_{i=4}^1  {\frac{1}{\sqrt{2}}\begin{bmatrix}u_i &amp;amp; d_i\\-u_i &amp;amp; -d_i\end{bmatrix}}=\prod_{i=4}^1  H\begin{bmatrix}u_i &amp;amp; \\ &amp;amp; d_i\end{bmatrix}\\
-&amp;amp;=\prod_{i=4}^1  H\mathcal{Z}_{\phi_i},\quad \mathcal{Z}_\phi=\exp(-\ii \phi Z/2)\\
-&amp;amp;=(H\mathcal{Z}_\zeta H)\mathcal{Z}_\eta (H\mathcal{Z}_\xi H)\\
-&amp;amp;=\mathcal{X}_\zeta\mathcal{Z}_\eta\mathcal{X}_\xi\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;In the
-basis of &lt;span class="math"&gt;\(Z_1\rightarrow Z_5\)&lt;/span&gt;. If all measurement results &lt;span class="math"&gt;\(\psi_i\)&lt;/span&gt; are
-positive for directions &lt;span class="math"&gt;\((0, \xi,\eta,\zeta)\)&lt;/span&gt;, respectively, we can
-verify that the rotation matrix &lt;span class="math"&gt;\(\mathcal{R}\)&lt;/span&gt; is equivalent to
-&lt;span class="math"&gt;\(\exp(-\ii \zeta X/2)\exp(-\ii \eta Z/2)\exp(-\ii \xi X/2)\)&lt;/span&gt;. Hadamard
-gate is simply a special case.&lt;/p&gt;
-&lt;h2 id="cnot-gates"&gt;CNOT Gates&lt;/h2&gt;
-&lt;p&gt;This part corresponds to PRL.86.5188(Page 3, upper left corner), so we
-are using a different &lt;span class="math"&gt;\(S\)&lt;/span&gt;:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$S_{ab}=1-\frac{(1+Z_{a})(1-Z_{b})}{2}=D_a+U_aZ_b=U_b-D_bZ_a$$&lt;/div&gt;
-&lt;p&gt; So
-&lt;/p&gt;
-&lt;div class="math"&gt;$$S_{ab}S_{bc}=\frac{Z_c-Z_a}{2}+\frac{Z_c+Z_a}{2}Z_b=U_bZ_c-D_bZ_a$$&lt;/div&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\mathcal{C}&amp;amp;=\bra{\psi_1}\bra{\psi_2}S_{12}S_{23}S_{24}\ket{+_2}\ket{+_3}\\
-&amp;amp;=\Big(\ket{+_{3}}\bra{1_2}d_2+\ket{-_3}\bra{0_2}u_2\Big)\bra{\psi_1}S_{12}S_{24}\ket{+_2}\\
-&amp;amp;=\Big(\ket{+_{3}}\bra{1_2}d_2+\ket{-_3}\bra{0_2}u_2\Big)\bra{\psi_1}U_2Z_4-D_2Z_1\ket{+_2}\\
-&amp;amp;=\Big(\pm_2\ket{+_{3}}\bra{1_2}+\ket{-_3}\bra{0_2}\Big)\Big(\ket{0_2}\bra{\psi_1}Z_4-\ket{1_2}\bra{\psi_1}Z_1\Big)/2\\
-&amp;amp;=\Big( \mp_2\ket{+_{3}}\bra{\mp_1}+\ket{-_3}\bra{\pm_1}Z_4\Big)/2 \\\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;If &lt;span class="math"&gt;\(s_1=1, s_2=1\)&lt;/span&gt;, then
-&lt;span class="math"&gt;\(\mathcal{C}_n=\ket{-_{3}}\bra{-_1}Z_4+\ket{+_3}\bra{+_1}I_4\)&lt;/span&gt;
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\mathcal{C}=I_4\otimes\begin{bmatrix}
-1&amp;amp; 1\\
-1&amp;amp; 1
-\end{bmatrix}+Z_4\otimes\begin{bmatrix}
-1&amp;amp; -1\\
--1&amp;amp; 1
-\end{bmatrix}=\begin{bmatrix}
-1&amp;amp; &amp;amp;&amp;amp;\\
-&amp;amp; 1&amp;amp;&amp;amp;\\
-&amp;amp;&amp;amp;&amp;amp;1\\
-&amp;amp;&amp;amp;1&amp;amp;\\
-\end{bmatrix}$$&lt;/div&gt;
-&lt;p&gt; In the basis of
-&lt;span class="math"&gt;\(Z_4\otimes Z_1\rightarrow Z_4\otimes Z_3\)&lt;/span&gt;&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Pythonic Perambulations</title><link href="http://jakevdp.github.io/" rel="alternate"></link><link href="http://jakevdp.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jakevdp.github.io/</id><updated>2017-12-18T10:00:00-08:00</updated><entry><title>Simulating Chutes &amp; Ladders in Python</title><link href="http://jakevdp.github.io/blog/2017/12/18/simulating-chutes-and-ladders/" rel="alternate"></link><published>2017-12-18T10:00:00-08:00</published><updated>2017-12-18T10:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-12-18:blog/2017/12/18/simulating-chutes-and-ladders/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/ChutesAndLadders.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="simulation"></category><category term="animation"></category></entry><entry><title>Optimization of Scientific Code with Cython: Ising Model</title><link href="http://jakevdp.github.io/blog/2017/12/11/live-coding-cython-ising-model/" rel="alternate"></link><published>2017-12-11T12:00:00-08:00</published><updated>2017-12-11T12:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-12-11:blog/2017/12/11/live-coding-cython-ising-model/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/CythonIsingModel.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="jupyter"></category><category term="cython"></category><category term="simulation"></category></entry><entry><title>Installing Python Packages from a Jupyter Notebook</title><link href="http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/" rel="alternate"></link><published>2017-12-05T09:00:00-08:00</published><updated>2017-12-05T09:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-12-05:blog/2017/12/05/installing-python-packages-from-jupyter/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/JupyterInstallation.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="jupyter"></category><category term="conda"></category><category term="pip"></category></entry><entry><title>Exploring Line Lengths in Python Packages</title><link href="http://jakevdp.github.io/blog/2017/11/09/exploring-line-lengths-in-python-packages/" rel="alternate"></link><published>2017-11-09T14:00:00-08:00</published><updated>2017-11-09T14:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-11-09:blog/2017/11/09/exploring-line-lengths-in-python-packages/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/PEP8LineLengths.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="python"></category><category term="data"></category><category term="statistics"></category></entry><entry><title>Exposing Python 3.6's Private Dict Version</title><link href="http://jakevdp.github.io/blog/2017/05/26/exposing-private-dict-version/" rel="alternate"></link><published>2017-05-26T09:00:00-07:00</published><updated>2017-05-26T09:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-05-26:blog/2017/05/26/exposing-private-dict-version/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/DictVersion.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="python"></category><category term="tutorial"></category><category term="ctypes"></category></entry><entry><title>A Practical Guide to the Lomb-Scargle Periodogram</title><link href="http://jakevdp.github.io/blog/2017/03/30/practical-lomb-scargle/" rel="alternate"></link><published>2017-03-30T06:00:00-07:00</published><updated>2017-03-30T06:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-03-30:blog/2017/03/30/practical-lomb-scargle/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;This week I published the preprint of a manuscript that started as a blog post, but quickly out-grew this medium: &lt;a href="http://arxiv.org/abs/1703.09824"&gt;Understanding the Lomb-Scargle Periodogram&lt;/a&gt;.&lt;/p&gt;
+&lt;table class="image"&gt;
+&lt;caption align="bottom" style="padding-left: 20px; padding-right:20px; font-size:small"&gt;Figure 24 from &lt;a href="http://arxiv.org/abs/1703.09824"&gt;Understanding the Lomb-Scargle Periodogram&lt;/a&gt;. The figure shows the true period vs the periodogram peak for a
+simulated dataset with an observing cadence typical of ground-based optical astronomy.
+The simulation reveals common patterns of failure of the Lomb-Scargle method that are not
+often discussed explicitly, but are straightforward to explain based on the intuition
+developed in the paper; see Section 7.2 for a detailed discussion.&lt;/caption&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img src="/figures/lomb-scargle-failure-modes.png" alt="failure modes"/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content></entry><entry><title>Renyi entropy of the wormholes</title><link href="https://lj020326.github.io/renyi-entropy-of-the-wormholes.html" rel="alternate"></link><published>2017-01-17T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-01-17:/renyi-entropy-of-the-wormholes.html</id><summary type="html">&lt;p&gt;In information theory, the Rényi entropy generalizes the Hartley entropy, the Shannon entropy, the collision entropy and the min entropy. Entropies quantify the diversity, uncertainty, or randomness of a system. The Rényi entropy is named after Alfréd Rényi.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\)&lt;/span&gt;
-&lt;/span&gt;
-R&amp;eacute;nyi entropy is defined as: 
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-    S_n(\alpha)&amp;amp;:=\frac{1}{1-\alpha}\log\left({\sum_{a_{1\to n}}}\sum_{\mu=1}^{N}\left(\frac{p_{a_1a_2\cdots a_n}}{N}\right)^\alpha\right) \\
-    &amp;amp;=\frac{1}{1-\alpha}\log\left(\frac{1}{\mathcal{D}^{2\alpha(n-1)}}{{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\right) \\
-    &amp;amp;=\frac{1}{1-\alpha}\left[\log\left({{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\right)-\alpha(n-1)\log \mathcal{D}^2\right]\\
-    &amp;amp;=\frac{\alpha(n-1)\log \mathcal{D}^2-\log t_n(\alpha)}{\alpha-1}
-\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;
-We are using &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-    t_n(\alpha)&amp;amp;:={{{\sum_{a_{1\to n}}}N_{a_1a_2\cdots a_n}{\prod_{i=1}^n d_{a_i}^\alpha}}}\\
-    &amp;amp;= {\sum_{a_{1\to n}}}{\sum_{x_{1\to n-1}}}N_{x_0a_1}^{x_1}N_{x_1a_2}^{x_2}\cdots N_{x_{n-1}a_n}^{x_n}{\prod_{i=1}^n d_{a_i}^\alpha},\quad x_0=x_n=1\\
-    &amp;amp;= {\sum_{x_{1\to n-1}}}\prod_{i=1}^n\left({\sum_{a_{1\to n}}}d_{a_i}^\alpha N_{x_{i-1}a_i}^{x_i}\right)\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;
-Define &lt;/p&gt;
-&lt;div class="math"&gt;$$T_{bc}(\alpha):=\sum_ad_a^\alpha N_{ba}^c$$&lt;/div&gt;
-&lt;p&gt; Then
-&lt;/p&gt;
-&lt;div class="math"&gt;$$t_n(\alpha)={\sum_{x_{1\to n-1}}}\prod_{i=1}^nT_{x_{i-1}x_i}(\alpha)\left[\bm T^n(\alpha)\right]_{x_0x_n}=\left[\bm T^n(\alpha)\right]_{11}
-\label{t11}$$&lt;/div&gt;
-&lt;p&gt; It&amp;rsquo;s obvious that &lt;span class="math"&gt;\(T\)&lt;/span&gt; is an elementwise positive matrix.
-Moreover, &lt;span class="math"&gt;\(T\)&lt;/span&gt; is normal: &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\label{key}
-T_{ab}T_{cb}&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b N_{xa}^b N_{yc}^b\\
-&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b N_{x\bar b}^{\bar a} N_{y\bar b}^{\bar c}\\
-&amp;amp;=\sum_x\sum_y d_x^\alpha d_y^\alpha \sum_b  N_{\bar y b}^{c}N_{\bar xb}^{a}\\
-&amp;amp;=T_{ba}T_{bc}\end{aligned}$$&lt;/div&gt;
-&lt;p&gt; Thus, the eigenvectors correspond to
-distinct eigenvalues must be orthogonal. Assume the eigenvalues and
-orthonormal eigenvectors are &lt;span class="math"&gt;\(\bm x_i\)&lt;/span&gt; with eigenvalue
-&lt;span class="math"&gt;\(\lambda_i(\alpha)\)&lt;/span&gt;. The eigenvector &lt;span class="math"&gt;\(\bm x_m:=d_i\bm e_i/\mathcal{D}\)&lt;/span&gt;
-has the maximum eigenvalue because its all components are positive. The
-eigenvalue is
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\lambda_{\max}(\alpha)=\sum_a d_a^{\alpha+1}, \quad\lambda_{\max}(1)=\mathcal{D}^2$$&lt;/div&gt;
-&lt;p&gt;We decompose &lt;span class="math"&gt;\(\bm e_1\)&lt;/span&gt; into &lt;span class="math"&gt;\(\bm x_i\)&lt;/span&gt; to calculate &lt;span class="math"&gt;\([\bm{T}^n]_{11}\)&lt;/span&gt;:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\bm e_1&amp;amp;=\sum_i c_i\bm x_i,\quad c_i=\bm e_1\cdot \bm x_i\\
-[\bm{T}_\alpha^n]_{11}&amp;amp;=\bm{e}_1^T\bm{T}_\alpha^n \bm{e}_1=\sum_i c_i^2\lambda_i^n\\
-&amp;amp;=c_m^2\lambda_{\max}^n\left[1+\sum_{i\neq m}\frac{c_i^2}{c_m^2}\left( \frac{\lambda_i}{\lambda_{\max}}\right) ^n\right]\\
-&amp;amp;=\frac{\lambda_{\max}^n}{\mathcal{D}^2}\left[1+\Theta(k^n)\right],\quad k:=\frac{\lambda_{\mathrm{sub}}}{\lambda_{\max}}&amp;lt;1\end{aligned}$$&lt;/div&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-S_n(\alpha)&amp;amp;=\frac{\alpha(n-1)\log \mathcal{D}^2-\log [\bm{T}_\alpha^n]_{11}}{\alpha-1}\\
-&amp;amp;=n\left[\frac{\alpha\log \lambda_{\max}(1)-\log \lambda_{\max}(\alpha)}{\alpha-1}\right]-\log \mathcal{D}^2+\Theta(k^n)\label{al}\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;In the &lt;span class="math"&gt;\(\alpha=1\)&lt;/span&gt; case, there is no other nontrivial eigenvector except
-&lt;span class="math"&gt;\(\bm x_m\)&lt;/span&gt; because &lt;span class="math"&gt;\(\bm T=\bm x_m\bm x_m^\mathsf{T}\)&lt;/span&gt;. So the
-&lt;span class="math"&gt;\(\Theta(k^n)\)&lt;/span&gt; term in [al] reduce to zero.&lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-S_{n}(1)&amp;amp;=n\frac{\dd}{\dd\alpha}\Big|_{\alpha=1}\Big[\alpha\log \lambda_{\max}(1)-\log \lambda_{\max}(\alpha)\Big] -\log \mathcal{D}^2\\
-&amp;amp;=n\Big[\log \mathcal{D}^2-\sum_a \frac{d_a^2\log d_a}{\mathcal{D}^2}\Big]-\log \mathcal{D}^2\\
-&amp;amp;=(n-1)\log \mathcal{D}^2-n\sum_a p_a\log d_a\end{aligned}$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;Over the last couple years I've written a number of Python implementations of the Lomb-Scargle periodogram (I'd recommend &lt;a href="http://docs.astropy.org/en/stable/stats/lombscargle.html"&gt;AstroPy's &lt;code&gt;LombScargle&lt;/code&gt;&lt;/a&gt; in most cases today), and also wrote a &lt;a href="/blog/2015/06/13/lomb-scargle-in-python/"&gt;marginally popular blog post&lt;/a&gt; and &lt;a href="https://arxiv.org/abs/1502.01344"&gt;somewhat pedagogical paper&lt;/a&gt; on the subject.
+This all has led to a steady trickle of emails from students and researchers asking for advice on applying and interpreting the Lomb-Scargle algorithm, particularly for astronomical data.
+I noticed that these queries tended to repeat many of the same questions and express some similar misconceptions, and this paper is my attempt to address those once and for all — in a "mere" 55 pages (which includes 26 figures and 4 full pages of references, so it's not all that bad).&lt;/p&gt;
+</summary><category term="lomb-scargle"></category></entry><entry><title>Group-by From Scratch</title><link href="http://jakevdp.github.io/blog/2017/03/22/group-by-from-scratch/" rel="alternate"></link><published>2017-03-22T10:00:00-07:00</published><updated>2017-03-22T10:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-03-22:blog/2017/03/22/group-by-from-scratch/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/GroupBy.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="pandas"></category><category term="python"></category><category term="benchmarks"></category></entry><entry><title>Triple Pendulum CHAOS!</title><link href="http://jakevdp.github.io/blog/2017/03/08/triple-pendulum-chaos/" rel="alternate"></link><published>2017-03-08T07:00:00-08:00</published><updated>2017-03-08T07:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-03-08:blog/2017/03/08/triple-pendulum-chaos/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/TriplePendulum.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="animation"></category><category term="simulation"></category></entry><entry><title>Reproducible Data Analysis in Jupyter</title><link href="http://jakevdp.github.io/blog/2017/03/03/reproducible-data-analysis-in-jupyter/" rel="alternate"></link><published>2017-03-03T07:00:00-08:00</published><updated>2017-03-03T07:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2017-03-03:blog/2017/03/03/reproducible-data-analysis-in-jupyter/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/JupyterWorkflow.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="data"></category><category term="pandas"></category><category term="jupyter"></category></entry><entry><title>Conda: Myths and Misconceptions</title><link href="http://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/" rel="alternate"></link><published>2016-08-25T09:00:00-07:00</published><updated>2016-08-25T09:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2016-08-25:blog/2016/08/25/conda-myths-and-misconceptions/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/CondaMyths.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="conda"></category></entry><entry><title>Analyzing Pronto CycleShare Data with Python and Pandas</title><link href="http://jakevdp.github.io/blog/2015/10/17/analyzing-pronto-cycleshare-data-with-python-and-pandas/" rel="alternate"></link><published>2015-10-17T21:00:00-07:00</published><updated>2015-10-17T21:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-10-17:blog/2015/10/17/analyzing-pronto-cycleshare-data-with-python-and-pandas/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/ProntoData.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="data"></category><category term="pandas"></category><category term="cycling"></category></entry><entry><title>Out-of-Core Dataframes in Python: Dask and OpenStreetMap</title><link href="http://jakevdp.github.io/blog/2015/08/14/out-of-core-dataframes-in-python/" rel="alternate"></link><published>2015-08-14T11:00:00-07:00</published><updated>2015-08-14T11:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-08-14:blog/2015/08/14/out-of-core-dataframes-in-python/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/OutOfCoreMapping.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="data"></category><category term="dask"></category></entry><entry><title>Frequentism and Bayesianism V: Model Selection</title><link href="http://jakevdp.github.io/blog/2015/08/07/frequentism-and-bayesianism-5-model-selection/" rel="alternate"></link><published>2015-08-07T11:00:00-07:00</published><updated>2015-08-07T11:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-08-07:blog/2015/08/07/frequentism-and-bayesianism-5-model-selection/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/FreqBayes5.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="frequentism"></category><category term="bayesianism"></category><category term="statistics"></category></entry><entry><title>Learning Seattle's Work Habits from Bicycle Counts</title><link href="http://jakevdp.github.io/blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/" rel="alternate"></link><published>2015-07-23T08:00:00-07:00</published><updated>2015-07-23T08:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-07-23:blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/SeattleCycling2.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="data"></category><category term="pandas"></category><category term="cycling"></category></entry><entry><title>The Model Complexity Myth</title><link href="http://jakevdp.github.io/blog/2015/07/06/model-complexity-myth/" rel="alternate"></link><published>2015-07-06T08:00:00-07:00</published><updated>2015-07-06T08:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-07-06:blog/2015/07/06/model-complexity-myth/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/ModelComplexityMyth.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="tutorial"></category><category term="statistics"></category></entry><entry><title>Fast Lomb-Scargle Periodograms in Python</title><link href="http://jakevdp.github.io/blog/2015/06/13/lomb-scargle-in-python/" rel="alternate"></link><published>2015-06-13T14:00:00-07:00</published><updated>2015-06-13T14:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-06-13:blog/2015/06/13/lomb-scargle-in-python/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/LombScarglePython.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="tutorial"></category><category term="benchmarks"></category><category term="lomb-scargle"></category></entry><entry><title>Optimizing Python in the Real World: NumPy, Numba, and the NUFFT</title><link href="http://jakevdp.github.io/blog/2015/02/24/optimizing-python-with-numpy-and-numba/" rel="alternate"></link><published>2015-02-24T12:00:00-08:00</published><updated>2015-02-24T12:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2015-02-24:blog/2015/02/24/optimizing-python-with-numpy-and-numba/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/NUFFT.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="numpy"></category><category term="numba"></category></entry><entry><title>The Hipster Effect: An IPython Interactive Exploration</title><link href="http://jakevdp.github.io/blog/2014/11/11/the-hipster-effect-interactive/" rel="alternate"></link><published>2014-11-11T21:00:00-08:00</published><updated>2014-11-11T21:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-11-11:blog/2014/11/11/the-hipster-effect-interactive/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/HipsterEffect.ipynb cells[2:] %}&lt;/p&gt;</summary></entry><entry><title>How Bad Is Your Colormap?</title><link href="http://jakevdp.github.io/blog/2014/10/16/how-bad-is-your-colormap/" rel="alternate"></link><published>2014-10-16T09:30:00-07:00</published><updated>2014-10-16T09:30:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-10-16:blog/2014/10/16/how-bad-is-your-colormap/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/HowBadIsYourColormap.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category></entry><entry><title>On Frequentism and Fried Chicken</title><link href="http://jakevdp.github.io/blog/2014/09/02/on-frequentism-and-fried-chicken/" rel="alternate"></link><published>2014-09-02T16:00:00-07:00</published><updated>2014-09-02T16:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-09-02:blog/2014/09/02/on-frequentism-and-fried-chicken/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;My recent series of posts on &lt;a href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/"&gt;Frequentism and Bayesianism&lt;/a&gt; have drawn a lot of comments, but recently Frederick J. Ross, a UW colleague whom I have not yet had the pleasure of meeting, penned a particularly strong-worded critique: &lt;a href="http://madhadron.com/posts/2014-08-30-frequentist_and_bayesian_statistics.html"&gt;Bayesian vs frequentist: squabbling among the ignorant&lt;/a&gt;. Here I want to briefly explore and respond to the points he makes in the post.
+</summary><category term="frequentism"></category><category term="bayesianism"></category></entry><entry><title>Hacking Academia: Data Science and the University</title><link href="http://jakevdp.github.io/blog/2014/08/22/hacking-academia/" rel="alternate"></link><published>2014-08-22T08:00:00-07:00</published><updated>2014-08-22T08:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-08-22:blog/2014/08/22/hacking-academia/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content></entry><entry><title>Geometrical Optics in Continuum</title><link href="https://lj020326.github.io/geometrical-optics-in-continuum.html" rel="alternate"></link><published>2017-01-05T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2017-01-05:/geometrical-optics-in-continuum.html</id><summary type="html">&lt;h2 id="fermats-principle"&gt;Fermat&amp;rsquo;s Principle&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\partial}\)&lt;/span&gt;
-&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Fermat&amp;rsquo;s Principle is &lt;/p&gt;
-&lt;div class="math"&gt;$$\delta s=\delta\int n\dd \ell=0$$&lt;/div&gt;
-&lt;p&gt; If we choose
-the path connecting two points to be
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\bm r=\bm r(t),\quad t_0\leq t\leq t_1$$&lt;/div&gt;
-&lt;p&gt; We can write
-&lt;/p&gt;
-&lt;div class="math"&gt;$$s …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;&lt;em&gt;A reflection on our &lt;a href="http://www.digital-science.com/sciencefoo/"&gt;SciFoo&lt;/a&gt; breakout session, where we discussed issues of data science within academia.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Almost a year ago, I wrote a post I called the &lt;a href="http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/"&gt;Big Data Brain Drain&lt;/a&gt;, lamenting the ways that academia is neglecting the skills of modern data-intensive research, and in doing so is driving away many of the men and women who are perhaps best equipped to enable progress in these fields. This seemed to strike a chord with a wide range of people, and has led me to some incredible opportunities for conversation and collaboration on the subject. One of those conversations took place at the recent SciFoo conference, and this article is my way of recording some reflections on that conversation.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.digital-science.com/sciencefoo/"&gt;SciFoo&lt;/a&gt; is an annual gathering of several hundred scientists, writers, and thinkers sponsored by Digital Science, Nature, O'Reilly Media &amp;amp; Google. SciFoo brings together an incredibly eclectic group of people: I met philosophers, futurists, alien hunters, quantum physicists, mammoth cloners, magazine editors, science funders, astrophysicists, musicians, mycologists, mesmerists, and many many more: the list could go on and on. The conference is about as unstructured as it can be: the organizers simply provide food, drink, and a venue for conversation, and attendees put together breakout discussions on nearly any imaginable topic. If you ever get the chance to go, my advice is to drop everything else and attend. It was one of the most quirky and intellectually stimulating weekends I've ever spent.&lt;/p&gt;
+</summary><category term="opinion"></category><category term="academia"></category></entry><entry><title>Frequentism and Bayesianism IV: How to be a Bayesian in Python</title><link href="http://jakevdp.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/" rel="alternate"></link><published>2014-06-14T09:30:00-07:00</published><updated>2014-06-14T09:30:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-06-14:blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/FreqBayes4.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="frequentism"></category><category term="bayesianism"></category></entry><entry><title>Frequentism and Bayesianism III: Confidence, Credibility, and why Frequentism and Science do not Mix</title><link href="http://jakevdp.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/" rel="alternate"></link><published>2014-06-12T12:00:00-07:00</published><updated>2014-06-12T12:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-06-12:blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/FreqBayes3.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="frequentism"></category><category term="bayesianism"></category></entry><entry><title>Is Seattle Really Seeing an Uptick In Cycling?</title><link href="http://jakevdp.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/" rel="alternate"></link><published>2014-06-10T08:30:00-07:00</published><updated>2014-06-10T08:30:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-06-10:blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/SeattleCycling.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="data"></category><category term="pandas"></category><category term="cycling"></category></entry><entry><title>Frequentism and Bayesianism II: When Results Differ</title><link href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/" rel="alternate"></link><published>2014-06-06T02:00:00-07:00</published><updated>2014-06-06T02:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-06-06:blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/FreqBayes2.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="frequentism"></category><category term="bayesianism"></category></entry><entry><title>Why Python is Slow: Looking Under the Hood</title><link href="http://jakevdp.github.io/blog/2014/05/09/why-python-is-slow/" rel="alternate"></link><published>2014-05-09T07:00:00-07:00</published><updated>2014-05-09T07:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-05-09:blog/2014/05/09/why-python-is-slow/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/WhyPythonIsSlow.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="python"></category><category term="tutorial"></category><category term="ctypes"></category></entry><entry><title>An Introduction to the Python Buffer Protocol</title><link href="http://jakevdp.github.io/blog/2014/05/05/introduction-to-the-python-buffer-protocol/" rel="alternate"></link><published>2014-05-05T16:00:00-07:00</published><updated>2014-05-05T16:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-05-05:blog/2014/05/05/introduction-to-the-python-buffer-protocol/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/BufferProtocol.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="python"></category><category term="tutorial"></category><category term="memoryviews"></category></entry><entry><title>Frequentism and Bayesianism: A Practical Introduction</title><link href="http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/" rel="alternate"></link><published>2014-03-11T11:00:00-07:00</published><updated>2014-03-11T11:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-03-11:blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/FreqBayes.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="frequentism"></category><category term="bayesianism"></category></entry><entry><title>D3 Plugins: Truly Interactive Matplotlib In Your Browser</title><link href="http://jakevdp.github.io/blog/2014/01/10/d3-plugins-truly-interactive/" rel="alternate"></link><published>2014-01-10T16:00:00-08:00</published><updated>2014-01-10T16:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2014-01-10:blog/2014/01/10/d3-plugins-truly-interactive/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/mpld3_plugins.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="mpld3"></category></entry><entry><title>A D3 Viewer for Matplotlib Visualizations</title><link href="http://jakevdp.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/" rel="alternate"></link><published>2013-12-19T13:00:00-08:00</published><updated>2013-12-19T13:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-12-19:blog/2013/12/19/a-d3-viewer-for-matplotlib/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/mpld3Demo.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="mpld3"></category></entry><entry><title>Static Interactive Widgets for IPython Notebooks</title><link href="http://jakevdp.github.io/blog/2013/12/05/static-interactive-widgets/" rel="alternate"></link><published>2013-12-05T19:00:00-08:00</published><updated>2013-12-05T19:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-12-05:blog/2013/12/05/static-interactive-widgets/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/IPythonWidgets.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="javascript"></category></entry><entry><title>Kernel Density Estimation in Python</title><link href="http://jakevdp.github.io/blog/2013/12/01/kernel-density-estimation/" rel="alternate"></link><published>2013-12-01T08:00:00-08:00</published><updated>2013-12-01T08:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-12-01:blog/2013/12/01/kernel-density-estimation/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/KDEBench.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="tutorial"></category><category term="benchmarks"></category></entry><entry><title>The Big Data Brain Drain: Why Science is in Trouble</title><link href="http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/" rel="alternate"></link><published>2013-10-26T13:00:00-07:00</published><updated>2013-10-26T13:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-10-26:blog/2013/10/26/big-data-brain-drain/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;Regardless of what you might think of the ubiquity of the "Big Data" meme, it's clear that the growing size of datasets is changing the way we approach the world around us.  This is true in fields from industry to government to media to academia and virtually everywhere in between. Our increasing abilities to gather, process, visualize, and learn from large datasets is helping to push the boundaries of our knowledge.&lt;/p&gt;
+&lt;p&gt;But where scientific research is concerned, this recently accelerated shift to data-centric science has a dark side, which boils down to this: &lt;strong&gt;the skills required to be a successful scientific researcher are increasingly indistinguishable from the skills required to be successful in industry.&lt;/strong&gt; While academia, with typical inertia, gradually shifts to accommodate this, the rest of the world has already begun to embrace and reward these skills to a much greater degree. &lt;em&gt;The unfortunate result is that some of the most promising upcoming researchers are finding no place for themselves in the academic community, while the for-profit world of industry stands by with deep pockets and open arms.&lt;/em&gt;
+</summary><category term="academia"></category><category term="opinion"></category></entry><entry><title>Understanding the FFT Algorithm</title><link href="http://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/" rel="alternate"></link><published>2013-08-28T13:00:00-07:00</published><updated>2013-08-28T13:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-08-28:blog/2013/08/28/understanding-the-fft/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/UnderstandingTheFFT.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="fft"></category><category term="tutorial"></category></entry><entry><title>Conway's Game of Life in Python</title><link href="http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/" rel="alternate"></link><published>2013-08-07T16:00:00-07:00</published><updated>2013-08-07T16:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-08-07:blog/2013/08/07/conways-game-of-life/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/GameOfLife.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="animation"></category><category term="tutorial"></category></entry><entry><title>XKCD Plots have Landed in Matplotlib!</title><link href="http://jakevdp.github.io/blog/2013/07/10/XKCD-plots-in-matplotlib/" rel="alternate"></link><published>2013-07-10T16:00:00-07:00</published><updated>2013-07-10T16:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-07-10:blog/2013/07/10/XKCD-plots-in-matplotlib/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/XKCD_sketch_path.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="xkcd"></category></entry><entry><title>Numba vs. Cython: Take 2</title><link href="http://jakevdp.github.io/blog/2013/06/15/numba-vs-cython-take-2/" rel="alternate"></link><published>2013-06-15T08:00:00-07:00</published><updated>2013-06-15T08:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-06-15:blog/2013/06/15/numba-vs-cython-take-2/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/NumbaCython.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="benchmarks"></category><category term="numba"></category><category term="cython"></category></entry><entry><title>IPython Notebook: Javascript/Python Bi-directional Communication</title><link href="http://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/" rel="alternate"></link><published>2013-06-01T10:00:00-07:00</published><updated>2013-06-01T10:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-06-01:blog/2013/06/01/ipython-notebook-javascript-python-communication/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/JSInteraction.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="ipython"></category><category term="jupyter"></category></entry><entry><title>A Simple Animation: The Magic Triangle</title><link href="http://jakevdp.github.io/blog/2013/05/28/a-simple-animation-the-magic-triangle/" rel="alternate"></link><published>2013-05-28T21:00:00-07:00</published><updated>2013-05-28T21:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-05-28:blog/2013/05/28/a-simple-animation-the-magic-triangle/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/MagicTriangle.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="animation"></category></entry><entry><title>A Javascript Viewer for Matplotlib Animations</title><link href="http://jakevdp.github.io/blog/2013/05/19/a-javascript-viewer-for-matplotlib-animations/" rel="alternate"></link><published>2013-05-19T07:00:00-07:00</published><updated>2013-05-19T07:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-05-19:blog/2013/05/19/a-javascript-viewer-for-matplotlib-animations/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/JSAnimation.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="animation"></category><category term="javascript"></category></entry><entry><title>Embedding Matplotlib Animations in IPython Notebooks</title><link href="http://jakevdp.github.io/blog/2013/05/12/embedding-matplotlib-animations/" rel="alternate"></link><published>2013-05-12T19:00:00-07:00</published><updated>2013-05-12T19:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-05-12:blog/2013/05/12/embedding-matplotlib-animations/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/AnimationEmbedding.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="animation"></category></entry><entry><title>Migrating from Octopress to Pelican</title><link href="http://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican/" rel="alternate"></link><published>2013-05-07T17:00:00-07:00</published><updated>2013-05-07T17:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-05-07:blog/2013/05/07/migrating-from-octopress-to-pelican/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;h2 id="fermats-principle"&gt;Fermat&amp;rsquo;s Principle&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\partial}\)&lt;/span&gt;
-&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Fermat&amp;rsquo;s Principle is &lt;/p&gt;
-&lt;div class="math"&gt;$$\delta s=\delta\int n\dd \ell=0$$&lt;/div&gt;
-&lt;p&gt; If we choose
-the path connecting two points to be
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\bm r=\bm r(t),\quad t_0\leq t\leq t_1$$&lt;/div&gt;
-&lt;p&gt; We can write
-&lt;/p&gt;
-&lt;div class="math"&gt;$$s=\int n\frac{\dd \ell}{\dd t}\dd t, \quad \frac{\dd \ell}{\dd t}=|\dot{\bm r}|$$&lt;/div&gt;
-&lt;p&gt;
-The Lagrangian about parameter &lt;span class="math"&gt;\(t\)&lt;/span&gt; is
-&lt;/p&gt;
-&lt;div class="math"&gt;$$L=n\frac{\dd \ell}{\dd t}=n(\bm r)|\bm{\dot r}|$$&lt;/div&gt;
-&lt;p&gt; then the
-Euler-Lagrange Equation is &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-&amp;amp;\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\bm{\dot r}}-\frac{\pp}{\pp\bm{r}}\right)L=0\\
-\bm p&amp;amp;=\frac{\pp L}{\pp \bm{\dot r}}=n \hat\tau,\quad\hat{\tau}=\frac{\pp |\dot{\bm r}|}{\pp \bm{\dot r}}=\bm{\dot r}/|\bm{\dot r}|=\frac{\dd\bm r}{\dd\ell}\\
-\frac{\dd \bm p}{\dd t}&amp;amp;=\frac{\pp L}{\pp \bm{r}}=\frac{\dd\ell}{\dd t}\nabla n\\
-\frac{\dd \bm p}{\dd \ell}&amp;amp;=\nabla n=\bm F\end{aligned}$$&lt;/div&gt;
-&lt;p&gt; Generalized
-Momentum &lt;span class="math"&gt;\(\bm p\)&lt;/span&gt; is independent of the choice of &lt;span class="math"&gt;\(t\)&lt;/span&gt;, and&lt;/p&gt;
-&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
-&lt;h3 id="rectangular-coordinates"&gt;Rectangular Coordinates&lt;/h3&gt;
-&lt;div class="math"&gt;$$n(x,y,z)=f(x,y),\quad\bm F=\frac{\pp f}{\pp x}\hat x+\frac{\pp f}{\pp y}\hat y$$&lt;/div&gt;
-&lt;p&gt;It is obvious that &lt;span class="math"&gt;\(p_z\)&lt;/span&gt; are conserved.&lt;/p&gt;
-&lt;h3 id="central-gradient"&gt;Central Gradient&lt;/h3&gt;
-&lt;p&gt;Define &lt;span class="math"&gt;\(\bm L=\bm r\times \bm p\)&lt;/span&gt;, &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-    \frac{\dd \bm L}{\dd \ell}&amp;amp;=\frac{\dd\bm r}{\dd \ell}\times\bm p+\bm r\times\frac{\dd\bm p}{\dd \ell}
-    \\&amp;amp;=\hat{\tau}\times \bm p+\bm r\times\bm F
-    \\&amp;amp;=\bm r\times\bm F\end{aligned}$$&lt;/div&gt;
-&lt;p&gt; &lt;span class="math"&gt;\(\bm L\)&lt;/span&gt; is conserved for a
-spherical symmetric distribution
-&lt;/p&gt;
-&lt;div class="math"&gt;$$n(\bm r)=f(r),\quad \bm r\times\bm F=\bm 0$$&lt;/div&gt;
-&lt;p&gt; &lt;span class="math"&gt;\(L_z\)&lt;/span&gt; is conserved for
-&lt;/p&gt;
-&lt;div class="math"&gt;$$n(\bm r)=f(r,\theta),\quad (\bm r\times\bm F)_z=0$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;After nine months on Octopress, I've decided to move on.&lt;/p&gt;
+&lt;p&gt;I should start by saying that Octopress is a great platform for static
+blogging: it's powerful, flexible, well-supported, well-integrated with
+GitHub pages, and has tools and plugins to do just about anything you might
+imagine.  There's only one problem:&lt;/p&gt;
+&lt;p&gt;It's written in Ruby.&lt;/p&gt;
+&lt;p&gt;Now I don't have anything against Ruby per se.  However, it was starting to
+seem a bit awkward that a blog called &lt;em&gt;Pythonic Perambulations&lt;/em&gt;
+was built with Ruby, especially given the availability of so many
+excellent Python-based static site generators
+(&lt;a href="http://hyde.github.io/"&gt;Hyde&lt;/a&gt;,
+&lt;a href="http://nikola.ralsina.com.ar/"&gt;Nikola&lt;/a&gt;,
+and &lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt; in particular).&lt;/p&gt;
+&lt;p&gt;Additionally, a few things with Octopress were starting to become difficult:
+</summary><category term="blogging"></category><category term="octopress"></category><category term="pelican"></category></entry><entry><title>Benchmarking Nearest Neighbor Searches in Python</title><link href="http://jakevdp.github.io/blog/2013/04/29/benchmarking-nearest-neighbor-searches-in-python/" rel="alternate"></link><published>2013-04-29T08:56:00-07:00</published><updated>2013-04-29T08:56:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-04-29:blog/2013/04/29/benchmarking-nearest-neighbor-searches-in-python/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/TreeBench.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="benchmarks"></category><category term="numpy"></category><category term="scikit-learn"></category></entry><entry><title>Code Golf in Python: Sudoku</title><link href="http://jakevdp.github.io/blog/2013/04/15/code-golf-in-python-sudoku/" rel="alternate"></link><published>2013-04-15T16:00:00-07:00</published><updated>2013-04-15T16:00:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-04-15:blog/2013/04/15/code-golf-in-python-sudoku/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/SudokuCodeGolf.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="code golf"></category><category term="sudoku"></category></entry><entry><title>Matplotlib and the Future of Visualization in Python</title><link href="http://jakevdp.github.io/blog/2013/03/23/matplotlib-and-the-future-of-visualization-in-python/" rel="alternate"></link><published>2013-03-23T08:31:00-07:00</published><updated>2013-03-23T08:31:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-03-23:blog/2013/03/23/matplotlib-and-the-future-of-visualization-in-python/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;Last week, I had the privilege of attending and speaking at the
+PyCon and PyData conferences in Santa Clara, CA.  As usual, there were some
+amazing and inspiring talks throughout: I would highly recommend browsing
+through the videos as they are put up on
+&lt;a href="http://pyvideo.org/category/33/pycon-us-2013"&gt;pyvideo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One thing I spent a lot of time thinking, talking, and learning about
+during these two conferences was the topic of data visualization in Python.
+Data visualization seemed to be everywhere: PyData had
+&lt;a href="http://sv2013.pydata.org/abstracts/#11"&gt;two&lt;/a&gt;
+&lt;a href="http://sv2013.pydata.org/abstracts/#15"&gt;tutorials&lt;/a&gt;
+on matplotlib (the second given by yours truly), as well as a talk about
+&lt;a href="http://sv2013.pydata.org/abstracts/#41"&gt;NodeBox OpenGL&lt;/a&gt; and a
+&lt;a href="http://sv2013.pydata.org/keynotes/#abstract_33"&gt;keynote&lt;/a&gt; by
+Fernando Perez about IPython, including the notebook and the
+nice interactive data-visualization it allows. Pycon had a tutorial on
+&lt;a href="https://us.pycon.org/2013/schedule/presentation/29/"&gt;network visualization&lt;/a&gt;,
+a talk on &lt;a href="https://us.pycon.org/2013/schedule/presentation/58/"&gt;generating art&lt;/a&gt;
+in Python, and a talk on
+&lt;a href="https://us.pycon.org/2013/schedule/presentation/108/"&gt;visualizing Github&lt;/a&gt;. &lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="opinion"></category></entry><entry><title>Animating the Lorenz System in 3D</title><link href="http://jakevdp.github.io/blog/2013/02/16/animating-the-lorentz-system-in-3d/" rel="alternate"></link><published>2013-02-16T08:05:00-08:00</published><updated>2013-02-16T08:05:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-02-16:blog/2013/02/16/animating-the-lorentz-system-in-3d/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Calculus of Variations"></category></entry><entry><title>Invariance of Euler-Lagrange Equations</title><link href="https://lj020326.github.io/invariance-of-euler-lagrange-equations.html" rel="alternate"></link><published>2016-10-30T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-30:/invariance-of-euler-lagrange-equations.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
-E-L is deduced from the Hamilton&amp;rsquo;s principle
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\delta S=\delta\int L(\bm q, \dot{\bm q}, t)dt=0$$&lt;/div&gt;
-&lt;p&gt;It is easy to find that, for &lt;span class="math"&gt;\(L'=L+\dd f(\bm q, t)/\dd t\)&lt;/span&gt; or change of …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;One of the things I really enjoy about Python is how easy it makes it to solve
+interesting problems and visualize those solutions in a compelling way. I've
+done several posts on creating animations using matplotlib's relatively new
+&lt;a href="http://matplotlib.sourceforge.net/api/animation_api.html"&gt;animation toolkit&lt;/a&gt;:
+(some examples are a chaotic
+&lt;a href="/blog/2012/08/18/matplotlib-animation-tutorial/"&gt;double pendulum&lt;/a&gt;,
+the collisions of
+&lt;a href="/blog/2012/08/18/matplotlib-animation-tutorial/"&gt;particles in a box&lt;/a&gt;,
+the time-evolution of a
+&lt;a href="/blog/2012/09/05/quantum-python/"&gt;quantum-mechanical wavefunction&lt;/a&gt;,
+and even a scene from the classic video game,
+&lt;a href="/blog/2013/01/13/hacking-super-mario-bros-with-python/"&gt;Super Mario Bros.&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Recently, a reader &lt;a href="/blog/2012/08/18/matplotlib-animation-tutorial/#comment-799781196"&gt;commented&lt;/a&gt; asking whether I might do a 3D animation example.  Matplotlib
+has a decent 3D toolkit called
+&lt;a href="http://matplotlib.org/mpl_toolkits/mplot3d/index.html"&gt;mplot3D&lt;/a&gt;,
+and though I haven't previously seen it used in conjunction with the
+animation tools, there's nothing fundamental that prevents it.&lt;/p&gt;
+&lt;p&gt;At the commenter's suggestion, I decided to try this out with a simple
+example of a chaotic system: the Lorenz equations.&lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="animation"></category><category term="tutorial"></category></entry><entry><title>Setting Up a Mac for Python Development</title><link href="http://jakevdp.github.io/blog/2013/02/02/setting-up-a-mac-for-python-development/" rel="alternate"></link><published>2013-02-02T11:01:00-08:00</published><updated>2013-02-02T11:01:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-02-02:blog/2013/02/02/setting-up-a-mac-for-python-development/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;&lt;em&gt;Edit, August 2013: my current favorite way to set up a python installation
+on mac (and any other system) is to use the
+&lt;a href="https://store.continuum.io/"&gt;anaconda&lt;/a&gt; package offered by Continuum
+Analytics.  It's free, full-featured, and extremely easy to use.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="left" title="'OSX 10.8 Logo'" alt="'OSX 10.8 Logo'" src="/images/OSX10.8.png"&gt; A few weeks ago,
+after years of using Linux exclusively for all my computing,
+I started a research fellowship in a new department
+and found a brand new Macbook Pro on my
+desk.  Naturally, my first instinct was to set up the system for efficient
+Python development.  In order to help others who  might find themself in a
+similar situation, I took some notes on the process, and I'll summarize
+what I learned below.&lt;/p&gt;
+</summary><category term="osx"></category><category term="development"></category></entry><entry><title>Hacking Super Mario Bros. with Python</title><link href="http://jakevdp.github.io/blog/2013/01/13/hacking-super-mario-bros-with-python/" rel="alternate"></link><published>2013-01-13T10:32:00-08:00</published><updated>2013-01-13T10:32:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-01-13:blog/2013/01/13/hacking-super-mario-bros-with-python/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
-E-L is deduced from the Hamilton&amp;rsquo;s principle
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\delta S=\delta\int L(\bm q, \dot{\bm q}, t)dt=0$$&lt;/div&gt;
-&lt;p&gt;It is easy to find that, for &lt;span class="math"&gt;\(L'=L+\dd f(\bm q, t)/\dd t\)&lt;/span&gt; or change of
-variables &lt;span class="math"&gt;\(\bm q\to\bm Q\)&lt;/span&gt;, the min of &lt;span class="math"&gt;\(\delta S\)&lt;/span&gt; will not change. Here
-we want to prove it the hard way&amp;mdash;using E-L equations.&lt;/p&gt;
-&lt;p&gt;The original E-L Equations are:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)L=0$$&lt;/div&gt;
-&lt;h2 id="commutator-left-dfracmathrmdmathrmd-t-dfracpartialpartial-q_iright-fmathbf-q-t0"&gt;Commutator &lt;span class="math"&gt;\(\left [\dfrac{\mathrm{d}}{\mathrm{d} t}, \dfrac{\partial}{\partial q_i}\right ]f(\mathbf q, t)=0\)&lt;/span&gt;&lt;/h2&gt;
-&lt;h3 id="proof"&gt;Proof&lt;/h3&gt;
-&lt;div class="math"&gt;$$\left[\frac{\dd}{\dd t},\frac{\pp}{\pp q_i}\right]f(\bm q, t) = \left[\dot q_i\frac{\pp}{\pp q_i}+\frac{\pp}{\pp t},\frac{\pp}{\pp q_i}\right]f(\bm q, t)=0$$&lt;/div&gt;
-&lt;h2 id="condition-lldfracmathrmd-fmathbf-q-tmathrmd-t_1"&gt;Condition &lt;span class="math"&gt;\(L'=L+\dfrac{\mathrm{d} f(\mathbf q, t)}{\mathrm{d} t}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)L'
-&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_i}-\frac{\pp}{\pp q_i}\right)\frac{\dd f}{\dd t}\\
-&amp;amp;=\frac{\dd}{\dd t}\frac{\pp}{\pp q_i}f-\frac{\pp}{\pp q_i}\frac{\dd}{\dd t}f\\
-&amp;amp;=\left[\frac{\dd}{\dd t},\frac{\pp}{\pp q_i}\right]f\\
-&amp;amp;=0\end{aligned}$$&lt;/div&gt;
-&lt;h2 id="condition-mathbf-qtomathbf-q"&gt;Condition &lt;span class="math"&gt;\(\mathbf q\to\mathbf Q\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;We we change generalized coordinates &lt;span class="math"&gt;\(\bm q\to\bm Q\)&lt;/span&gt;, the Lagrangian:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$L(\bm q, \dot{\bm q}, t)\to L'(\bm Q, \dot{\bm Q}, t)=L\big[\bm q(\bm Q, t), \dot{\bm q}(\bm Q, \dot{\bm Q}, t), t\big]$$&lt;/div&gt;
-&lt;p&gt;We want to prove:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot Q_i}-\frac{\pp}{\pp Q_i}\right)L'=0$$&lt;/div&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\mathrm{LHS}
-&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp \dot q_j}{\pp \dot Q_i}\frac{\pp}{\pp \dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\frac{\pp \dot q_j}{\pp Q_i}\frac{\pp }{\pp\dot q_j}\right)L\\
-&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp q_j}{\pp Q_i}\frac{\pp}{\pp\dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\frac{\pp \dot q_j}{\pp Q_i}\frac{\pp }{\pp\dot q_j}\right)L\\
-&amp;amp;=\left[\left(\frac{\dd}{\dd t}\frac{\pp}{\pp Q_i}q_j\right)\frac{\pp}{\pp \dot q_j}+\frac{\pp q_j}{\pp Q_i}\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_j}-\frac{\pp q_j}{\pp Q_i}\frac{\pp }{\pp q_j}-\left(\frac{\pp}{\pp Q_i}\frac{\dd}{\dd t}q_j\right)\frac{\pp }{\pp\dot q_j}\right]L\\
-&amp;amp;=\left(\left[\frac{\dd}{\dd t}, \frac{\pp}{\pp Q_i}\right]q_j\right)\frac{\pp}{\pp \dot q_j}L+\frac{\pp q_j}{\pp Q_i}\left(\frac{\dd}{\dd t}\frac{\pp}{\pp \dot q_j}-\frac{\pp }{\pp q_j}\right)L\\
-&amp;amp;=0\end{aligned}$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;This weekend I was coming home from the meeting of the
+&lt;a href="http://www.lsst.org"&gt;LSST&lt;/a&gt; Dark Energy Science Collaboration,
+and found myself with a few extra hours in the airport.
+I started passing the time by poking around on the &lt;a href="http://imgur.com"&gt;imgur&lt;/a&gt;
+gallery, and saw a couple animated gifs based on
+one of my all-time favorite games, Super Mario Bros.
+It got me wondering: could I use matplotlib's animation tools to create these
+sorts of gifs in Python?  Over a few beers at an SFO bar, I started to try
+to figure it out.  To spoil the punchline a bit, I managed to do it, and the
+result looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;img class="center" src="/images/mario.gif"&gt;&lt;/p&gt;
+&lt;p&gt;This animation was created &lt;em&gt;entirely in Python and matplotlib&lt;/em&gt;, by scraping the
+image data directly from the Super Mario Bros. ROM.  Below I'll explain how
+I managed to do it.&lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="animation"></category><category term="nintendo"></category></entry><entry><title>Will Scientists Ever Move to Python 3?</title><link href="http://jakevdp.github.io/blog/2013/01/03/will-scientists-ever-move-to-python-3/" rel="alternate"></link><published>2013-01-03T17:08:00-08:00</published><updated>2013-01-03T17:08:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2013-01-03:blog/2013/01/03/will-scientists-ever-move-to-python-3/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;&lt;em&gt;March 2016: Please note the date on this post. Given the developments in the last three years, I would no longer agree with much of what I've written here. In particular, I substantially underestimated the ability of tools like &lt;a href="http://pythonhosted.org/six/"&gt;six&lt;/a&gt; and &lt;a href="http://python-future.org/"&gt;python-future&lt;/a&gt; to enable single-codebase Python 2/3 support, and virtually all scientific packages now use such tools to support both. Short version: just use Python 3. There's almost no reason not to any more.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It's been just over four years since the introduction of Python 3, and there
+are still about as many opinions on it as there are Python users.  For
+those who haven't been following, Python 3 is a release
+which offers several nice improvements over the 2.x series
+(summarized &lt;a href="http://docs.python.org/3/whatsnew/3.0.html"&gt;here&lt;/a&gt;)
+with the distinct disadvantage that it broke backward compatibility:
+though Python 3.x (often referred to as "Py3k" for short)
+is true to the spirit of earlier Python versions,
+there are a few valid 2.x constructions which will not parse under 3.x.&lt;/p&gt;
+&lt;p&gt;Breaking backward compatibility was controversial, to say the least.  I
+think of the debate as one between the pragmatists -- those who see Python
+as an extremely useful tool, which should not be unnecessarily tampered with --
+and the idealists -- those who view the Python language
+as a living, breathing entity, which should be allowed to grow into the
+fullest and most Pythonic possible version of itself.&lt;/p&gt;
+</summary><category term="academia"></category><category term="opinion"></category></entry><entry><title>Sparse SVDs in Python</title><link href="http://jakevdp.github.io/blog/2012/12/19/sparse-svds-in-python/" rel="alternate"></link><published>2012-12-19T08:21:00-08:00</published><updated>2012-12-19T08:21:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-12-19:blog/2012/12/19/sparse-svds-in-python/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Mechanics"></category><category term="Calculus of Variations"></category></entry><entry><title>Jacobi Identity for Classical Possion Bracket</title><link href="https://lj020326.github.io/jacobi-identity.html" rel="alternate"></link><published>2016-10-30T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-30:/jacobi-identity.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\pp}{\partial}
-\newcommand{\sgn}{\mathrm{sgn}}
-\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;&lt;/span&gt;
-Definition of Classical Possion Bracket:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;After &lt;a href="http://fseoane.net/blog/2012/singular-value-decomposition-in-scipy/"&gt;Fabian's post&lt;/a&gt; on the topic, I have recently returned to thinking about the
+subject of sparse singular value decompositions (SVDs) in Python.&lt;/p&gt;
+&lt;p&gt;For those who haven't used it, the SVD is an extremely powerful technique.
+It is the core routine of many applications,
+from filtering to dimensionality
+reduction to graph analysis to supervised classification and much, much more.&lt;/p&gt;
+&lt;p&gt;I first came across the need for a fast sparse SVD when applying a technique
+called Locally Linear Embedding (LLE) to astronomy spectra: it was the first
+astronomy paper I published, and you can read it &lt;a href="http://adsabs.harvard.edu/abs/2009AJ....138.1365V"&gt;here&lt;/a&gt;.  In LLE, one visualizes the nonlinear relationship
+between high-dimensional observations.  The computational cost is extreme: for
+&lt;em&gt;N&lt;/em&gt; objects, one must compute the null space (intimately related to the SVD)
+of a &lt;em&gt;N&lt;/em&gt; by &lt;em&gt;N&lt;/em&gt; matrix.  Using direct methods (e.g. LAPACK), this can scale
+as bad as $\mathcal{O}[N^3]$ in both memory and speed!&lt;/p&gt;
+</summary><category term="linear algebra"></category><category term="benchmarks"></category></entry><entry><title>Minesweeper in Matplotlib</title><link href="http://jakevdp.github.io/blog/2012/12/06/minesweeper-in-matplotlib/" rel="alternate"></link><published>2012-12-06T18:23:00-08:00</published><updated>2012-12-06T18:23:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-12-06:blog/2012/12/06/minesweeper-in-matplotlib/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;Lately I've been playing around with interactivity in matplotlib.  A couple
+weeks ago, I discussed briefly how to use event callbacks to implement
+&lt;a href="/blog/2012/11/24/simple-3d-visualization-in-matplotlib/"&gt;simple 3D visualization&lt;/a&gt;
+and later used this as a base for creating a
+&lt;a href="/blog/2012/11/26/3d-interactive-rubiks-cube-in-python"&gt;working 3D Rubik's cube&lt;/a&gt;
+entirely in matplotlib.&lt;/p&gt;
+&lt;p&gt;Today I have a different goal: re-create
+&lt;a href="http://en.wikipedia.org/wiki/Minesweeper_%28computer_game%29"&gt;minesweeper&lt;/a&gt;,
+that ubiquitous single-player puzzle game that most of us will admit to
+having binged on at least once or twice in their lives.  In minesweeper, the
+goal is to discover and avoid hidden mines within a gridded minefield, and
+the process takes some logic and quick thinking.&lt;/p&gt;
+&lt;p&gt;&lt;img width="800" src="/images/minesweeper_2.gif"&gt;&lt;/p&gt;
+</summary><category term="matplotlib"></category></entry><entry><title>A Primer on Python Metaclasses</title><link href="http://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/" rel="alternate"></link><published>2012-12-01T07:25:00-08:00</published><updated>2012-12-01T07:25:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-12-01:blog/2012/12/01/a-primer-on-python-metaclasses/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/MetaClasses.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="metaclasses"></category><category term="tutorial"></category></entry><entry><title>3D Interactive Rubik's Cube in Python</title><link href="http://jakevdp.github.io/blog/2012/11/26/3d-interactive-rubiks-cube-in-python/" rel="alternate"></link><published>2012-11-26T22:00:00-08:00</published><updated>2012-11-26T22:00:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-11-26:blog/2012/11/26/3d-interactive-rubiks-cube-in-python/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\pp}{\partial}
-\newcommand{\sgn}{\mathrm{sgn}}
-\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;&lt;/span&gt;
-Definition of Classical Possion Bracket:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$[f, g]=\sum_{i=1, 2,\ldots, n}\frac{\pp(f, g)}{\pp(p_i, q_i)}=\sum_{i=1, 2,\ldots, n}\left(\frac{\pp f}{\pp p_i}\frac{\pp g}{\pp q_i}-\frac{\pp f}{\pp q_i}\frac{\pp g}{\pp p_i}\right)$$&lt;/div&gt;
-&lt;p&gt;If we define &lt;span class="math"&gt;\(p_{-i}\mdef q_{i}\)&lt;/span&gt;, and
-&lt;span class="math"&gt;\(I=\{\pm 1, \pm, 2,\ldots, \pm n\}\)&lt;/span&gt;, we can rewrite it:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$[f, g]=\sum_{i\in I} \sgn(i) \frac{\pp f}{\pp p_i}\frac{\pp g}{\pp p_{-i}}$$&lt;/div&gt;
-&lt;p&gt;Jacobi Identity is &lt;span class="math"&gt;\([f,[g,h]]+[g,[h,f]]+[h,[f,g]]=0\)&lt;/span&gt;. With the new
-notation, we can rewrite it as &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\sum_{\overrightarrow{fgh}}[f,[g,h]]
-  &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i\in I}\sgn(i)\frac{\pp f}{\pp p_i}\frac{\pp}{\pp p_{-i}}\left(\sum_{j\in I}\sgn(j)\frac{\pp g}{\pp p_j}\frac{\pp h}{\pp p_{-j}}\right)\\
- &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
- +\frac{\pp f}{{\pp p_{i}}}\frac{\pp g}{{\pp p_{j}}}\frac{\pp^2h}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
- &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
- +\frac{\pp h}{{\pp p_{i}}}\frac{\pp f}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
- &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
- +\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{-j}}}\right)\\
- &amp;amp;=\sum_{\overrightarrow{fgh}}\sum_{i, j\in I}\sgn(ij)\left(\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}
- -\frac{\pp f}{{\pp p_{i}}}\frac{\pp h}{{\pp p_{-j}}}\frac{\pp^2g}{{\pp p_{-i}}{\pp p_{j}}}\right)\\
- &amp;amp;=0\end{aligned}$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;Over the weekend, I built a interactive 3D Rubik's cube simulator in python
+using only &lt;a href="http://matplotlib.org"&gt;matplotlib&lt;/a&gt; for all the graphics and
+interaction.  Check out the demonstration here:&lt;/p&gt;
+&lt;p&gt;&lt;span class="videobox"&gt;
+            &lt;video width="680" height="400" preload="none" controls poster="/downloads/videos/MagicCube_frame.jpg"&gt;&lt;source src='/downloads/videos/MagicCube.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'&gt;&lt;/video&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You can browse the source code at the MagicCube github repository:
+&lt;a href="http://github.com/davidwhogg/MagicCube"&gt;http://github.com/davidwhogg/MagicCube&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="matplotlib"></category></entry><entry><title>Quaternions and Key Bindings: Simple 3D Visualization in Matplotlib</title><link href="http://jakevdp.github.io/blog/2012/11/24/simple-3d-visualization-in-matplotlib/" rel="alternate"></link><published>2012-11-24T11:04:00-08:00</published><updated>2012-11-24T11:04:00-08:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-11-24:blog/2012/11/24/simple-3d-visualization-in-matplotlib/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/3DCube.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category></entry><entry><title>Sparse Graphs in Python: Playing with Word Ladders</title><link href="http://jakevdp.github.io/blog/2012/10/14/scipy-sparse-graph-module-word-ladders/" rel="alternate"></link><published>2012-10-14T21:23:00-07:00</published><updated>2012-10-14T21:23:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-10-14:blog/2012/10/14/scipy-sparse-graph-module-word-ladders/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/sparse-graph.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="scipy"></category><category term="tutorial"></category></entry><entry><title>XKCD-style plots in Matplotlib</title><link href="http://jakevdp.github.io/blog/2012/10/07/xkcd-style-plots-in-matplotlib/" rel="alternate"></link><published>2012-10-07T13:30:00-07:00</published><updated>2012-10-07T13:30:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-10-07:blog/2012/10/07/xkcd-style-plots-in-matplotlib/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/XKCD_plots.ipynb cells[2:] %}&lt;/p&gt;</summary><category term="matplotlib"></category><category term="xkcd"></category></entry><entry><title>Blogging with IPython in Octopress</title><link href="http://jakevdp.github.io/blog/2012/10/04/blogging-with-ipython/" rel="alternate"></link><published>2012-10-04T18:40:00-07:00</published><updated>2012-10-04T18:40:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-10-04:blog/2012/10/04/blogging-with-ipython/</id><summary type="html">&lt;p&gt;{% notebook downloads/notebooks/nb_in_octopress.ipynb cells[1:] %}&lt;/p&gt;</summary><category term="blogging"></category><category term="octopress"></category><category term="tutorial"></category></entry><entry><title>Optical Illusions in Matplotlib</title><link href="http://jakevdp.github.io/blog/2012/09/26/optical-illusions-in-matplotlib/" rel="alternate"></link><published>2012-09-26T07:27:00-07:00</published><updated>2012-09-26T07:27:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-09-26:blog/2012/09/26/optical-illusions-in-matplotlib/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;A while ago I posted some information on the new matplotlib animation
+package (see my tutorial
+&lt;a href="/blog/2012/08/18/matplotlib-animation-tutorial"&gt;here&lt;/a&gt; and
+a followup post &lt;a href="/blog/2012/09/05/quantum-python"&gt;here&lt;/a&gt;).  In them, I show
+how easy it is to  use matplotlib to create simple animations.&lt;/p&gt;
+&lt;p&gt;This morning I came across this cool optical illusion on
+&lt;a href="http://gizmodo.com/5945194/this-optical-trick-is-annoying-the-hell-out-of-me"&gt;gizmodo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/original_illusion.gif"&gt;&lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="animation"></category></entry><entry><title>Why Python is the Last Language You'll Have To Learn</title><link href="http://jakevdp.github.io/blog/2012/09/20/why-python-is-the-last/" rel="alternate"></link><published>2012-09-20T20:50:00-07:00</published><updated>2012-09-20T20:50:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-09-20:blog/2012/09/20/why-python-is-the-last/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Mechanics"></category></entry><entry><title>From d’Alembert to Lagrange</title><link href="https://lj020326.github.io/from-dalembert-to-lagrange.html" rel="alternate"></link><published>2016-10-01T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-10-01:/from-dalembert-to-lagrange.html</id><summary type="html">&lt;h2 id="nowtonian"&gt;Nowtonian&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\pp}{\partial}
-\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;
-&lt;/span&gt;
-Assume &lt;span class="math"&gt;\(\bm F\)&lt;/span&gt; is active force and &lt;span class="math"&gt;\(\bm R\)&lt;/span&gt; is constraint force. Then for
-&lt;span class="math"&gt;\(i\)&lt;/span&gt;th body we have Newton&amp;rsquo;s Second Law:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\bm F^\mathrm{tot}_i=\bm F_i+\bm R_i=m\bm …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;This week, for part of a textbook I'm helping to write,
+I spent some time reading and researching the history of Python as
+a scientific computing tool.  I had heard bits and pieces of this in the past,
+but it was fascinating to put it all together and learn about how all the
+individual contributions that have made Python what it is today.
+All of this got me thinking: for most of us, Python was a replacement for
+something: IDL, MatLab, Java, Mathematica, Perl... you name it.
+But what will replace Python?
+Ten years down the road, what language will people be espousing in
+blogs with awkwardly-alliterated titles?  As I thought it through, I
+became more and more convinced that, at least in the scientific computing
+world, Python is here to stay.&lt;/p&gt;
+</summary><category term="opinion"></category><category term="python"></category></entry><entry><title>Dynamic Programming in Python: Bayesian Blocks</title><link href="http://jakevdp.github.io/blog/2012/09/12/dynamic-programming-in-python/" rel="alternate"></link><published>2012-09-12T19:02:00-07:00</published><updated>2012-09-12T19:02:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-09-12:blog/2012/09/12/dynamic-programming-in-python/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;Of all the programming styles I have learned,
+&lt;a href="http://en.wikipedia.org/wiki/Dynamic_programming"&gt;dynamic programming&lt;/a&gt;
+is perhaps the most beautiful.  It can take problems that, at first glance,
+look ugly and intractable, and solve the problem with clean, concise code.
+Where a simplistic algorithm might accomplish something by brute force,
+dynamic programming steps back, breaks the task into a smaller set of
+sequential parts, and then proceeds in the most efficient way possible.&lt;/p&gt;
+&lt;h3&gt;Bayesian Blocks&lt;/h3&gt;
+&lt;p&gt;I'll go through an example here where the ideas of dynamic programming
+are vital to some very cool data analysis resuts.
+This post draws heavily from a recent
+&lt;a href="http://adsabs.harvard.edu/abs/2012arXiv1207.5578S"&gt;paper&lt;/a&gt; by Jeff Scargle
+and collaborators (this is the Scargle of &lt;em&gt;Lomb-Scargle Periodogram&lt;/em&gt;
+fame), as well as some conversations I had with Jeff at
+&lt;a href="http://www.astro.caltech.edu/ai12/"&gt;Astroinformatics 2012&lt;/a&gt;.
+The paper discusses
+a framework called &lt;em&gt;Bayesian Blocks&lt;/em&gt;, which is essentially a method of
+creating histograms with bin sizes that adapt to the data (there's a bit
+more to it than that: here we'll focus on histograms for simplicity).&lt;/p&gt;
+</summary><category term="tutorial"></category></entry><entry><title>Quantum Python: Animating the Schrodinger Equation</title><link href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/" rel="alternate"></link><published>2012-09-05T20:12:00-07:00</published><updated>2012-09-05T20:12:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-09-05:blog/2012/09/05/quantum-python/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;h2 id="nowtonian"&gt;Nowtonian&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\pp}{\partial}
-\newcommand{\mdef}{\overset{\mathrm{def}}{=}}\)&lt;/span&gt;
-&lt;/span&gt;
-Assume &lt;span class="math"&gt;\(\bm F\)&lt;/span&gt; is active force and &lt;span class="math"&gt;\(\bm R\)&lt;/span&gt; is constraint force. Then for
-&lt;span class="math"&gt;\(i\)&lt;/span&gt;th body we have Newton&amp;rsquo;s Second Law:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\bm F^\mathrm{tot}_i=\bm F_i+\bm R_i=m\bm a_i$$&lt;/div&gt;
-&lt;p&gt; With a virtual
-displacement &lt;span class="math"&gt;\(\delta \bm x_i\)&lt;/span&gt;, we define:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\delta W_i=\bm F^\mathrm{tot}_i\cdot\delta\bm x_i,\quad
-\delta K_i=m\bm a_i\cdot\delta\bm x_i$$&lt;/div&gt;
-&lt;p&gt; Then we have
-&lt;span class="math"&gt;\(\delta W_i=\delta K_i\)&lt;/span&gt;. Define
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\delta W=\sum_i\delta W_i,\quad\delta K=\sum_i\delta K_i$$&lt;/div&gt;
-&lt;p&gt; and
-obviously&lt;/p&gt;
-&lt;div class="math"&gt;$$\delta W=\delta K$$&lt;/div&gt;
-&lt;p&gt; As the constraints will not do work, we
-can rewrite &lt;/p&gt;
-&lt;div class="math"&gt;$$\delta W=\sum_i\bm F_i\cdot\delta\bm x_i$$&lt;/div&gt;
-&lt;h2 id="lagrangian"&gt;Lagrangian&lt;/h2&gt;
-&lt;h3 id="statics-delta-k0"&gt;Statics &lt;span class="math"&gt;\(\delta K=0\)&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;Principle of Virtual Work: &lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{\delta W}{\delta q}=0$$&lt;/div&gt;
-&lt;p&gt; i.e. Minimal
-Potential Energy &lt;/p&gt;
-&lt;div class="math"&gt;$$Q\mdef-\frac{\delta V}{\delta q}=0$$&lt;/div&gt;
-&lt;h3 id="dynamics"&gt;Dynamics&lt;/h3&gt;
-&lt;p&gt;d&amp;rsquo;Alembert&amp;rsquo;s Principle&amp;mdash;Counterpart of Principle of Virtual Work:
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{\delta W}{\delta q}=\frac{\delta K}{\delta q}$$&lt;/div&gt;
-&lt;p&gt;i.e. &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-Q\mdef\bm F_i\cdot\frac{\pp \bm x_i}{\pp q}&amp;amp;=m_i\bm a_i\cdot\frac{\pp \bm x_i}{\pp q}\\
-&amp;amp;=m_i\frac{\dd \bm v_i}{\dd t}\cdot\frac{\pp \bm x_i}{\pp q}\\
-&amp;amp;=m_i\frac{\dd}{\dd t}\left( \bm v\cdot\frac{\pp \bm x_i}{\pp q}\right)-m_i\bm v\cdot\frac{\dd}{\dd t}\frac{\pp}{\pp q}\bm x_i\\
-&amp;amp;=m_i\frac{\dd}{\dd t}\left(\bm v\cdot\frac{\pp \dot{\bm x_i}}{\pp\dot q}\right)-m_i\bm v\cdot\frac{\pp}{\pp q}\frac{\dd}{\dd t}\bm x_i\\
-&amp;amp;=\frac{\dd}{\dd t}\left(m_i\bm v_i\cdot\frac{\pp\bm v_i}{\pp\dot q}\right)-m_i\bm v_i\cdot\frac{\pp \bm v_i}{\pp q}\\
-&amp;amp;=\frac{\dd}{\dd t}\frac{\pp T}{\pp\dot q}-\frac{\pp T}{\pp q}\\
-&amp;amp;=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)T\label{T}\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;For conservative or monogenic system,&lt;/p&gt;
-&lt;div class="math"&gt;$$Q=\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)V\label{V}$$&lt;/div&gt;
-&lt;p&gt;As a result of last two equations, if we define &lt;span class="math"&gt;\(L=T-V\)&lt;/span&gt;, we have
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\left(\frac{\dd}{\dd t}\frac{\pp}{\pp\dot q}-\frac{\pp}{\pp q}\right)L=0$$&lt;/div&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;&lt;em&gt;Update: a reader contributed some improvements to the Python code presented
+ below.  Please see the
+&lt;a href="https://github.com/jakevdp/pySchrodinger"&gt;pySchrodinger&lt;/a&gt; github repository
+for updated code&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In a &lt;a href="/blog/2012/08/18/matplotlib-animation-tutorial/"&gt;previous post&lt;/a&gt;
+I explored the new animation capabilities of the latest
+&lt;a href="http://matplotlib.sourceforge.net"&gt;matplotlib&lt;/a&gt; release.
+It got me wondering whether it would be possible to simulate more complicated
+physical systems in real time in python.  Quantum Mechanics was the first
+thing that came to mind.  It turns out that by mixing a bit of Physics
+knowledge with a bit of computing knowledge, it's quite straightforward
+to simulate and animate a simple quantum mechanical system with python.&lt;/p&gt;
+&lt;h2&gt;The Schrodinger Equation&lt;/h2&gt;
+&lt;p&gt;The dynamics of a one-dimensional quantum system are governed by the
+time-dependent Schrodinger equation:&lt;/p&gt;
+&lt;p&gt;$$
+i\hbar\frac{\partial \psi}{\partial t}
+  = \frac{-\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V \psi
+$$&lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="animation"></category><category term="simulation"></category></entry><entry><title>Numba vs Cython</title><link href="http://jakevdp.github.io/blog/2012/08/24/numba-vs-cython/" rel="alternate"></link><published>2012-08-24T10:41:00-07:00</published><updated>2012-08-24T10:41:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-08-24:blog/2012/08/24/numba-vs-cython/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
+&lt;p&gt;&lt;em&gt;For a more up-to-date comparison of Numba and Cython, see the&lt;/em&gt;
+&lt;a href="http://jakevdp.github.io/blog/2013/06/15/numba-vs-cython-take-2/"&gt;&lt;em&gt;newer post&lt;/em&gt;&lt;/a&gt;
+&lt;em&gt;on this subject.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Often I'll tell people that I use python for computational analysis, and they
+look at me inquisitively.  "Isn't python pretty slow?"  They have a point.
+Python is an interpreted language, and as such cannot natively perform
+many operations as quickly as a compiled language such as C or Fortran.
+There is also the issue of the oft-misunderstood and much-maligned
+&lt;a href="http://wiki.python.org/moin/GlobalInterpreterLock"&gt;GIL&lt;/a&gt;,
+which calls into question python's ability to allow true parallel computing.&lt;/p&gt;
+&lt;p&gt;Many solutions have been proposed: &lt;a href="http://pypy.org/"&gt;PyPy&lt;/a&gt; is a much faster
+version of the core python language; 
+&lt;a href="http://code.google.com/p/numexpr/"&gt;numexpr&lt;/a&gt; provides optimized performance
+on certain classes of operations from within python;
+&lt;a href="http://www.scipy.org/Weave/"&gt;weave&lt;/a&gt; allows inline inclusion of compiled
+C/C++ code;
+&lt;a href="http://www.cython.org/"&gt;cython&lt;/a&gt; provides extra markup that allows python
+and/or python-like code to be compiled into C for fast operations.  But
+a naysayer might point out: many of these "python" solutions in practice
+are not really python at all, but clever hacks into Fortran or C.&lt;/p&gt;
+</summary><category term="numba"></category><category term="cython"></category><category term="benchmarks"></category></entry><entry><title>Matplotlib Animation Tutorial</title><link href="http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/" rel="alternate"></link><published>2012-08-18T08:01:00-07:00</published><updated>2012-08-18T08:01:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-08-18:blog/2012/08/18/matplotlib-animation-tutorial/</id><summary type="html">
 
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Mechanics"></category></entry><entry><title>Use C++ Template Programming to find int of least byte width</title><link href="https://lj020326.github.io/use-c-template-programming-to-find-int-of-least-byte-width.html" rel="alternate"></link><published>2016-05-01T00:00:00-04:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2016-05-01:/use-c-template-programming-to-find-int-of-least-byte-width.html</id><summary type="html">&lt;p&gt;Also see &lt;a href="https://gist.github.com/peijunz/580c39932aed134c53c80d2c55101490"&gt;gist&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;cstdint&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;static_assert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Length beyond range 1&amp;lt;N&amp;lt;9!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;typename&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int8_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int16_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_ …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Also see &lt;a href="https://gist.github.com/peijunz/580c39932aed134c53c80d2c55101490"&gt;gist&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;cstdint&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;static_assert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Length beyond range 1&amp;lt;N&amp;lt;9!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;typename&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int8_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int16_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int32_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
-&lt;span class="k"&gt;template&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;struct&lt;/span&gt; &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;int64_t&lt;/span&gt;&lt;span class="p"&gt;;};&lt;/span&gt;
+&lt;p&gt;&lt;a href="http://matplotlib.sourceforge.net"&gt;Matplotlib&lt;/a&gt; version 1.1 added some tools
+for creating
+&lt;a href="http://matplotlib.sourceforge.net/api/animation_api.html"&gt;animations&lt;/a&gt;
+which are really slick.  You can find some good example animations on
+the matplotlib
+&lt;a href="http://matplotlib.sourceforge.net/examples/animation/index.html"&gt;examples&lt;/a&gt;
+page.  I thought I'd share here some of the things I've learned when playing
+around with these tools.&lt;/p&gt;
+&lt;h3&gt;Basic Animation&lt;/h3&gt;
+&lt;p&gt;The animation tools center around the &lt;code&gt;matplotlib.animation.Animation&lt;/code&gt; base
+class, which provides a framework around which the animation functionality
+is built.  The main interfaces are &lt;code&gt;TimedAnimation&lt;/code&gt; and &lt;code&gt;FuncAnimation&lt;/code&gt;,
+which you can read more about in the
+&lt;a href="http://matplotlib.sourceforge.net/api/animation_api.html"&gt;documentation&lt;/a&gt;.
+Here I'll explore using the &lt;code&gt;FuncAnimation&lt;/code&gt; tool, which I have found
+to be the most useful.&lt;/p&gt;
+</summary><category term="matplotlib"></category><category term="animation"></category><category term="tutorial"></category><category term="simulation"></category></entry><entry><title>Memoryview Benchmarks 2</title><link href="http://jakevdp.github.io/blog/2012/08/16/memoryview-benchmarks-2/" rel="alternate"></link><published>2012-08-16T14:19:00-07:00</published><updated>2012-08-16T14:19:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-08-16:blog/2012/08/16/memoryview-benchmarks-2/</id><summary type="html">
 
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
-    &lt;span class="n"&gt;least&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;int_&lt;/span&gt; &lt;span class="n"&gt;i5&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Size of i5 is %d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i5&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="C++"></category></entry><entry><title>Energy of Electrostatic Field in a Triangle</title><link href="https://lj020326.github.io/energy-of-electrostatic-field-in-a-triangle.html" rel="alternate"></link><published>2014-01-15T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2014-01-15:/energy-of-electrostatic-field-in-a-triangle.html</id><summary type="html">&lt;h2 id="energy-of-a-triangle"&gt;Energy of a triangle&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
-For a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;, assume the points have potential
-&lt;span class="math"&gt;\(\varphi_a,\varphi_b,\varphi_c\)&lt;/span&gt;. As shown in Fig. ???,
-&lt;span class="math"&gt;\(AB'\perp AC, AC'\perp AB\)&lt;/span&gt;, combine the components of &lt;span class="math"&gt;\(\nabla\varphi\)&lt;/span&gt;,
-we have
-&lt;/p&gt;
-&lt;div class="math"&gt;$$(\nabla\varphi)^2=\frac{1}{\sin^2 A}\left(\frac …&lt;/div&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
+&lt;p&gt;In the &lt;a href="/blog/2012/08/08/memoryview-benchmarks/"&gt;previous post&lt;/a&gt;, I explored
+how cython typed memoryviews can be used to speed up repeated array
+operations.  It became clear that typed memoryviews are superior to
+the ndarray syntax for slicing, and as fast as raw pointers for single
+element access.  In the comments, Mathieu brought up an interesting
+question: is the ndarray syntax as good as typed memoryviews if you're
+not doing slicing?&lt;/p&gt;
+&lt;p&gt;The answer turns out to be yes, &lt;em&gt;unless&lt;/em&gt; the compiler tries to inline your
+function.&lt;/p&gt;
+</summary><category term="numpy"></category><category term="cython"></category><category term="benchmarks"></category><category term="memoryviews"></category></entry><entry><title>Memoryview Benchmarks</title><link href="http://jakevdp.github.io/blog/2012/08/08/memoryview-benchmarks/" rel="alternate"></link><published>2012-08-08T18:50:00-07:00</published><updated>2012-08-08T18:50:00-07:00</updated><author><name>Jake VanderPlas</name></author><id>tag:jakevdp.github.io,2012-08-08:blog/2012/08/08/memoryview-benchmarks/</id><summary type="html">
 
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;h2 id="energy-of-a-triangle"&gt;Energy of a triangle&lt;/h2&gt;
-&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}
-\newcommand{\pp}{\partial}\)&lt;/span&gt;&lt;/span&gt;
-For a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;, assume the points have potential
-&lt;span class="math"&gt;\(\varphi_a,\varphi_b,\varphi_c\)&lt;/span&gt;. As shown in Fig. ???,
-&lt;span class="math"&gt;\(AB'\perp AC, AC'\perp AB\)&lt;/span&gt;, combine the components of &lt;span class="math"&gt;\(\nabla\varphi\)&lt;/span&gt;,
-we have
-&lt;/p&gt;
-&lt;div class="math"&gt;$$(\nabla\varphi)^2=\frac{1}{\sin^2 A}\left(\frac{\varphi_{ab}^2}{c^2}+\frac{\varphi_{ac}^2}{b^2}-\frac{2\varphi_{ab}\varphi_{ac}\cos A}{bc}\right)$$&lt;/div&gt;
-&lt;p&gt;The area of triangle is &lt;/p&gt;
-&lt;div class="math"&gt;$$S=\frac{bc\sin A}{2}$$&lt;/div&gt;
-&lt;p&gt;The energy of this triangle is &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
- E_{\triangle}&amp;amp;\propto S(\nabla\varphi)^2\\
- &amp;amp;\propto \frac{bc}{\sin A}\left(\frac{\varphi_{ab}^2}{c^2}+\frac{\varphi_{ac}^2}{b^2}-\frac{2\varphi_{ab}\varphi_{ac}\cos A}{bc}\right)\end{aligned}$$&lt;/div&gt;
-&lt;p&gt;
-对&lt;span class="math"&gt;\(\varphi_a\)&lt;/span&gt;求导得到：
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{\pp E_\triangle}{\pp \varphi_a}\propto \left(\frac{b}{c\sin A}-\cot A\right)\varphi_{ab}+\left(\frac{c}{b\sin A}-\cot A\right)\varphi_{ac}\label{a}$$&lt;/div&gt;
-&lt;p&gt;
-其中：
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{b}{c\sin A}-\cot A=\frac{b-c\cos A}{c\sin A}=\frac{a\cos C}{a\sin C}=\cot C$$&lt;/div&gt;
-&lt;p&gt;
-同理&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{c}{b\sin A}-\cot A=\cot B$$&lt;/div&gt;
-&lt;p&gt; 故偏导化为
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{\pp E_\triangle}{\pp \varphi_a}\propto \varphi_{ab}\cot C+\varphi_{ac}\cot B
- \label{comp}$$&lt;/div&gt;
-&lt;h2 id="stationary-point-equation-for-energy-minimum"&gt;Stationary point equation for energy minimum&lt;/h2&gt;
-&lt;p&gt;Let &lt;span class="math"&gt;\(E\)&lt;/span&gt; be the total energy and use &lt;span class="math"&gt;\(i\)&lt;/span&gt; to mark all triangles containing
-&lt;span class="math"&gt;\(A\)&lt;/span&gt;. &lt;span class="math"&gt;\(B_i, C_i\)&lt;/span&gt; are other points in triangle &lt;span class="math"&gt;\(i\)&lt;/span&gt;. In the stationary
-point, we have
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{\pp E}{\pp \varphi_a}=\sum_i\frac{\pp  E_i}{\pp \varphi_a}
- \propto\sum_i \varphi_{ab_i}\cot C_i+\varphi_{ac_i}\cot B_i=0$$&lt;/div&gt;
-&lt;p&gt; So,
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\sum_i\left(\cot C_i+\cot B_i\right)\varphi_{a}=\sum_i\left(  \varphi_{b_i}\cot C_i+\varphi_{c_i}\cot B_i\right)$$&lt;/div&gt;
-&lt;div class="math"&gt;$$\Rightarrow\varphi_a=\frac{\sum_i \varphi_{b_i}\cot C_i+\varphi_{c_i}\cot B_i}{\sum_i\cot C_i+\cot B_i}$$&lt;/div&gt;
-&lt;p&gt;Assume we know coordinates of a triangle &lt;span class="math"&gt;\(ABC\)&lt;/span&gt;. To calculate &lt;span class="math"&gt;\(\cot A\)&lt;/span&gt;,
-we define &lt;span class="math"&gt;\(\bm b=\overrightarrow{AB}, \bm c=\overrightarrow{AC}\)&lt;/span&gt;.
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\cot A=\frac{bc\cos A}{bc\sin A}=\frac{\bm{b\cdot c}}{|\bm{b\times c}|}=\frac{\bm{b\cdot c}}{2S}$$&lt;/div&gt;
-&lt;p&gt;The denominator &lt;span class="math"&gt;\(2S\)&lt;/span&gt; is the same for a triangle.&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Calculus of Variations"></category></entry><entry><title>Integrable Constraint</title><link href="https://lj020326.github.io/integrable-constraint.html" rel="alternate"></link><published>2013-12-12T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2013-12-12:/integrable-constraint.html</id><summary type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\mathrm{p}}\)&lt;/span&gt;
-&lt;/span&gt;
-In N dimension, &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\bm f\times\bm g&amp;amp;\rightarrow f_a\times g_b=[f_ag_b]_{ab}\\
-\bm f\cdot\bm g\times\bm h&amp;amp;\rightarrow(f_a, g_b, h_c)=[f_ag_bh_c]_{abc}
-    \end{aligned}$$&lt;/div&gt;
-&lt;p&gt;Suppose &lt;span class="math"&gt;\(\bm f(\bm r …&lt;/span&gt;&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;p&gt;&lt;span class="mathmacros" style="display:none;"&gt;
-&lt;span class="math"&gt;\(\newcommand{\bm}{\mathbf}\newcommand{\dd}{\mathrm{d}}\newcommand{\pp}{\mathrm{p}}\)&lt;/span&gt;
-&lt;/span&gt;
-In N dimension, &lt;/p&gt;
-&lt;div class="math"&gt;$$\begin{aligned}
-\bm f\times\bm g&amp;amp;\rightarrow f_a\times g_b=[f_ag_b]_{ab}\\
-\bm f\cdot\bm g\times\bm h&amp;amp;\rightarrow(f_a, g_b, h_c)=[f_ag_bh_c]_{abc}
-    \end{aligned}$$&lt;/div&gt;
-&lt;p&gt;Suppose &lt;span class="math"&gt;\(\bm f(\bm r)=f_i\hat e_i\)&lt;/span&gt;, and a constraint &lt;span class="math"&gt;\(f_i\dd r_i=0\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Even if the &lt;span class="math"&gt;\(\nabla\times\bm f\neq 0\)&lt;/span&gt;, we may find some function
-&lt;span class="math"&gt;\(\varphi\)&lt;/span&gt; which is nonzero at the nonzero points of &lt;span class="math"&gt;\(\bm f\)&lt;/span&gt; s.t.
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\nabla\times(\varphi\bm f)=\nabla\varphi\times\bm f+\varphi\nabla\times\bm f=0$$&lt;/div&gt;
-&lt;p&gt;Dotted by &lt;span class="math"&gt;\(\bm f\)&lt;/span&gt;, we find
-&lt;/p&gt;
-&lt;div class="math"&gt;$$\varphi\bm f\cdot\nabla \times\bm f=(\bm f,\nabla\varphi, \bm f)\propto [f_i\pp_j f_k]_{ijk} =0$$&lt;/div&gt;
-&lt;p&gt;E.g. For a 2D function, &lt;span class="math"&gt;\(A_{ijk}\equiv 0\)&lt;/span&gt;, so there is always a
-solution.&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="Mechanics"></category><category term="math"></category></entry><entry><title>班级讲座——LaTeX排版介绍</title><link href="https://lj020326.github.io/LaTeX-intro-lecture.html" rel="alternate"></link><published>2013-12-06T00:00:00-05:00</published><updated>2018-04-16T13:54:11-04:00</updated><author><name>Lee Johnson</name></author><id>tag:lj020326.github.io,2013-12-06:/LaTeX-intro-lecture.html</id><summary type="html">&lt;p&gt;这是在班级LaTeX讲座上的&lt;a href="https://lj020326.github.io/intro-latex.pdf"&gt;LaTeX简介&lt;/a&gt;幻灯片，内容涵盖:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;LaTeX基本历史&lt;/li&gt;
-&lt;li&gt;LaTeX基本结构&lt;/li&gt;
-&lt;li&gt;排版学的基础知识&lt;/li&gt;
-&lt;li&gt;数学公式&lt;/li&gt;
-&lt;li&gt;图表&lt;/li&gt;
-&lt;li&gt;宏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;相关的USTC个人主页链接已经失效。幻灯片源代码已亡佚。&lt;/p&gt;</summary><content type="html">&lt;p&gt;这是在班级LaTeX讲座上的&lt;a href="https://lj020326.github.io/intro-latex.pdf"&gt;LaTeX简介&lt;/a&gt;幻灯片，内容涵盖:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;LaTeX基本历史&lt;/li&gt;
-&lt;li&gt;LaTeX基本结构&lt;/li&gt;
-&lt;li&gt;排版学的基础知识&lt;/li&gt;
-&lt;li&gt;数学公式&lt;/li&gt;
-&lt;li&gt;图表&lt;/li&gt;
-&lt;li&gt;宏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;相关的USTC个人主页链接已经失效。幻灯片源代码已亡佚。&lt;/p&gt;</content><category term="LaTeX"></category></entry></feed>
+&lt;p&gt;There was recently a &lt;a href="https://groups.google.com/forum/?fromgroups#!topic/cython-users/8uuxjB_wbBQ[1-25]" title="cython-users archive"&gt;thread&lt;/a&gt;
+on cython-users which caught my eye.  It has to do with 
+&lt;a href="http://docs.cython.org/src/userguide/memoryviews.html"&gt;memoryviews&lt;/a&gt;, a new
+way of working with memory buffers in cython.&lt;/p&gt;
+&lt;p&gt;I've been thinking recently about how to do fast
+and flexible memory buffer access in cython.  I contributed the
+&lt;a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html"&gt;BallTree&lt;/a&gt;
+implementation for nearest neighbors searching in
+&lt;a href="http://www.scikit-learn.org"&gt;scikit-learn&lt;/a&gt;, and have been actively thinking
+about how to make it faster and more flexible, including adding the ability
+to specify distance metrics other than euclidean and minkowski.&lt;/p&gt;
+&lt;p&gt;In order to accomplish this, I'd like to have a set of distance metric
+functions which take two vectors and compute a distance.  There would
+be many functions with similar call signatures which could then be
+plugged into a code that would iterate over a set of vectors and
+compute the appropriate distances.&lt;/p&gt;
+</summary><category term="benchmarks"></category><category term="numpy"></category><category term="cython"></category></entry></feed>
