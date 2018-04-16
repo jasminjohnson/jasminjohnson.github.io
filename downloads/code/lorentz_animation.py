@@ -77,6 +77,6 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=500, interval=30, blit=True)
 
 # Save as mp4. This requires mplayer or ffmpeg to be installed
-#anim.save('lorentz_attractor.mp4', fps=15, extra_args=['-vcodec', 'libx264'])
+#anim.articles('lorentz_attractor.mp4', fps=15, extra_args=['-vcodec', 'libx264'])
 
 plt.show()

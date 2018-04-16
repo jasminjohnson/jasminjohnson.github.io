@@ -78,11 +78,11 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=400, interval=28, blit=True)
 
 
-# save the animation as an mp4.  This requires ffmpeg or mencoder to be
+# articles the animation as an mp4.  This requires ffmpeg or mencoder to be
 # installed.  The extra_args ensure that the x264 codec is used, so that
 # the video can be embedded in html5.  You may need to adjust this for
 # your system: for more information, see
 # http://matplotlib.sourceforge.net/api/animation_api.html
-#anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
+#anim.articles('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
 
 plt.show()

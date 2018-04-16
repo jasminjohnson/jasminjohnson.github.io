@@ -209,6 +209,6 @@ if __name__ == '__main__':
     anim = animate_mario()
 
     # saving as animated gif requires matplotlib 0.13+ and imagemagick
-    #anim.save('mario_animation.gif', writer='imagemagick', fps=10)
+    #anim.articles('mario_animation.gif', writer='imagemagick', fps=10)
 
     plt.show()
