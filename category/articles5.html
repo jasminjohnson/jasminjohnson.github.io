@@ -434,7 +434,26 @@ article .meta a.comments_btn:hover {
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/AnimationEmbedding.ipynb cells[2:] %}</p>
+      
+
+<p>I've spent a lot of time on this blog working with matplotlib animations
+(see the basic tutorial
+<a href="http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/">here</a>,
+as well as my examples of animating
+<a href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/">a quantum system</a>,
+<a href="http://jakevdp.github.io/blog/2012/09/26/optical-illusions-in-matplotlib/">an optical illusion</a>,
+<a href="http://jakevdp.github.io/blog/2013/02/16/animating-the-lorentz-system-in-3d/">the Lorenz system in 3D</a>,
+and <a href="http://jakevdp.github.io/blog/2013/01/13/hacking-super-mario-bros-with-python/">recreating Super Mario</a>).
+Up until now, I've not have not combined the animations with IPython notebooks.
+The problem is that so far the integration of IPython with matplotlib is
+entirely static, while animations are by their nature dynamic.  There are some
+efforts in the IPython and matplotlib development communities to remedy this,
+but it's still not an ideal setup.</p>
+<p>I had an idea the other day about how one might get around this limitation
+in the case of animations.  By creating a function which saves an animation
+and embeds the binary data into an HTML string, you can fairly easily create
+automatically-embedded animations within a notebook.</p>
+
     </div>
 
     <div class="meta">
@@ -458,14 +477,23 @@ article .meta a.comments_btn:hover {
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p>After nine months on Octopress, I've decided to move on.</p>
 <p>I should start by saying that Octopress is a great platform for static
 blogging: it's powerful, flexible, well-supported, well-integrated with
 GitHub pages, and has tools and plugins to do just about anything you might
 imagine.  There's only one problem:</p>
-<p>It's …</p>
+<p>It's written in Ruby.</p>
+<p>Now I don't have anything against Ruby per se.  However, it was starting to
+seem a bit awkward that a blog called <em>Pythonic Perambulations</em>
+was built with Ruby, especially given the availability of so many
+excellent Python-based static site generators
+(<a href="http://hyde.github.io/">Hyde</a>,
+<a href="http://nikola.ralsina.com.ar/">Nikola</a>,
+and <a href="http://getpelican.com">Pelican</a> in particular).</p>
+<p>Additionally, a few things with Octopress were starting to become difficult:
+
     </div>
 
     <div class="meta">
@@ -490,7 +518,15 @@ imagine.  There's only one problem:</p>
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/TreeBench.ipynb cells[2:] %}</p>
+      
+
+<p>I recently submitted a scikit-learn <a href="https://github.com/scikit-learn/scikit-learn/pull/1732">pull request</a>
+containing a brand new ball tree and kd-tree for fast nearest neighbor searches in python.
+In this post I want to highlight some of the features of the new ball tree and kd-tree
+code that's part of this pull request, compare it to what's available in the
+<code>scipy.spatial.cKDTree</code> implementation, and run a few benchmarks showing the
+performance of these methods on various data sets.</p>
+
     </div>
 
     <div class="meta">
@@ -515,7 +551,52 @@ imagine.  There's only one problem:</p>
     </header>
 
     <div class="article_content">
-      <p>{% notebook downloads/notebooks/SudokuCodeGolf.ipynb cells[2:] %}</p>
+      
+<em>Edit: based on suggestions from readers, the best solution is down to 162 characters!
+Read to the end to see how</em></p>
+
+
+
+
+
+
+
+
+<p>A highlight of PyCon each year for me is working on the little coding
+challenges offered by companies in the expo center.
+I love testing my Python prowess against the problems they pose (and
+being rewarded with a branded mug or T-shirt!)
+This year, several of the challenges involved what's become known as
+<a href="http://codegolf.com/">code golf</a>: writing a solution with minimal keystrokes.</p>
+<p>By way of example, take a look at this function definition:</p>
+
+
+
+
+
+
+
+
+    
+
+<span class="nb">set</span><span class="p">(</span><span class="err">`</span><span class="mi">5</span><span class="o">**</span><span class="mi">18</span><span class="err">`</span><span class="p">)</span><span class="o">-</span><span class="p">{(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">)</span><span class="o">%</span><span class="k">9</span>*(i/9^j/9)*(i/27^j/27|i%9/3^j%9/3)or
+<span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">81</span><span class="p">)}</span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">S</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="o">+</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])),[</span><span class="n">p</span><span class="p">]][</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span>
+</pre>
+
+
+
+
+
+
+
+
+
+
+<p>This is a valid function definition (in Python 2.7) which executes a
+particular task.  I'll give more information on the workings of this
+script later on, but for now I'll leave it to the reader to ponder
+over what it might do.</p>
+
     </div>
 
     <div class="meta">
@@ -539,14 +620,28 @@ imagine.  There's only one problem:</p>
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p>Last week, I had the privilege of attending and speaking at the
 PyCon and PyData conferences in Santa Clara, CA.  As usual, there were some
 amazing and inspiring talks throughout: I would highly recommend browsing
 through the videos as they are put up on
 <a href="http://pyvideo.org/category/33/pycon-us-2013">pyvideo</a>.</p>
-<p>One thing I spent a …</p>
+<p>One thing I spent a lot of time thinking, talking, and learning about
+during these two conferences was the topic of data visualization in Python.
+Data visualization seemed to be everywhere: PyData had
+<a href="http://sv2013.pydata.org/abstracts/#11">two</a>
+<a href="http://sv2013.pydata.org/abstracts/#15">tutorials</a>
+on matplotlib (the second given by yours truly), as well as a talk about
+<a href="http://sv2013.pydata.org/abstracts/#41">NodeBox OpenGL</a> and a
+<a href="http://sv2013.pydata.org/keynotes/#abstract_33">keynote</a> by
+Fernando Perez about IPython, including the notebook and the
+nice interactive data-visualization it allows. Pycon had a tutorial on
+<a href="https://us.pycon.org/2013/schedule/presentation/29/">network visualization</a>,
+a talk on <a href="https://us.pycon.org/2013/schedule/presentation/58/">generating art</a>
+in Python, and a talk on
+<a href="https://us.pycon.org/2013/schedule/presentation/108/">visualizing Github</a>. </p>
+
     </div>
 
     <div class="meta">
@@ -570,7 +665,7 @@ through the videos as they are put up on
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p>One of the things I really enjoy about Python is how easy it makes it to solve
 interesting problems and visualize those solutions in a compelling way. I've
@@ -578,7 +673,20 @@ done several posts on creating animations using matplotlib's relatively new
 <a href="http://matplotlib.sourceforge.net/api/animation_api.html">animation toolkit</a>:
 (some examples are a chaotic
 <a href="/blog/2012/08/18/matplotlib-animation-tutorial/">double pendulum</a>,
-the collisions of …</p>
+the collisions of
+<a href="/blog/2012/08/18/matplotlib-animation-tutorial/">particles in a box</a>,
+the time-evolution of a
+<a href="/blog/2012/09/05/quantum-python/">quantum-mechanical wavefunction</a>,
+and even a scene from the classic video game,
+<a href="/blog/2013/01/13/hacking-super-mario-bros-with-python/">Super Mario Bros.</a>).</p>
+<p>Recently, a reader <a href="/blog/2012/08/18/matplotlib-animation-tutorial/#comment-799781196">commented</a> asking whether I might do a 3D animation example.  Matplotlib
+has a decent 3D toolkit called
+<a href="http://matplotlib.org/mpl_toolkits/mplot3d/index.html">mplot3D</a>,
+and though I haven't previously seen it used in conjunction with the
+animation tools, there's nothing fundamental that prevents it.</p>
+<p>At the commenter's suggestion, I decided to try this out with a simple
+example of a chaotic system: the Lorenz equations.</p>
+
     </div>
 
     <div class="meta">
@@ -603,13 +711,21 @@ the collisions of …</p>
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p><em>Edit, August 2013: my current favorite way to set up a python installation
 on mac (and any other system) is to use the
 <a href="https://store.continuum.io/">anaconda</a> package offered by Continuum
 Analytics.  It's free, full-featured, and extremely easy to use.</em></p>
-<p>{% img left /images/OSX10.8.png 'OSX 10.8 Logo' %} A few weeks …</p>
+<p><img class="left" src="/images/OSX10.8.png" title="'OSX 10.8 Logo'" alt="'OSX 10.8 Logo'"> A few weeks ago,
+after years of using Linux exclusively for all my computing,
+I started a research fellowship in a new department
+and found a brand new Macbook Pro on my
+desk.  Naturally, my first instinct was to set up the system for efficient
+Python development.  In order to help others who  might find themself in a
+similar situation, I took some notes on the process, and I'll summarize
+what I learned below.</p>
+
     </div>
 
     <div class="meta">
@@ -633,14 +749,23 @@ Analytics.  It's free, full-featured, and extremely easy to use.</em></p>
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p>This weekend I was coming home from the meeting of the
 <a href="http://www.lsst.org">LSST</a> Dark Energy Science Collaboration,
 and found myself with a few extra hours in the airport.
 I started passing the time by poking around on the <a href="http://imgur.com">imgur</a>
 gallery, and saw a couple animated gifs based on
-one of my …</p>
+one of my all-time favorite games, Super Mario Bros.
+It got me wondering: could I use matplotlib's animation tools to create these
+sorts of gifs in Python?  Over a few beers at an SFO bar, I started to try
+to figure it out.  To spoil the punchline a bit, I managed to do it, and the
+result looks like this:</p>
+<p><img class="center" src="/images/mario.gif"></p>
+<p>This animation was created <em>entirely in Python and matplotlib</em>, by scraping the
+image data directly from the Super Mario Bros. ROM.  Below I'll explain how
+I managed to do it.</p>
+
     </div>
 
     <div class="meta">
@@ -665,9 +790,25 @@ one of my …</p>
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
-<p><em>March 2016: Please note the date on this post. Given the developments in the last three years, I would no longer agree with much of what I've written here. In particular, I substantially underestimated the ability of tools like <a href="http://pythonhosted.org/six/">six</a> and <a href="http://python-future.org/">python-future</a> to enable single-codebase Python 2/3 support, and …</em></p>
+<p><em>March 2016: Please note the date on this post. Given the developments in the last three years, I would no longer agree with much of what I've written here. In particular, I substantially underestimated the ability of tools like <a href="http://pythonhosted.org/six/">six</a> and <a href="http://python-future.org/">python-future</a> to enable single-codebase Python 2/3 support, and virtually all scientific packages now use such tools to support both. Short version: just use Python 3. There's almost no reason not to any more.</em></p>
+<p>It's been just over four years since the introduction of Python 3, and there
+are still about as many opinions on it as there are Python users.  For
+those who haven't been following, Python 3 is a release
+which offers several nice improvements over the 2.x series
+(summarized <a href="http://docs.python.org/3/whatsnew/3.0.html">here</a>)
+with the distinct disadvantage that it broke backward compatibility:
+though Python 3.x (often referred to as "Py3k" for short)
+is true to the spirit of earlier Python versions,
+there are a few valid 2.x constructions which will not parse under 3.x.</p>
+<p>Breaking backward compatibility was controversial, to say the least.  I
+think of the debate as one between the pragmatists -- those who see Python
+as an extremely useful tool, which should not be unnecessarily tampered with --
+and the idealists -- those who view the Python language
+as a living, breathing entity, which should be allowed to grow into the
+fullest and most Pythonic possible version of itself.</p>
+
     </div>
 
     <div class="meta">
@@ -691,14 +832,22 @@ one of my …</p>
     </header>
 
     <div class="article_content">
-      <!-- PELICAN_BEGIN_SUMMARY -->
+      
 
 <p>After <a href="http://fseoane.net/blog/2012/singular-value-decomposition-in-scipy/">Fabian's post</a> on the topic, I have recently returned to thinking about the
 subject of sparse singular value decompositions (SVDs) in Python.</p>
 <p>For those who haven't used it, the SVD is an extremely powerful technique.
 It is the core routine of many applications,
 from filtering to dimensionality
-reduction to …</p>
+reduction to graph analysis to supervised classification and much, much more.</p>
+<p>I first came across the need for a fast sparse SVD when applying a technique
+called Locally Linear Embedding (LLE) to astronomy spectra: it was the first
+astronomy paper I published, and you can read it <a href="http://adsabs.harvard.edu/abs/2009AJ....138.1365V">here</a>.  In LLE, one visualizes the nonlinear relationship
+between high-dimensional observations.  The computational cost is extreme: for
+<em>N</em> objects, one must compute the null space (intimately related to the SVD)
+of a <em>N</em> by <em>N</em> matrix.  Using direct methods (e.g. LAPACK), this can scale
+as bad as $\mathcal{O}[N^3]$ in both memory and speed!</p>
+
     </div>
 
     <div class="meta">

@@ -433,7 +433,7 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div class="article_content">
-            <!-- PELICAN_BEGIN_SUMMARY -->
+            
 
 <p>This week I published the preprint of a manuscript that started as a blog post, but quickly out-grew this medium: <a href="http://arxiv.org/abs/1703.09824">Understanding the Lomb-Scargle Periodogram</a>.</p>
 <table class="image">
@@ -448,7 +448,7 @@ developed in the paper; see Section 7.2 for a detailed discussion.</caption>
 <p>Over the last couple years I've written a number of Python implementations of the Lomb-Scargle periodogram (I'd recommend <a href="http://docs.astropy.org/en/stable/stats/lombscargle.html">AstroPy's <code>LombScargle</code></a> in most cases today), and also wrote a <a href="/blog/2015/06/13/lomb-scargle-in-python/">marginally popular blog post</a> and <a href="https://arxiv.org/abs/1502.01344">somewhat pedagogical paper</a> on the subject.
 This all has led to a steady trickle of emails from students and researchers asking for advice on applying and interpreting the Lomb-Scargle algorithm, particularly for astronomical data.
 I noticed that these queries tended to repeat many of the same questions and express some similar misconceptions, and this paper is my attempt to address those once and for all — in a "mere" 55 pages (which includes 26 figures and 4 full pages of references, so it's not all that bad).</p>
-<!-- PELICAN_END_SUMMARY -->
+
 
 <p>While the paper's main goal is to help readers develop an intuition for what the periodogram actually measures and how this affects practical considerations of its use, I also took the opportunity to directly address some of the mythology that's been built-up around the algorithm.
 I'll let those who are interested read the <a href="http://arxiv.org/abs/1703.09824">full paper</a> (you can also peruse the code and re-generate the figures via <a href="http://github.com/jakevdp/PracticalLombScargle">Jupyter Notebooks on GitHub</a>), but I want to highlight here my somewhat opinionated post-script outlining some of these myths, and considering whether we should be using the Lomb-Scargle method at all.</p>
