@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="author" content="Lee Johnson">
+        <meta name="author" content="Jasmin Johnson">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Automation notes - Articles by Lee Johnson | Automation notes</title>
+        <title>Automation notes - Articles by Jasmin Johnson | Automation notes</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -429,44 +429,25 @@ article .meta a.comments_btn:hover {
 
   <article>
     <header>
-      <h2><a href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/">Quantum Python: Animating the Schrodinger Equation</a></h2>
-      <time datetime="" title="2012-09-05T20:12:00-04:00" pubdate>Wed 05 September 2012</time>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/08/22/hacking-academia/">Hacking Academia: Data Science and the University</a></h2>
+      <time datetime="" title="2014-08-22T08:00:00-04:00" pubdate>Fri 22 August 2014</time>
     </header>
 
     <div class="article_content">
-      
+      <!-- PELICAN_BEGIN_SUMMARY -->
 
-<p><em>Update: a reader contributed some improvements to the Python code presented
- below.  Please see the
-<a href="https://github.com/jakevdp/pySchrodinger">pySchrodinger</a> github repository
-for updated code</em></p>
-<p>In a <a href="/blog/2012/08/18/matplotlib-animation-tutorial/">previous post</a>
-I explored the new animation capabilities of the latest
-<a href="http://matplotlib.sourceforge.net">matplotlib</a> release.
-It got me wondering whether it would be possible to simulate more complicated
-physical systems in real time in python.  Quantum Mechanics was the first
-thing that came to mind.  It turns out that by mixing a bit of Physics
-knowledge with a bit of computing knowledge, it's quite straightforward
-to simulate and animate a simple quantum mechanical system with python.</p>
-<h2>The Schrodinger Equation</h2>
-<p>The dynamics of a one-dimensional quantum system are governed by the
-time-dependent Schrodinger equation:</p>
-<p>$$
-i\hbar\frac{\partial \psi}{\partial t}
-  = \frac{-\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V \psi
-$$</p>
-
+<p><em>A reflection on our <a href="http://www.digital-science.com/sciencefoo/">SciFoo</a> breakout session, where we discussed issues of data science within academia.</em></p>
+<p>Almost a year ago, I wrote a post I called the <a href="http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/">Big Data Brain Drain</a>, lamenting the ways that academia is neglecting the skills of modern data-intensive research, and in doing so is driving …</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://jakevdp.github.io/blog/2012/09/05/quantum-python/" class="read_more">Read more &#8594;</a>
+        <a href="http://jasminjohnson.github.io/blog/2014/08/22/hacking-academia/" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
-            <a href="http://jakevdp.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
-            <a href="http://jakevdp.github.io/tag/animation.html" class="tag">animation</a>
-            <a href="http://jakevdp.github.io/tag/simulation.html" class="tag">simulation</a>
+            <a href="http://jasminjohnson.github.io/tag/opinion.html" class="tag">opinion</a>
+            <a href="http://jasminjohnson.github.io/tag/academia.html" class="tag">academia</a>
       </div>
 
     </div>
@@ -475,45 +456,22 @@ $$</p>
   <div class="separator"></div>
   <article>
     <header>
-      <h2><a href="http://jakevdp.github.io/blog/2012/08/24/numba-vs-cython/">Numba vs Cython</a></h2>
-      <time datetime="" title="2012-08-24T10:41:00-04:00" pubdate>Fri 24 August 2012</time>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/">Frequentism and Bayesianism IV: How to be a Bayesian in Python</a></h2>
+      <time datetime="" title="2014-06-14T09:30:00-04:00" pubdate>Sat 14 June 2014</time>
     </header>
 
     <div class="article_content">
-      
-
-<p><em>For a more up-to-date comparison of Numba and Cython, see the</em>
-<a href="http://jakevdp.github.io/blog/2013/06/15/numba-vs-cython-take-2/"><em>newer post</em></a>
-<em>on this subject.</em></p>
-<p>Often I'll tell people that I use python for computational analysis, and they
-look at me inquisitively.  "Isn't python pretty slow?"  They have a point.
-Python is an interpreted language, and as such cannot natively perform
-many operations as quickly as a compiled language such as C or Fortran.
-There is also the issue of the oft-misunderstood and much-maligned
-<a href="http://wiki.python.org/moin/GlobalInterpreterLock">GIL</a>,
-which calls into question python's ability to allow true parallel computing.</p>
-<p>Many solutions have been proposed: <a href="http://pypy.org/">PyPy</a> is a much faster
-version of the core python language; 
-<a href="http://code.google.com/p/numexpr/">numexpr</a> provides optimized performance
-on certain classes of operations from within python;
-<a href="http://www.scipy.org/Weave/">weave</a> allows inline inclusion of compiled
-C/C++ code;
-<a href="http://www.cython.org/">cython</a> provides extra markup that allows python
-and/or python-like code to be compiled into C for fast operations.  But
-a naysayer might point out: many of these "python" solutions in practice
-are not really python at all, but clever hacks into Fortran or C.</p>
-
+      <p>{% notebook downloads/notebooks/FreqBayes4.ipynb cells[2:] %}</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://jakevdp.github.io/blog/2012/08/24/numba-vs-cython/" class="read_more">Read more &#8594;</a>
+        <a href="http://jasminjohnson.github.io/blog/2014/06/14/frequentism-and-bayesianism-4-bayesian-in-python/" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
-            <a href="http://jakevdp.github.io/tag/numba.html" class="tag">numba</a>
-            <a href="http://jakevdp.github.io/tag/cython.html" class="tag">cython</a>
-            <a href="http://jakevdp.github.io/tag/benchmarks.html" class="tag">benchmarks</a>
+            <a href="http://jasminjohnson.github.io/tag/frequentism.html" class="tag">frequentism</a>
+            <a href="http://jasminjohnson.github.io/tag/bayesianism.html" class="tag">bayesianism</a>
       </div>
 
     </div>
@@ -522,42 +480,22 @@ are not really python at all, but clever hacks into Fortran or C.</p>
   <div class="separator"></div>
   <article>
     <header>
-      <h2><a href="http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/">Matplotlib Animation Tutorial</a></h2>
-      <time datetime="" title="2012-08-18T08:01:00-04:00" pubdate>Sat 18 August 2012</time>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/">Frequentism and Bayesianism III: Confidence, Credibility, and why Frequentism and Science do not Mix</a></h2>
+      <time datetime="" title="2014-06-12T12:00:00-04:00" pubdate>Thu 12 June 2014</time>
     </header>
 
     <div class="article_content">
-      
-
-<p><a href="http://matplotlib.sourceforge.net">Matplotlib</a> version 1.1 added some tools
-for creating
-<a href="http://matplotlib.sourceforge.net/api/animation_api.html">animations</a>
-which are really slick.  You can find some good example animations on
-the matplotlib
-<a href="http://matplotlib.sourceforge.net/examples/animation/index.html">examples</a>
-page.  I thought I'd share here some of the things I've learned when playing
-around with these tools.</p>
-<h3>Basic Animation</h3>
-<p>The animation tools center around the <code>matplotlib.animation.Animation</code> base
-class, which provides a framework around which the animation functionality
-is built.  The main interfaces are <code>TimedAnimation</code> and <code>FuncAnimation</code>,
-which you can read more about in the
-<a href="http://matplotlib.sourceforge.net/api/animation_api.html">documentation</a>.
-Here I'll explore using the <code>FuncAnimation</code> tool, which I have found
-to be the most useful.</p>
-
+      <p>{% notebook downloads/notebooks/FreqBayes3.ipynb cells[2:] %}</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/" class="read_more">Read more &#8594;</a>
+        <a href="http://jasminjohnson.github.io/blog/2014/06/12/frequentism-and-bayesianism-3-confidence-credibility/" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
-            <a href="http://jakevdp.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
-            <a href="http://jakevdp.github.io/tag/animation.html" class="tag">animation</a>
-            <a href="http://jakevdp.github.io/tag/tutorial.html" class="tag">tutorial</a>
-            <a href="http://jakevdp.github.io/tag/simulation.html" class="tag">simulation</a>
+            <a href="http://jasminjohnson.github.io/tag/frequentism.html" class="tag">frequentism</a>
+            <a href="http://jasminjohnson.github.io/tag/bayesianism.html" class="tag">bayesianism</a>
       </div>
 
     </div>
@@ -566,35 +504,23 @@ to be the most useful.</p>
   <div class="separator"></div>
   <article>
     <header>
-      <h2><a href="http://jakevdp.github.io/blog/2012/08/16/memoryview-benchmarks-2/">Memoryview Benchmarks 2</a></h2>
-      <time datetime="" title="2012-08-16T14:19:00-04:00" pubdate>Thu 16 August 2012</time>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/">Is Seattle Really Seeing an Uptick In Cycling?</a></h2>
+      <time datetime="" title="2014-06-10T08:30:00-04:00" pubdate>Tue 10 June 2014</time>
     </header>
 
     <div class="article_content">
-      
-
-<p>In the <a href="/blog/2012/08/08/memoryview-benchmarks/">previous post</a>, I explored
-how cython typed memoryviews can be used to speed up repeated array
-operations.  It became clear that typed memoryviews are superior to
-the ndarray syntax for slicing, and as fast as raw pointers for single
-element access.  In the comments, Mathieu brought up an interesting
-question: is the ndarray syntax as good as typed memoryviews if you're
-not doing slicing?</p>
-<p>The answer turns out to be yes, <em>unless</em> the compiler tries to inline your
-function.</p>
-
+      <p>{% notebook downloads/notebooks/SeattleCycling.ipynb cells[2:] %}</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://jakevdp.github.io/blog/2012/08/16/memoryview-benchmarks-2/" class="read_more">Read more &#8594;</a>
+        <a href="http://jasminjohnson.github.io/blog/2014/06/10/is-seattle-really-seeing-an-uptick-in-cycling/" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
-            <a href="http://jakevdp.github.io/tag/numpy.html" class="tag">numpy</a>
-            <a href="http://jakevdp.github.io/tag/cython.html" class="tag">cython</a>
-            <a href="http://jakevdp.github.io/tag/benchmarks.html" class="tag">benchmarks</a>
-            <a href="http://jakevdp.github.io/tag/memoryviews.html" class="tag">memoryviews</a>
+            <a href="http://jasminjohnson.github.io/tag/data.html" class="tag">data</a>
+            <a href="http://jasminjohnson.github.io/tag/pandas.html" class="tag">pandas</a>
+            <a href="http://jasminjohnson.github.io/tag/cycling.html" class="tag">cycling</a>
       </div>
 
     </div>
@@ -603,41 +529,144 @@ function.</p>
   <div class="separator"></div>
   <article>
     <header>
-      <h2><a href="http://jakevdp.github.io/blog/2012/08/08/memoryview-benchmarks/">Memoryview Benchmarks</a></h2>
-      <time datetime="" title="2012-08-08T18:50:00-04:00" pubdate>Wed 08 August 2012</time>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Frequentism and Bayesianism II: When Results Differ</a></h2>
+      <time datetime="" title="2014-06-06T02:00:00-04:00" pubdate>Fri 06 June 2014</time>
     </header>
 
     <div class="article_content">
-      
-
-<p>There was recently a <a href="https://groups.google.com/forum/?fromgroups#!topic/cython-users/8uuxjB_wbBQ[1-25]" title="cython-users archive">thread</a>
-on cython-users which caught my eye.  It has to do with 
-<a href="http://docs.cython.org/src/userguide/memoryviews.html">memoryviews</a>, a new
-way of working with memory buffers in cython.</p>
-<p>I've been thinking recently about how to do fast
-and flexible memory buffer access in cython.  I contributed the
-<a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html">BallTree</a>
-implementation for nearest neighbors searching in
-<a href="http://www.scikit-learn.org">scikit-learn</a>, and have been actively thinking
-about how to make it faster and more flexible, including adding the ability
-to specify distance metrics other than euclidean and minkowski.</p>
-<p>In order to accomplish this, I'd like to have a set of distance metric
-functions which take two vectors and compute a distance.  There would
-be many functions with similar call signatures which could then be
-plugged into a code that would iterate over a set of vectors and
-compute the appropriate distances.</p>
-
+      <p>{% notebook downloads/notebooks/FreqBayes2.ipynb cells[2:] %}</p>
     </div>
 
     <div class="meta">
       <div>
-        <a href="http://jakevdp.github.io/blog/2012/08/08/memoryview-benchmarks/" class="read_more">Read more &#8594;</a>
+        <a href="http://jasminjohnson.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/" class="read_more">Read more &#8594;</a>
       </div>
 
       <div>
-            <a href="http://jakevdp.github.io/tag/benchmarks.html" class="tag">benchmarks</a>
-            <a href="http://jakevdp.github.io/tag/numpy.html" class="tag">numpy</a>
-            <a href="http://jakevdp.github.io/tag/cython.html" class="tag">cython</a>
+            <a href="http://jasminjohnson.github.io/tag/frequentism.html" class="tag">frequentism</a>
+            <a href="http://jasminjohnson.github.io/tag/bayesianism.html" class="tag">bayesianism</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/05/09/why-python-is-slow/">Why Python is Slow: Looking Under the Hood</a></h2>
+      <time datetime="" title="2014-05-09T07:00:00-04:00" pubdate>Fri 09 May 2014</time>
+    </header>
+
+    <div class="article_content">
+      <p>{% notebook downloads/notebooks/WhyPythonIsSlow.ipynb cells[2:] %}</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2014/05/09/why-python-is-slow/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/python.html" class="tag">python</a>
+            <a href="http://jasminjohnson.github.io/tag/tutorial.html" class="tag">tutorial</a>
+            <a href="http://jasminjohnson.github.io/tag/ctypes.html" class="tag">ctypes</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/05/05/introduction-to-the-python-buffer-protocol/">An Introduction to the Python Buffer Protocol</a></h2>
+      <time datetime="" title="2014-05-05T16:00:00-04:00" pubdate>Mon 05 May 2014</time>
+    </header>
+
+    <div class="article_content">
+      <p>{% notebook downloads/notebooks/BufferProtocol.ipynb cells[2:] %}</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2014/05/05/introduction-to-the-python-buffer-protocol/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/python.html" class="tag">python</a>
+            <a href="http://jasminjohnson.github.io/tag/tutorial.html" class="tag">tutorial</a>
+            <a href="http://jasminjohnson.github.io/tag/memoryviews.html" class="tag">memoryviews</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/">Frequentism and Bayesianism: A Practical Introduction</a></h2>
+      <time datetime="" title="2014-03-11T11:00:00-04:00" pubdate>Tue 11 March 2014</time>
+    </header>
+
+    <div class="article_content">
+      <p>{% notebook downloads/notebooks/FreqBayes.ipynb cells[2:] %}</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/frequentism.html" class="tag">frequentism</a>
+            <a href="http://jasminjohnson.github.io/tag/bayesianism.html" class="tag">bayesianism</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2014/01/10/d3-plugins-truly-interactive/">D3 Plugins: Truly Interactive Matplotlib In Your Browser</a></h2>
+      <time datetime="" title="2014-01-10T16:00:00-05:00" pubdate>Fri 10 January 2014</time>
+    </header>
+
+    <div class="article_content">
+      <p>{% notebook downloads/notebooks/mpld3_plugins.ipynb cells[2:] %}</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2014/01/10/d3-plugins-truly-interactive/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
+            <a href="http://jasminjohnson.github.io/tag/mpld3.html" class="tag">mpld3</a>
+      </div>
+
+    </div>
+
+  </article>
+  <div class="separator"></div>
+  <article>
+    <header>
+      <h2><a href="http://jasminjohnson.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/">A D3 Viewer for Matplotlib Visualizations</a></h2>
+      <time datetime="" title="2013-12-19T13:00:00-05:00" pubdate>Thu 19 December 2013</time>
+    </header>
+
+    <div class="article_content">
+      <p>{% notebook downloads/notebooks/mpld3Demo.ipynb cells[2:] %}</p>
+    </div>
+
+    <div class="meta">
+      <div>
+        <a href="http://jasminjohnson.github.io/blog/2013/12/19/a-d3-viewer-for-matplotlib/" class="read_more">Read more &#8594;</a>
+      </div>
+
+      <div>
+            <a href="http://jasminjohnson.github.io/tag/matplotlib.html" class="tag">matplotlib</a>
+            <a href="http://jasminjohnson.github.io/tag/mpld3.html" class="tag">mpld3</a>
       </div>
 
     </div>
@@ -647,9 +676,10 @@ compute the appropriate distances.</p>
 
   <nav class="pagination row">
     <div class="col-xs-6 left">
+        <a class="prev" href="http://jasminjohnson.github.io/author/jasmin-johnson4.html">&#8592; Past</a>
     </div>
     <div class="col-xs-6 right">
-        <a class="next" href="http://jakevdp.github.io/author/lee-johnson6.html">Future &#8594;</a>
+        <a class="next" href="http://jasminjohnson.github.io/author/jasmin-johnson2.html">Future &#8594;</a>
     </div>
   </nav>
 
@@ -661,7 +691,7 @@ compute the appropriate distances.</p>
 <!--
     <footer>
       <p>
-        © 2012-2017 Lee Johnson, license <a href="https://github.com/lj020326/lj020326.github.io-source/blob/master/LICENSE"> </a>
+        © 2012-2017 Jasmin Johnson, license <a href="https://github.com/jasminjohnson/jasminjohnson.github.io-source/blob/master/LICENSE"> </a>
         unless otherwise noted.
         Generated by <a href= "http://docs.getpelican.com/">Pelican</a>.
       </p>
