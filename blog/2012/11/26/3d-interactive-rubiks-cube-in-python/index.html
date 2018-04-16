@@ -433,15 +433,16 @@ article .meta a.comments_btn:hover {
         </header>
 
         <div class="article_content">
-            <!-- PELICAN_BEGIN_SUMMARY -->
+            
 
 <p>Over the weekend, I built a interactive 3D Rubik's cube simulator in python
 using only <a href="http://matplotlib.org">matplotlib</a> for all the graphics and
 interaction.  Check out the demonstration here:</p>
-<p>{% video /downloads/videos/MagicCube.mp4 680 400 /downloads/videos/MagicCube_frame.jpg %}</p>
+<p><span class="videobox">
+            <video width="680" height="400" preload="none" controls poster="/downloads/videos/MagicCube_frame.jpg"><source src='/downloads/videos/MagicCube.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video></span></p>
 <p>You can browse the source code at the MagicCube github repository:
 <a href="http://github.com/davidwhogg/MagicCube">http://github.com/davidwhogg/MagicCube</a>.</p>
-<!-- PELICAN_END_SUMMARY -->
+
 
 <p>The 3D rendering is based on the quaternions and projections  discussed in
 my <a href="/blog/2012/11/24/simple-3d-visualization-in-matplotlib/">previous post</a>,
