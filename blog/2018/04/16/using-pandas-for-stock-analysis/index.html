@@ -1407,6 +1407,205 @@ h6:hover .anchor-link {
 </style>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../extra/sample.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATEFIPS</th>
+      <th>STATE</th>
+      <th>zipcode</th>
+      <th>agi_stub</th>
+      <th>income1</th>
+      <th>income2</th>
+      <th>income3</th>
+      <th>income4</th>
+      <th>income5</th>
+      <th>income6</th>
+      <th>...</th>
+      <th>A10300</th>
+      <th>N85530</th>
+      <th>A85530</th>
+      <th>N85300</th>
+      <th>A85300</th>
+      <th>N11901</th>
+      <th>A11901</th>
+      <th>N11902</th>
+      <th>A11902</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>New Hampshere</td>
+      <td>0</td>
+      <td>1</td>
+      <td>836320</td>
+      <td>481570</td>
+      <td>109790</td>
+      <td>233260</td>
+      <td>455560</td>
+      <td>1356760</td>
+      <td>...</td>
+      <td>328469</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>61920</td>
+      <td>48150</td>
+      <td>732670</td>
+      <td>1933120</td>
+      <td>1427680</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>New Yok</td>
+      <td>0</td>
+      <td>2</td>
+      <td>494830</td>
+      <td>206630</td>
+      <td>146250</td>
+      <td>129390</td>
+      <td>275920</td>
+      <td>1010990</td>
+      <td>...</td>
+      <td>965011</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>73720</td>
+      <td>107304</td>
+      <td>415410</td>
+      <td>1187403</td>
+      <td>847710</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Floria</td>
+      <td>0</td>
+      <td>3</td>
+      <td>261250</td>
+      <td>80720</td>
+      <td>139280</td>
+      <td>36130</td>
+      <td>155100</td>
+      <td>583910</td>
+      <td>...</td>
+      <td>1333418</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>64200</td>
+      <td>139598</td>
+      <td>193030</td>
+      <td>536699</td>
+      <td>481250</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>New York</td>
+      <td>0</td>
+      <td>4</td>
+      <td>166690</td>
+      <td>28510</td>
+      <td>124650</td>
+      <td>10630</td>
+      <td>99950</td>
+      <td>423990</td>
+      <td>...</td>
+      <td>1414283</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>45460</td>
+      <td>128823</td>
+      <td>116440</td>
+      <td>377177</td>
+      <td>319850</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>New York</td>
+      <td>0</td>
+      <td>5</td>
+      <td>212660</td>
+      <td>19520</td>
+      <td>184320</td>
+      <td>4830</td>
+      <td>126860</td>
+      <td>589490</td>
+      <td>...</td>
+      <td>3820152</td>
+      <td>420</td>
+      <td>168</td>
+      <td>60</td>
+      <td>31</td>
+      <td>83330</td>
+      <td>421004</td>
+      <td>121570</td>
+      <td>483682</td>
+      <td>416500</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 132 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
