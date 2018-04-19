@@ -1405,49 +1405,30 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For Accountants who deal with big data dump from the IS department</span>
-
-<span class="n">To</span> <span class="n">analyze</span> <span class="n">huge</span> <span class="n">data</span> <span class="nb">set</span> <span class="k">with</span> <span class="n">endless</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">columns</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">data</span> <span class="n">dump</span><span class="p">,</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">extract</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">perform</span> <span class="n">the</span> <span class="n">meaningful</span> <span class="n">analysis</span><span class="err">?</span> <span class="n">How</span> <span class="n">to</span> <span class="n">visualize</span> <span class="n">the</span> <span class="n">financial</span> analysis<span class="o">?</span> 
-<span class="n">The</span> <span class="n">example</span> <span class="n">illustrated</span> <span class="n">here</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">csv</span> <span class="ow">or</span> <span class="n">xlsx</span> <span class="nb">format</span> <span class="n">since</span> <span class="n">most</span> <span class="n">likely</span> <span class="n">that</span> <span class="n">IS</span> <span class="n">department</span> <span class="n">would</span> <span class="n">only</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">output</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">either</span> <span class="nb">format</span><span class="o">.</span>
-
-<span class="n">Topic</span><span class="p">:</span> 
-<span class="o">-</span>  <span class="n">Use</span> <span class="n">Python</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">dataset</span> <span class="ow">in</span> <span class="n">CSV</span> <span class="ow">or</span> <span class="n">Excel</span> <span class="nb">format</span>
-<span class="o">-</span>  <span class="n">To</span> <span class="n">merge</span><span class="p">,</span> <span class="n">reshape</span><span class="p">,</span> <span class="n">clean</span> <span class="n">data</span> <span class="k">for</span> <span class="n">analysis</span>
-<span class="o">-</span>  <span class="n">Data</span> <span class="n">validation</span> <span class="n">by</span> <span class="n">using</span> <span class="n">Python</span> <span class="n">panda</span> <span class="n">commends</span> <span class="n">function</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">min</span> <span class="ow">and</span> <span class="n">average</span> <span class="n">etc</span><span class="o">.</span> 
-<span class="o">-</span>  <span class="n">Put</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">SQL</span> <span class="n">Lite</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">data</span> <span class="n">analysis</span>
-<span class="o">-</span>  <span class="n">Use</span> <span class="n">Visio</span> <span class="n">to</span> <span class="n">mockup</span> <span class="n">report</span> <span class="k">for</span> <span class="n">report</span> <span class="n">specification</span>
-
-
-
-
-<span class="c1">#(A) Use Python to Import dataset in CSV or Excel format</span>
-
-<span class="n">Here</span> <span class="n">are</span> <span class="n">two</span> <span class="n">sample</span> <span class="n">data</span> <span class="n">files</span><span class="p">,</span>
-
-<span class="err">•</span>	<span class="n">First</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="mi">2015</span> <span class="n">USA</span> <span class="n">census</span> <span class="k">with</span> <span class="mi">20</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span>
-<span class="err">•</span>	<span class="n">Second</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="mi">10</span> <span class="n">stocks</span> <span class="n">historical</span> <span class="n">daily</span> <span class="n">price</span> <span class="kn">from</span> <span class="mi">1990</span><span class="o">-</span><span class="mi">2011</span>
-
-<span class="c1">#How to use Python to read Excel file? </span>
-<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">you</span> <span class="n">get</span> <span class="n">a</span> <span class="n">huge</span> <span class="n">dataset</span> <span class="kn">from</span> <span class="nn">IS</span> <span class="n">department</span><span class="p">,</span> <span class="n">when</span> <span class="n">you</span> <span class="n">glance</span> <span class="n">the</span> <span class="n">excel</span> <span class="n">file</span><span class="p">,</span> <span class="n">your</span> <span class="n">head</span> <span class="n">spin</span><span class="o">.</span> 
-<span class="n">The</span> <span class="n">file</span> <span class="n">has</span> <span class="n">endless</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">columns</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">analysis</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">timely</span> <span class="n">basis</span><span class="o">.</span> 
-
-
-<span class="c1"># First Example - 2015 Census Data</span>
-<span class="n">This</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="kn">from</span> <span class="nn">gov.org</span> <span class="o">-</span> <span class="mi">2015</span> <span class="n">census</span> <span class="n">data</span> <span class="n">by</span> <span class="nb">zip</span> <span class="n">code</span> <span class="k">with</span> <span class="mi">20</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span><span class="o">.</span>
-<span class="n">For</span> <span class="n">illustration</span> <span class="n">purpose</span><span class="p">,</span> <span class="n">the</span> <span class="n">excel</span> <span class="n">file</span> <span class="n">saved</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">1</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span><span class="o">.</span>
-
-<span class="c1">#Step 1: use Pandas to read Excel data</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">For Accountants who deal with big data dump from the IS department<a class="anchor-link" href="#For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">&#182;</a></h1><p>To analyze huge data set with endless rows and columns from the data dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
+The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.</p>
+<p>Topic:</p>
+<ul>
+<li>Use Python to import dataset in CSV or Excel format</li>
+<li>To merge, reshape, clean data for analysis</li>
+<li>Data validation by using Python panda commends function max, min and average etc. </li>
+<li>Put data in SQL Lite format for data analysis</li>
+<li>Use Visio to mockup report for report specification</li>
+</ul>
+<h1 id="(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">(A) Use Python to Import dataset in CSV or Excel format<a class="anchor-link" href="#(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">&#182;</a></h1><p>Here are two sample data files,</p>
+<p>•   First sample data is 2015 USA census with 20,000 rows and 150 columns
+•   Second sample data is 10 stocks historical daily price from 1990-2011</p>
+<h1 id="How-to-use-Python-to-read-Excel-file?">How to use Python to read Excel file?<a class="anchor-link" href="#How-to-use-Python-to-read-Excel-file?">&#182;</a></h1><p>For example, you get a huge dataset from IS department, when you glance the excel file, your head spin. 
+The file has endless rows and columns and you need to analysis the data in the timely basis.</p>
+<h1 id="First-Example---2015-Census-Data">First Example - 2015 Census Data<a class="anchor-link" href="#First-Example---2015-Census-Data">&#182;</a></h1><p>This sample data is from gov.org - 2015 census data by zip code with 20,000 rows and 150 columns.
+For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.</p>
+<h1 id="Step-1:-use-Pandas-to-read-Excel-data">Step 1: use Pandas to read Excel data<a class="anchor-link" href="#Step-1:-use-Pandas-to-read-Excel-data">&#182;</a></h1>
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1648,27 +1629,20 @@ h6:hover .anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 2: An interesting note – there are several ways to read Excel file from Python Pandas. </span>
-<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">”</span><span class="p">)</span>
-<span class="ow">or</span>
-<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="err">‘</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">’</span><span class="p">)</span>
-
-<span class="n">Both</span> <span class="n">commands</span> <span class="n">can</span> <span class="n">read</span> <span class="n">Excel</span> <span class="n">file</span><span class="o">.</span>
-
-<span class="n">Which</span> <span class="n">command</span> <span class="n">should</span> <span class="n">you</span> use<span class="o">?</span>
-<span class="err">•</span>	<span class="n">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">Pandas</span> <span class="n">Timeit</span> <span class="n">to</span> <span class="n">time</span> <span class="n">how</span> <span class="n">long</span> <span class="n">does</span> <span class="n">it</span> <span class="n">take</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">reports</span>
-<span class="err">•</span>	<span class="n">General</span> <span class="n">speaking</span><span class="p">,</span> <span class="n">read_excel</span> <span class="n">commands</span> <span class="ow">is</span> <span class="n">faster</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">Step 2: An interesting note &#8211; there are several ways to read Excel file from Python Pandas.<a class="anchor-link" href="#Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">&#182;</a></h1><p>pd = pd.read_excel(“sample.xlsx”)
+or
+pd = pd.ExcelFile(‘sample.xlsx’)</p>
+<p>Both commands can read Excel file.</p>
+<p>Which command should you use?
+•   You can use Pandas Timeit to time how long does it take to run the reports
+•   General speaking, read_excel commands is faster</p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1711,18 +1685,13 @@ h6:hover .anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 3: How to filter data in Python, quick and save time instead of Excel? If you need to see the first three rows for zip code 35210:</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?-If-you-need-to-see-the-first-three-rows-for-zip-code-35210:">Step 3: How to filter data in Python, quick and save time instead of Excel? If you need to see the first three rows for zip code 35210:<a class="anchor-link" href="#Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?-If-you-need-to-see-the-first-three-rows-for-zip-code-35210:">&#182;</a></h1>
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1921,21 +1890,16 @@ h6:hover .anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Second Example - 10 stocks historical price from 1990-2011</span>
-<span class="n">Step</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Import</span> <span class="n">pandas</span> <span class="ow">and</span> <span class="n">read</span> <span class="n">the</span> <span class="n">Excel</span> <span class="n">file</span> <span class="p">(</span><span class="n">specified</span> <span class="n">the</span> <span class="n">directory</span><span class="p">)</span>
-        <span class="n">This</span> <span class="n">sample</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">stock</span> <span class="n">market</span> <span class="n">value</span> <span class="n">file</span> <span class="k">with</span> <span class="mi">100</span> <span class="n">stocks</span><span class="o">.</span>
-        <span class="n">To</span> <span class="n">view</span> <span class="n">the</span> <span class="n">first</span> <span class="ow">and</span> <span class="n">last</span> <span class="mi">5</span> <span class="n">rows</span> <span class="n">of</span> <span class="n">data</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Second-Example---10-stocks-historical-price-from-1990-2011">Second Example - 10 stocks historical price from 1990-2011<a class="anchor-link" href="#Second-Example---10-stocks-historical-price-from-1990-2011">&#182;</a></h1><p>Step 1: Import pandas and read the Excel file (specified the directory)
+        This sample file is stock market value file with 100 stocks.
+        To view the first and last 5 rows of data</p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2366,20 +2330,16 @@ h6:hover .anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 3: data analysis – it’s easy to get the min, max in Python</span>
-            <span class="o">-</span>  <span class="n">The</span> <span class="n">minimum</span> <span class="n">stock</span> <span class="n">price</span> <span class="n">of</span> <span class="n">Apple</span> <span class="n">between</span> <span class="mi">2</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">1990</span> <span class="ow">and</span> <span class="mi">10</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">2011</span> <span class="n">was</span> <span class="err">$</span><span class="mf">4.2</span>
-            <span class="o">-</span>  <span class="n">The</span> <span class="n">maximum</span> <span class="n">stock</span> <span class="n">price</span> <span class="n">of</span> <span class="n">Apple</span> <span class="n">between</span> <span class="mi">2</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">1990</span> <span class="ow">and</span> <span class="mi">10</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">2011</span> <span class="n">was</span> <span class="err">$</span><span class="mf">43.619</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-3:-data-analysis-&#8211;-it&#8217;s-easy-to-get-the-min,-max-in-Python">Step 3: data analysis &#8211; it&#8217;s easy to get the min, max in Python<a class="anchor-link" href="#Step-3:-data-analysis-&#8211;-it&#8217;s-easy-to-get-the-min,-max-in-Python">&#182;</a></h1>
+<pre><code>        -  The minimum stock price of Apple between 2/1/1990 and 10/14/2011 was $4.2
+        -  The maximum stock price of Apple between 2/1/1990 and 10/14/2011 was $43.619</code></pre>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2414,20 +2374,17 @@ h6:hover .anchor-link {
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 4: import matplot pyplot to get the chart</span>
- <span class="o">-</span>  <span class="n">first</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">index</span>
- <span class="o">-</span>  <span class="n">to</span> <span class="n">chart</span> <span class="n">stock</span> <span class="n">AA</span> <span class="k">with</span> <span class="n">date</span>    
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-4:-import-matplot-pyplot-to-get-the-chart">Step 4: import matplot pyplot to get the chart<a class="anchor-link" href="#Step-4:-import-matplot-pyplot-to-get-the-chart">&#182;</a></h1><ul>
+<li>first to set index</li>
+<li>to chart stock AA with date    </li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
