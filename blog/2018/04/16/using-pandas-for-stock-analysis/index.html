@@ -1405,43 +1405,34 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For Accountants who deal with big data dump from the IS department</span>
-
-<span class="n">To</span> <span class="n">analyze</span> <span class="n">huge</span> <span class="n">data</span> <span class="nb">set</span> <span class="k">with</span> <span class="n">endless</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">columns</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">data</span> <span class="n">dump</span><span class="p">,</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">extract</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">perform</span> <span class="n">the</span> <span class="n">meaningful</span> <span class="n">analysis</span><span class="err">?</span> <span class="n">How</span> <span class="n">to</span> <span class="n">visualize</span> <span class="n">the</span> <span class="n">financial</span> analysis<span class="o">?</span> 
-<span class="n">The</span> <span class="n">example</span> <span class="n">illustrated</span> <span class="n">here</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">csv</span> <span class="ow">or</span> <span class="n">xlsx</span> <span class="nb">format</span> <span class="n">since</span> <span class="n">most</span> <span class="n">likely</span> <span class="n">that</span> <span class="n">IS</span> <span class="n">department</span> <span class="n">would</span> <span class="n">only</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">output</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">either</span> <span class="nb">format</span><span class="o">.</span>
-<span class="n">Topic</span><span class="p">:</span> 
-<span class="o">-</span>  <span class="n">Use</span> <span class="n">Python</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">data</span> <span class="ow">in</span> <span class="n">CSV</span> <span class="ow">or</span> <span class="n">Excel</span> <span class="nb">format</span>
-<span class="o">-</span>  <span class="n">To</span> <span class="n">merge</span><span class="p">,</span> <span class="n">reshape</span><span class="p">,</span> <span class="n">clean</span> <span class="n">data</span> <span class="k">for</span> <span class="n">analysis</span>
-<span class="o">-</span>  <span class="n">Data</span> <span class="n">validation</span> <span class="n">by</span> <span class="n">using</span> <span class="n">Python</span> <span class="n">panda</span> <span class="n">commends</span> <span class="n">functio</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="n">average</span> <span class="n">etc</span><span class="o">.</span> 
-<span class="o">-</span>  <span class="n">Put</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">SQL</span> <span class="n">Lite</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">data</span> <span class="n">analysis</span>
-<span class="o">-</span>  <span class="n">Use</span> <span class="n">Visio</span> <span class="n">to</span> <span class="n">mockup</span> <span class="n">report</span> <span class="k">for</span> <span class="n">report</span> <span class="n">specification</span>
-
-
-
-
-<span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="n">Use</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">Import</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">CSV</span> <span class="ow">or</span> <span class="n">Excel</span> <span class="nb">format</span>
-
-<span class="n">I</span> <span class="n">use</span> <span class="mi">2</span> <span class="n">sample</span> <span class="n">data</span> <span class="n">files</span><span class="p">,</span>
-<span class="err">•</span>	<span class="n">First</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="mi">2015</span> <span class="n">USA</span> <span class="n">census</span> <span class="k">with</span> <span class="mi">20</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span>
-<span class="err">•</span>	<span class="n">Second</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="mi">10</span> <span class="n">stocks</span> <span class="n">historical</span> <span class="n">daily</span> <span class="n">price</span> <span class="kn">from</span> <span class="mi">1990</span><span class="o">-</span><span class="mi">2011</span>
-
-<span class="mf">1.</span>	<span class="n">How</span> <span class="n">to</span> <span class="n">use</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">read</span> <span class="n">Excel</span> file<span class="o">?</span> 
-<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">you</span> <span class="n">get</span> <span class="n">a</span> <span class="n">huge</span> <span class="n">dataset</span> <span class="kn">from</span> <span class="nn">IS</span> <span class="n">department</span><span class="p">,</span> <span class="n">when</span> <span class="n">you</span> <span class="n">glance</span> <span class="n">the</span> <span class="n">excel</span> <span class="n">file</span><span class="p">,</span> <span class="n">your</span> <span class="n">head</span> <span class="n">spin</span><span class="o">.</span>  <span class="n">The</span> <span class="n">file</span> <span class="n">has</span> <span class="n">endless</span> <span class="n">rows</span> <span class="ow">and</span> <span class="n">columns</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">analysis</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">timely</span> <span class="n">basis</span><span class="o">.</span> 
-
-<span class="n">Step</span> <span class="mi">1</span><span class="p">:</span>
-<span class="n">Say</span> <span class="n">the</span> <span class="n">excel</span> <span class="n">file</span> <span class="n">name</span> <span class="n">called</span> <span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">”</span> <span class="k">with</span> <span class="mi">20</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span><span class="o">.</span>
-<span class="n">This</span> <span class="n">sample</span> <span class="n">data</span> <span class="ow">is</span> <span class="kn">from</span> <span class="nn">gov.org</span> <span class="o">-</span> <span class="mi">2015</span> <span class="n">census</span> <span class="n">data</span> <span class="n">by</span> <span class="nb">zip</span> <span class="n">code</span><span class="o">.</span> <span class="n">For</span> <span class="n">illustration</span> <span class="n">purpose</span><span class="p">,</span> <span class="n">the</span> <span class="n">excel</span> <span class="n">file</span> <span class="n">saved</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">1</span><span class="p">,</span><span class="mi">000</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">150</span> <span class="n">columns</span><span class="o">.</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">For Accountants who deal with big data dump from the IS department<a class="anchor-link" href="#For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">&#182;</a></h1><p>To analyze huge data set with endless rows and columns from the data dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
+The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.
+Topic:</p>
+<ul>
+<li>Use Python to import data in CSV or Excel format</li>
+<li>To merge, reshape, clean data for analysis</li>
+<li>Data validation by using Python panda commends functio max, min, average etc. </li>
+<li>Put data in SQL Lite format for data analysis</li>
+<li>Use Visio to mockup report for report specification</li>
+</ul>
+<p>(A) Use Python to Import dataset in CSV or Excel format</p>
+<p>I use 2 sample data files,
+•   First sample data is 2015 USA census with 20,000 rows and 150 columns
+•   Second sample data is 10 stocks historical daily price from 1990-2011</p>
+<ol>
+<li>How to use Python to read Excel file? 
+For example, you get a huge dataset from IS department, when you glance the excel file, your head spin.  The file has endless rows and columns and you need to analysis the data in the timely basis. </li>
+</ol>
+<p>Step 1:
+Say the excel file name called “sample.xlsx” with 20,000 rows and 150 columns.
+This sample data is from gov.org - 2015 census data by zip code. For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.</p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
