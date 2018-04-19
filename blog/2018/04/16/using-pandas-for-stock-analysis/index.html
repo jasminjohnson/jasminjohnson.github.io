@@ -1407,6 +1407,581 @@ h6:hover .anchor-link {
 </style>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Step</span> <span class="mi">2</span><span class="p">:</span> <span class="n">An</span> <span class="n">interesting</span> <span class="n">note</span> <span class="err">–</span> <span class="n">there</span> <span class="n">are</span> <span class="n">several</span> <span class="n">ways</span> <span class="n">to</span> <span class="n">read</span> <span class="n">Excel</span> <span class="n">file</span> <span class="kn">from</span> <span class="nn">Python</span> <span class="n">Pandas</span><span class="o">.</span> 
+<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">”</span><span class="p">)</span>
+<span class="ow">or</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="err">‘</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">’</span><span class="p">)</span>
+
+<span class="n">Both</span> <span class="n">commands</span> <span class="n">can</span> <span class="n">read</span> <span class="n">Excel</span> <span class="n">file</span><span class="o">.</span>
+
+<span class="n">Which</span> <span class="n">command</span> <span class="n">should</span> <span class="n">you</span> use<span class="o">?</span>
+<span class="err">•</span>	<span class="n">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">Pandas</span> <span class="n">Timeit</span> <span class="n">to</span> <span class="n">time</span> <span class="n">how</span> <span class="n">long</span> <span class="n">does</span> <span class="n">it</span> <span class="n">take</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">reports</span>
+<span class="err">•</span>	<span class="n">General</span> <span class="n">speaking</span><span class="p">,</span> <span class="n">read_excel</span> <span class="n">commands</span> <span class="ow">is</span> <span class="n">faster</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_excelfile</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;../extra/sample.xlsx&#39;</span><span class="p">)</span>  <span class="c1"># this code is faster...use panda timeit library to compare </span>
+    
+<span class="k">def</span> <span class="nf">test_read_excel</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../extra/sample.xlsx&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_excelfile(): time=&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> test_excelfile()
+<span class="o">%</span><span class="k">timeit</span> test_read_excel()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>test_excelfile(): time=
+633 ms ± 10.8 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+729 ms ± 26.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 3: How to filter data in Python, quick and save time instead of Excel? If you need to see the first three rows for zip code 35210:</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;zipcode&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">35210</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATEFIPS</th>
+      <th>STATE</th>
+      <th>zipcode</th>
+      <th>agi_stub</th>
+      <th>income1</th>
+      <th>income2</th>
+      <th>income3</th>
+      <th>income4</th>
+      <th>income5</th>
+      <th>income6</th>
+      <th>...</th>
+      <th>A10300</th>
+      <th>N85530</th>
+      <th>A85530</th>
+      <th>N85300</th>
+      <th>A85300</th>
+      <th>N11901</th>
+      <th>A11901</th>
+      <th>N11902</th>
+      <th>A11902</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>564</th>
+      <td>1</td>
+      <td>AL</td>
+      <td>35210</td>
+      <td>1</td>
+      <td>2420</td>
+      <td>1520</td>
+      <td>260</td>
+      <td>600</td>
+      <td>1250</td>
+      <td>3760</td>
+      <td>...</td>
+      <td>1015</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>250</td>
+      <td>210</td>
+      <td>2030</td>
+      <td>4969</td>
+      <td>4200</td>
+    </tr>
+    <tr>
+      <th>565</th>
+      <td>1</td>
+      <td>AL</td>
+      <td>35210</td>
+      <td>2</td>
+      <td>1840</td>
+      <td>980</td>
+      <td>370</td>
+      <td>410</td>
+      <td>860</td>
+      <td>3400</td>
+      <td>...</td>
+      <td>4265</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>340</td>
+      <td>544</td>
+      <td>1480</td>
+      <td>3663</td>
+      <td>3190</td>
+    </tr>
+    <tr>
+      <th>566</th>
+      <td>1</td>
+      <td>AL</td>
+      <td>35210</td>
+      <td>3</td>
+      <td>1020</td>
+      <td>430</td>
+      <td>400</td>
+      <td>150</td>
+      <td>490</td>
+      <td>1940</td>
+      <td>...</td>
+      <td>5792</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>290</td>
+      <td>677</td>
+      <td>700</td>
+      <td>1818</td>
+      <td>1850</td>
+    </tr>
+    <tr>
+      <th>567</th>
+      <td>1</td>
+      <td>AL</td>
+      <td>35210</td>
+      <td>4</td>
+      <td>580</td>
+      <td>160</td>
+      <td>350</td>
+      <td>50</td>
+      <td>290</td>
+      <td>1230</td>
+      <td>...</td>
+      <td>5443</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>190</td>
+      <td>484</td>
+      <td>370</td>
+      <td>1106</td>
+      <td>1090</td>
+    </tr>
+    <tr>
+      <th>568</th>
+      <td>1</td>
+      <td>AL</td>
+      <td>35210</td>
+      <td>5</td>
+      <td>690</td>
+      <td>130</td>
+      <td>540</td>
+      <td>20</td>
+      <td>370</td>
+      <td>1600</td>
+      <td>...</td>
+      <td>12233</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>290</td>
+      <td>1102</td>
+      <td>370</td>
+      <td>1374</td>
+      <td>1360</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 132 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10 stocks historical price from 1990-2011</span>
+<span class="n">Step</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Import</span> <span class="n">pandas</span> <span class="ow">and</span> <span class="n">read</span> <span class="n">the</span> <span class="n">Excel</span> <span class="n">file</span> <span class="p">(</span><span class="n">specified</span> <span class="n">the</span> <span class="n">directory</span><span class="p">)</span>
+             <span class="n">This</span> <span class="n">sample</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">stock</span> <span class="n">market</span> <span class="n">value</span> <span class="n">file</span> <span class="k">with</span> <span class="mi">100</span> <span class="n">stocks</span><span class="o">.</span>
+<span class="n">To</span> <span class="n">view</span> <span class="n">the</span> <span class="n">first</span> <span class="ow">and</span> <span class="n">last</span> <span class="mi">5</span> <span class="n">rows</span> <span class="n">of</span> <span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../extra/Stock_px.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>AA</th>
+      <th>AAPL</th>
+      <th>GE</th>
+      <th>IBM</th>
+      <th>JNJ</th>
+      <th>MSFT</th>
+      <th>PEP</th>
+      <th>SPX</th>
+      <th>XOM</th>
+      <th>Broker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990-02-01</td>
+      <td>4.98</td>
+      <td>7.86</td>
+      <td>2.87</td>
+      <td>16.79</td>
+      <td>4.27</td>
+      <td>0.51</td>
+      <td>6.04</td>
+      <td>328.79</td>
+      <td>6.12</td>
+      <td>ABC Inc.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1990-02-02</td>
+      <td>5.04</td>
+      <td>8.00</td>
+      <td>2.87</td>
+      <td>16.89</td>
+      <td>4.37</td>
+      <td>0.51</td>
+      <td>6.09</td>
+      <td>330.92</td>
+      <td>6.24</td>
+      <td>XYZ Inc.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990-02-05</td>
+      <td>5.07</td>
+      <td>8.18</td>
+      <td>2.87</td>
+      <td>17.32</td>
+      <td>4.34</td>
+      <td>0.51</td>
+      <td>6.05</td>
+      <td>331.85</td>
+      <td>6.25</td>
+      <td>Fidelity</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990-02-06</td>
+      <td>5.01</td>
+      <td>8.12</td>
+      <td>2.88</td>
+      <td>17.56</td>
+      <td>4.32</td>
+      <td>0.51</td>
+      <td>6.15</td>
+      <td>329.66</td>
+      <td>6.23</td>
+      <td>TD American</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990-02-07</td>
+      <td>5.04</td>
+      <td>7.77</td>
+      <td>2.91</td>
+      <td>17.93</td>
+      <td>4.38</td>
+      <td>0.51</td>
+      <td>6.17</td>
+      <td>333.75</td>
+      <td>6.33</td>
+      <td>ABC Inc.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>AA</th>
+      <th>AAPL</th>
+      <th>GE</th>
+      <th>IBM</th>
+      <th>JNJ</th>
+      <th>MSFT</th>
+      <th>PEP</th>
+      <th>SPX</th>
+      <th>XOM</th>
+      <th>Broker</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5467</th>
+      <td>2011-10-10</td>
+      <td>10.09</td>
+      <td>388.81</td>
+      <td>16.14</td>
+      <td>186.62</td>
+      <td>64.43</td>
+      <td>26.94</td>
+      <td>61.87</td>
+      <td>1194.89</td>
+      <td>76.28</td>
+      <td>TD Bank</td>
+    </tr>
+    <tr>
+      <th>5468</th>
+      <td>2011-10-11</td>
+      <td>10.30</td>
+      <td>400.29</td>
+      <td>16.14</td>
+      <td>185.00</td>
+      <td>63.96</td>
+      <td>27.00</td>
+      <td>60.95</td>
+      <td>1195.54</td>
+      <td>76.27</td>
+      <td>ABC Inc.</td>
+    </tr>
+    <tr>
+      <th>5469</th>
+      <td>2011-10-12</td>
+      <td>10.05</td>
+      <td>402.19</td>
+      <td>16.40</td>
+      <td>186.12</td>
+      <td>64.33</td>
+      <td>26.96</td>
+      <td>62.70</td>
+      <td>1207.25</td>
+      <td>77.16</td>
+      <td>XYZ Inc.</td>
+    </tr>
+    <tr>
+      <th>5470</th>
+      <td>2011-10-13</td>
+      <td>10.10</td>
+      <td>408.43</td>
+      <td>16.22</td>
+      <td>186.82</td>
+      <td>64.23</td>
+      <td>27.18</td>
+      <td>62.36</td>
+      <td>1203.66</td>
+      <td>76.37</td>
+      <td>Fidelity</td>
+    </tr>
+    <tr>
+      <th>5471</th>
+      <td>2011-10-14</td>
+      <td>10.26</td>
+      <td>422.00</td>
+      <td>16.60</td>
+      <td>190.53</td>
+      <td>64.72</td>
+      <td>27.27</td>
+      <td>62.24</td>
+      <td>1224.58</td>
+      <td>78.11</td>
+      <td>TD Bank</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 2:  Sum up stock price of AA, AAPL and GE </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1550,6 +2125,21 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 3: data analysis – it’s easy to get the min, max in Python</span>
+            <span class="o">-</span>  <span class="n">The</span> <span class="n">minimum</span> <span class="n">stock</span> <span class="n">price</span> <span class="n">of</span> <span class="n">Apple</span> <span class="n">between</span> <span class="mi">2</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">1990</span> <span class="ow">and</span> <span class="mi">10</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">2011</span> <span class="n">was</span> <span class="err">$</span><span class="mf">4.2</span>
+            <span class="o">-</span>  <span class="n">The</span> <span class="n">maximum</span> <span class="n">stock</span> <span class="n">price</span> <span class="n">of</span> <span class="n">Apple</span> <span class="n">between</span> <span class="mi">2</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">1990</span> <span class="ow">and</span> <span class="mi">10</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="mi">2011</span> <span class="n">was</span> <span class="err">$</span><span class="mf">43.619</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1577,6 +2167,21 @@ h6:hover .anchor-link {
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 4: import matplot pyplot to get the chart</span>
+ <span class="o">-</span>  <span class="n">first</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">index</span>
+ <span class="o">-</span>  <span class="n">to</span> <span class="n">chart</span> <span class="n">stock</span> <span class="n">AA</span> <span class="k">with</span> <span class="n">date</span>    
+</pre></div>
+
+</div>
 </div>
 </div>
 
