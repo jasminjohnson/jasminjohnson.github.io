@@ -6,7 +6,7 @@
         <meta name="author" content="Jasmin Johnson">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Using Pandas for Stock Analysis | Financial Analysis Journal</title>
+        <title>Using Pandas for Financial Analysis | Financial Analysis Journal</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -428,8 +428,8 @@ article .meta a.comments_btn:hover {
 <div class="container post">
     <article>
         <header>
-            <h1>Using Pandas for Stock Analysis</h1>
-            <time datetime="article.date.isoformat()" pubdate>Mon 16 April 2018</time>
+            <h1>Using Pandas for Financial Analysis</h1>
+            <time datetime="article.date.isoformat()" pubdate>Fri 20 April 2018</time>
         </header>
 
         <div class="article_content">
@@ -1409,24 +1409,21 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">For Accountants who deal with big data dump from the IS department<a class="anchor-link" href="#For-Accountants-who-deal-with-big-data-dump-from-the-IS-department">&#182;</a></h1><p>To analyze huge data set with endless rows and columns from the data dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
+<h1 id="For-Accountants-who-deal-with-large-datasets">For Accountants who deal with large datasets<a class="anchor-link" href="#For-Accountants-who-deal-with-large-datasets">&#182;</a></h1><p>To analyze large datasets with endless rows and columns from the data dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
 The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.</p>
 <p>Topic:</p>
 <ul>
-<li>Use Python to import dataset in CSV or Excel format<!-- To merge, reshape, clean data for analysis-->
-<!-- Data validation by using Python panda commends function max, min and average etc. -->
+<li>(A) Use Python to import dataset in CSV or Excel format</li>
+<li>(B) Data validation by using Python panda commends function max, min and average etc. <!-- To merge, reshape, clean data for analysis-->
 <!-- Put data in SQL Lite format for data analysis-->
 <!-- Use Visio to mockup report for report specification--></li>
 </ul>
-<h1 id="(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">(A) Use Python to Import dataset in CSV or Excel format<a class="anchor-link" href="#(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">&#182;</a></h1><p>You get a huge dataset from IS department, when you glance the excel file, your head spin. 
-The file has endless rows and columns and you need to analysis the data in the timely basis.</p>
-<p>Here are two sample data files:</p>
-<p>•   First sample data is 2015 USA census with 20,000 rows and 150 columns
-•   Second sample data is 10 stocks historical daily price from 1990-2011</p>
-<p><em>First Example - 2015 Census Data </em></p>
+<h1 id="(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">(A) Use Python to Import dataset in CSV or Excel format<a class="anchor-link" href="#(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">&#182;</a></h1><p>Here are two sample data files:</p>
+<p>•   First sample data is "2015 USA Census Data" with 20000 rows and 150 columns from gov.org
+•   Second sample data is "10 stocks historical daily price from 1990-2011" with 5473 rows and 11 columns</p>
+<p><em>First Example - 2015 USA Census Data </em></p>
 
-<pre><code>This sample data is from gov.org - 2015 census data by zip code with 20,000 rows and 150 columns.
-For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.
+<pre><code>For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.
 
 </code></pre>
 <h1 id="Step-1:-use-Pandas-to-read-Excel-data">Step 1: use Pandas to read Excel data<a class="anchor-link" href="#Step-1:-use-Pandas-to-read-Excel-data">&#182;</a></h1>
@@ -1636,25 +1633,34 @@ For illustration purpose, the excel file saved the first 1,000 rows and 150 colu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>scroll on the bottem of the table to view the whold table</em></p>
+<ul>
+<li>-scroll on the bottem of the table to view the whold table*</li>
+</ul>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">Step 2: An interesting note &#8211; there are several ways to read Excel file from Python Pandas.<a class="anchor-link" href="#Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">&#182;</a></h1><p>pd = pd.read_excel(“sample.xlsx”)
-or
-pd = pd.ExcelFile(‘sample.xlsx’)</p>
-<p>Both commands can read Excel file.</p>
-<p>Which command should you use?
-•   You can use Pandas Timeit to time how long does it take to run the reports
-•   General speaking, read_excel commands is faster</p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 2: An interesting note – there are several ways to read Excel file from Python Pandas. </span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">”</span><span class="p">)</span>
+<span class="ow">or</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="err">‘</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">’</span><span class="p">)</span>
+
+<span class="n">Both</span> <span class="n">commands</span> <span class="n">can</span> <span class="n">read</span> <span class="n">Excel</span> <span class="n">file</span><span class="o">.</span>
+
+<span class="n">Which</span> <span class="n">command</span> <span class="n">should</span> <span class="n">you</span> use<span class="o">?</span>
+<span class="err">•</span>	<span class="n">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">Pandas</span> <span class="n">Timeit</span> <span class="n">to</span> <span class="n">time</span> <span class="n">how</span> <span class="n">long</span> <span class="n">does</span> <span class="n">it</span> <span class="n">take</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">reports</span>
+<span class="err">•</span>	<span class="n">General</span> <span class="n">speaking</span><span class="p">,</span> <span class="n">ExcelFile</span> <span class="n">command</span> <span class="ow">is</span> <span class="n">faster</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1701,7 +1707,8 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?-If-you-need-to-see-the-first-three-rows-for-zip-code-35210:">Step 3: How to filter data in Python, quick and save time instead of Excel? If you need to see the first three rows for zip code 35210:<a class="anchor-link" href="#Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?-If-you-need-to-see-the-first-three-rows-for-zip-code-35210:">&#182;</a></h1>
+<h1 id="Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">Step 3: How to filter data in Python, quick and save time instead of Excel?<a class="anchor-link" href="#Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">&#182;</a></h1><p>If you would like to know the income data in the zip code 35210</p>
+
 </div>
 </div>
 </div>
@@ -1906,10 +1913,7 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Second-Example---10-stocks-historical-price-from-1990-2011">Second Example - 10 stocks historical price from 1990-2011<a class="anchor-link" href="#Second-Example---10-stocks-historical-price-from-1990-2011">&#182;</a></h1><p>Step 1: Import pandas and read the Excel file (specified the directory)
-        This sample file is stock market value file with 100 stocks.
-        To view the first and last 5 rows of data</p>
-
+<h1 id="Second-Example---10-stocks-historical-price-from-1990-2011">Second Example - 10 stocks historical price from 1990-2011<a class="anchor-link" href="#Second-Example---10-stocks-historical-price-from-1990-2011">&#182;</a></h1><h1 id="Step-1:-Import-pandas-and-read-the-Excel-file-(specified-the-directory)">Step 1: Import pandas and read the Excel file (specified the directory)<a class="anchor-link" href="#Step-1:-Import-pandas-and-read-the-Excel-file-(specified-the-directory)">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -2186,18 +2190,15 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 2:  Sum up stock price of AA, AAPL and GE </span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-2:-How-to-add-total-in-Pyhton?">Step 2: How to add total in Pyhton?<a class="anchor-link" href="#Step-2:-How-to-add-total-in-Pyhton?">&#182;</a></h1>
+<pre><code>    let's sum up stock price of AA, AAPL and GE to a column called "total" </code></pre>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2346,9 +2347,10 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-3:-data-analysis-&#8211;-it&#8217;s-easy-to-get-the-min,-max-in-Python">Step 3: data analysis &#8211; it&#8217;s easy to get the min, max in Python<a class="anchor-link" href="#Step-3:-data-analysis-&#8211;-it&#8217;s-easy-to-get-the-min,-max-in-Python">&#182;</a></h1>
-<pre><code>        -  The minimum stock price of Apple between 2/1/1990 and 10/14/2011 was $4.2
-        -  The maximum stock price of Apple between 2/1/1990 and 10/14/2011 was $43.619</code></pre>
+<h1 id="Step-3:-data-analysis">Step 3: data analysis<a class="anchor-link" href="#Step-3:-data-analysis">&#182;</a></h1>
+<pre><code>– it’s easy to get the mininum, maximun, total and average values in Python
+-  The minimum stock price of Apple between 2/1/1990 and 10/14/2011 was $4.2
+-  The maximum stock price of Apple between 2/1/1990 and 10/14/2011 was $43.619</code></pre>
 
 </div>
 </div>
@@ -2386,17 +2388,20 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-4:-import-matplot-pyplot-to-get-the-chart">Step 4: import matplot pyplot to get the chart<a class="anchor-link" href="#Step-4:-import-matplot-pyplot-to-get-the-chart">&#182;</a></h1><ul>
-<li>first to set index</li>
-<li>to chart stock AA with date    </li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 4: import matplot pyplot to get the chart</span>
+ <span class="o">-</span>  <span class="n">first</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">column</span> <span class="s2">&quot;Date&quot;</span> <span class="k">as</span> <span class="n">index</span>
+ <span class="o">-</span>  <span class="n">to</span> <span class="n">see</span> <span class="n">stock</span> <span class="s2">&quot;AA&quot;</span> <span class="n">price</span> <span class="kn">from</span> <span class="mi">1990</span> <span class="o">-</span><span class="mi">2011</span>    
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2881,14 +2886,24 @@ sKAzDMPECSzoDMMwccL/A+3xWbbqJU62AAAAAElFTkSuQmCC
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><!-- ## ref: https://chrisalbon.com/python/data_wrangling/pandas_time_series_basics/ --></p>
+<h1 id="Step-5:-chart-all-stocks-price-from-1990-2011">Step 5: chart all stocks price from 1990-2011<a class="anchor-link" href="#Step-5:-chart-all-stocks-price-from-1990-2011">&#182;</a></h1><ul>
+<li>use command resample and 'D' means date</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;!</span>-- ## ref: https://chrisalbon.com/python/data_wrangling/pandas_time_series_basics/
-<span class="c1"># D means date</span>
-<span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -3359,96 +3374,6 @@ YII=
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set Index - only need certain columns</span>
-<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;AA&#39;</span><span class="p">,</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;GE&#39;</span><span class="p">,</span><span class="s1">&#39;IBM&#39;</span><span class="p">,</span><span class="s1">&#39;JNJ&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="s1">&#39;PEP&#39;</span><span class="p">,</span><span class="s1">&#39;SPX&#39;</span><span class="p">,</span><span class="s1">&#39;XOM&#39;</span><span class="p">,</span><span class="s1">&#39;Broker&#39;</span><span class="p">])</span> 
-<span class="n">dfNew</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;AA&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]]</span>
-<span class="n">dfNew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AA</th>
-      <th>MSFT</th>
-    </tr>
-    <tr>
-      <th>DATE</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1990-02-01</th>
-      <td>4.98</td>
-      <td>0.51</td>
-    </tr>
-    <tr>
-      <th>1990-02-02</th>
-      <td>5.04</td>
-      <td>0.51</td>
-    </tr>
-    <tr>
-      <th>1990-02-05</th>
-      <td>5.07</td>
-      <td>0.51</td>
-    </tr>
-    <tr>
-      <th>1990-02-06</th>
-      <td>5.01</td>
-      <td>0.51</td>
-    </tr>
-    <tr>
-      <th>1990-02-07</th>
-      <td>5.04</td>
-      <td>0.51</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
  
 
 
@@ -3483,7 +3408,7 @@ YII=
 
         <div class="meta">
             <div>
-                    <a href="http://jasminjohnson.github.io/tag/stock.html" class="tag">stock</a>
+                    <a href="http://jasminjohnson.github.io/tag/financial.html" class="tag">financial</a>
                     <a href="http://jasminjohnson.github.io/tag/pandas.html" class="tag">pandas</a>
             </div>
         </div>
@@ -3494,9 +3419,9 @@ YII=
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
     <script type="text/javascript">
       var disqus_shortname = 'pythonicperambulations';
-      var disqus_identifier = '/blog/2018/04/16/using-pandas-for-stock-analysis/';
-      var disqus_url = 'http://jasminjohnson.github.io/blog/2018/04/16/using-pandas-for-stock-analysis/';
-      var disqus_title = 'Using Pandas for Stock Analysis';
+      var disqus_identifier = '/blog/2018/04/20/using-pandas-for-financial-analysis/';
+      var disqus_url = 'http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/';
+      var disqus_title = 'Using Pandas for Financial Analysis';
       (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
