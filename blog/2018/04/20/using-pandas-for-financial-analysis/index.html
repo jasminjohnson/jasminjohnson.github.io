@@ -1640,27 +1640,20 @@ The example illustrated here is in csv or xlsx format since most likely that IS 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Step 2: An interesting note – there are several ways to read Excel file from Python Pandas. </span>
-<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">”</span><span class="p">)</span>
-<span class="ow">or</span>
-<span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="err">‘</span><span class="n">sample</span><span class="o">.</span><span class="n">xlsx</span><span class="err">’</span><span class="p">)</span>
-
-<span class="n">Both</span> <span class="n">commands</span> <span class="n">can</span> <span class="n">read</span> <span class="n">Excel</span> <span class="n">file</span><span class="o">.</span>
-
-<span class="n">Which</span> <span class="n">command</span> <span class="n">should</span> <span class="n">you</span> use<span class="o">?</span>
-<span class="err">•</span>	<span class="n">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">Pandas</span> <span class="n">Timeit</span> <span class="n">to</span> <span class="n">time</span> <span class="n">how</span> <span class="n">long</span> <span class="n">does</span> <span class="n">it</span> <span class="n">take</span> <span class="n">to</span> <span class="n">run</span> <span class="n">the</span> <span class="n">reports</span>
-<span class="err">•</span>	<span class="n">General</span> <span class="n">speaking</span><span class="p">,</span> <span class="n">ExcelFile</span> <span class="n">command</span> <span class="ow">is</span> <span class="n">faster</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">Step 2: An interesting note &#8211; there are several ways to read Excel file from Python Pandas.<a class="anchor-link" href="#Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">&#182;</a></h1><p>pd = pd.read_excel(“sample.xlsx”)
+or
+pd = pd.ExcelFile(‘sample.xlsx’)</p>
+<p>Both commands can read Excel file.</p>
+<p>Which command should you use?
+•   You can use Pandas Timeit to time how long does it take to run the reports
+•   General speaking, ExcelFile command is faster</p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
