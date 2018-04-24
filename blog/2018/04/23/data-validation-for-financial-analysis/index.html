@@ -1436,9 +1436,7 @@ h6:hover .anchor-link {
     
 <span class="c1">#Step 1: read the Excel dataset</span>
     <span class="o">-</span> <span class="n">which</span> <span class="n">stock</span> <span class="n">has</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">dividend</span> <span class="k">yield</span>
-<span class="c1"># df[&quot;Dividend Yield&quot;].max()</span>
 
-<span class="c1">## to get the row that has the max value </span>
 <span class="o">&lt;!</span>-- ref: https://stackoverflow.com/questions/10202570/pandas-dataframe-find-row-where-values-for-column-is-maximal --&gt;
 <span class="o">&lt;!</span>--#df.iloc<span class="o">[</span>df<span class="o">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="o">]</span>.idxmax<span class="o">()]</span> --&gt;
 </pre></div>
@@ -1573,6 +1571,17 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Which stock has the maximum dividend yield?</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[43]:</div>
@@ -1606,14 +1615,23 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Which stock has the minimum dividend yield?</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># which stock has the lowest annualized dividend</span>
-
-<span class="n">min_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">min_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 <span class="n">min_div_stock</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The stock with the minimum dividend yield is </span><span class="si">%s</span><span class="s2"> with yield </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">min_div_stock</span><span class="p">[</span><span class="s1">&#39;Company Name&#39;</span><span class="p">],</span><span class="n">min_div_stock</span><span class="p">[</span><span class="s1">&#39;Dividend Yield&#39;</span><span class="p">]))</span>
 </pre></div>
@@ -1641,14 +1659,24 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>which stock is below 50-day moving average</li>
+<li>first calculate the difference between 50-day moving average and closing price </li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># which stock is below 50-day moving average ... how to attach to the stock?  4/12/18</span>
-<span class="c1"># first calculate the difference between 50-day moving average and closing price </span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
@@ -1678,13 +1706,23 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>can easily insert column and assign value in python instead of in Excel</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#can easily insert column and assign value instead of in Excel</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1818,12 +1856,24 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">*</span> <span class="n">save</span> <span class="n">the</span> <span class="n">calucation</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">new</span> <span class="n">column</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Excel</span> <span class="n">file</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># save the calucation and the new column to the Excel file?</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../extra/Dow.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>   <span class="c1">#we can see the column we created is saved in the Excel file now</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../extra/Dow.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>   
 </pre></div>
 
 </div>
@@ -1968,14 +2018,23 @@ h6:hover .anchor-link {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>count rows and columns -- useful when dealing with hugh dataset</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># count rows and columns -- useful when dealing with hugh dataset</span>
-
-<span class="n">Count_Row</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#gives number of row count</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Count_Row</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#gives number of row count</span>
 <span class="n">Count_Col</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#gives number of col count</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Count_Row</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Count_Col</span><span class="p">)</span>
@@ -2005,13 +2064,23 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>sum up total for specific columns</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sum up total for specific columns</span>
-<span class="n">sum_row</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">,</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sum_row</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">,</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">sum_row</span>
 </pre></div>
 
@@ -2046,8 +2115,12 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-to-transpose-columns?">How to transpose columns?<a class="anchor-link" href="#How-to-transpose-columns?">&#182;</a></h1>
-<pre><code>- This will be very helpful to put in the report spec to identify which column of data should be use for report</code></pre>
+<ul>
+<li>How to transpose columns? <ul>
+<li>This will be very helpful to put in the report spec to identify which column of data should be use for report</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
