@@ -33,7 +33,41 @@
 .ansigray {
   color: gray;
 }
-/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Using Pandas for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Using Pandas for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
