@@ -1409,19 +1409,27 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Merge-and-Reshape-Data">Merge and Reshape Data<a class="anchor-link" href="#Merge-and-Reshape-Data">&#182;</a></h1>
-<pre><code>Instead of using Vlookup or Sumif in Excel, how to get a clean and only valid data for data analysis?
-- Joint two dataframe using Key - Database-style DataFrame Merges
-- How to spot the invalid data?  
+<h1 id="Merge-and-Reshape-Data">Merge and Reshape Data<a class="anchor-link" href="#Merge-and-Reshape-Data">&#182;</a></h1><p>As a CPA, I have seen many dataset loading from data processing application to be used for financial data analysis.
+First step of financial data analysis and modeling is on data preparation: loading, validating, merging and reshaping.
+Most of the time the way that data is stored in files or databases is not the way you need it for financial data analysis.
+Even you can buy software to get the financial analysis, but each business are common but unique to the extent.
+There's why Excel exist!!!</p>
+<p>How to get a clean and only valid data for data analysis?</p>
+
+<pre><code>- Joint two or more dataframe by using Key - Database-style DataFrame Merges
+- How to spot the invalid data? Instead of using Vlookup, Sumif  in Excel 
 - Remove duplicate data
 - Know the average value or the maximum value of certain dataset. This will help to spot an unusual value to validate the data.         
 
 </code></pre>
-<p>Step 1 - sample reinsurnace premium loss data
-The Excel file has three tabs, premium/loss/reinsurance.</p>
+<p>Step 1 - sample reinsurnace premium loss data, the data is using Random function <a href="https://www.random.org">https://www.random.org</a> create number, first name and last name
+Assuming download the dataset as an excel file has three tabs - premium, loss and reinsurance.</p>
 
 <pre><code>- how to display each tab name
-- how to merge data using key "policy number"?</code></pre>
+- how to merge data using key "policy number"?
+- generate reinsurance report based on policy effective date and loss date
+- generate loss report that hit the reinsurance layer
+- generate Loss/LAE ratio with premium</code></pre>
 
 </div>
 </div>
