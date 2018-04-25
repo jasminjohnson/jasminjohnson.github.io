@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-04-23T10:00:00-04:00</updated><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-04-25T10:00:00-04:00</updated><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">
 
-&lt;p&gt;As a CPA, I have seen many dataset loading from data processing application to be used for financial data analysis.
-First step of financial data analysis and modeling is on data preparation: loading, validating, merging and reshaping.
-Most of the time the way that data is stored in files or databases is not the way you need it for financial data analysis.
-Even you can buy software to get the financial analysis, but each business are common but unique to the extent.&lt;/p&gt;
-</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Validation for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
+&lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
+SQLite is a flexible database can do real work in real business environments. 
+This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Validation for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
 Use Python codes to clean datasets.
 This can be very effective when you need to verify datasets for financial analysis.
