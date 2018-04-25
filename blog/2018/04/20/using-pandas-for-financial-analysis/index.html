@@ -1410,25 +1410,37 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="For-Accountants-who-deal-with-large-datasets">For Accountants who deal with large datasets<a class="anchor-link" href="#For-Accountants-who-deal-with-large-datasets">&#182;</a></h1><p><em>The goal is to take the huge dataset and perform the meaninful financial dashboard for making business decision.</em></p>
+<h1 id="For-Accountants-who-deal-with-large-datasets">For Accountants who deal with large datasets<a class="anchor-link" href="#For-Accountants-who-deal-with-large-datasets">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+
+<p><em>The goal is to take the huge dataset and perform the meaninful financial dashboard for making business decision.</em></p>
 <p>To analyze large datasets with endless rows and columns from the dataset dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
 The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.</p>
-<p>Topic:</p>
-<ul>
-<li>(A) Use Python to import dataset in CSV or Excel format</li>
-<li>(B) Data validation by using Python panda commends function max, min and average etc. <!-- To merge, reshape, clean data for analysis-->
+
+
+<!-- Use Python to import dataset in CSV or Excel format-->
+<!-- Data validation by using Python panda commends function max, min and average etc. -->
+<!-- To merge, reshape, clean data for analysis-->
 <!-- Put data in SQL Lite format for data analysis-->
-<!-- Use Visio to mockup report for report specification--></li>
+<!-- Use Visio to mockup report for report specification-->
+
+
+<h2 id="Use-Python-to-Import-dataset-in-CSV-or-Excel-format">Use Python to Import dataset in CSV or Excel format<a class="anchor-link" href="#Use-Python-to-Import-dataset-in-CSV-or-Excel-format">&#182;</a></h2><p>Here are two sample data files:</p>
+<ul>
+<li>First sample data is "2015 USA Census Data" with 20000 rows and 150 columns from gov.org</li>
+<li>Second sample data is "10 stocks historical daily price from 1990-2011" with 5473 rows and 11 columns</li>
 </ul>
-<h1 id="(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">(A) Use Python to Import dataset in CSV or Excel format<a class="anchor-link" href="#(A)-Use-Python-to-Import-dataset-in-CSV-or-Excel-format">&#182;</a></h1><p>Here are two sample data files:</p>
-<p>•   First sample data is "2015 USA Census Data" with 20000 rows and 150 columns from gov.org
-•   Second sample data is "10 stocks historical daily price from 1990-2011" with 5473 rows and 11 columns</p>
-<p><em>First Example - 2015 USA Census Data </em></p>
-
-<pre><code>For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.
-
-</code></pre>
-<h1 id="Step-1:-use-Pandas-to-read-Excel-data">Step 1: use Pandas to read Excel data<a class="anchor-link" href="#Step-1:-use-Pandas-to-read-Excel-data">&#182;</a></h1>
+<h2 id="First-Example---2015-USA-Census-Data">First Example - 2015 USA Census Data<a class="anchor-link" href="#First-Example---2015-USA-Census-Data">&#182;</a></h2><ul>
+<li>For illustration purpose, the excel file saved the first 1,000 rows and 150 columns.</li>
+</ul>
+<h2 id="Use-Pandas-to-read-Excel-data">Use Pandas to read Excel data<a class="anchor-link" href="#Use-Pandas-to-read-Excel-data">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1636,7 +1648,7 @@ The example illustrated here is in csv or xlsx format since most likely that IS 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>-scroll on the bottem of the table to view the whold table*</li>
+<li>scroll on the bottem of the table to view the whold table*</li>
 </ul>
 
 </div>
@@ -1646,13 +1658,14 @@ The example illustrated here is in csv or xlsx format since most likely that IS 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">Step 2: An interesting note &#8211; there are several ways to read Excel file from Python Pandas.<a class="anchor-link" href="#Step-2:-An-interesting-note-&#8211;-there-are-several-ways-to-read-Excel-file-from-Python-Pandas.">&#182;</a></h1><p>pd = pd.read_excel(“sample.xlsx”)
+<h2 id="Read-Excel-file-from-Python-Pandas">Read Excel file from Python Pandas<a class="anchor-link" href="#Read-Excel-file-from-Python-Pandas">&#182;</a></h2><p>pd = pd.read_excel(“sample.xlsx”)
 or
 pd = pd.ExcelFile(‘sample.xlsx’)</p>
-<p>Both commands can read Excel file.</p>
-<p>Which command should you use?
-•   You can use Pandas Timeit to time how long does it take to run the reports
-•   General speaking, ExcelFile command is faster</p>
+<ul>
+<li>Both commands can read Excel file</li>
+<li>Use Pandas Timeit to time how long does it take to run the reports</li>
+<li>General speaking, ExcelFile command is faster</li>
+</ul>
 
 </div>
 </div>
@@ -1702,7 +1715,9 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">Step 3: How to filter data in Python, quick and save time instead of Excel?<a class="anchor-link" href="#Step-3:-How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">&#182;</a></h1><p>If you would like to know the income data in the zip code 35210</p>
+<h2 id="How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">How to filter data in Python, quick and save time instead of Excel?<a class="anchor-link" href="#How-to-filter-data-in-Python,-quick-and-save-time-instead-of-Excel?">&#182;</a></h2><ul>
+<li>If you would like to know the income data in the zip code 35210</li>
+</ul>
 
 </div>
 </div>
@@ -1908,7 +1923,7 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Second-Example---10-stocks-historical-price-from-1990-2011">Second Example - 10 stocks historical price from 1990-2011<a class="anchor-link" href="#Second-Example---10-stocks-historical-price-from-1990-2011">&#182;</a></h1><h1 id="Step-1:-Import-pandas-and-read-the-Excel-file-(specified-the-directory)">Step 1: Import pandas and read the Excel file (specified the directory)<a class="anchor-link" href="#Step-1:-Import-pandas-and-read-the-Excel-file-(specified-the-directory)">&#182;</a></h1>
+<h2 id="Second-Example---10-stocks-historical-price-from-1990-2011">Second Example - 10 stocks historical price from 1990-2011<a class="anchor-link" href="#Second-Example---10-stocks-historical-price-from-1990-2011">&#182;</a></h2><h2 id="Import-pandas-and-read-the-Excel-file-(specified-the-directory)">Import pandas and read the Excel file (specified the directory)<a class="anchor-link" href="#Import-pandas-and-read-the-Excel-file-(specified-the-directory)">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2189,8 +2204,9 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-2:-How-to-add-total-in-Pyhton?">Step 2: How to add total in Pyhton?<a class="anchor-link" href="#Step-2:-How-to-add-total-in-Pyhton?">&#182;</a></h1>
-<pre><code>    let's sum up stock price of AA, AAPL and GE to a column called "total" </code></pre>
+<h2 id="How-to-add-total-in-Pyhton?">How to add total in Pyhton?<a class="anchor-link" href="#How-to-add-total-in-Pyhton?">&#182;</a></h2><ul>
+<li>let's sum up stock price of AA, AAPL and GE to a column called "total" </li>
+</ul>
 
 </div>
 </div>
@@ -2342,10 +2358,11 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-3:-data-analysis">Step 3: data analysis<a class="anchor-link" href="#Step-3:-data-analysis">&#182;</a></h1>
-<pre><code>– it’s easy to get the mininum, maximun, total and average values in Python
--  The minimum stock price of Apple between 2/1/1990 and 10/14/2011 was $4.2
--  The maximum stock price of Apple between 2/1/1990 and 10/14/2011 was $43.619</code></pre>
+<h2 id="Data-analysis">Data analysis<a class="anchor-link" href="#Data-analysis">&#182;</a></h2><ul>
+<li>it’s easy to get the mininum, maximun, total and average values in Python</li>
+<li>The minimum stock price of Apple between 2/1/1990 and 10/14/2011 was $4.2</li>
+<li>The maximum stock price of Apple between 2/1/1990 and 10/14/2011 was $43.619</li>
+</ul>
 
 </div>
 </div>
@@ -2387,7 +2404,7 @@ pd = pd.ExcelFile(‘sample.xlsx’)</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Step-4:-import-matplot-pyplot-to-get-the-chart">Step 4: import matplot pyplot to get the chart<a class="anchor-link" href="#Step-4:-import-matplot-pyplot-to-get-the-chart">&#182;</a></h1><ul>
+<h2 id="Import-matplot-pyplot-to-get-the-chart">Import matplot pyplot to get the chart<a class="anchor-link" href="#Import-matplot-pyplot-to-get-the-chart">&#182;</a></h2><ul>
 <li>first to set column "Date" as index</li>
 <li>to see stock "AA" price from 1990 -2011    </li>
 </ul>
@@ -2883,7 +2900,7 @@ sKAzDMPECSzoDMMwccL/A+3xWbbqJU62AAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!-- ## ref: https://chrisalbon.com/python/data_wrangling/pandas_time_series_basics/ --></p>
-<h1 id="Step-5:-chart-all-stocks-price-from-1990-2011">Step 5: chart all stocks price from 1990-2011<a class="anchor-link" href="#Step-5:-chart-all-stocks-price-from-1990-2011">&#182;</a></h1><ul>
+<h2 id="Chart-all-stocks-price-from-1990-2011">Chart all stocks price from 1990-2011<a class="anchor-link" href="#Chart-all-stocks-price-from-1990-2011">&#182;</a></h2><ul>
 <li>use command resample and 'D' means date</li>
 </ul>
 
