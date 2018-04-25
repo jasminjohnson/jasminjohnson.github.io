@@ -273,7 +273,8 @@ article .meta a.comments_btn:hover {
   background: #5C881C;
 }
 .post {
-  max-width: 700px;
+//  max-width: 700px;
+  max-width: 100%;
 }
 .post h2:before {
   content: "# ";
@@ -1405,14 +1406,31 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Merge and Reshape Data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Merge-and-Reshape-Data">Merge and Reshape Data<a class="anchor-link" href="#Merge-and-Reshape-Data">&#182;</a></h1><p>As a CPA, I have seen many dataset loading from data processing application to be used for financial data analysis.
+
+
+<p>As a CPA, I have seen many dataset loading from data processing application to be used for financial data analysis.
 First step of financial data analysis and modeling is on data preparation: loading, validating, merging and reshaping.
 Most of the time the way that data is stored in files or databases is not the way you need it for financial data analysis.
 Even you can buy software to get the financial analysis, but each business are common but unique to the extent.</p>
+
+
 <p>How to get a clean and only valid data for data analysis?</p>
 
 <pre><code>- Joint two or more dataframes by using Key
