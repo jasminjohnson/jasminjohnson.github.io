@@ -12,9 +12,8 @@ Most of the time the way that data is stored in files or databases is not the wa
 Even you can buy software to get the financial analysis, but each business are common but unique to the extent.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Validation for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
-Use Python codes to clean datasets.
-This can be very effective when you need to verify datasets for financial analysis.
-
+&lt;p&gt;Use Python codes to clean datasets.
+This can be very effective when you need to verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Using Pandas for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;&lt;em&gt;The goal is to take the huge dataset and perform the meaninful financial dashboard for making business decision.&lt;/em&gt;&lt;/p&gt;
