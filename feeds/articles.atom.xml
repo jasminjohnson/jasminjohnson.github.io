@@ -6,10 +6,12 @@ SQLite is a flexible database can do real work in real business environments.
 This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
 
-&lt;p&gt;As a CPA, I have seen many dataset loading from data processing application to be used for financial data analysis.
-First step of financial data analysis and modeling is on data preparation: loading, validating, merging and reshaping.
-Most of the time the way that data is stored in files or databases is not the way you need it for financial data analysis.
-Even you can buy software to get the financial analysis, but each business are common but unique to the extent.&lt;/p&gt;
+&lt;p&gt;As a CPA, I have had to work with datasets from many data processing applications to be used for financial data analysis.&lt;/p&gt;
+&lt;p&gt;In my case, I have had to work with data from a insurance and general ledger software systems.
+The process then is to get the data into another software system used for reporting, such as Cognos.&lt;/p&gt;
+&lt;p&gt;In many cases, the way the data is stored in files or databases is not best suited for data analysis.&lt;/p&gt;
+&lt;p&gt;The first step I used for financial data analysis and modeling is to prepare the data.
+The preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Validation for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;Use Python codes to clean datasets.
