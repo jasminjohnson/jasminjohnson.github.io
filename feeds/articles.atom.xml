@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal - articles</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/articles.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-04-25T10:00:00-04:00</updated><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">
-
-&lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
-SQLite is a flexible database can do real work in real business environments. 
-This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal - articles</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/articles.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-04-25T10:00:00-04:00</updated><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;As a CPA, I have had to work with datasets from many data processing applications to be used for financial data analysis.&lt;/p&gt;
 &lt;p&gt;In my case, I have had to work with data from a insurance and general ledger software systems.
