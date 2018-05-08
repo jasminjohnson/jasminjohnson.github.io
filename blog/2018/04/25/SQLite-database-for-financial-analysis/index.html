@@ -1445,12 +1445,12 @@ and you don't need to learn complicated SQL commands.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Name of Excel xlsx file. SQLite database will have the same name and extension .db</span>
 <span class="c1">#Connect SQlite file</span>
-<span class="n">filename</span><span class="o">=</span><span class="s2">&quot;../extra/PremiumLossSQLite&quot;</span> 
+<span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span> 
 <span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
 
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1470,14 +1470,14 @@ and you don't need to learn complicated SQL commands.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">A handy tool to visualize and access SQLite databases is the free DB Brower<a class="anchor-link" href="#A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">&#182;</a></h2><h3 id="I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">I will use this tool to provide screenshots of the database structures that we created below the corresponding code sections<a class="anchor-link" href="#I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">&#182;</a></h3><p><img src="images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></p>
+<h2 id="A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">A handy tool to visualize and access SQLite databases is the free DB Brower<a class="anchor-link" href="#A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">&#182;</a></h2><h3 id="I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">I will use this tool to provide screenshots of the database structures that we created below the corresponding code sections<a class="anchor-link" href="#I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">&#182;</a></h3><p><img src="/images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now lets take a query that we think should get the inner join data between the reinsurance, premium and loss data and export the data to ??</span>
@@ -1491,7 +1491,7 @@ and you don't need to learn complicated SQL commands.</p>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../extra/reinsurace_query_results.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/reinsurace_query_results.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1510,7 +1510,7 @@ and you don't need to learn complicated SQL commands.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
