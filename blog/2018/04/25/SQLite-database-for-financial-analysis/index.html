@@ -1430,6 +1430,13 @@ when it comes to setup complexity, administrative overhead, and resource usage</
 <p>It is for users and developers wanting to create databases, search, and edit data. It uses a familiar spreadsheet-like interface,
 and you don't need to learn complicated SQL commands.</p>
 <p>This program is not a visual shell for the sqlite command line tool.</p>
+<h2 id="SQLite-data-type">SQLite data type<a class="anchor-link" href="#SQLite-data-type">&#182;</a></h2><p>All data types that are supported by SQLite 3:
+INTEGER: A signed integer up to 8 bytes depending on the magnitude of the value.
+REAL: An 8-byte floating point value.
+TEXT: A text string, typically UTF-8 encoded (depending on the database encoding).
+BLOB: A blob of data (binary large object) for storing binary data.
+NULL: A NULL value, represents missing data or an empty cell.
+No designated Boolean data type: simply re-purpose the INTEGER type to represent Boolean values (0 = false, 1 = true).</p>
 <h2 id="Why-use-SQLite-to-read-Excel-File?">Why use SQLite to read Excel File?<a class="anchor-link" href="#Why-use-SQLite-to-read-Excel-File?">&#182;</a></h2><ul>
 <li>Sort data on several fields</li>
 <li>Combining data from several sheets </li>
