@@ -3,7 +3,7 @@
 
 &lt;p&gt;&lt;em&gt;Time Series anlaysis can be useful to display financial data in different frequency.&lt;/em&gt;
 &lt;em&gt;Generate Date and Random Data for Testing&lt;/em&gt;&lt;/p&gt;
-</summary><category term="financial"></category><category term="timeseries"></category><category term="pandas"></category></entry><entry><title>SQLite Database for Financial Analysis 2</title><link href="http://jasminjohnson.github.io/blog/2018/05/17/SQLite-Python-Pandas-financial-analysis/" rel="alternate"></link><published>2018-05-17T00:00:00-04:00</published><updated>2018-05-17T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-05-17:blog/2018/05/17/SQLite-Python-Pandas-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="timeseries"></category><category term="pandas"></category></entry><entry><title>SQLite Database for Financial Analysis II</title><link href="http://jasminjohnson.github.io/blog/2018/05/17/SQLite-Python-Pandas-financial-analysis/" rel="alternate"></link><published>2018-05-17T00:00:00-04:00</published><updated>2018-05-17T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-05-17:blog/2018/05/17/SQLite-Python-Pandas-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;SQLite is a database engine that makes it simple to store and work with relational data.
 Much like the csv format, SQLite stores data in a single file that can be easily shared with others.
@@ -11,12 +11,12 @@ Most programming languages and environments have good support for working with S
 &lt;p&gt;This example file is "life expectancy and birth rate by country" from data.gov.
 The file is in Excel format.&lt;/p&gt;
 &lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a hugh dataset is very useful.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="pandas"></category></entry><entry><title>SQLite Database for Financial Analysis 1</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="pandas"></category></entry><entry><title>SQLite Database for Financial Analysis I</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
 SQLite is a flexible database can do real work in real business environments. 
 This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Merge and Reshape Data for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel users III</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;As a CPA, I have had to work with datasets from many data processing applications to be used for financial data analysis.&lt;/p&gt;
 &lt;p&gt;In my case, I have had to work with data from a insurance and general ledger software systems.
@@ -24,42 +24,13 @@ The process then is to get the data into another software system used for report
 &lt;p&gt;In many cases, the way the data is stored in files or databases is not best suited for data analysis.&lt;/p&gt;
 &lt;p&gt;The first step I used for financial data analysis and modeling is to prepare the data.
 The preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
-</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Validation for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel User II</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;Use Python codes to clean datasets.
 This can be very effective when you need to verify datasets for financial analysis.&lt;/p&gt;
-</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Using Pandas for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
-.ansibold {
-  font-weight: bold;
-}
-/* use dark versions for foreground, to improve visibility */
-.ansiblack {
-  color: black;
-}
-.ansired {
-  color: darkred;
-}
-.ansigreen {
-  color: darkgreen;
-}
-.ansiyellow {
-  color: #c4a000;
-}
-.ansiblue {
-  color: darkblue;
-}
-.ansipurple {
-  color: darkviolet;
-}
-.ansicyan {
-  color: steelblue;
-}
-.ansigray {
-  color: gray;
-}
-/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category></entry></feed>
+</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
+
+&lt;p&gt;&lt;em&gt;The goal is to take the huge dataset and perform the meaninful financial dashboard for making business decision.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To analyze large datasets with endless rows and columns from the dataset dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
+The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.&lt;/p&gt;
+</summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
