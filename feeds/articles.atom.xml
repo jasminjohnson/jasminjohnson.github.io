@@ -24,7 +24,7 @@ The process then is to get the data into another software system used for report
 &lt;p&gt;In many cases, the way the data is stored in files or databases is not best suited for data analysis.&lt;/p&gt;
 &lt;p&gt;The first step I used for financial data analysis and modeling is to prepare the data.
 The preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
-</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel User II</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel Users II</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;Use Python codes to clean datasets.
 This can be very effective when you need to verify datasets for financial analysis.&lt;/p&gt;
