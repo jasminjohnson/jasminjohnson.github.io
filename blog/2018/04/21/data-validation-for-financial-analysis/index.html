@@ -6,7 +6,7 @@
         <meta name="author" content="Jasmin Johnson">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Data Analysis With Python for Excel Users II | Financial Analysis Journal</title>
+        <title>Data Analysis With Python for Excel Users II - Data Validation | Financial Analysis Journal</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -429,7 +429,7 @@ article .meta a.comments_btn:hover {
 <div class="container post">
     <article>
         <header>
-            <h1>Data Analysis With Python for Excel Users II</h1>
+            <h1>Data Analysis With Python for Excel Users II - Data Validation</h1>
             <time datetime="article.date.isoformat()" pubdate>Sat 21 April 2018</time>
         </header>
 
@@ -1406,35 +1406,53 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;!</span>-- PELICAN_BEGIN_SUMMARY --&gt;
+<span class="n">Use</span> <span class="n">Python</span> <span class="n">codes</span> <span class="n">to</span> <span class="n">clean</span> <span class="n">datasets</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">very</span> <span class="n">effective</span> <span class="n">when</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">datasets</span> <span class="k">for</span> <span class="n">financial</span> <span class="n">analysis</span><span class="o">.</span>
 
+<span class="o">&lt;!</span>-- PELICAN_END_SUMMARY --&gt;
+</pre></div>
 
-<p>Use Python codes to clean datasets.
-This can be very effective when you need to verify datasets for financial analysis.</p>
-
-
-<p>Apply commends to verfiy the accuracy of the datasets.</p>
-<ul>
-<li>sum up columns or rows in python and save the file in Excel</li>
-<li>transpose columns</li>
-<li>get the maximum, mean, average value in the datasets </li>
-<li>filter data to isolate invalid data</li>
-</ul>
-<h2 id="Example---Dow-Jone-index-and-DJ-Index-30--from-1985-to-2017">Example - Dow Jone index and DJ Index 30  from 1985 to 2017<a class="anchor-link" href="#Example---Dow-Jone-index-and-DJ-Index-30--from-1985-to-2017">&#182;</a></h2><ul>
-<li>How to sum up columns income1, income2 and income3? </li>
-<li>Once we decide to sum up the total to income1, income2 and income3, we need to save it in Python.</li>
-<li>Its easy to create a total in Excel, for data integrity, we need to do one more step in Python to add the column “total”.</li>
-</ul>
-<h2 id="Read-the-Excel-dataset">Read the Excel dataset<a class="anchor-link" href="#Read-the-Excel-dataset">&#182;</a></h2><ul>
-<li>which stock has the highest dividend yield</li>
-</ul>
-<!-- ref: https://stackoverflow.com/questions/10202570/pandas-dataframe-find-row-where-values-for-column-is-maximal -->
-<!--#df.iloc[df["Dividend Yield"].idxmax()] -->
 </div>
 </div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Apply</span> <span class="n">commends</span> <span class="n">to</span> <span class="n">verfiy</span> <span class="n">the</span> <span class="n">accuracy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">datasets</span><span class="o">.</span>
+<span class="o">-</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">columns</span> <span class="ow">or</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">python</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">Excel</span>
+<span class="o">-</span> <span class="n">transpose</span> <span class="n">columns</span>
+<span class="o">-</span> <span class="n">get</span> <span class="n">the</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">average</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">datasets</span> 
+<span class="o">-</span> <span class="nb">filter</span> <span class="n">data</span> <span class="n">to</span> <span class="n">isolate</span> <span class="n">invalid</span> <span class="n">data</span>
+
+
+<span class="c1">## Example - Dow Jone index and DJ Index 30  from 1985 to 2017 </span>
+    
+<span class="o">-</span> <span class="n">How</span> <span class="n">to</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">columns</span> <span class="n">income1</span><span class="p">,</span> <span class="n">income2</span> <span class="ow">and</span> income3<span class="o">?</span> 
+<span class="o">-</span> <span class="n">Once</span> <span class="n">we</span> <span class="n">decide</span> <span class="n">to</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">the</span> <span class="n">total</span> <span class="n">to</span> <span class="n">income1</span><span class="p">,</span> <span class="n">income2</span> <span class="ow">and</span> <span class="n">income3</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">save</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">Python</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Its</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">total</span> <span class="ow">in</span> <span class="n">Excel</span><span class="p">,</span> <span class="k">for</span> <span class="n">data</span> <span class="n">integrity</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">do</span> <span class="n">one</span> <span class="n">more</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">add</span> <span class="n">the</span> <span class="n">column</span> <span class="err">“</span><span class="n">total</span><span class="err">”</span><span class="o">.</span>
+   
+    
+<span class="c1">## Read the Excel dataset</span>
+<span class="o">-</span> <span class="n">which</span> <span class="n">stock</span> <span class="n">has</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">dividend</span> <span class="k">yield</span>
+
+<span class="o">&lt;!</span>-- ref: https://stackoverflow.com/questions/10202570/pandas-dataframe-find-row-where-values-for-column-is-maximal --&gt;
+<span class="o">&lt;!</span>--#df.iloc<span class="o">[</span>df<span class="o">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="o">]</span>.idxmax<span class="o">()]</span> --&gt;
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
