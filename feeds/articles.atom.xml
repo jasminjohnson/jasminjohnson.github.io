@@ -29,8 +29,14 @@ The preparation process involves loading, validating, merging and reshaping of d
 &lt;p&gt;Use Python codes to clean datasets.
 This can be very effective when you need to verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
+The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze hugh datasets.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;The goal is to take the huge dataset and perform the meaninful financial dashboard for making business decision.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;To analyze large datasets with endless rows and columns from the dataset dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? 
-The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.&lt;/p&gt;
+
+
+
+
+
+
+
+&lt;p&gt;To analyze large datasets with endless rows and columns from the dataset dump, how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.
 </summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
