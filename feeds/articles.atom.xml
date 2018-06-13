@@ -24,41 +24,11 @@ The process then is to get the data into another software system used for report
 &lt;p&gt;In many cases, the way the data is stored in files or databases is not best suited for data analysis.&lt;/p&gt;
 &lt;p&gt;The first step I used for financial data analysis and modeling is to prepare the data.
 The preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
-</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel Users II - Data Validation</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
-.ansibold {
-  font-weight: bold;
-}
-/* use dark versions for foreground, to improve visibility */
-.ansiblack {
-  color: black;
-}
-.ansired {
-  color: darkred;
-}
-.ansigreen {
-  color: darkgreen;
-}
-.ansiyellow {
-  color: #c4a000;
-}
-.ansiblue {
-  color: darkblue;
-}
-.ansipurple {
-  color: darkviolet;
-}
-.ansicyan {
-  color: steelblue;
-}
-.ansigray {
-  color: gray;
-}
-/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel Users II - Perform Excel Function in Python</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
+
+&lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
+This can be very effective when we need to quickly verify datasets for financial analysis.&lt;/p&gt;
+</summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
 The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze hugh datasets.&lt;/p&gt;
 
 
