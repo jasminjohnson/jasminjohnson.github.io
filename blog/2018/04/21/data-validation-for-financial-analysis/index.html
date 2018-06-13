@@ -6,7 +6,7 @@
         <meta name="author" content="Jasmin Johnson">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Data Analysis With Python for Excel Users II - Data Validation | Financial Analysis Journal</title>
+        <title>Data Analysis With Python for Excel Users II - Perform Excel Function in Python | Financial Analysis Journal</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -429,7 +429,7 @@ article .meta a.comments_btn:hover {
 <div class="container post">
     <article>
         <header>
-            <h1>Data Analysis With Python for Excel Users II - Data Validation</h1>
+            <h1>Data Analysis With Python for Excel Users II - Perform Excel Function in Python</h1>
             <time datetime="article.date.isoformat()" pubdate>Sat 21 April 2018</time>
         </header>
 
@@ -1406,54 +1406,43 @@ h6:hover .anchor-link {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;!</span>-- PELICAN_BEGIN_SUMMARY --&gt;
+<div class="text_cell_render border-box-sizing rendered_html">
 
-<span class="n">Use</span> <span class="n">Python</span> <span class="n">codes</span> <span class="n">to</span> <span class="n">clean</span> <span class="n">datasets</span><span class="o">.</span>
-<span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">very</span> <span class="n">effective</span> <span class="n">when</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">datasets</span> <span class="k">for</span> <span class="n">financial</span> <span class="n">analysis</span><span class="o">.</span>
 
-<span class="o">&lt;!</span>-- PELICAN_END_SUMMARY --&gt;
-</pre></div>
+<p>When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
+This can be very effective when we need to quickly verify datasets for financial analysis.</p>
 
 </div>
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Apply</span> <span class="n">commends</span> <span class="n">to</span> <span class="n">verfiy</span> <span class="n">the</span> <span class="n">accuracy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">datasets</span><span class="o">.</span>
-<span class="o">-</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">columns</span> <span class="ow">or</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">python</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">Excel</span>
-<span class="o">-</span> <span class="n">transpose</span> <span class="n">columns</span>
-<span class="o">-</span> <span class="n">get</span> <span class="n">the</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">average</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">datasets</span> 
-<span class="o">-</span> <span class="nb">filter</span> <span class="n">data</span> <span class="n">to</span> <span class="n">isolate</span> <span class="n">invalid</span> <span class="n">data</span>
-
-
-<span class="c1">## Example - Dow Jone index and DJ Index 30  from 1985 to 2017 </span>
-    
-<span class="o">-</span> <span class="n">How</span> <span class="n">to</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">columns</span> <span class="n">income1</span><span class="p">,</span> <span class="n">income2</span> <span class="ow">and</span> income3<span class="o">?</span> 
-<span class="o">-</span> <span class="n">Once</span> <span class="n">we</span> <span class="n">decide</span> <span class="n">to</span> <span class="nb">sum</span> <span class="n">up</span> <span class="n">the</span> <span class="n">total</span> <span class="n">to</span> <span class="n">income1</span><span class="p">,</span> <span class="n">income2</span> <span class="ow">and</span> <span class="n">income3</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">save</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">Python</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">Its</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">total</span> <span class="ow">in</span> <span class="n">Excel</span><span class="p">,</span> <span class="k">for</span> <span class="n">data</span> <span class="n">integrity</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">do</span> <span class="n">one</span> <span class="n">more</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">add</span> <span class="n">the</span> <span class="n">column</span> <span class="err">“</span><span class="n">total</span><span class="err">”</span><span class="o">.</span>
-   
-    
-<span class="c1">## Read the Excel dataset</span>
-<span class="o">-</span> <span class="n">which</span> <span class="n">stock</span> <span class="n">has</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">dividend</span> <span class="k">yield</span>
-
-<span class="o">&lt;!</span>-- ref: https://stackoverflow.com/questions/10202570/pandas-dataframe-find-row-where-values-for-column-is-maximal --&gt;
-<span class="o">&lt;!</span>--#df.iloc<span class="o">[</span>df<span class="o">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="o">]</span>.idxmax<span class="o">()]</span> --&gt;
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Apply-Python-Codes-to-Verfiy-the-Accuracy-of-the-Datasets.">Apply Python Codes to Verfiy the Accuracy of the Datasets.<a class="anchor-link" href="#Apply-Python-Codes-to-Verfiy-the-Accuracy-of-the-Datasets.">&#182;</a></h2><ul>
+<li>Sum up columns or rows in python and save the file in Excel</li>
+<li>Transpose columns</li>
+<li>Get the maximum, mean, average value in the datasets </li>
+<li>Filter data to isolate invalid data </li>
+</ul>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example---Dow-Jone-Index-and-DJ-Index-30--from-1985-to-2017">Example - Dow Jone Index and DJ Index 30  from 1985 to 2017<a class="anchor-link" href="#Example---Dow-Jone-Index-and-DJ-Index-30--from-1985-to-2017">&#182;</a></h3><ul>
+<li>Sum up columns income1, income2 and income3 </li>
+<li>Insert a new column Total in Python</li>
+</ul>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1584,7 +1573,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Which-stock-has-the-maximum-dividend-yield?">Which stock has the maximum dividend yield?<a class="anchor-link" href="#Which-stock-has-the-maximum-dividend-yield?">&#182;</a></h2>
+<h3 id="Which-Stock-Has-the-Maximum-Dividend-Yield?">Which Stock Has the Maximum Dividend Yield?<a class="anchor-link" href="#Which-Stock-Has-the-Maximum-Dividend-Yield?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1625,7 +1614,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Which-stock-has-the-minimum-dividend-yield?">Which stock has the minimum dividend yield?<a class="anchor-link" href="#Which-stock-has-the-minimum-dividend-yield?">&#182;</a></h2>
+<h3 id="Which-Stock-Has-the-Minimum-Dividend-Yield?">Which Stock Has the Minimum Dividend Yield?<a class="anchor-link" href="#Which-Stock-Has-the-Minimum-Dividend-Yield?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1666,9 +1655,9 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Which-stock-is-currently-below-50-day-moving-average?">Which stock is currently below 50-day moving average?<a class="anchor-link" href="#Which-stock-is-currently-below-50-day-moving-average?">&#182;</a></h2><ul>
-<li>calculate the difference between 50-day moving average and the closing price </li>
-<li>filter the difference below zero, this showed a list of stocks below 50-day average</li>
+<h3 id="Which-Stock-Price-is-Currently-Below-50-day-Moving-Average?">Which Stock Price is Currently Below 50-day Moving Average?<a class="anchor-link" href="#Which-Stock-Price-is-Currently-Below-50-day-Moving-Average?">&#182;</a></h3><ul>
+<li>Calculate the difference between 50-day moving average and the closing price </li>
+<li>Filter the difference below zero, this showed a list of stocks below 50-day average</li>
 </ul>
 
 </div>
@@ -1679,9 +1668,8 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>  <span class="c1">#to calculate stock below 50-day averge</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># view the report</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>  <span class="c1"># the stock with the smallest difference when compared with 50-day average</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>  
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>  
 <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1811,7 +1799,16 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Insert-column-and-assign-value-in-Python-instead-of-in-Excel">Insert column and assign value in Python instead of in Excel<a class="anchor-link" href="#Insert-column-and-assign-value-in-Python-instead-of-in-Excel">&#182;</a></h2>
+<h3 id="Insert-Column-and-Assign-Value-in-Python-Instead-of-in-Excel">Insert Column and Assign Value in Python Instead of in Excel<a class="anchor-link" href="#Insert-Column-and-Assign-Value-in-Python-Instead-of-in-Excel">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Insert new column after columns 2 with 5% Commission Rate 5% </strong></p>
+
 </div>
 </div>
 </div>
@@ -1820,8 +1817,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Insert new column after columns 2 with 5% Commission Rate 5%</span>
-<span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1957,7 +1953,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Save-the-calculation-and-the-newly-created-column-to-the-Excel-file">Save the calculation and the newly created column to the Excel file<a class="anchor-link" href="#Save-the-calculation-and-the-newly-created-column-to-the-Excel-file">&#182;</a></h2>
+<h3 id="Save-the-calculation-and-the-newly-created-column-to-the-Excel-file">Save the calculation and the newly created column to the Excel file<a class="anchor-link" href="#Save-the-calculation-and-the-newly-created-column-to-the-Excel-file">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2103,7 +2099,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>two new columns created in python is saved in the Excel file *</li>
+<li>two new columns created in python is saved in the Excel file </li>
 </ul>
 
 </div>
@@ -2113,7 +2109,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Count-rows-and-columns----useful-when-dealing-with-hugh-dataset">Count rows and columns -- useful when dealing with hugh dataset<a class="anchor-link" href="#Count-rows-and-columns----useful-when-dealing-with-hugh-dataset">&#182;</a></h2>
+<h3 id="Count-Rows-and-Columns-When-Dealing-With-Hugh-Dataset">Count Rows and Columns When Dealing With Hugh Dataset<a class="anchor-link" href="#Count-Rows-and-Columns-When-Dealing-With-Hugh-Dataset">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2122,8 +2118,8 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Count_Row</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#gives number of row count</span>
-<span class="n">Count_Col</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#gives number of col count</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Count_Row</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+<span class="n">Count_Col</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">Count_Row</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Count_Col</span><span class="p">)</span>
 </pre></div>
@@ -2156,7 +2152,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sum-up-total-for-specific-columns">Sum up total for specific columns<a class="anchor-link" href="#Sum-up-total-for-specific-columns">&#182;</a></h2>
+<h3 id="Sum-up-total-for-specific-columns">Sum up total for specific columns<a class="anchor-link" href="#Sum-up-total-for-specific-columns">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2200,8 +2196,8 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Transpose-columns">Transpose columns<a class="anchor-link" href="#Transpose-columns">&#182;</a></h2><ul>
-<li>This will be very helpful to put in the report spec to identify which column of data should be use for report</li>
+<h3 id="Transpose-columns">Transpose columns<a class="anchor-link" href="#Transpose-columns">&#182;</a></h3><ul>
+<li>This code is very helpful for reader to view the report</li>
 </ul>
 
 </div>
