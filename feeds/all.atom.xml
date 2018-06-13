@@ -68,5 +68,5 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 
 
-&lt;p&gt;How to analyze large datasets with endless rows and columns from the dataset dump? how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? The example illustrated here is in csv or xlsx format since most likely that IS department would only provide the output data in either format.
+&lt;p&gt;How to analyze large datasets with endless rows and columns from the dataset dump? how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? Two examples illustrated here are in either csv or xlsx format since most likely that IS department would only provide the output data in either format.
 </summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
