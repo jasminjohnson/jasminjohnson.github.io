@@ -1423,7 +1423,7 @@ This can be very effective when we need to quickly verify datasets for financial
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Apply-Python-Codes-to-Verfiy-the-Accuracy-of-the-Datasets">Apply Python Codes to Verfiy the Accuracy of the Datasets<a class="anchor-link" href="#Apply-Python-Codes-to-Verfiy-the-Accuracy-of-the-Datasets">&#182;</a></h2><ul>
-<li>Sum up columns or rows in python and save the file in Excel</li>
+<li>Sum up columns or rows in python and export the file to Excel</li>
 <li>Transpose columns</li>
 <li>Get the maximum, mean, average value in the datasets </li>
 <li>Filter data to isolate invalid data </li>
@@ -1442,11 +1442,11 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Dow.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1459,7 +1459,7 @@ This can be very effective when we need to quickly verify datasets for financial
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -1530,30 +1530,6 @@ This can be very effective when we need to quickly verify datasets for financial
       <td>48.73</td>
       <td>47.0300</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>UNH</td>
-      <td>UnitedHealth Group</td>
-      <td>0.0135</td>
-      <td>221.90</td>
-      <td>3.00</td>
-      <td>2018-03-08</td>
-      <td>2018-03-20</td>
-      <td>198.85</td>
-      <td>187.4800</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>UTX</td>
-      <td>United Technologies</td>
-      <td>0.0229</td>
-      <td>122.45</td>
-      <td>2.80</td>
-      <td>2018-02-15</td>
-      <td>2018-03-10</td>
-      <td>116.43</td>
-      <td>118.6200</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -1576,7 +1552,7 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">max_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
@@ -1618,7 +1594,7 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">min_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
@@ -1664,12 +1640,12 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>  
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>  
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1682,7 +1658,7 @@ This can be very effective when we need to quickly verify datasets for financial
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -1757,32 +1733,6 @@ This can be very effective when we need to quickly verify datasets for financial
       <td>187.4800</td>
       <td>-23.05</td>
     </tr>
-    <tr>
-      <th>4</th>
-      <td>UTX</td>
-      <td>United Technologies</td>
-      <td>0.0229</td>
-      <td>122.45</td>
-      <td>2.80</td>
-      <td>2018-02-15</td>
-      <td>2018-03-10</td>
-      <td>116.43</td>
-      <td>118.6200</td>
-      <td>-6.02</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>TRV</td>
-      <td>Travelers Co.</td>
-      <td>0.0211</td>
-      <td>136.59</td>
-      <td>2.88</td>
-      <td>2018-03-08</td>
-      <td>2018-03-30</td>
-      <td>125.36</td>
-      <td>124.7500</td>
-      <td>-11.23</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -1813,11 +1763,11 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1830,7 +1780,7 @@ This can be very effective when we need to quickly verify datasets for financial
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -1909,34 +1859,6 @@ This can be very effective when we need to quickly verify datasets for financial
       <td>47.0300</td>
       <td>1.15</td>
     </tr>
-    <tr>
-      <th>3</th>
-      <td>UNH</td>
-      <td>UnitedHealth Group</td>
-      <td>5</td>
-      <td>0.0135</td>
-      <td>221.90</td>
-      <td>3.00</td>
-      <td>2018-03-08</td>
-      <td>2018-03-20</td>
-      <td>198.85</td>
-      <td>187.4800</td>
-      <td>-23.05</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>UTX</td>
-      <td>United Technologies</td>
-      <td>5</td>
-      <td>0.0229</td>
-      <td>122.45</td>
-      <td>2.80</td>
-      <td>2018-02-15</td>
-      <td>2018-03-10</td>
-      <td>116.43</td>
-      <td>118.6200</td>
-      <td>-6.02</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -1959,11 +1881,11 @@ This can be very effective when we need to quickly verify datasets for financial
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/Dow.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>   
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   
 </pre></div>
 
 </div>
@@ -1976,7 +1898,7 @@ This can be very effective when we need to quickly verify datasets for financial
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -2013,34 +1935,6 @@ This can be very effective when we need to quickly verify datasets for financial
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>25</th>
-      <td>CAT</td>
-      <td>Caterpillar Inc.</td>
-      <td>5</td>
-      <td>0.0213</td>
-      <td>146.79</td>
-      <td>3.12</td>
-      <td>2018-04-20</td>
-      <td>2018-05-19</td>
-      <td>127.150</td>
-      <td>112.1300</td>
-      <td>-19.640</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>BA</td>
-      <td>Boeing Co.</td>
-      <td>5</td>
-      <td>0.0209</td>
-      <td>327.36</td>
-      <td>6.84</td>
-      <td>2018-02-08</td>
-      <td>2018-03-02</td>
-      <td>255.390</td>
-      <td>218.1440</td>
-      <td>-71.970</td>
-    </tr>
     <tr>
       <th>27</th>
       <td>AAPL</td>
@@ -2198,7 +2092,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Transpose columns </strong>- This code is very helpful for viewing report</p>
+<p><strong> Transpose columns </strong>- This code is very helpful for viewing the output</p>
 
 </div>
 </div>
