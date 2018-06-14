@@ -16,7 +16,7 @@ The file is in Excel format.&lt;/p&gt;
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
 SQLite is a flexible database can do real work in real business environments. 
 This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel Users III</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel Users III - Merge and Reshape Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;As a CPA, I have had to work with datasets from many data processing applications to be used for financial data analysis.&lt;/p&gt;
 &lt;p&gt;In my case, I have had to work with data from a insurance and general ledger software systems.
