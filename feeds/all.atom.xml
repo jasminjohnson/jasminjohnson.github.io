@@ -18,12 +18,12 @@ SQLite is a flexible database can do real work in real business environments.
 This database tool can be useful for accountants to fo financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel Users III - Merge and Reshape Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/23/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-04-23T10:00:00-04:00</published><updated>2018-04-23T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-23:blog/2018/04/23/merge-reshape-for-financial-analysis/</id><summary type="html">
 
-&lt;p&gt;As a CPA, I have had to work with datasets from many data processing applications to be used for financial data analysis.&lt;/p&gt;
-&lt;p&gt;In my case, I have had to work with data from a insurance and general ledger software systems.
-The process then is to get the data into another software system used for reporting, such as Cognos.&lt;/p&gt;
-&lt;p&gt;In many cases, the way the data is stored in files or databases is not best suited for data analysis.&lt;/p&gt;
-&lt;p&gt;The first step I used for financial data analysis and modeling is to prepare the data.
-The preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
+&lt;p&gt;As a CPA, I have had to work with datasets from data processing applications, such as insurance application, general ledger,
+regulatory reporting system and etc.&lt;/p&gt;
+&lt;p&gt;The process is to incorporate all the data then create reinsurance analysis for pricing treaties, pro-forma financial analysis
+for new business opportunity, regulatory compliance and risk accessment for stress test.&lt;/p&gt;
+&lt;p&gt;As an old saying that the data needs to be valid, otherwise will be "Garbage In and Garbage Out".&lt;/p&gt;
+&lt;p&gt;The first step for data preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel Users II - Perform Excel Function in Python</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
