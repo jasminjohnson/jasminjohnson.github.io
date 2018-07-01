@@ -2481,21 +2481,18 @@ dtype: bool</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Detecting and Filtering Outliers - how to detecting abnormal loss value?</span>
-  <span class="o">-</span> <span class="n">Filtering</span> <span class="ow">or</span> <span class="n">transforming</span> <span class="n">outliers</span> <span class="n">by</span> <span class="n">applying</span> <span class="n">array</span> <span class="n">operations</span>
-  <span class="o">-</span> <span class="n">Loss</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">exceeded</span> <span class="mi">1</span> <span class="n">million</span> <span class="n">since</span> <span class="n">the</span> <span class="n">policy</span> <span class="n">limit</span> <span class="ow">is</span> <span class="mi">1</span><span class="n">M</span>
-  <span class="o">-</span> <span class="n">Use</span> <span class="n">the</span> <span class="nb">abs</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">column</span> <span class="n">Loss</span> <span class="n">when</span> <span class="n">loss</span> <span class="ow">is</span> <span class="n">exceeding</span> <span class="mi">1</span><span class="n">M</span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Detecting-and-Filtering-Outliers---how-to-detecting-abnormal-loss-value?">Detecting and Filtering Outliers - how to detecting abnormal loss value?<a class="anchor-link" href="#Detecting-and-Filtering-Outliers---how-to-detecting-abnormal-loss-value?">&#182;</a></h3><ul>
+<li>Filtering or transforming outliers by applying array operations</li>
+<li>Loss should not exceeded 1 million since the policy limit is 1M</li>
+<li>Use the abs method in column Loss when loss is exceeding 1M </li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2539,23 +2536,20 @@ Name: Loss, dtype: float64</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Discretization and Binning - how to seperate loss into reinsurance layer?</span>
-<span class="o">-</span> <span class="n">Separated</span> <span class="n">loss</span> <span class="n">into</span> <span class="err">“</span><span class="n">bins</span><span class="err">”</span> <span class="k">for</span> <span class="n">reinsurance</span> <span class="n">analysis</span>
-<span class="o">-</span> <span class="n">We</span> <span class="n">can</span> <span class="n">group</span> <span class="n">the</span> <span class="n">loss</span> <span class="nb">range</span> <span class="ow">and</span> <span class="n">analyze</span> <span class="n">the</span> <span class="n">loss</span> <span class="n">layer</span> <span class="k">for</span> <span class="n">placing</span> <span class="n">reinsurance</span> <span class="n">treaty</span>
-<span class="o">-</span> <span class="n">Group</span> <span class="n">claim</span> <span class="n">data</span> <span class="n">into</span> <span class="n">discrete</span> <span class="n">loss</span> <span class="n">buckets</span>
-<span class="o">-</span> <span class="n">Let</span><span class="err">’</span><span class="n">s</span> <span class="n">divide</span> <span class="n">these</span> <span class="n">into</span> <span class="n">bins</span> <span class="n">of</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">50001</span> <span class="n">to</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">75001</span> <span class="n">to</span> <span class="mi">1000000</span><span class="p">,</span> <span class="ow">and</span> <span class="k">finally</span> <span class="mi">1000001</span> <span class="ow">and</span> <span class="n">greater</span>
-<span class="o">-</span> <span class="n">To</span> <span class="n">do</span> <span class="n">so</span><span class="p">,</span> <span class="n">you</span> <span class="n">have</span> <span class="n">to</span> <span class="n">use</span> <span class="n">cut</span><span class="p">,</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">pandas</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Discretization-and-Binning---how-to-seperate-loss-into-reinsurance-layer?">Discretization and Binning - how to seperate loss into reinsurance layer?<a class="anchor-link" href="#Discretization-and-Binning---how-to-seperate-loss-into-reinsurance-layer?">&#182;</a></h3><ul>
+<li>Separated loss into “bins” for reinsurance analysis</li>
+<li>We can group the loss range and analyze the loss layer for placing reinsurance treaty</li>
+<li>Group claim data into discrete loss buckets</li>
+<li>Let’s divide these into bins of 1 to 50000, 50001 to 75000, 75001 to 1000000, and finally 1000001 and greater</li>
+<li>To do so, you have to use cut, a function in pandas</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2664,20 +2658,30 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Save grouping data to Excel</span>
-<span class="o">-</span> <span class="n">view</span> <span class="n">loss</span> <span class="n">by</span> <span class="n">Line</span> <span class="n">of</span> <span class="n">Business</span>
-<span class="o">-</span> <span class="n">save</span> <span class="n">the</span> <span class="n">result</span> <span class="n">to</span> <span class="n">Excel</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plotting-and-Visualization---Dashboard-to-show-loss-distribution-by-line-of-business">Plotting and Visualization - Dashboard to show loss distribution by line of business<a class="anchor-link" href="#Plotting-and-Visualization---Dashboard-to-show-loss-distribution-by-line-of-business">&#182;</a></h3><ul>
+<li>Part of the reason for this is that in many cases the data needed to make a complete plot is spread across many objects.</li>
+<li>In pandas we have row labels, column labels, and possibly grouping information- </li>
+<li>many kinds of fully-formed plots that would ordinarily require a lot of matplotlib code can be expressed in one or two concise statements.</li>
+<li>Therefore, pandas has an increasing number of high-level plotting methods for creating standard visualizations that take advantage of how data is organized in DataFrame objects.</li>
+</ul>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Use-panda.DataFrame-to-plot">Use panda.DataFrame to plot<a class="anchor-link" href="#Use-panda.DataFrame-to-plot">&#182;</a></h3><ul>
+<li>With a DataFrame, bar plots group the values in each row together in a group in bars, side by side, for each value</li>
+</ul>
 
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -3734,27 +3738,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Plotting and Visualization - Dashboard to show loss distribution by line of business</span>
-<span class="o">-</span> <span class="n">Part</span> <span class="n">of</span> <span class="n">the</span> <span class="n">reason</span> <span class="k">for</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">that</span> <span class="ow">in</span> <span class="n">many</span> <span class="n">cases</span> <span class="n">the</span> <span class="n">data</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">complete</span> <span class="n">plot</span> <span class="ow">is</span> <span class="n">spread</span> <span class="n">across</span> <span class="n">many</span> <span class="n">objects</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">In</span> <span class="n">pandas</span> <span class="n">we</span> <span class="n">have</span> <span class="n">row</span> <span class="n">labels</span><span class="p">,</span> <span class="n">column</span> <span class="n">labels</span><span class="p">,</span> <span class="ow">and</span> <span class="n">possibly</span> <span class="n">grouping</span> <span class="n">information</span><span class="o">-</span> 
-<span class="o">-</span> <span class="n">many</span> <span class="n">kinds</span> <span class="n">of</span> <span class="n">fully</span><span class="o">-</span><span class="n">formed</span> <span class="n">plots</span> <span class="n">that</span> <span class="n">would</span> <span class="n">ordinarily</span> <span class="n">require</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">matplotlib</span> <span class="n">code</span> <span class="n">can</span> <span class="n">be</span> <span class="n">expressed</span> <span class="ow">in</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">two</span> <span class="n">concise</span> <span class="n">statements</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">Therefore</span><span class="p">,</span> <span class="n">pandas</span> <span class="n">has</span> <span class="n">an</span> <span class="n">increasing</span> <span class="n">number</span> <span class="n">of</span> <span class="n">high</span><span class="o">-</span><span class="n">level</span> <span class="n">plotting</span> <span class="n">methods</span> <span class="k">for</span> <span class="n">creating</span> <span class="n">standard</span> <span class="n">visualizations</span> <span class="n">that</span> <span class="n">take</span> <span class="n">advantage</span> <span class="n">of</span> <span class="n">how</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">organized</span> <span class="ow">in</span> <span class="n">DataFrame</span> <span class="n">objects</span><span class="o">.</span>
-
-
-<span class="c1">### Use panda.DataFrame to plot </span>
-<span class="o">-</span> <span class="n">With</span> <span class="n">a</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">bar</span> <span class="n">plots</span> <span class="n">group</span> <span class="n">the</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">each</span> <span class="n">row</span> <span class="n">together</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">,</span> <span class="n">side</span> <span class="n">by</span> <span class="n">side</span><span class="p">,</span> <span class="k">for</span> <span class="n">each</span> <span class="n">value</span>
-</pre></div>
-
-</div>
 </div>
 </div>
 
