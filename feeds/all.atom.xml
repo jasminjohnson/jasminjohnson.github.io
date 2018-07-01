@@ -10,7 +10,7 @@ Much like the csv format, SQLite stores data in a single file that can be easily
 Most programming languages and environments have good support for working with SQLite databases.&lt;/p&gt;
 &lt;p&gt;This example file is "life expectancy and birth rate by country" from data.gov.
 The file is in Excel format.&lt;/p&gt;
-&lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a hugh dataset is very useful.&lt;/p&gt;
+&lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.&lt;/p&gt;
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="pandas"></category></entry><entry><title>SQLite Database for Financial Analysis I</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-04-25T10:00:00-04:00</published><updated>2018-04-25T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/SQLite-database-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
@@ -29,7 +29,7 @@ for new business opportunity, regulatory compliance and risk accessment for stre
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
 This can be very effective when we need to quickly verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-20T10:00:00-04:00</published><updated>2018-04-20T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/using-pandas-for-financial-analysis/</id><summary type="html">
-The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze hugh datasets.&lt;/p&gt;
+The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze huge datasets.&lt;/p&gt;
 
 
 
