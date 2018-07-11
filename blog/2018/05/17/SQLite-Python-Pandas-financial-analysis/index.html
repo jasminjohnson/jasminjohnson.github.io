@@ -1421,9 +1421,9 @@ The file is in Excel format.</p>
 
 
 
-<h2 id="Using-Python-to-Import-Excel-to-SQLite-and-Perform-Financial-Analysis">Using Python to Import Excel to SQLite and Perform Financial Analysis<a class="anchor-link" href="#Using-Python-to-Import-Excel-to-SQLite-and-Perform-Financial-Analysis">&#182;</a></h2><ul>
-<li>Import Excel to SQLite database </li>
-<li>View SQLite database after reading from Excel and Set index</li>
+<h2 id="Convert-Excel-File-to-SQLite-and-Perform-Financial-Analysis">Convert Excel File to SQLite and Perform Financial Analysis<a class="anchor-link" href="#Convert-Excel-File-to-SQLite-and-Perform-Financial-Analysis">&#182;</a></h2><ul>
+<li>Convert Excel file in SQLite database </li>
+<li>Set index</li>
 <li>Join Tables and Query Data in Python </li>
 <li>Reading results into a pandas DataFrame</li>
 <li>Create query result table in SQLite and Excel</li>
@@ -1435,18 +1435,21 @@ The file is in Excel format.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Import-Excel-to-SQLite-Database">Import Excel to SQLite Database<a class="anchor-link" href="#Import-Excel-to-SQLite-Database">&#182;</a></h3><ul>
-<li>Connect SQlite file</li>
-<li>Changes make in Excel, will automatically update in SQLite after reconnect</li>
-<li>This is very helpful, no save and reopen Excel file</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Convert Excel to SQLite Database</span>
+<span class="o">-</span> <span class="n">Connect</span> <span class="n">SQlite</span> <span class="n">file</span>
+<span class="o">-</span> <span class="n">Changes</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">Excel</span><span class="p">,</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">SQLite</span> <span class="n">after</span> <span class="n">reconnect</span>
+<span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">helpful</span><span class="p">,</span> <span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">save</span> <span class="ow">and</span> <span class="n">reopen</span> <span class="n">Excel</span> <span class="n">file</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1889,20 +1892,16 @@ The file is in Excel format.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Join Tables and Query Data in Python</span>
-<span class="c1">### Reading results into a pandas DataFrame</span>
-<span class="o">-</span> <span class="n">we</span> <span class="n">can</span> <span class="n">join</span> <span class="n">table</span> <span class="n">to</span> <span class="n">do</span> <span class="n">a</span> <span class="n">query</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">the</span> <span class="n">result</span> <span class="n">to</span> <span class="n">a</span> <span class="n">third</span> <span class="n">table</span> <span class="ow">or</span> <span class="n">save</span> <span class="k">as</span> <span class="n">Excel</span> <span class="nb">format</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Join-Tables-and-Query-Data-in-Python">Join Tables and Query Data in Python<a class="anchor-link" href="#Join-Tables-and-Query-Data-in-Python">&#182;</a></h3><h3 id="Reading-results-into-a-pandas-DataFrame">Reading results into a pandas DataFrame<a class="anchor-link" href="#Reading-results-into-a-pandas-DataFrame">&#182;</a></h3><ul>
+<li>we can join table to do a query and save the result to a third table or save as Excel format</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
