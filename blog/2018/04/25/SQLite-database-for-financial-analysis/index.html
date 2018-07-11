@@ -1414,11 +1414,11 @@ h6:hover .anchor-link {
 
 <p>After merging and reshaping the datasets, we can use SQLite to safely storing, organizing and manipulating data in smaller environments.
 SQLite is a flexible database can do real work in real business environments. 
-This database tool can be useful for accountants to fo financial analysis.</p>
+This database tool can be useful for accountants to do financial analysis.</p>
 
 
-<p>from book "Using SQLite by Jay A. Kreibich"</p>
-<p>what is SQLite: In the simplest terms, SQLite is a public-domain software package that provides a
+<h2 id="What-is-SQLite?">What is SQLite?<a class="anchor-link" href="#What-is-SQLite?">&#182;</a></h2><p>from book "Using SQLite by Jay A. Kreibich"</p>
+<p>What is SQLite: In the simplest terms, SQLite is a public-domain software package that provides a
 relational database management system, or RDBMS. Relational database systems are
 used to store user-defined records in large tables. In addition to data storage and management, a database engine can process complex query commands that combine data
 from multiple tables to generate reports and data summaries. Other popular RDBMS
@@ -1426,11 +1426,11 @@ products include Oracle Database, IBM’s DB2, and Microsoft’s SQL Server on t
 commercial side, with MySQL and PostgreSQL being popular open source products.
 The “Lite” in SQLite does not refer to its capabilities. Rather, SQLite is lightweight
 when it comes to setup complexity, administrative overhead, and resource usage</p>
-<h2 id="What-is-DB-Brower-for-SQLite">What is DB Brower for SQLite<a class="anchor-link" href="#What-is-DB-Brower-for-SQLite">&#182;</a></h2><p>DB Browser for SQLite is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.</p>
+<h2 id="What-is-DB-Brower-for-SQLite?">What is DB Brower for SQLite?<a class="anchor-link" href="#What-is-DB-Brower-for-SQLite?">&#182;</a></h2><p>DB Browser for SQLite is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.</p>
 <p>It is for users and developers wanting to create databases, search, and edit data. It uses a familiar spreadsheet-like interface,
 and you don't need to learn complicated SQL commands.</p>
 <p>This program is not a visual shell for the sqlite command line tool.</p>
-<h2 id="SQLite-data-type">SQLite data type<a class="anchor-link" href="#SQLite-data-type">&#182;</a></h2><p>All data types that are supported by SQLite 3:
+<h2 id="SQLite-data-types">SQLite data types<a class="anchor-link" href="#SQLite-data-types">&#182;</a></h2><p>All data types that are supported by SQLite 3:
 INTEGER: A signed integer up to 8 bytes depending on the magnitude of the value.
 REAL: An 8-byte floating point value.
 TEXT: A text string, typically UTF-8 encoded (depending on the database encoding).
@@ -1439,12 +1439,26 @@ NULL: A NULL value, represents missing data or an empty cell.
 No designated Boolean data type: simply re-purpose the INTEGER type to represent Boolean values (0 = false, 1 = true).</p>
 <h2 id="Why-use-SQLite-to-read-Excel-File?">Why use SQLite to read Excel File?<a class="anchor-link" href="#Why-use-SQLite-to-read-Excel-File?">&#182;</a></h2><ul>
 <li>Sort data on several fields</li>
-<li>Combining data from several sheets </li>
-<li>Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code</li>
+<li>Combine data from different spreadheets </li>
 <li>Use free GUI tools to run SQL queries on database</li>
-<li>Each sheet of Excel file is converted in a table</li>
+<li>Each sheet of Excel file is converted into a table</li>
 <li>Sheet name can use underscore, but no whitespace for legal SQLite table name</li>
-<li>The first row in each sheet should have legal column names. Here is conversion code:</li>
+<li>Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code</li>
+<li><p>The first row in each sheet should have legal column names. Here is conversion code:</p>
+<ul>
+<li>import sqlite3</li>
+<li>import pandas as pd       </li>
+<li>filename="workbook" (#Name of Excel xlsx file. SQLite database will have the same name and extension .db)</li>
+<li>con=sqlite3.connect(filename+".db")</li>
+<li>wb=pd.read_excel(filename+'.xlsx',sheetname=None)</li>
+<li>for sheet in wb:<ul>
+<li>wb[sheet].to_sql(sheet,con, index=False)</li>
+</ul>
+</li>
+<li>con.commit()</li>
+<li>con.close()</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -1455,11 +1469,9 @@ No designated Boolean data type: simply re-purpose the INTEGER type to represent
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Name of Excel xlsx file. SQLite database will have the same name and extension .db</span>
-<span class="c1">#Connect SQlite file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Connect SQlite file</span>
 <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span> 
 <span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
-
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="p">:</span>
 <span class="c1">#     wb[sheet].to_sql(sheet,con, index=False)</span>
@@ -1473,28 +1485,21 @@ No designated Boolean data type: simply re-purpose the INTEGER type to represent
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## A handy tool to visualize and access SQLite databases is the free DB Brower</span>
-<span class="c1">### I will use this tool to provide screenshots of the database structures that we created below the corresponding code sections</span>
-
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/images/DBimage.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;[img: DB Browser after import Excel to SQLite and view the table]&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;DbBrowser Query&quot;</span> <span class="o">/&gt;</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">A handy tool to visualize and access SQLite databases is the free DB Brower<a class="anchor-link" href="#A-handy-tool-to-visualize-and-access-SQLite-databases-is-the-free-DB-Brower">&#182;</a></h2><h3 id="I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">I will use this tool to provide screenshots of the database structures that we created below the corresponding code sections<a class="anchor-link" href="#I-will-use-this-tool-to-provide-screenshots-of-the-database-structures-that-we-created-below-the-corresponding-code-sections">&#182;</a></h3><p><img src="/images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now lets take a query that we think should get the inner join data between the reinsurance, premium and loss data and export the data to ??</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Query inner join between the reinsurance, premium and loss data and export the data to Excel</span>
 
 <span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">select r.PolicyNumber as rp, p.PolicyNumber as pp, l.PolicyNumber as lp</span>
