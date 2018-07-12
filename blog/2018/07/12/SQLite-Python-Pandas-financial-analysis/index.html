@@ -1,0 +1,2774 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jasmin Johnson">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Data Visualization With Python | Financial Analysis Journal</title>
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" title="Financial Analysis Journal blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+        <style>.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+        <style>body {
+  margin: 0;
+  padding: 0;
+  font: 15px 'Source Sans Pro', sans-serif;
+  line-height: 1.6em;
+  color: #222;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #007EE5;
+  text-decoration: none;
+}
+a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+header.main-header {
+  background: none repeat scroll 0% 0% #205F29;
+  margin-bottom: 0px;
+}
+header.main-header a {
+  color: #fff;
+}
+header.main-header .container {
+  max-width: 1000px;
+}
+header.main-header .container nav a:hover {
+  background-color: #5C881C;
+}
+article {
+  margin: 0;
+}
+article header.about {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+article header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+article header h1 {
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: #000;
+}
+article header time {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: right;
+}
+article header time.left {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: left;
+}
+article div.social-links ul {
+  padding: 0px;
+}
+article div.social-links li {
+  display: inline;
+  font-size: 20px;
+}
+article div.social-links li a {
+  color: #000;
+  padding: 10px;
+}
+article div.social-links li a:hover {
+  color: #666;
+  text-decoration: none;
+}
+article p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6em;
+}
+article p.note {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 0.533em 0.733em;
+}
+article p.update {
+  background-color: #FEEFB3;
+  border: 1px solid #e6e68a;
+  padding: 0.533em 0.733em;
+}
+article p.alert {
+  background-color: #ffe2e2;
+  border: 1px solid #ffb2b2;
+  padding: 0.533em 0.733em;
+}
+article ul,
+article ol {
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+article li {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+article a:hover {
+  text-decoration: underline;
+}
+article blockquote {
+  border-left: 2px solid #c7c7cc;
+  color: #666;
+  margin: 30px 0;
+  padding: 0 0 0 25px;
+}
+article img {
+  max-width: 100%;
+}
+article code {
+  color: #333;
+  background-color: #EEE;
+  border-radius: 0;
+  font-size: 13px;
+}
+article .meta {
+  font-size: 11px;
+}
+article .meta a:hover {
+  text-decoration: none;
+}
+article .meta div {
+  margin-bottom: 20px;
+  display: block;
+}
+article .meta a.tag {
+  margin: 0 10px 10px 0;
+  padding: 1px 12px;
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.05);
+}
+article .meta a.tag:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+article .meta a.read_more,
+article .meta a.comments_btn {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 20px;
+  color: #205F29;
+  background: #FFF;
+  border: 1px solid #205F29;
+}
+article .meta a.read_more:hover,
+article .meta a.comments_btn:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.index {
+  max-width: 700px;
+}
+.index article header h2 {
+  font-size: 36px;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.index article header h2 a {
+  color: #000;
+}
+.index article header h2 a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+.index .separator {
+  padding: 40px 0 0 0;
+  margin: 0 0 40px 0;
+  height: 10px;
+  border-bottom: solid 1px #CCC;
+}
+.index .pagination {
+  display: block;
+  margin-bottom: 100px;
+}
+.index .pagination .left {
+  text-align: right;
+}
+.index .pagination .right {
+  text-align: left;
+}
+.index .pagination a {
+  display: inline-block;
+  border: 2px solid #5C881C;
+  margin: 0 5px;
+  padding: 8px 20px;
+  font-weight: bold;
+  color: #5C881C;
+}
+.index .pagination a:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.post {
+  max-width: 700px;
+//  max-width: 100%;
+}
+.post h2:before {
+  content: "# ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h3:before {
+  content: "## ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h4:before {
+  content: "### ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post article .meta {
+  margin: 50px 0 100px;
+}
+.list {
+  max-width: 700px;
+}
+.list ul.double-list {
+  margin: 0 auto 60px;
+  padding: 0;
+  list-style-type: none;
+}
+.list ul.double-list li {
+  padding: 5px 0;
+}
+.list ul.double-list li h2 {
+  font-size: 1em;
+  display: inline;
+  font-weight: normal;
+}
+.list ul.double-list li span {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: right;
+  float: right;
+  padding-top: 3px;
+  font-size: 12px;
+  color: #999;
+}
+.full-width-content {
+  padding-top: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  padding-right: 0px;
+  padding-left: 0px;
+}</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+        <script type="text/javascript">
+        init_mathjax = function() {
+            if (window.MathJax) {
+                // MathJax loaded
+                MathJax.Hub.Config({
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+                    },
+                    displayAlign: 'left', // Change this to 'center' to center equations.
+                    "HTML-CSS": {
+                        styles: {'.MathJax_Display': {"margin": 0}}
+                    }
+                });
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+        init_mathjax();
+        </script>
+
+    </head>
+
+    <body>
+        <header class="navbar navbar-inverse bs-docs-nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbar">
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span> 
+		  </button>
+                  <a class="navbar-brand" href="/" title="Home" class="title">Financial Analysis Journal</a>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="theNavbar">
+		    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/pages/about.html" title="About">About</a></li>
+                            <li><a href="/archives.html" title="Archive">Archive</a></li>
+                            <li><a class="nodec icon-rss" href="/feeds/all.atom.xml" title="jasminjohnson.github.io RSS feed" rel="me"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="wrap">
+<div class="container post">
+    <article>
+        <header>
+            <h1>Data Visualization With Python</h1>
+            <time datetime="article.date.isoformat()" pubdate>Thu 12 July 2018</time>
+        </header>
+
+        <div class="article_content">
+            <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+
+<p>SQLite is a database engine that makes it simple to store and work with relational data.
+Much like the csv format, SQLite stores data in a single file that can be easily shared with others.
+Most programming languages and environments have good support for working with SQLite databases.</p>
+<p>This example file is "1960-2017 world population and life expectancy by country" from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">https://data.worldbank.org/indicator/SP.POP.TOTL</a> and <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">https://data.worldbank.org/indicator/SP.DYN.LE00.IN</a>. 
+The file is in Excel format.</p>
+<p>The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.</p>
+
+
+
+<h2 id="Convert-Excel-File-to-SQLite-and-Perform-Financial-Analysis">Convert Excel File to SQLite and Perform Financial Analysis<a class="anchor-link" href="#Convert-Excel-File-to-SQLite-and-Perform-Financial-Analysis">&#182;</a></h2><ul>
+<li>Convert Excel file in SQLite database </li>
+<li>Set index</li>
+<li>Join Tables and Query Data in Python </li>
+<li>Reading results into a pandas DataFrame</li>
+<li>Create query result table in SQLite and Excel</li>
+<li>Creating and altering tables with pandas</li>
+<li>Modifying primary key in SQLite or in Python</li>
+<li>Visualize popluation and life expectancy comparison between US and Japan from 1960 to 2017</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Convert Excel to SQLite Database</span>
+<span class="o">-</span> <span class="n">Connect</span> <span class="n">SQlite</span> <span class="n">file</span>
+<span class="o">-</span> <span class="n">Changes</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">Excel</span><span class="p">,</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">SQLite</span> <span class="n">after</span> <span class="n">reconnect</span>
+<span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">helpful</span><span class="p">,</span> <span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">save</span> <span class="ow">and</span> <span class="n">reopen</span> <span class="n">Excel</span> <span class="n">file</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PopLife&quot;</span> 
+<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
+
+<span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="p">:</span>
+    <span class="n">wb</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">sheet</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+   
+<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="c1">#con.close()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="View-SQLite-database-after-reading-from-Excel-and-Set-index">View SQLite database after reading from Excel and Set index<a class="anchor-link" href="#View-SQLite-database-after-reading-from-Excel-and-Set-index">&#182;</a></h3><ul>
+<li>set primary key in SQLite</li>
+<li>we can read the file in Excel, but can't set the primary key</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read the first table &quot;Population&quot; and set the primary key to &quot;CountryName&quot;</span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Pop&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
+<span class="n">population</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[35]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CountryCode</th>
+      <th>Y1960</th>
+      <th>1961</th>
+      <th>1962</th>
+      <th>1963</th>
+      <th>1964</th>
+      <th>1965</th>
+      <th>1966</th>
+      <th>1967</th>
+      <th>1968</th>
+      <th>...</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+      <th>2013</th>
+      <th>2014</th>
+      <th>2015</th>
+      <th>2016</th>
+      <th>2017</th>
+    </tr>
+    <tr>
+      <th>CountryName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aruba</th>
+      <td>ABW</td>
+      <td>54211.0</td>
+      <td>55438.0</td>
+      <td>56225.0</td>
+      <td>56695.0</td>
+      <td>57032.0</td>
+      <td>57360.0</td>
+      <td>57715.0</td>
+      <td>58055.0</td>
+      <td>58386.0</td>
+      <td>...</td>
+      <td>101353.0</td>
+      <td>101453.0</td>
+      <td>101669.0</td>
+      <td>102053.0</td>
+      <td>102577.0</td>
+      <td>103187.0</td>
+      <td>103795.0</td>
+      <td>104341.0</td>
+      <td>104822.0</td>
+      <td>105264.0</td>
+    </tr>
+    <tr>
+      <th>Afghanistan</th>
+      <td>AFG</td>
+      <td>8996351.0</td>
+      <td>9166764.0</td>
+      <td>9345868.0</td>
+      <td>9533954.0</td>
+      <td>9731361.0</td>
+      <td>9938414.0</td>
+      <td>10152331.0</td>
+      <td>10372630.0</td>
+      <td>10604346.0</td>
+      <td>...</td>
+      <td>27294031.0</td>
+      <td>28004331.0</td>
+      <td>28803167.0</td>
+      <td>29708599.0</td>
+      <td>30696958.0</td>
+      <td>31731688.0</td>
+      <td>32758020.0</td>
+      <td>33736494.0</td>
+      <td>34656032.0</td>
+      <td>35530081.0</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>AGO</td>
+      <td>5643182.0</td>
+      <td>5753024.0</td>
+      <td>5866061.0</td>
+      <td>5980417.0</td>
+      <td>6093321.0</td>
+      <td>6203299.0</td>
+      <td>6309770.0</td>
+      <td>6414995.0</td>
+      <td>6523791.0</td>
+      <td>...</td>
+      <td>21759420.0</td>
+      <td>22549547.0</td>
+      <td>23369131.0</td>
+      <td>24218565.0</td>
+      <td>25096150.0</td>
+      <td>25998340.0</td>
+      <td>26920466.0</td>
+      <td>27859305.0</td>
+      <td>28813463.0</td>
+      <td>29784193.0</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>ALB</td>
+      <td>1608800.0</td>
+      <td>1659800.0</td>
+      <td>1711319.0</td>
+      <td>1762621.0</td>
+      <td>1814135.0</td>
+      <td>1864791.0</td>
+      <td>1914573.0</td>
+      <td>1965598.0</td>
+      <td>2022272.0</td>
+      <td>...</td>
+      <td>2947314.0</td>
+      <td>2927519.0</td>
+      <td>2913021.0</td>
+      <td>2905195.0</td>
+      <td>2900401.0</td>
+      <td>2895092.0</td>
+      <td>2889104.0</td>
+      <td>2880703.0</td>
+      <td>2876101.0</td>
+      <td>2873457.0</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>AND</td>
+      <td>13411.0</td>
+      <td>14375.0</td>
+      <td>15370.0</td>
+      <td>16412.0</td>
+      <td>17469.0</td>
+      <td>18549.0</td>
+      <td>19647.0</td>
+      <td>20758.0</td>
+      <td>21890.0</td>
+      <td>...</td>
+      <td>83861.0</td>
+      <td>84462.0</td>
+      <td>84449.0</td>
+      <td>83751.0</td>
+      <td>82431.0</td>
+      <td>80788.0</td>
+      <td>79223.0</td>
+      <td>78014.0</td>
+      <td>77281.0</td>
+      <td>76965.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 59 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read the second table &quot;Population&quot; and set the primary key to &quot;CountryName&quot;</span>
+<span class="n">life</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Life&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
+<span class="n">life</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CountryCode</th>
+      <th>Y1960</th>
+      <th>1961</th>
+      <th>1962</th>
+      <th>1963</th>
+      <th>1964</th>
+      <th>1965</th>
+      <th>1966</th>
+      <th>1967</th>
+      <th>1968</th>
+      <th>...</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+      <th>2013</th>
+      <th>2014</th>
+      <th>2015</th>
+      <th>2016</th>
+      <th>2017</th>
+    </tr>
+    <tr>
+      <th>CountryName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aruba</th>
+      <td>ABW</td>
+      <td>65.662</td>
+      <td>66.074</td>
+      <td>66.444</td>
+      <td>66.787</td>
+      <td>67.113</td>
+      <td>67.435</td>
+      <td>67.762</td>
+      <td>68.095</td>
+      <td>68.436</td>
+      <td>...</td>
+      <td>74.725</td>
+      <td>74.872</td>
+      <td>75.016</td>
+      <td>75.158</td>
+      <td>75.299</td>
+      <td>75.440</td>
+      <td>75.582</td>
+      <td>75.725</td>
+      <td>75.867</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>Afghanistan</th>
+      <td>AFG</td>
+      <td>32.292</td>
+      <td>32.742</td>
+      <td>33.185</td>
+      <td>33.624</td>
+      <td>34.060</td>
+      <td>34.495</td>
+      <td>34.928</td>
+      <td>35.361</td>
+      <td>35.796</td>
+      <td>...</td>
+      <td>60.243</td>
+      <td>60.754</td>
+      <td>61.226</td>
+      <td>61.666</td>
+      <td>62.086</td>
+      <td>62.494</td>
+      <td>62.895</td>
+      <td>63.288</td>
+      <td>63.673</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>AGO</td>
+      <td>33.251</td>
+      <td>33.573</td>
+      <td>33.914</td>
+      <td>34.272</td>
+      <td>34.645</td>
+      <td>35.031</td>
+      <td>35.426</td>
+      <td>35.828</td>
+      <td>36.234</td>
+      <td>...</td>
+      <td>56.189</td>
+      <td>57.231</td>
+      <td>58.192</td>
+      <td>59.042</td>
+      <td>59.770</td>
+      <td>60.373</td>
+      <td>60.858</td>
+      <td>61.241</td>
+      <td>61.547</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>ALB</td>
+      <td>62.279</td>
+      <td>63.298</td>
+      <td>64.187</td>
+      <td>64.911</td>
+      <td>65.461</td>
+      <td>65.848</td>
+      <td>66.108</td>
+      <td>66.302</td>
+      <td>66.485</td>
+      <td>...</td>
+      <td>75.943</td>
+      <td>76.281</td>
+      <td>76.652</td>
+      <td>77.031</td>
+      <td>77.389</td>
+      <td>77.702</td>
+      <td>77.963</td>
+      <td>78.174</td>
+      <td>78.345</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>AND</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 59 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Join-Tables-and-Query-Data-in-Python">Join Tables and Query Data in Python<a class="anchor-link" href="#Join-Tables-and-Query-Data-in-Python">&#182;</a></h3><h3 id="Reading-results-into-a-pandas-DataFrame">Reading results into a pandas DataFrame<a class="anchor-link" href="#Reading-results-into-a-pandas-DataFrame">&#182;</a></h3><ul>
+<li>we can join table to do a query and save the result to a third table or save as Excel format</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># lets issue a SQL statment</span>
+
+<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select l.CountryName, l.Y1960</span>
+<span class="s1">from Life as l</span>
+<span class="s1">join Pop as p on p.CountryName=l.CountryName;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[37]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Y1960</th>
+    </tr>
+    <tr>
+      <th>CountryName</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aruba</th>
+      <td>65.662</td>
+    </tr>
+    <tr>
+      <th>Afghanistan</th>
+      <td>32.292</td>
+    </tr>
+    <tr>
+      <th>Angola</th>
+      <td>33.251</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>62.279</td>
+    </tr>
+    <tr>
+      <th>Andorra</th>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Create-query-result-table-in-SQLite-and-Excel">Create query result table in SQLite and Excel<a class="anchor-link" href="#Create-query-result-table-in-SQLite-and-Excel">&#182;</a></h3><h3 id="Creating-and-altering-tables-with-Pandas">Creating and altering tables with Pandas<a class="anchor-link" href="#Creating-and-altering-tables-with-Pandas">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can create a new table for our query result and add it to the existing Life.db</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;pop_life_expectancy&quot;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="c1">#con.close()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Here-is-table-view-from-DB-Browser">Here is table view from DB Browser<a class="anchor-link" href="#Here-is-table-view-from-DB-Browser">&#182;</a></h2><p><img src="/images/LifeNewTable.png" alt="[img: DB Browser after creating new query result to a table]" title="DbBrowser Query" /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Visualize-the-data-to-compare-US-and-Japan-life-Expectany-from-1960-to-2015">Visualize the data to compare US and Japan life Expectany from 1960 to 2015<a class="anchor-link" href="#Visualize-the-data-to-compare-US-and-Japan-life-Expectany-from-1960-to-2015">&#182;</a></h1><ul>
+<li>after initial data analysis, sometime we need to reshape the data for further analaysis</li>
+<li>we can reshape the data format to set index for visualization</li>
+<li>The maximum number of data series per chart in Excel is 255, this data has 264 columns as data series</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/LifeChart.xlsx&#39;</span><span class="p">)</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">dfr</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+<span class="n">country</span> <span class="o">=</span> <span class="n">dfr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Aruba&#39;</span><span class="p">:</span><span class="s1">&#39;Zimbabwe&#39;</span><span class="p">]</span>  <span class="c1">#how to select US and Japan only???? 5/24/18</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">country</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>       Aruba  Afghanistan     Angola    Albania  Andorra  Arab World  \
+0  65.569366    32.337561  33.226024  62.254366      NaN   46.815045   
+1  65.988024    32.786976  33.547756  63.273463      NaN   47.397232   
+
+   United Arab Emirates  Argentina    Armenia  American Samoa    ...      \
+0             52.288707  65.215537  65.863463             NaN    ...       
+1             53.334049  65.338512  66.284390             NaN    ...       
+
+   Virgin Islands (U.S.)    Vietnam    Vanuatu      World      Samoa  Kosovo  \
+0              66.224854  59.067024  46.487488  52.585685  49.969512     NaN   
+1              66.487976  59.744195  47.088098  53.089030  50.469512     NaN   
+
+   Yemen, Rep.  South Africa     Zambia   Zimbabwe  
+0    34.363805     52.226244  45.109805  51.541976  
+1    34.473244     52.568732  45.487512  51.914951  
+
+[2 rows x 264 columns]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compare Japan and US life Expectancy from 1960 to 2015 and save the chart as png file, then use the chart for analysis or presentation</span>
+<span class="c1"># It&#39;s effective to chart the dataset when dealing with huge dataset more than Excel limite 255 data series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country</span><span class="p">[</span><span class="s1">&#39;Japan&#39;</span><span class="p">],</span> <span class="s1">&#39;y-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country</span><span class="p">[</span><span class="s1">&#39;United_States&#39;</span><span class="p">],</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Japan Life Expectancy&#39;</span><span class="p">,</span><span class="s1">&#39;US Life Expectancy&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Life Expectancy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;data/JapanLifeExpectancy.png&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEKCAYAAAAfGVI8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
+dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3Xlc1VX++PHX4QICAqK4i6iYCiiC
+ipWTU5aVNU1l07SYlemULTZt02ZNNa3TVL/2aXGy3co0m5pvTZmOtmkLmrnjhiC4gCDILnDfvz8+
+FyLk4r3IXeC+n48Hj3v53M/yPiyf9+dzzvmcY0QEpZRSgSvI1wEopZTyLU0ESikV4DQRKKVUgNNE
+oJRSAU4TgVJKBThNBEopFeA0ESilVIDTRKCUUgFOE4FSSgW4YF8H4Iru3bvLwIEDfR2GUkq1K6tW
+rdovIj2OtF67SAQDBw4kIyPD12EopVS7YozJdmU9rRpSSqkAp4lAKaUCnCYCpZQKcB5tIzDG3Axc
+CQiwDpguIlWOz55zfB/Zmn3X1NSQm5tLVVVVm8WrAktYWBhxcXGEhIT4OhSlfMpjicAY0w+4AUgW
+kUpjzPvAxcDrxph0IOZo9p+bm0tUVBQDBw7EGNMGEatAIiIUFhaSm5vLoEGDfB2OUj7l6aqhYCDc
+GBMMRAC7jTE24HHg9qPZcVVVFbGxsZoEVKsYY4iNjdU7SqXwYCIQkTzgCSAH2AOUiMhi4HrgYxHZ
+09L2xpiZxpgMY0xGQUGBs3XaOGoVSPTvRymLxxKBMaYrcC4wCOgLdDbGXA5cADx3pO1FZI6IpItI
+eo8eR3weQimlOpTq6r1s3XoTtbUlHj+WJ6uGTgWyRKRARGqARcD9wDHANmPMTiDCGLPNgzF4VGRk
+q9q5j8rOnTsZMWLEYcvvvfdelixZAsDXX3/N8OHDSUtLo7Ky0qX9Dhw4kJSUFNLS0khLS+OGG25o
+07ideeSRR7xyHKXai7q6SrKz/84PPwxh9+5/Ulz8lceP6cleQznA8caYCKASmAg8KSINdwPGmDIR
+OcaDMQSMBx54oOH9vHnzuPXWW5k+fbpb+1i2bBndu3dv69Ba9Mgjj3DXXXd59ZhK+SMRIT9/Pjt2
+3El1dTaxsecyePDjREQM8fixPdlG8D2wEFiN1XU0CJjjqeP5SllZGRMnTmT06NGkpKTw0UcfAdaV
+e2JiItOmTWPkyJH88Y9/pKKiArBO2mPHjmXEiBHMnDkTEQFgwoQJ3HHHHRx77LEMHTqUr7/+2uU4
+rrjiChYuXMgrr7zC+++/zwMPPMDUqVMBePzxxxk7diwjR47kvvvuc3mftbW1jB07luXLlwMwe/Zs
+7r77bsC6g6iP9dhjj2XbNuvGrqCggPPPP5+xY8cyduxYvv3224af0/Tp00lJSWHkyJF88MEH3Hnn
+nVRWVpKWltYQ6+TJkxkzZgzDhw9nzpxf/lwiIyO5++67SU1N5fjjj2ffvn0A7Nu3j/POO4/U1FRS
+U1NZsWIF99xzD88880zDtnfffTfPPvusy+VWytsOHvyen346gU2bphAS0pXU1P+RkvJvryQBwMpC
+/v41ZswYaWrjxo0N77dsuVFWrz6pTb+2bLnxsGM21blzZ6mpqZGSkhIRESkoKJDBgweL3W6XrKws
+AeSbb74REZHp06fL448/LiIihYWFDfu49NJL5eOPPxYRkZNOOkluueUWERH55JNPZOLEiYcdMysr
+S4YPH37Y8mnTpsmCBQsOe//555/LVVddJXa7Xerq6uSss86SL7/88rDtBwwYICNGjJDU1FRJTU2V
+J598UkRE1q9fL4mJibJ48WJJS0uT6urqhvUfeughERF544035KyzzhIRkSlTpsjXX38tIiLZ2dmS
+mJgoIiK333673HjjLz/ToqKihp9hY/U/m4qKChk+fLjs379fRESAhp/TbbfdJg8++KCIiFx44YXy
+1FNPiYhIbW2tFBcXS1ZWlowaNUpEROrq6iQhIaFhP001/jtSytsqK3fKhg1TZNky5Ntve8vu3XPF
+bq9ts/0DGeLCObZdDDrnz0SEu+66i6+++oqgoCDy8vIarlb79+/PCSecAMCll17Ks88+y6233sqy
+Zct47LHHqKiooKioiOHDh3P22WcD8Ic//AGAMWPGsHPnzqOOb/HixSxevJhRo0YB1pX51q1bOfHE
+Ew9bt7mqoeHDh3PZZZdx9tlns3LlSkJDQxs+mzJlSsPrzTffDMCSJUvYuHFjwzoHDx6ktLSUJUuW
+8N577zUs79q1a7PxPvvss3z44YcA7Nq1i61btxIbG0toaCi///3vAetn88UXXwDwv//9jzfffBMA
+m81Gly5d6NKlC7Gxsfz000/s27ePUaNGERsb68ZPTSnPqq0tJSfnUXJznwRgwIC/0r//7QQHR/kk
+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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[111]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set index to Date</span>
+<span class="n">dfr</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dfr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[111]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Aruba</th>
+      <th>Afghanistan</th>
+      <th>Angola</th>
+      <th>Albania</th>
+      <th>Andorra</th>
+      <th>Arab World</th>
+      <th>United Arab Emirates</th>
+      <th>Argentina</th>
+      <th>Armenia</th>
+      <th>American Samoa</th>
+      <th>...</th>
+      <th>Virgin Islands (U.S.)</th>
+      <th>Vietnam</th>
+      <th>Vanuatu</th>
+      <th>World</th>
+      <th>Samoa</th>
+      <th>Kosovo</th>
+      <th>Yemen, Rep.</th>
+      <th>South Africa</th>
+      <th>Zambia</th>
+      <th>Zimbabwe</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1960</th>
+      <td>65.569366</td>
+      <td>32.337561</td>
+      <td>33.226024</td>
+      <td>62.254366</td>
+      <td>NaN</td>
+      <td>46.815045</td>
+      <td>52.288707</td>
+      <td>65.215537</td>
+      <td>65.863463</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>66.224854</td>
+      <td>59.067024</td>
+      <td>46.487488</td>
+      <td>52.585685</td>
+      <td>49.969512</td>
+      <td>NaN</td>
+      <td>34.363805</td>
+      <td>52.226244</td>
+      <td>45.109805</td>
+      <td>51.541976</td>
+    </tr>
+    <tr>
+      <th>1961</th>
+      <td>65.988024</td>
+      <td>32.786976</td>
+      <td>33.547756</td>
+      <td>63.273463</td>
+      <td>NaN</td>
+      <td>47.397232</td>
+      <td>53.334049</td>
+      <td>65.338512</td>
+      <td>66.284390</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>66.487976</td>
+      <td>59.744195</td>
+      <td>47.088098</td>
+      <td>53.089030</td>
+      <td>50.469512</td>
+      <td>NaN</td>
+      <td>34.473244</td>
+      <td>52.568732</td>
+      <td>45.487512</td>
+      <td>51.914951</td>
+    </tr>
+    <tr>
+      <th>1962</th>
+      <td>66.365537</td>
+      <td>33.228927</td>
+      <td>33.888000</td>
+      <td>64.162854</td>
+      <td>NaN</td>
+      <td>47.977768</td>
+      <td>54.376488</td>
+      <td>65.432610</td>
+      <td>66.709854</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>66.741098</td>
+      <td>60.410537</td>
+      <td>47.688195</td>
+      <td>53.510894</td>
+      <td>50.969512</td>
+      <td>NaN</td>
+      <td>34.739561</td>
+      <td>52.901341</td>
+      <td>45.853659</td>
+      <td>52.277902</td>
+    </tr>
+    <tr>
+      <th>1963</th>
+      <td>66.713976</td>
+      <td>33.666902</td>
+      <td>34.244732</td>
+      <td>64.887098</td>
+      <td>NaN</td>
+      <td>48.560874</td>
+      <td>55.415000</td>
+      <td>65.509390</td>
+      <td>67.137854</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>66.996220</td>
+      <td>61.043024</td>
+      <td>48.287293</td>
+      <td>54.041987</td>
+      <td>51.469512</td>
+      <td>NaN</td>
+      <td>35.186780</td>
+      <td>53.234049</td>
+      <td>46.209220</td>
+      <td>52.629317</td>
+    </tr>
+    <tr>
+      <th>1964</th>
+      <td>67.044293</td>
+      <td>34.101902</td>
+      <td>34.617463</td>
+      <td>65.438195</td>
+      <td>NaN</td>
+      <td>49.147395</td>
+      <td>56.446073</td>
+      <td>65.582415</td>
+      <td>67.565415</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>67.260366</td>
+      <td>61.607146</td>
+      <td>48.886829</td>
+      <td>54.718962</td>
+      <td>51.969512</td>
+      <td>NaN</td>
+      <td>35.812878</td>
+      <td>53.573659</td>
+      <td>46.558683</td>
+      <td>52.971659</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 264 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://jasminjohnson.github.io/tag/financial.html" class="tag">financial</a>
+                    <a href="http://jasminjohnson.github.io/tag/sqlite.html" class="tag">SQLite</a>
+                    <a href="http://jasminjohnson.github.io/tag/database.html" class="tag">database</a>
+                    <a href="http://jasminjohnson.github.io/tag/python.html" class="tag">python</a>
+                    <a href="http://jasminjohnson.github.io/tag/visualization.html" class="tag">visualization</a>
+            </div>
+        </div>
+    </article>
+
+
+</div>
+
+<style type="text/css">
+{
+    max-width: 700px;
+}
+
+.text_cell .prompt {
+    display: none;
+}
+
+div.cell {
+    padding: 0;
+}
+
+div.text_cell_render {
+    padding: 0;
+}
+
+div.prompt {
+    font-size: 13px;
+}
+
+div.input_prompt {
+    padding: .7em 0.2em;
+}
+
+div.output_prompt {
+    padding: .4em .2em;
+}
+
+div.input_area {
+    margin: .2em 0.4em;
+    max-width: 580px;
+}
+
+table.dataframe {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+table.dataframe th, td {
+    padding: 4px;
+    text-align: left;
+}
+
+pre code {
+    background-color: inherit;
+}</style>
+
+        </div>
+<!--
+    <footer>
+      <p>
+        © 2012-2017 Jasmin Johnson, license <a href="https://github.com/jasminjohnson/jasminjohnson.github.io-source/blob/master/LICENSE"> </a>
+        unless otherwise noted.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a>.
+      </p>
+    </footer>
+-->
+    </body>
+</html>
