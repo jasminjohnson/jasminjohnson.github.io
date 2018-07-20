@@ -1412,8 +1412,8 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 
 
-<p>Time Series can be useful to display financial data in different frequencies based on the data distribution.
-We can also generate random dates when data testing.</p>
+<p>Time Series can be useful to analyze financial data in different frequencies based on data distribution.
+We can also generate random dates for data testing.</p>
 
 </div>
 </div>
@@ -1422,7 +1422,7 @@ We can also generate random dates when data testing.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-of-Amazon-stock-daily-closing-price-from-1997---2018-in-CSV-format.">Example of Amazon stock daily closing price from 1997 - 2018 in CSV format.<a class="anchor-link" href="#Example-of-Amazon-stock-daily-closing-price-from-1997---2018-in-CSV-format.">&#182;</a></h3>
+<h3 id="Example-of-Amazon-stock-daily-closing-prices-from-1997---2018-in-CSV-format.">Example of Amazon stock daily closing prices from 1997 - 2018 in CSV format.<a class="anchor-link" href="#Example-of-Amazon-stock-daily-closing-prices-from-1997---2018-in-CSV-format.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1544,7 +1544,7 @@ We can also generate random dates when data testing.</p>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find out the type of Date, the Date type is string, not time series</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find out the type of Date: the Date type here is string, not time series</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
@@ -1578,7 +1578,7 @@ We can also generate random dates when data testing.</p>
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert string into a Time Series by adding Parse to read the CSV file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert string into a Time Series by adding Parse to read the CSV file</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1767,7 +1767,7 @@ We can also generate random dates when data testing.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-benefit-of-setting-indexes-is-that-you-can-retrieve-specific-date-ranges-of-Amazon-stock-prices,">The benefit of setting indexes is that you can retrieve specific date ranges of Amazon stock prices,<a class="anchor-link" href="#The-benefit-of-setting-indexes-is-that-you-can-retrieve-specific-date-ranges-of-Amazon-stock-prices,">&#182;</a></h2><h2 id="In-the-following-example,-we-retrieved-the-March-2018-stock-prices.">In the following example, we retrieved the March 2018 stock prices.<a class="anchor-link" href="#In-the-following-example,-we-retrieved-the-March-2018-stock-prices.">&#182;</a></h2>
+<h3 id="The-benefit-of-setting-indexes-is-that-you-can-retrieve-specific-date-ranges-of-Amazon-stock-prices.">The benefit of setting indexes is that you can retrieve specific date ranges of Amazon stock prices.<a class="anchor-link" href="#The-benefit-of-setting-indexes-is-that-you-can-retrieve-specific-date-ranges-of-Amazon-stock-prices.">&#182;</a></h3><h3 id="In-the-following-example,-we-retrieved-the-March-2018-stock-prices.">In the following example, we retrieved the March 2018 stock prices.<a class="anchor-link" href="#In-the-following-example,-we-retrieved-the-March-2018-stock-prices.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2034,7 +2034,7 @@ We can also generate random dates when data testing.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Finding-the-average-closing-price-of-Amazon-stock-in-March-2018">Finding the average closing price of Amazon stock in March 2018<a class="anchor-link" href="#Finding-the-average-closing-price-of-Amazon-stock-in-March-2018">&#182;</a></h2>
+<h3 id="Finding-the-average-closing-price-of-Amazon-stock-in-March-2018">Finding the average closing price of Amazon stock in March 2018<a class="anchor-link" href="#Finding-the-average-closing-price-of-Amazon-stock-in-March-2018">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2076,7 +2076,7 @@ We can also generate random dates when data testing.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># retrieving one specific day ?? error why? 6/4/18</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieving one specific day ?? error why? 6/4/18</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03-21&quot;</span><span class="p">]</span>  
 </pre></div>
 
@@ -2090,7 +2090,7 @@ We can also generate random dates when data testing.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># retrieving with a date range</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieving with a date range</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-05&quot;</span><span class="p">]</span> 
 </pre></div>
 
@@ -2680,7 +2680,7 @@ UwoAIiJxSgFARCRO/X/vF17KHBGmQgAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># without Resample, the chart is more grannuily</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Without Resample, the chart is more grannuily</span>
 <span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
@@ -2936,7 +2936,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Assigning-a-date-range-to-the-data">Assigning a date range to the data<a class="anchor-link" href="#Assigning-a-date-range-to-the-data">&#182;</a></h2><h3 id="The-example-is-the-April-2018-Amazon-stock-prices-but-without-any-date">The example is the April 2018 Amazon stock prices but without any date<a class="anchor-link" href="#The-example-is-the-April-2018-Amazon-stock-prices-but-without-any-date">&#182;</a></h3><ul>
+<h3 id="Assigning-a-date-range-to-the-data">Assigning a date range to the data<a class="anchor-link" href="#Assigning-a-date-range-to-the-data">&#182;</a></h3><h3 id="The-following-example-is-the-April-2018-Amazon-stock-prices-but-without-any-date">The following example is the April 2018 Amazon stock prices but without any date<a class="anchor-link" href="#The-following-example-is-the-April-2018-Amazon-stock-prices-but-without-any-date">&#182;</a></h3><ul>
 <li>read the stock closing price with the missing date</li>
 <li>assign the date to match the stock price</li>
 </ul>
@@ -2949,7 +2949,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read April 2018 Amazon stock price without date column</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read April 2018 Amazon stock price without date column</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data\Amazon_No_Date.csv&#39;</span><span class="p">)</span>
 <span class="n">df1</span>
 </pre></div>
@@ -3201,7 +3201,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># assign the date to match the stock price, the month of April started at 4/1/18 and ended at 4/30/18 with Business days as the frequency</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assign the date to match the stock price, the month of April started at 4/1/18 and ended at 4/30/18 with Business days as the frequency</span>
 <span class="c1"># The Business day function does not consider holidays</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;4/1/2018&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;4/30/2018&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">rng</span>
@@ -3243,7 +3243,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set the date column as the index. You must specify &quot;True&quot; to modify the original dataframe</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the date column as the index. You must specify &quot;True&quot; to modify the original dataframe</span>
 <span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df1</span>
 </pre></div>
@@ -4250,7 +4250,7 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generating-Dates-and-Random-Data-for-Testing">Generating Dates and Random Data for Testing<a class="anchor-link" href="#Generating-Dates-and-Random-Data-for-Testing">&#182;</a></h2><ul>
+<h3 id="Generating-Dates-and-Random-Data-for-Testing">Generating Dates and Random Data for Testing<a class="anchor-link" href="#Generating-Dates-and-Random-Data-for-Testing">&#182;</a></h3><ul>
 <li>Set the date frequency to 'B' for business days</li>
 <li>Import numpy to generate random numbers</li>
 <li>Set the index to match the random numbers</li>
@@ -4314,7 +4314,7 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import numpy to generate random numbers between 1 to 20 for the length of 60 days</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import numpy to generate random numbers between 1 to 20 for the length of 60 days</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">))</span>
 </pre></div>

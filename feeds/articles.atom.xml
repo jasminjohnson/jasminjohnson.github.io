@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal - articles</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/articles.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-07-15T00:00:00-04:00</updated><entry><title>Pandas Time Series Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/07/15/Python-Pandas-TimeSeries/" rel="alternate"></link><published>2018-07-15T00:00:00-04:00</published><updated>2018-07-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-07-15:blog/2018/07/15/Python-Pandas-TimeSeries/</id><summary type="html">
 
-&lt;p&gt;Time Series can be useful to display financial data in different frequencies based on the data distribution.
-We can also generate random dates when data testing.&lt;/p&gt;
+&lt;p&gt;Time Series can be useful to analyze financial data in different frequencies based on data distribution.
+We can also generate random dates for data testing.&lt;/p&gt;
 </summary><category term="financial"></category><category term="timeseries"></category><category term="pandas"></category></entry><entry><title>Data Visualization With Python</title><link href="http://jasminjohnson.github.io/blog/2018/06/30/SQLite-Python-Pandas-financial-analysis/" rel="alternate"></link><published>2018-06-30T00:00:00-04:00</published><updated>2018-06-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-30:blog/2018/06/30/SQLite-Python-Pandas-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;Data visualizations and static or interactive visualizations are one of the data analysis tools to helping identify outliers
@@ -10,41 +10,12 @@ or data transformations and ideals for financial models.&lt;/p&gt;
 &lt;p&gt;The example file "1960-2017 world population and life expectancy by country" is from &lt;a href="https://data.worldbank.org/indicator/SP.POP.TOTL"&gt;https://data.worldbank.org/indicator/SP.POP.TOTL&lt;/a&gt; and &lt;a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN"&gt;https://data.worldbank.org/indicator/SP.DYN.LE00.IN&lt;/a&gt;. 
 The file is in Excel format with two tabs.&lt;/p&gt;
 &lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="python"></category><category term="visualization"></category></entry><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T10:00:00-04:00</published><updated>2018-06-15T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font colors for translated ANSI colors. */
-.ansibold {
-  font-weight: bold;
-}
-/* use dark versions for foreground, to improve visibility */
-.ansiblack {
-  color: black;
-}
-.ansired {
-  color: darkred;
-}
-.ansigreen {
-  color: darkgreen;
-}
-.ansiyellow {
-  color: #c4a000;
-}
-.ansiblue {
-  color: darkblue;
-}
-.ansipurple {
-  color: darkviolet;
-}
-.ansicyan {
-  color: steelblue;
-}
-.ansigray {
-  color: gray;
-}
-/* and light for background, for the …&lt;/style&gt;</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel Users III - Merge and Reshape Data</title><link href="http://jasminjohnson.github.io/blog/2018/05/15/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-05-15T10:00:00-04:00</published><updated>2018-05-15T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-05-15:blog/2018/05/15/merge-reshape-for-financial-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="python"></category><category term="visualization"></category></entry><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T10:00:00-04:00</published><updated>2018-06-15T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">
+
+&lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
+SQLite is a flexible database that can do real work in real business environments. 
+This database tool can also be useful for accountants doing financial analysis.&lt;/p&gt;
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis With Python for Excel Users III - Merge and Reshape Data</title><link href="http://jasminjohnson.github.io/blog/2018/05/15/merge-reshape-for-financial-analysis/" rel="alternate"></link><published>2018-05-15T10:00:00-04:00</published><updated>2018-05-15T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-05-15:blog/2018/05/15/merge-reshape-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;As a CPA, I have had to work with datasets from data processing applications, such as insurance application, general ledger,
 regulatory reporting system and etc.&lt;/p&gt;
