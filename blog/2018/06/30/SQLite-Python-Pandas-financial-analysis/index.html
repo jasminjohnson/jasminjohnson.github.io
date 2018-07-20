@@ -1448,10 +1448,11 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PopLife&quot;</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read excel file &quot;PopLife.xlsx&quot; into SQlite</span>
+<span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PopLife&quot;</span> 
 <span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
 
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1467,24 +1468,21 @@ The file is in Excel format with two tabs.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Set index</span>
-<span class="o">-</span> <span class="nb">set</span> <span class="n">primary</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">both</span> <span class="n">tables</span> <span class="ow">in</span> <span class="n">SQLite</span>
-<span class="o">-</span> <span class="n">we</span> <span class="n">can</span> <span class="n">read</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">Excel</span><span class="p">,</span> <span class="n">but</span> <span class="n">can</span><span class="s1">&#39;t set the primary key</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Set-index">Set index<a class="anchor-link" href="#Set-index">&#182;</a></h3><ul>
+<li>set primary key in both tables in SQLite</li>
+<li>can set the primary key in SQlite, but not in Excel</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Pop&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
@@ -1501,7 +1499,7 @@ The file is in Excel format with two tabs.</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -1698,51 +1696,6 @@ The file is in Excel format with two tabs.</p>
 </div>
 </div>
 
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### how to fetch table name ??????</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">PopLife</span><span class="o">.</span><span class="n">db</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;PRAGMA TABLE_INFO(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table_name</span><span class="p">))</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tup</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-34-452a2ba9cca3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>conn <span class="ansi-yellow-intense-fg ansi-bold">=</span> sqlite3<span class="ansi-yellow-intense-fg ansi-bold">.</span>connect<span class="ansi-yellow-intense-fg ansi-bold">(</span>PopLife<span class="ansi-yellow-intense-fg ansi-bold">.</span>db<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      2</span> c <span class="ansi-yellow-intense-fg ansi-bold">=</span> conn<span class="ansi-yellow-intense-fg ansi-bold">.</span>cursor<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      3</span> c<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;PRAGMA TABLE_INFO({})&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>format<span class="ansi-yellow-intense-fg ansi-bold">(</span>table_name<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      4</span> names <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>tup<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-green-intense-fg ansi-bold">for</span> tup <span class="ansi-green-intense-fg ansi-bold">in</span> c<span class="ansi-yellow-intense-fg ansi-bold">.</span>fetchall<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">      5</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span>names<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;PopLife&#39; is not defined</pre>
-</div>
 </div>
 
 </div>
@@ -1984,96 +1937,21 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### ???????????????</span>
-<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">select l.CountryName, l.1960</span>
-<span class="s1">from Life as l</span>
-<span class="s1">join Pop as p on p.CountryName=l.CountryName;</span>
-<span class="s1">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ### ???????????????</span>
+<span class="c1"># sql_statement=&#39;&#39;&#39;</span>
+<span class="c1"># select l.CountryName, l.1960</span>
+<span class="c1"># from Life as l</span>
+<span class="c1"># join Pop as p on p.CountryName=l.CountryName;</span>
+<span class="c1"># &#39;&#39;&#39;</span>
 
-<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
-<span class="n">df_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+<span class="c1"># df_results = pd.read_sql(sql_statement, con, index_col=&quot;CountryName&quot;)</span>
+<span class="c1"># df_results.head() </span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>                          Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">execute</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">   1408</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1409</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>cur<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1410</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> cur
-
-<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>: near &#34;.1960&#34;: syntax error
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-intense-fg ansi-bold">DatabaseError</span>                             Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-22-00dfdc53b2e6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">      5</span> &#39;&#39;&#39;
-<span class="ansi-green-fg">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 7</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>df_results <span class="ansi-yellow-intense-fg ansi-bold">=</span> pd<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_sql<span class="ansi-yellow-intense-fg ansi-bold">(</span>sql_statement<span class="ansi-yellow-intense-fg ansi-bold">,</span> con<span class="ansi-yellow-intense-fg ansi-bold">,</span> index_col<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#34;CountryName&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      8</span> df_results<span class="ansi-yellow-intense-fg ansi-bold">.</span>head<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">read_sql</span><span class="ansi-blue-intense-fg ansi-bold">(sql, con, index_col, coerce_float, params, parse_dates, columns, chunksize)</span>
-<span class="ansi-green-fg">    398</span>             sql<span class="ansi-yellow-intense-fg ansi-bold">,</span> index_col<span class="ansi-yellow-intense-fg ansi-bold">=</span>index_col<span class="ansi-yellow-intense-fg ansi-bold">,</span> params<span class="ansi-yellow-intense-fg ansi-bold">=</span>params<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">    399</span>             coerce_float<span class="ansi-yellow-intense-fg ansi-bold">=</span>coerce_float<span class="ansi-yellow-intense-fg ansi-bold">,</span> parse_dates<span class="ansi-yellow-intense-fg ansi-bold">=</span>parse_dates<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 400</span><span class="ansi-yellow-intense-fg ansi-bold">             chunksize=chunksize)
-</span><span class="ansi-green-fg">    401</span> 
-<span class="ansi-green-fg">    402</span>     <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">read_query</span><span class="ansi-blue-intense-fg ansi-bold">(self, sql, index_col, coerce_float, params, parse_dates, chunksize)</span>
-<span class="ansi-green-fg">   1442</span> 
-<span class="ansi-green-fg">   1443</span>         args <span class="ansi-yellow-intense-fg ansi-bold">=</span> _convert_params<span class="ansi-yellow-intense-fg ansi-bold">(</span>sql<span class="ansi-yellow-intense-fg ansi-bold">,</span> params<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1444</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>cursor <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1445</span>         columns <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>col_desc<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-green-intense-fg ansi-bold">for</span> col_desc <span class="ansi-green-intense-fg ansi-bold">in</span> cursor<span class="ansi-yellow-intense-fg ansi-bold">.</span>description<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-fg">   1446</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">execute</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">   1419</span>             ex = DatabaseError(
-<span class="ansi-green-fg">   1420</span>                 &#34;Execution failed on sql &#39;%s&#39;: %s&#34; % (args[0], exc))
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1421</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>raise_with_traceback<span class="ansi-yellow-intense-fg ansi-bold">(</span>ex<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1422</span> 
-<span class="ansi-green-fg">   1423</span>     <span class="ansi-yellow-intense-fg ansi-bold">@</span>staticmethod
-
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\compat\__init__.py</span> in <span class="ansi-cyan-fg">raise_with_traceback</span><span class="ansi-blue-intense-fg ansi-bold">(exc, traceback)</span>
-<span class="ansi-green-fg">    365</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> traceback <span class="ansi-yellow-intense-fg ansi-bold">==</span> Ellipsis<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    366</span>             _<span class="ansi-yellow-intense-fg ansi-bold">,</span> _<span class="ansi-yellow-intense-fg ansi-bold">,</span> traceback <span class="ansi-yellow-intense-fg ansi-bold">=</span> sys<span class="ansi-yellow-intense-fg ansi-bold">.</span>exc_info<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 367</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">raise</span> exc<span class="ansi-yellow-intense-fg ansi-bold">.</span>with_traceback<span class="ansi-yellow-intense-fg ansi-bold">(</span>traceback<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    368</span> <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    369</span>     <span class="ansi-red-intense-fg ansi-bold"># this version of raise is a syntax error in Python 3</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\io\sql.py</span> in <span class="ansi-cyan-fg">execute</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg">   1407</span>                 cur<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwargs<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1408</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1409</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span>cur<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>args<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">   1410</span>             <span class="ansi-green-intense-fg ansi-bold">return</span> cur
-<span class="ansi-green-fg">   1411</span>         <span class="ansi-green-intense-fg ansi-bold">except</span> Exception <span class="ansi-green-intense-fg ansi-bold">as</span> exc<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-red-intense-fg ansi-bold">DatabaseError</span>: Execution failed on sql &#39;
-select l.CountryName, l.1960
-from Life as l
-join Pop as p on p.CountryName=l.CountryName;
-&#39;: near &#34;.1960&#34;: syntax error</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2093,42 +1971,16 @@ join Pop as p on p.CountryName=l.CountryName;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we can create a new table for our query result and add it to the existing Life.db</span>
-<span class="n">df_results</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;pop_life_expectancy&quot;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
-<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-<span class="c1">#con.close()</span>
+<span class="c1"># df_results.to_sql(&quot;pop_life_expectancy&quot;,con, index=&quot;CountryName&quot;, if_exists=&#39;replace&#39;)</span>
+<span class="c1"># con.commit()</span>
+<span class="c1"># #con.close()</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-23-5175e6623455&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold"># we can create a new table for our query result and add it to the existing Life.db</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>df_results<span class="ansi-yellow-intense-fg ansi-bold">.</span>to_sql<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;pop_life_expectancy&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>con<span class="ansi-yellow-intense-fg ansi-bold">,</span> index<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#34;CountryName&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> if_exists<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;replace&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      3</span> con<span class="ansi-yellow-intense-fg ansi-bold">.</span>commit<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      4</span> <span class="ansi-red-intense-fg ansi-bold">#con.close()</span>
-
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;df_results&#39; is not defined</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -2200,7 +2052,7 @@ join Pop as p on p.CountryName=l.CountryName;
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Visualize the data to compare US and Japan life Expectany from 1960 to 2015</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Visualize the data  - compare US and Japan life Expectany from 1960 to 2015</span>
 <span class="o">-</span> <span class="n">after</span> <span class="n">initial</span> <span class="n">data</span> <span class="n">analysis</span><span class="p">,</span> <span class="n">sometime</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">reshape</span> <span class="n">the</span> <span class="n">data</span> <span class="k">for</span> <span class="n">further</span> <span class="n">analaysis</span>
 <span class="o">-</span> <span class="n">we</span> <span class="n">can</span> <span class="n">reshape</span> <span class="n">the</span> <span class="n">data</span> <span class="nb">format</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">index</span> <span class="k">for</span> <span class="n">visualization</span>
 <span class="o">-</span> <span class="n">The</span> <span class="n">maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">data</span> <span class="n">series</span> <span class="n">per</span> <span class="n">chart</span> <span class="ow">in</span> <span class="n">Excel</span> <span class="ow">is</span> <span class="mi">255</span><span class="p">,</span> <span class="n">this</span> <span class="n">data</span> <span class="n">has</span> <span class="mi">264</span> <span class="n">columns</span> <span class="k">as</span> <span class="n">data</span> <span class="n">series</span>
@@ -2213,7 +2065,7 @@ join Pop as p on p.CountryName=l.CountryName;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/LifeChart.xlsx&#39;</span><span class="p">)</span>
@@ -2263,7 +2115,7 @@ join Pop as p on p.CountryName=l.CountryName;
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compare Japan and US life Expectancy from 1960 to 2015 and save the chart as png file, then use the chart for analysis or presentation</span>
@@ -2577,25 +2429,22 @@ jhWRYmPM20BYo1XKvRKpUq2kvYaUct0S4EJjTHcAY0ysMSYeiAZKgYONZuFSqt3QOwKlXCQi64wx
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Plot USA and Japan Population Growth Comparision</span>
-<span class="o">-</span> <span class="n">the</span> <span class="n">example</span> <span class="n">file</span> <span class="ow">is</span> <span class="mi">1960</span><span class="o">-</span><span class="mi">2017</span> <span class="n">population</span>
-<span class="o">-</span> <span class="n">plot</span> <span class="n">population</span> <span class="ow">in</span> <span class="n">million</span>
-<span class="o">-</span> <span class="n">plot</span> <span class="n">population</span> <span class="n">growth</span> <span class="n">rate</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plot-USA-and-Japan-Population-Growth-Comparision">Plot USA and Japan Population Growth Comparision<a class="anchor-link" href="#Plot-USA-and-Japan-Population-Growth-Comparision">&#182;</a></h3><ul>
+<li>the example file is 1960-2017 population</li>
+<li>plot population in million</li>
+<li>plot population growth rate</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/USALife.xlsx&#39;</span><span class="p">)</span>
@@ -2611,7 +2460,7 @@ jhWRYmPM20BYo1XKvRKpUq2kvYaUct0S4EJjTHcAY0ysMSYeiAZKgYONZuFSqt3QOwKlXCQi64wx
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># first plot with top left corner le8 - scientific notation, the number is too big</span>
@@ -3005,13 +2854,23 @@ gg==
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plot-population-growth-rate---visiualize-the-growth,-Japan-population-growth-rate-is-starting-to-be-lower-than-USA-from-mid-1980">Plot population growth rate - visiualize the growth, Japan population growth rate is starting to be lower than USA from mid-1980<a class="anchor-link" href="#Plot-population-growth-rate---visiualize-the-growth,-Japan-population-growth-rate-is-starting-to-be-lower-than-USA-from-mid-1980">&#182;</a></h3><ul>
+<li>take the first year 1960 as first year, then divide to the following year for growth rate</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot population growth rate - visiualize the growth, Japan population growth rate is staring to be lower than USA from mid-1980</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">japan</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="n">japan</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
