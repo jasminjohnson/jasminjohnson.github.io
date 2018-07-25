@@ -1429,7 +1429,7 @@ for new business opportunity, regulatory compliance and risk accessment for stre
 <h3 id="How-to-get-a-clean-and-valid-dataset?">How to get a clean and valid dataset?<a class="anchor-link" href="#How-to-get-a-clean-and-valid-dataset?">&#182;</a></h3><ul>
 <li>Join two or more dataframes by using a key or composite key</li>
 <li>Spot invalid data by using pandas <ul>
-<li>pandas offers functionality similar to Excel Vlookup, Sumif etc.</li>
+<li>Pandas offers functionality similar to Excel Vlookup, Sumif etc.</li>
 <li>I expect every fellow accountant reading this blog might be asking "Why don't I just continue using Excel?"</li>
 <li>It took me a while to understand that python-pandas offer much more effectively way to deal with huge dataset</li>
 </ul>
@@ -2296,7 +2296,10 @@ dtype: bool</pre>
 <h3 id="Data-Transformation---Removing-Duplicates">Data Transformation - Removing Duplicates<a class="anchor-link" href="#Data-Transformation---Removing-Duplicates">&#182;</a></h3><ul>
 <li>The DataFrame method Duplicated returns a boolean series</li>
 <li>True means duplicated data</li>
-<li>drop_duplicates returns a DataFrame where the duplicated array is True</li>
+<li>drop_duplicates returns a DataFrame where the duplicated array is True<ul>
+<li>Our example showing duplicated policy 10962, the output showed as "True"</li>
+</ul>
+</li>
 <li>Both of these methods by default consider all of the columns must be duplicated</li>
 </ul>
 
@@ -2540,12 +2543,21 @@ Name: Loss, dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><em>  - There are 7 claims with losses greater than 1M </em></strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Discretization-and-Binning---how-to-seperate-loss-into-reinsurance-layer?">Discretization and Binning - how to seperate loss into reinsurance layer?<a class="anchor-link" href="#Discretization-and-Binning---how-to-seperate-loss-into-reinsurance-layer?">&#182;</a></h3><ul>
 <li>Separated loss into “bins” for reinsurance analysis</li>
 <li>We can group the loss range and analyze the loss layer for placing reinsurance treaty</li>
 <li>Group claim data into discrete loss buckets</li>
 <li>Let’s divide these into bins of 1 to 50000, 50001 to 75000, 75001 to 1000000, and finally 1000001 and greater</li>
-<li>To do so, you have to use cut, a function in pandas</li>
+<li>To do so, use cut function in pandas</li>
 </ul>
 
 </div>
@@ -2556,12 +2568,22 @@ Name: Loss, dtype: float64</pre>
 <div class="prompt input_prompt">In&nbsp;[97]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LossDistribution</span> <span class="o">=</span> <span class="n">fs2</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Select column Loss from dataframe</span>
+<span class="n">LossDistribution</span> <span class="o">=</span> <span class="n">fs2</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span>
+
+<span class="c1"># 1st output - Sepaprated loss into bins and print out first three rows</span>
 <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span> <span class="p">]</span>
 <span class="n">cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
 <span class="n">cats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="c1"># 2nd output - Count how many loss in the speific bins - ie there are 150 loss in the loss range 75K to 500K</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
+
+<span class="c1"># 3rd output - show first 3 losses according to the matching loss categories</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span><span class="p">],</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 4th ouput - Group claim data into discrete loss bins by assigning group names, ie. showing first loss is a Clash coverage etc.</span>
 <span class="n">group_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Layer1&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">,</span> <span class="s1">&#39;XOL&#39;</span><span class="p">,</span><span class="s1">&#39;Clash&#39;</span><span class="p">]</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group_names</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2653,7 +2675,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>*** 150 claims with loss between 75K to 500k, evaulate reinsurnce need in this loss layer</p>
+<p><strong><em>- 150 claims with loss between 75K to 500k, evaulate reinsurnce need in this loss layer </em></strong></p>
 
 </div>
 </div>
@@ -2688,7 +2710,8 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 <div class="prompt input_prompt">In&nbsp;[174]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Claim.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Group claims by Line of Business LOB</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Claim.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
 <span class="n">c</span>
@@ -2810,7 +2833,8 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 <div class="prompt input_prompt">In&nbsp;[154]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Nurse&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View claim by LOB - Nurse </span>
+<span class="n">c</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Nurse&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2911,12 +2935,20 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Identify-Maxium,-Mininum-and-Average-Loss-Adjusted-Expenses-(LAE)-by-LOB">Identify Maxium, Mininum and Average Loss Adjusted Expenses (LAE) by LOB<a class="anchor-link" href="#Identify-Maxium,-Mininum-and-Average-Loss-Adjusted-Expenses-(LAE)-by-LOB">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[173]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Default to sort by first column is sortable LAE</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default to sort by first sortable column which is LAE</span>
 <span class="n">c</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
