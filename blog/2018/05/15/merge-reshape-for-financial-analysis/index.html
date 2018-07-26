@@ -1481,11 +1481,11 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df_list.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1502,7 +1502,7 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>df.sheet_names=[&#39;premium&#39;, &#39;loss&#39;]
+<pre>df_list.sheet_names=[&#39;premium&#39;, &#39;loss&#39;]
 </pre>
 </div>
 </div>
@@ -1513,15 +1513,15 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datafile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
-<span class="n">datafile</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> 
-<span class="n">Count_Row</span><span class="o">=</span><span class="n">datafile</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span>  
-<span class="n">df5</span><span class="o">=</span><span class="n">datafile</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span>
-<span class="n">df5</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_premium</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_premium</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">df_prem_dupes</span><span class="o">=</span><span class="n">df_premium</span><span class="p">[</span><span class="n">df_premium</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate policies&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dupes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_prem_dupes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -1534,7 +1534,18 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[64]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 200 policies - here are the first 5:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -1648,25 +1659,78 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 200 policies
+<pre>There are 2 duplicate policies
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[64]:</div>
+<div class="prompt output_prompt">Out[29]:</div>
 
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0    False
-1    False
-2     True
-3    False
-4     True
-dtype: bool</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type</th>
+      <th>Premium</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91809.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91367.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -1686,12 +1750,12 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datafile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span> 
-<span class="n">datafile</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">Count_Row</span><span class="o">=</span><span class="n">datafile</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span> 
+<span class="n">df_loss</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">Count_Row</span><span class="o">=</span><span class="n">df_loss</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> claims with losses&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span>  
 </pre></div>
 
@@ -1705,7 +1769,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1749,7 +1813,7 @@ dtype: bool</pre>
       <td>Iwan</td>
       <td>2017-03-17</td>
       <td>84373.0</td>
-      <td>10000000.0</td>
+      <td>10000000</td>
       <td>176966.0</td>
     </tr>
     <tr>
@@ -1761,7 +1825,7 @@ dtype: bool</pre>
       <td>Iwan</td>
       <td>2017-03-17</td>
       <td>84373.0</td>
-      <td>5000000.0</td>
+      <td>5000000</td>
       <td>176966.0</td>
     </tr>
     <tr>
@@ -1773,7 +1837,7 @@ dtype: bool</pre>
       <td>Aven</td>
       <td>2017-11-25</td>
       <td>88205.0</td>
-      <td>4000000.0</td>
+      <td>4000000</td>
       <td>116133.0</td>
     </tr>
     <tr>
@@ -1785,7 +1849,7 @@ dtype: bool</pre>
       <td>Aven</td>
       <td>2017-11-25</td>
       <td>88205.0</td>
-      <td>54785.0</td>
+      <td>54785</td>
       <td>116133.0</td>
     </tr>
     <tr>
@@ -1797,7 +1861,7 @@ dtype: bool</pre>
       <td>Maen</td>
       <td>2017-03-18</td>
       <td>36440.0</td>
-      <td>54880.0</td>
+      <td>54880</td>
       <td>65872.0</td>
     </tr>
   </tbody>
@@ -1839,16 +1903,15 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fs1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
-<span class="n">fs2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fs1</span><span class="p">,</span> <span class="n">fs2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/incurredloss.xlsx&#39;</span><span class="p">)</span> 
-<span class="n">Count_Row</span><span class="o">=</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with incurred losses&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span>  
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df_loss</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with incurred losses - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/incurredloss.xlsx&#39;</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -1861,7 +1924,18 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[65]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 24 policies with incurred losses - here are the first 5:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -1968,22 +2042,53 @@ dtype: bool</pre>
       <td>1500000</td>
       <td>13330.0</td>
     </tr>
+    <tr>
+      <th>3</th>
+      <td>10509</td>
+      <td>Patrica</td>
+      <td>Hartle</td>
+      <td>2017-02-09</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>5647</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>96730.0</td>
+      <td>880041</td>
+      <td>OCC</td>
+      <td>Patrica</td>
+      <td>Hartle</td>
+      <td>2017-11-16</td>
+      <td>88069.0</td>
+      <td>1000000</td>
+      <td>5647.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10700</td>
+      <td>Sabra</td>
+      <td>Higgenbotham</td>
+      <td>2017-10-07</td>
+      <td>PA</td>
+      <td>OCC</td>
+      <td>12021</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>90239.0</td>
+      <td>880205</td>
+      <td>OCC</td>
+      <td>Sabra</td>
+      <td>Higgenbotham</td>
+      <td>2017-12-05</td>
+      <td>97247.0</td>
+      <td>2500000</td>
+      <td>12021.0</td>
+    </tr>
   </tbody>
 </table>
 </div>
 </div>
 
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 24 policies with incurred losses
-</pre>
-</div>
 </div>
 
 </div>
@@ -2005,13 +2110,13 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fs1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
-<span class="n">fs2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fs1</span><span class="p">,</span> <span class="n">fs2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df_loss</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2024,7 +2129,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[66]:</div>
+<div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -2308,11 +2413,12 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df4</span><span class="o">=</span><span class="n">datafile</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span>
-<span class="n">df4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dupes</span><span class="o">=</span><span class="n">df_merge</span><span class="p">[</span><span class="n">df_merge</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate policies - here are the first 10:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dupes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_dupes</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2325,46 +2431,18 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0    False
-1    False
-2     True
-3    False
-4     True
-dtype: bool</pre>
-</div>
-
-</div>
-
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 2 duplicate policies - here are the first 10:
+</pre>
 </div>
 </div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df5</span><span class="o">=</span><span class="n">datafile</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<span class="n">df5</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -2388,15 +2466,139 @@ dtype: bool</pre>
     <tr style="text-align: right;">
       <th></th>
       <th>Policy Number</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
       <th>Policy Effective Date</th>
       <th>LOB</th>
-      <th>Policy Type</th>
-      <th>Premium</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
       <th>Coverage</th>
       <th>Excess Coverage</th>
       <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge_clean</span><span class="o">=</span><span class="n">df_merge</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df_merge_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[37]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
     </tr>
   </thead>
   <tbody>
@@ -2408,10 +2610,18 @@ dtype: bool</pre>
       <td>2017-07-08</td>
       <td>Phy</td>
       <td>CM</td>
-      <td>232058</td>
-      <td>1000000</td>
-      <td>3900000</td>
+      <td>232058.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
       <td>96289.0</td>
+      <td>880206.0</td>
+      <td>CM</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-09-24</td>
+      <td>74793.0</td>
+      <td>250000.0</td>
+      <td>232058.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2421,10 +2631,18 @@ dtype: bool</pre>
       <td>2017-09-19</td>
       <td>Dentist</td>
       <td>OCC</td>
-      <td>11308</td>
-      <td>1000000</td>
-      <td>3900000</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
       <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2434,10 +2652,18 @@ dtype: bool</pre>
       <td>2017-12-25</td>
       <td>Podiatrist</td>
       <td>OCC</td>
-      <td>2651</td>
-      <td>1000000</td>
-      <td>3900000</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
       <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2447,10 +2673,18 @@ dtype: bool</pre>
       <td>2017-06-05</td>
       <td>Podiatrist</td>
       <td>CM</td>
-      <td>5132</td>
-      <td>1000000</td>
-      <td>3900000</td>
+      <td>5132.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
       <td>99671.0</td>
+      <td>880208.0</td>
+      <td>CM</td>
+      <td>Florencia</td>
+      <td>Bilyk</td>
+      <td>2018-04-22</td>
+      <td>38573.0</td>
+      <td>800000.0</td>
+      <td>5132.0</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2460,10 +2694,18 @@ dtype: bool</pre>
       <td>2017-08-07</td>
       <td>Dentist</td>
       <td>OCC</td>
-      <td>13330</td>
-      <td>1000000</td>
-      <td>3900000</td>
+      <td>13330.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
       <td>92319.0</td>
+      <td>880016.0</td>
+      <td>OCC</td>
+      <td>Wonda</td>
+      <td>Hallsworth</td>
+      <td>2017-09-14</td>
+      <td>44072.0</td>
+      <td>1500000.0</td>
+      <td>13330.0</td>
     </tr>
   </tbody>
 </table>
@@ -2499,11 +2741,13 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="n">fs2</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span>
-<span class="n">col</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss_greater_than_1M</span> <span class="o">=</span> <span class="n">df_loss</span><span class="p">[</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> claims with losses &gt; 1M - here they are:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_loss_greater_than_1M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_loss_greater_than_1M</span><span class="p">[[</span><span class="s1">&#39;Claim Number&#39;</span><span class="p">,</span><span class="s1">&#39;Loss&#39;</span><span class="p">]]</span>
 </pre></div>
 
 </div>
@@ -2516,21 +2760,88 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 8 claims with losses &gt; 1M - here they are:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[48]:</div>
 
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0     10000000.0
-1      5000000.0
-2      4000000.0
-6      1500000.0
-8      2500000.0
-13    10000000.0
-16     7000000.0
-23     3000000.0
-Name: Loss, dtype: float64</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim Number</th>
+      <th>Loss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>880247</td>
+      <td>10000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>880247</td>
+      <td>5000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>880255</td>
+      <td>4000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>880016</td>
+      <td>1500000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>880205</td>
+      <td>2500000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>880489</td>
+      <td>10000000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>880754</td>
+      <td>7000000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>880979</td>
+      <td>3000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -2565,27 +2876,20 @@ Name: Loss, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Select column Loss from dataframe</span>
-<span class="n">LossDistribution</span> <span class="o">=</span> <span class="n">fs2</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span>
+<span class="c1"># s_LossDistribution = df_loss[&#39;Loss&#39;]</span>
+<span class="c1"># s_LossDistribution</span>
 
 <span class="c1"># 1st output - Sepaprated loss into bins and print out first three rows</span>
 <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span> <span class="p">]</span>
-<span class="n">cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
-<span class="n">cats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
+<span class="n">cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">cats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># 2nd output - Count how many loss in the speific bins - ie there are 150 loss in the loss range 75K to 500K</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
-
-<span class="c1"># 3rd output - show first 3 losses according to the matching loss categories</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span><span class="p">],</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="c1"># 4th ouput - Group claim data into discrete loss bins by assigning group names, ie. showing first loss is a Clash coverage etc.</span>
-<span class="n">group_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Layer1&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">,</span> <span class="s1">&#39;XOL&#39;</span><span class="p">,</span><span class="s1">&#39;Clash&#39;</span><span class="p">]</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">LossDistribution</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group_names</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2598,7 +2902,7 @@ Name: Loss, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[97]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -2607,6 +2911,8 @@ Name: Loss, dtype: float64</pre>
 <pre>0    (1000000, 20000000]
 1    (1000000, 20000000]
 2    (1000000, 20000000]
+3         (50000, 75000]
+4         (50000, 75000]
 Name: Loss, dtype: category
 Categories (5, interval[int64]): [(1, 50000] &lt; (50000, 75000] &lt; (75000, 500000] &lt; (500000, 1000000] &lt; (1000000, 20000000]]</pre>
 </div>
@@ -2615,7 +2921,7 @@ Categories (5, interval[int64]): [(1, 50000] &lt; (50000, 75000] &lt; (75000, 50
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[97]:</div>
+<div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -2631,9 +2937,34 @@ Name: Loss, dtype: int64</pre>
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # 3rd output - show first 3 losses according to the matching loss categories</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span><span class="p">],</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 4th ouput - Group claim data into discrete loss bins by assigning group names, ie. showing first loss is a Clash coverage etc.</span>
+<span class="n">group_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Layer1&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">,</span> <span class="s1">&#39;XOL&#39;</span><span class="p">,</span><span class="s1">&#39;Clash&#39;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group_names</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[97]:</div>
+<div class="prompt output_prompt">Out[58]:</div>
 
 
 
@@ -2650,7 +2981,7 @@ Categories (5, interval[int64]): [[1, 50000) &lt; [50000, 75000) &lt; [75000, 50
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[97]:</div>
+<div class="prompt output_prompt">Out[58]:</div>
 
 
 
@@ -2707,14 +3038,16 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[174]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Group claims by Line of Business LOB</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Claim.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
-<span class="n">c</span>
+<span class="n">df_claims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Claim.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claims</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">df_claims</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Loss_Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_claims_by_lob</span> <span class="o">=</span> <span class="n">df_claims</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
+<span class="n">df_claims_by_lob</span>
 </pre></div>
 
 </div>
@@ -2727,7 +3060,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[174]:</div>
+<div class="prompt output_prompt">Out[76]:</div>
 
 
 
@@ -2813,13 +3146,13 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[174]:</div>
+<div class="prompt output_prompt">Out[76]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;pandas.core.groupby.DataFrameGroupBy object at 0x000002659AF390B8&gt;</pre>
+<pre>&lt;pandas.core.groupby.DataFrameGroupBy object at 0x000001B1EA643B00&gt;</pre>
 </div>
 
 </div>
@@ -2830,11 +3163,11 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[154]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View claim by LOB - Nurse </span>
-<span class="n">c</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Nurse&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Nurse&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2847,7 +3180,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[154]:</div>
+<div class="prompt output_prompt">Out[77]:</div>
 
 
 
@@ -2871,54 +3204,56 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr style="text-align: right;">
       <th></th>
       <th>Claim_Number</th>
-      <th>Loss_Date</th>
       <th>LAE</th>
       <th>Loss</th>
       <th>Premium</th>
       <th>LOB</th>
     </tr>
+    <tr>
+      <th>Loss_Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>14</th>
+      <th>2016-03-28</th>
       <td>889851</td>
-      <td>2016-03-28</td>
       <td>25422.0</td>
       <td>161796</td>
       <td>208103.0</td>
       <td>Nurse</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>2016-01-01</th>
       <td>889591</td>
-      <td>2016-01-01</td>
       <td>75493.0</td>
       <td>279318</td>
       <td>81236.0</td>
       <td>Nurse</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>2016-08-09</th>
       <td>889877</td>
-      <td>2016-08-09</td>
       <td>80758.0</td>
       <td>54114</td>
       <td>60416.0</td>
       <td>Nurse</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>2016-12-26</th>
       <td>889550</td>
-      <td>2016-12-26</td>
       <td>81824.0</td>
       <td>52413</td>
       <td>127804.0</td>
       <td>Nurse</td>
     </tr>
     <tr>
-      <th>30</th>
+      <th>2016-05-26</th>
       <td>889443</td>
-      <td>2016-05-26</td>
       <td>38710.0</td>
       <td>138060</td>
       <td>211168.0</td>
@@ -2945,13 +3280,13 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[173]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default to sort by first sortable column which is LAE</span>
-<span class="n">c</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">c</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2964,7 +3299,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[173]:</div>
+<div class="prompt output_prompt">Out[78]:</div>
 
 
 
@@ -2988,7 +3323,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr style="text-align: right;">
       <th></th>
       <th>Claim_Number</th>
-      <th>Loss_Date</th>
       <th>LAE</th>
       <th>Loss</th>
       <th>Premium</th>
@@ -2999,14 +3333,12 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>Dentist</th>
       <td>889215</td>
-      <td>2016-12-20</td>
       <td>98396.0</td>
       <td>290832</td>
       <td>240383.0</td>
@@ -3014,7 +3346,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Hospital</th>
       <td>886684</td>
-      <td>2016-12-25</td>
       <td>99984.0</td>
       <td>298038</td>
       <td>245159.0</td>
@@ -3022,7 +3353,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Nurse</th>
       <td>889877</td>
-      <td>2016-12-28</td>
       <td>98914.0</td>
       <td>279318</td>
       <td>246635.0</td>
@@ -3030,7 +3360,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Physician</th>
       <td>881144</td>
-      <td>2018-04-22</td>
       <td>266019.0</td>
       <td>10000000</td>
       <td>248063.0</td>
@@ -3038,7 +3367,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Podiatrist</th>
       <td>884888</td>
-      <td>2016-12-19</td>
       <td>98013.0</td>
       <td>294633</td>
       <td>248669.0</td>
@@ -3052,7 +3380,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[173]:</div>
+<div class="prompt output_prompt">Out[78]:</div>
 
 
 
@@ -3076,7 +3404,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr style="text-align: right;">
       <th></th>
       <th>Claim_Number</th>
-      <th>Loss_Date</th>
       <th>LAE</th>
       <th>Loss</th>
       <th>Premium</th>
@@ -3087,14 +3414,12 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>Dentist</th>
       <td>886716</td>
-      <td>2012-12-20</td>
       <td>26077.0</td>
       <td>28162</td>
       <td>11067.0</td>
@@ -3102,7 +3427,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Hospital</th>
       <td>881331</td>
-      <td>2014-01-04</td>
       <td>26687.0</td>
       <td>27063</td>
       <td>11604.0</td>
@@ -3110,7 +3434,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Nurse</th>
       <td>889258</td>
-      <td>2012-12-23</td>
       <td>25422.0</td>
       <td>34679</td>
       <td>16548.0</td>
@@ -3118,7 +3441,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Physician</th>
       <td>880016</td>
-      <td>2014-04-21</td>
       <td>36440.0</td>
       <td>25404</td>
       <td>3555.0</td>
@@ -3126,7 +3448,6 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
     <tr>
       <th>Podiatrist</th>
       <td>883421</td>
-      <td>2016-01-18</td>
       <td>25720.0</td>
       <td>26062</td>
       <td>32051.0</td>
@@ -3140,7 +3461,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[173]:</div>
+<div class="prompt output_prompt">Out[78]:</div>
 
 
 
@@ -3225,10 +3546,10 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[183]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 
 </div>
@@ -3241,7 +3562,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[183]:</div>
+<div class="prompt output_prompt">Out[79]:</div>
 
 
 
@@ -3540,101 +3861,18 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 </div>
 
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[183]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>Dentist</th>
-      <th>Hospital</th>
-      <th>Nurse</th>
-      <th>Physician</th>
-      <th>Podiatrist</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Claim_Number</th>
-      <th>count</th>
-      <td>39.000000</td>
-      <td>78.000000</td>
-      <td>21.000000</td>
-      <td>39.000000</td>
-      <td>39.000000</td>
-    </tr>
-    <tr>
-      <th rowspan="4" valign="top">NaN</th>
-      <th>mean</th>
-      <td>887691.615385</td>
-      <td>884071.576923</td>
-      <td>889543.666667</td>
-      <td>880730.512821</td>
-      <td>884066.743590</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>696.825494</td>
-      <td>1885.292368</td>
-      <td>164.153993</td>
-      <td>391.910763</td>
-      <td>426.330531</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>886716.000000</td>
-      <td>881331.000000</td>
-      <td>889258.000000</td>
-      <td>880016.000000</td>
-      <td>883421.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>887096.500000</td>
-      <td>882258.750000</td>
-      <td>889453.000000</td>
-      <td>880307.500000</td>
-      <td>883704.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[187]:</div>
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/claim_distribution.xlsx&#39;</span><span class="p">)</span>
-<span class="n">dft</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/claim_distribution.xlsx&#39;</span><span class="p">)</span>
-<span class="n">dft</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/claim_distribution.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claim_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/claim_distribution.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claim_dist</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3647,7 +3885,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[187]:</div>
+<div class="prompt output_prompt">Out[80]:</div>
 
 
 
@@ -3774,40 +4012,20 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Loss data is sorted by LOB</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/LossData.xlsx&#39;</span><span class="p">)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
-<span class="n">den</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="o">.</span><span class="n">LOB</span> <span class="o">==</span> <span class="s1">&#39;Dentist&#39;</span><span class="p">]</span>
-<span class="n">hos</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="o">.</span><span class="n">LOB</span> <span class="o">==</span> <span class="s1">&#39;Hospital&#39;</span><span class="p">]</span>
-<span class="n">ns</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="o">.</span><span class="n">LOB</span> <span class="o">==</span> <span class="s1">&#39;Nurse&#39;</span><span class="p">]</span>
-<span class="n">pod</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="o">.</span><span class="n">LOB</span> <span class="o">==</span> <span class="s1">&#39;Podiatrist&#39;</span><span class="p">]</span>
-<span class="n">phy</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="o">.</span><span class="n">LOB</span> <span class="o">==</span> <span class="s1">&#39;Podiatrist&#39;</span><span class="p">]</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Loss-distribution-by-LOB---use-groupy-plot">Loss distribution by LOB - use groupy plot<a class="anchor-link" href="#Loss-distribution-by-LOB---use-groupy-plot">&#182;</a></h3>
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plt.plot(den.Loss)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hos</span><span class="o">.</span><span class="n">Loss</span><span class="p">)</span>
-<span class="c1"># plt.plot(ns.Loss)</span>
-<span class="c1"># plt.plot(pod.Loss)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phy</span><span class="o">.</span><span class="n">Loss</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Hospital&#39;</span><span class="p">],[</span><span class="s1">&#39;Physician&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;loss count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3820,79 +4038,19 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[83]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x263b15dfba8&gt;]</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x263b159cef0&gt;]</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\matplotlib\legend.py:623: UserWarning: Legend does not support &#39;Hospital&#39; instances.
-A proxy artist may be used instead.
-See: http://matplotlib.org/users/legend_guide.html#using-proxy-artist
-  &#34;#using-proxy-artist&#34;.format(orig_handle)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x263b15e8198&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0.5,0,&#39;loss count&#39;)</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0,0.5,&#39;Loss&#39;)</pre>
+<pre>LOB
+Dentist       AxesSubplot(0.125,0.2;0.775x0.68)
+Hospital      AxesSubplot(0.125,0.2;0.775x0.68)
+Nurse         AxesSubplot(0.125,0.2;0.775x0.68)
+Physician     AxesSubplot(0.125,0.2;0.775x0.68)
+Podiatrist    AxesSubplot(0.125,0.2;0.775x0.68)
+Name: Loss, dtype: object</pre>
 </div>
 
 </div>
@@ -3905,230 +4063,272 @@ See: http://matplotlib.org/users/legend_guide.html#using-proxy-artist
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAERCAYAAACU1LsdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+<img src="data:image/png;base64,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
-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
-xjv5N0hYCBEAAAAASUVORK5CYII=
+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
 "
 >
 </div>
