@@ -20,7 +20,7 @@ This database tool can also be useful for accountants doing financial analysis.&
 &lt;p&gt;As a CPA, I have had to work with datasets from data processing applications, such as insurance application, general ledger,
 regulatory reporting system and etc.&lt;/p&gt;
 &lt;p&gt;The process is to incorporate all the data then create reinsurance analysis for pricing treaties, pro-forma financial analysis
-for new business opportunity, regulatory compliance and risk accessment for stress test.&lt;/p&gt;
+for new business opportunity, regulatory compliance and risk assessment for stress test.&lt;/p&gt;
 &lt;p&gt;As an old saying that the data needs to be valid, otherwise will be "Garbage In and Garbage Out".&lt;/p&gt;
 &lt;p&gt;The first step for data preparation process involves loading, validating, merging and reshaping of data.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="merge"></category></entry><entry><title>Data Analysis With Python for Excel Users II - Perform Excel Function in Python</title><link href="http://jasminjohnson.github.io/blog/2018/04/21/data-validation-for-financial-analysis/" rel="alternate"></link><published>2018-04-21T10:00:00-04:00</published><updated>2018-04-21T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-21:blog/2018/04/21/data-validation-for-financial-analysis/</id><summary type="html">
