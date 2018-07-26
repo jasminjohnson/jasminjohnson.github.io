@@ -1474,8 +1474,8 @@ The file is in Excel format with two tabs.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Set index</span>
-<span class="o">-</span> <span class="nb">set</span> <span class="n">primary</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">both</span> <span class="n">tables</span> <span class="n">Pop</span> <span class="ow">and</span> <span class="n">Life</span> <span class="ow">in</span> <span class="n">SQLite</span>
-<span class="o">-</span> <span class="n">can</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">primary</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">SQlite</span><span class="p">,</span> <span class="n">but</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Excel</span>
+<span class="o">-</span> <span class="n">Set</span> <span class="n">primary</span> <span class="n">key</span> <span class="k">for</span> <span class="n">tables</span> <span class="s2">&quot;Pop&quot;</span> <span class="ow">and</span> <span class="s2">&quot;Life&quot;</span> <span class="ow">in</span> <span class="n">SQLite</span>
+<span class="o">-</span> <span class="n">The</span> <span class="n">benefit</span> <span class="n">of</span> <span class="n">SQlite</span> <span class="ow">is</span> <span class="n">we</span> <span class="n">can</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">unique</span> <span class="n">identifer</span> <span class="k">as</span> <span class="n">primay</span> <span class="n">key</span>
 </pre></div>
 
 </div>
@@ -1941,16 +1941,20 @@ The file is in Excel format with two tabs.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Join-Tables-and-Query-Data-in-Python-then-reading-results-into-a-pandas-dataFrame">Join Tables and Query Data in Python then reading results into a pandas dataFrame<a class="anchor-link" href="#Join-Tables-and-Query-Data-in-Python-then-reading-results-into-a-pandas-dataFrame">&#182;</a></h3><ul>
-<li>Join table by doing a query and save the result to a third table or save as Excel format</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Join Tables in Python then reading results into a pandas dataFrame</span>
+<span class="o">-</span> <span class="n">Join</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">the</span> <span class="n">result</span> <span class="n">to</span> <span class="n">a</span> <span class="n">third</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">SQLite</span>
+<span class="o">-</span> <span class="n">We</span> <span class="n">can</span> <span class="n">save</span> <span class="n">the</span> <span class="n">third</span> <span class="n">table</span> <span class="k">as</span> <span class="n">Excel</span> <span class="n">too</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2155,24 +2159,11 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Create query result table in SQLite or Excel</span>
-<span class="o">-</span> <span class="n">we</span> <span class="n">can</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">table</span> <span class="k">for</span> <span class="n">our</span> <span class="n">query</span> <span class="n">result</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">it</span> <span class="n">to</span> <span class="n">the</span> <span class="n">existing</span> <span class="n">Life</span><span class="o">.</span><span class="n">db</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/PopLifeMergeExcel.xlsx&#39;</span><span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save merge result as Excel file</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/PopLifeMergeExcel.xlsx&#39;</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -2182,7 +2173,7 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_merge.to_sql(&quot;PopLifeMergeSQL&quot;,con, index=&quot;CountryName&quot;, if_exists=&#39;replace&#39;)</span>
@@ -2198,10 +2189,10 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Here is table view from DB Browser</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Here is table view from DB Browser ??</span>
 <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/images/DBImage_PopLifeMergeSQL.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;[img: DB Browser after creating new query result to a table]&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;DbBrowser Query&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 
@@ -2220,7 +2211,7 @@ The file is in Excel format with two tabs.</p>
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-cyan-intense-fg ansi-bold">  File </span><span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-27-57e124fa3b12&gt;&#34;</span><span class="ansi-cyan-intense-fg ansi-bold">, line </span><span class="ansi-green-intense-fg ansi-bold">2</span>
+<span class="ansi-cyan-intense-fg ansi-bold">  File </span><span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-35-57e124fa3b12&gt;&#34;</span><span class="ansi-cyan-intense-fg ansi-bold">, line </span><span class="ansi-green-intense-fg ansi-bold">2</span>
 <span class="ansi-yellow-intense-fg ansi-bold">    &lt;img src=&#34;/images/DBImage_PopLifeMergeSQL.png&#34; alt=&#34;[img: DB Browser after creating new query result to a table]&#34; title=&#34;DbBrowser Query&#34; /&gt;</span>
 <span class="ansi-white-intense-fg ansi-bold">    ^</span>
 <span class="ansi-red-intense-fg ansi-bold">SyntaxError</span><span class="ansi-red-intense-fg ansi-bold">:</span> invalid syntax
@@ -2234,13 +2225,45 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Creating and altering tables with Pandas --- NEED TO FINISH ???????</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Inserting and updating column to the SQlite data ??</span>
+<span class="c1"># Connecting to the database file</span>
+<span class="c1"># https://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;data/PopLife.db&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;ALTER TABLE </span><span class="si">{tn}</span><span class="s2"> ADD COLUMN &#39;</span><span class="si">{cn}</span><span class="s2">&#39; </span><span class="si">{ct}</span><span class="s2">&quot;</span>\
+        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">new_column1</span><span class="p">,</span> <span class="n">ct</span><span class="o">=</span><span class="n">column_type</span><span class="p">))</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-46-5235ebc9a002&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      4</span> c <span class="ansi-yellow-intense-fg ansi-bold">=</span> conn<span class="ansi-yellow-intense-fg ansi-bold">.</span>cursor<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      5</span> 
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 6</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>c<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;ALTER TABLE {tn} ADD COLUMN &#39;{cn}&#39; {ct}&#34;</span>        <span class="ansi-yellow-intense-fg ansi-bold">.</span>format<span class="ansi-yellow-intense-fg ansi-bold">(</span>tn<span class="ansi-yellow-intense-fg ansi-bold">=</span>table_name<span class="ansi-yellow-intense-fg ansi-bold">,</span> cn<span class="ansi-yellow-intense-fg ansi-bold">=</span>new_column1<span class="ansi-yellow-intense-fg ansi-bold">,</span> ct<span class="ansi-yellow-intense-fg ansi-bold">=</span>column_type<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;table_name&#39; is not defined</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -2250,7 +2273,7 @@ The file is in Excel format with two tabs.</p>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Modifying primary key in SQLite or in Python --- NEED TO FINISH ???????</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating unique indexes -- ???</span>
 </pre></div>
 
 </div>
