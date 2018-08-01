@@ -2837,10 +2837,11 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Assigning-date-to-a-dataset-with-missing-date">Assigning date to a dataset with missing date<a class="anchor-link" href="#Assigning-date-to-a-dataset-with-missing-date">&#182;</a></h3>
-<pre><code>- The following example is the April 2018 Amazon stock prices but without any date
-- read the stock closing price with the missing date
-- assign the date to match the stock price</code></pre>
+<h3 id="Assigning-date-to-a-dataset-with-missing-date">Assigning date to a dataset with missing date<a class="anchor-link" href="#Assigning-date-to-a-dataset-with-missing-date">&#182;</a></h3><ul>
+<li>The following example is the April 2018 Amazon stock prices but without any date</li>
+<li>Read the stock closing price with the missing date</li>
+<li>Assign the date to match the stock price</li>
+</ul>
 
 </div>
 </div>
@@ -3102,8 +3103,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assign the date to match the stock price, the month of April started at 4/1/18</span>
-<span class="c1"># and ended at 4/30/18 with Business day as the frequency</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assign the date to match the stock price, the month of April started at 4/1/18 and ended at 4/30/18 with Business day as the frequency</span>
 <span class="c1"># The Business day function does not consider holidays</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;4/1/2018&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;4/30/2018&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">rng</span>
