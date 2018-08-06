@@ -1417,37 +1417,33 @@ SQLite is a flexible database that can do real work in real business environment
 This database tool can also be useful for accountants doing financial analysis.</p>
 
 
+<p><img src="/images/SQL flowchart.png" alt="[img: SQL flowchart]" title="SQLite flowchart" /></p>
 <h3 id="What-is-SQLite?">What is SQLite?<a class="anchor-link" href="#What-is-SQLite?">&#182;</a></h3><p>from "Using SQLite" by Jay A. Kreibich</p>
 <p>What is SQLite: In the simplest terms, SQLite is a public-domain software package that provides a
 relational database management system, or RDBMS. Relational database systems are
 used to store user-defined records in large tables. In addition to data storage and management, a database engine can process complex query commands that combine data
-from multiple tables to generate reports and data summaries. Other popular RDBMS
-products include Oracle Database, IBM’s DB2, and Microsoft’s SQL Server on the
-commercial side, with MySQL and PostgreSQL being popular open source products.
+from multiple tables to generate reports and data summaries.
 The “Lite” in SQLite does not refer to its capabilities. Rather, SQLite is lightweight
 when it comes to setup complexity, administrative overhead, and resource usage</p>
 <h3 id="What-is-DB-Brower-for-SQLite?">What is DB Brower for SQLite?<a class="anchor-link" href="#What-is-DB-Brower-for-SQLite?">&#182;</a></h3><p>DB Browser for SQLite is a high quality, visual, open source tool used to create, design, and edit database files compatible with SQLite.</p>
 <p>It is for users and developers wanting to create, search, and edit databases. It uses a familiar spreadsheet-like interface,
-and you don't need to learn complicated SQL commands.</p>
-<p>This program is not a visual shell for the sqlite command line tool.</p>
-<h3 id="SQLite-data-types">SQLite data types<a class="anchor-link" href="#SQLite-data-types">&#182;</a></h3><p>Data types that are supported by SQLite 3:</p>
-<ul>
-<li>INTEGER: A signed integer up to 8 bytes depending on the magnitude of the value.</li>
-<li>REAL: An 8-byte floating point value.</li>
-<li>TEXT: A text string, typically UTF-8 encoded (depending on the database encoding).</li>
-<li>BLOB: A blob of data (binary large object) for storing binary data.</li>
-<li>NULL: A NULL value, represents missing data or an empty cell.</li>
-<li>No designated Boolean data type: simply re-purpose the INTEGER type to represent Boolean values (0 = false, 1 = true).</li>
-</ul>
+and you don't need to learn complicated SQL commands. This program is not a visual shell for the sqlite command line tool.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Why-would-we-use-SQLite-to-read-Excel-Files?">Why would we use SQLite to read Excel Files?<a class="anchor-link" href="#Why-would-we-use-SQLite-to-read-Excel-Files?">&#182;</a></h3><ul>
 <li>Sort data on several fields</li>
 <li>Combine data from different spreadheets </li>
 <li>Use free graphical user interface (GUI) tools to run SQL queries on database</li>
 <li>Convert Excel files to tables</li>
 <li>Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code</li>
-<li>Note: there cannot be spaces in the Excel tab names, but underscores are acceptable</li>
-<li><p>The first row in each sheet should have legal column names. Here is the conversion code:</p>
-<ul>
+<li>Note: Excel tab name cannot have spaces, but underscores are acceptable</li>
+<li>The first row in each sheet should have legal column names. Here is the conversion code:   <ul>
 <li>import sqlite3</li>
 <li>import pandas as pd       </li>
 <li>filename="workbook" (#Name of Excel xlsx file. SQLite database will have the same name and extension .db)</li>
