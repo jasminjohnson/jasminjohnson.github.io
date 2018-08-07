@@ -1457,20 +1457,6 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <li>Convert Excel files to tables</li>
 <li>Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code</li>
 <li>Note: Excel tab name cannot have spaces, but underscores are acceptable</li>
-<li>The first row in each sheet should have legal column names. Here is the conversion code:   <ul>
-<li>import sqlite3</li>
-<li>import pandas as pd       </li>
-<li>filename="workbook" (#Name of Excel xlsx file. SQLite database will have the same name and extension .db)</li>
-<li>con=sqlite3.connect(filename+".db")</li>
-<li>wb=pd.read_excel(filename+'.xlsx',sheetname=None)</li>
-<li>for sheet in wb:<ul>
-<li>wb[sheet].to_sql(sheet,con, index=False)</li>
-</ul>
-</li>
-<li>con.commit()</li>
-<li>con.close()</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -1480,7 +1466,10 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Connecting-SQlite----the-example-here-is-an-Excel-file-&quot;PremiumLossSQLite.xlsx&quot;"><strong>Connecting SQlite  - the example here is an Excel file "PremiumLossSQLite.xlsx"</strong><a class="anchor-link" href="#Connecting-SQlite----the-example-here-is-an-Excel-file-&quot;PremiumLossSQLite.xlsx&quot;">&#182;</a></h4>
+<h4 id="Connecting-SQlite----the-example-here-is-an-Excel-file-&quot;PremiumLossSQLite.xlsx&quot;"><strong>Connecting SQlite  - the example here is an Excel file "PremiumLossSQLite.xlsx"</strong><a class="anchor-link" href="#Connecting-SQlite----the-example-here-is-an-Excel-file-&quot;PremiumLossSQLite.xlsx&quot;">&#182;</a></h4><ul>
+<li>The first row in each sheet should have legal column names. Here is the conversion code:</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -1489,8 +1478,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span> 
-<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span>   <span class="c1"># Name of Excel xlsx file. SQLite database will have the same name and extension .db</span>
+<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span> <span class="c1"># filename+&quot;.db&quot;</span>
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="p">:</span>
 <span class="c1">#     wb[sheet].to_sql(sheet,con, index=False)</span>
