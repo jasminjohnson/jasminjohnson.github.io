@@ -1413,7 +1413,8 @@ h6:hover .anchor-link {
 
 
 <p>After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
-SQLite is a flexible database that can do real work in real business environments. 
+SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
+into a number of popular scripting languages, including Python.
 This database tool can also be useful for accountants doing financial analysis.</p>
 
 </div>
@@ -1477,7 +1478,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span>   <span class="c1"># name of Excel xlsx file. SQLite database will have the same name and extension .db</span>
@@ -1521,7 +1522,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
@@ -1532,7 +1533,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <span class="s1">&#39;&#39;&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;data/reinsurace_query_results&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">)</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;reinsurace_query_results&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">)</span> 
 <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/reinsurace_query_results.xlsx&#39;</span><span class="p">)</span> 
 </pre></div>
 
@@ -1558,6 +1559,54 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Make a connection to the SQLite DB</span>
+<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;PremiumLossSQLite.db&quot;</span><span class="p">)</span>
+
+<span class="c1"># Obtain a Cursor object to execute SQL statements</span>
+<span class="n">cur</span>   <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Add a new column to student table</span>
+
+<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE premium ADD COLUMN Reinsurers varchar(32)&quot;</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">addColumn</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>                          Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-23-29d0e8052c73&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      9</span> addColumn <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;ALTER TABLE premium ADD COLUMN Reinsurers varchar(32)&#34;</span>
+<span class="ansi-green-fg">     10</span> 
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 11</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>cur<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span>addColumn<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">OperationalError</span>: no such table: premium</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

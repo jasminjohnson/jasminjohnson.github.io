@@ -2,7 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal - articles</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/articles.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-08-01T10:00:00-04:00</updated><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/08/01/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-08-01T10:00:00-04:00</published><updated>2018-08-01T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-01:blog/2018/08/01/SQLite-database-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
-SQLite is a flexible database that can do real work in real business environments. 
+SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
+into a number of popular scripting languages, including Python.
 This database tool can also be useful for accountants doing financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Pandas Time Series Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/07/15/Python-Pandas-TimeSeries/" rel="alternate"></link><published>2018-07-15T00:00:00-04:00</published><updated>2018-07-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-07-15:blog/2018/07/15/Python-Pandas-TimeSeries/</id><summary type="html">
 
