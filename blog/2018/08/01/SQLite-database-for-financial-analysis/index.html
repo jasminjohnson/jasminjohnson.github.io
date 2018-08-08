@@ -1517,12 +1517,12 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Query-inner-join-between-the-reinsurance,-premium-and-loss-data-and-export-the-data-to-Excel"><strong> Query inner join between the reinsurance, premium and loss data and export the data to Excel</strong><a class="anchor-link" href="#-Query-inner-join-between-the-reinsurance,-premium-and-loss-data-and-export-the-data-to-Excel">&#182;</a></h4><ul>
-<li>Query list of policies with incurred losses that covered under the reinsurance treaty</li>
+<h4 id="-Query-the-database---query-list-of-policies-with-incurred-losses-that-covered-under-the-reinsurance-treaty"><strong> Query the database - query list of policies with incurred losses that covered under the reinsurance treaty</strong><a class="anchor-link" href="#-Query-the-database---query-list-of-policies-with-incurred-losses-that-covered-under-the-reinsurance-treaty">&#182;</a></h4><ul>
 <li>Instead of Excel VLookup function that has certian limitation</li>
 <li>We can repeat/automate the query process when new data get updated </li>
-<li>Save the query result to SQLite</li>
-<li>Save the query result to Excel</li>
+<li>Save the query result to SQLite or Excel</li>
+<li>Option A : Inner join between the reinsurance, premium and loss data </li>
+<li>Option B : Selecting row</li>
 </ul>
 
 </div>
@@ -1533,7 +1533,9 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option A : Inner join between the reinsurance, premium and loss data </span>
+
+<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">select r.PolicyNumber as Policy_from_Reinsurance_Tab, p.PolicyNumber as Policy_from_Policy_Tab, l.PolicyNumber as Policy_from_Loss_Tab</span>
 <span class="s1">from reinsurance as r</span>
 <span class="s1">join premium as p on p.PolicyNumber=r.PolicyNumber</span>
@@ -1568,6 +1570,198 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option B : Selecting row   ???? how to print out??? 8/8/2018</span>
+<span class="c1"># 1) Select from reinsurance table with Line of Business is Hospital</span>
+
+<span class="n">cur</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;reinsurance&#39;</span>   <span class="c1"># name of the table to be queried</span>
+
+<span class="n">column_2</span> <span class="o">=</span> <span class="s1">&#39;LOB&#39;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM </span><span class="si">{tn}</span><span class="s1"> WHERE </span><span class="si">{cn}</span><span class="s1">=&quot;Hospital&quot;&#39;</span><span class="o">.</span>\
+        <span class="nb">format</span><span class="p">(</span><span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
+<span class="c1"># all_rows = cur.fetchall()</span>
+<span class="c1"># print(&#39;1):&#39;, all_rows)</span>
+
+<span class="n">one_row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1):&#39;</span><span class="p">,</span> <span class="n">one_row</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1): (47653, 2017, &#39;Open&#39;, &#39;Rudolf \xa0&#39;, &#39;Talkin&#39;, &#39;Hospital&#39;, &#39;500K/1.5M&#39;, 887969, &#39;2014-01-03 00:00:00&#39;, &#39;2017-09-17 00:00:00&#39;, &#39;2017-08-14 00:00:00&#39;, &#39;2018-08-14 00:00:00&#39;, &#39;OCC&#39;, 80800, 50000, 20000, None, 63133, 290832)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2) Select one column - policy column for rows that match a LOB is hosptial</span>
+<span class="n">column_1</span> <span class="o">=</span> <span class="s1">&#39;PolicyNumber&#39;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT (</span><span class="si">{coi}</span><span class="s1">) FROM </span><span class="si">{tn}</span><span class="s1"> WHERE </span><span class="si">{cn}</span><span class="s1">=&quot;Hospital&quot;&#39;</span><span class="o">.</span>\
+        <span class="nb">format</span><span class="p">(</span><span class="n">coi</span><span class="o">=</span><span class="n">column_1</span><span class="p">,</span> <span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
+<span class="n">all_rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2):&#39;</span><span class="p">,</span> <span class="n">all_rows</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2): [(47653,), (46048,), (43112,), (37955,), (43242,), (13418,), (26364,), (23810,), (11106,), (12652,)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3) Select two columns - policy/LOB column for rows that match a LOB is hosptial</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT </span><span class="si">{coi1}</span><span class="s1">,</span><span class="si">{coi2}</span><span class="s1"> FROM </span><span class="si">{tn}</span><span class="s1"> WHERE </span><span class="si">{cn}</span><span class="s1">=&quot;Hospital&quot;&#39;</span><span class="o">.</span>\
+        <span class="nb">format</span><span class="p">(</span><span class="n">coi1</span><span class="o">=</span><span class="n">column_1</span><span class="p">,</span> <span class="n">coi2</span><span class="o">=</span><span class="n">column_2</span><span class="p">,</span> <span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
+<span class="n">all_rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3):&#39;</span><span class="p">,</span> <span class="n">all_rows</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3): [(47653, &#39;Hospital&#39;), (46048, &#39;Hospital&#39;), (43112, &#39;Hospital&#39;), (37955, &#39;Hospital&#39;), (43242, &#39;Hospital&#39;), (13418, &#39;Hospital&#39;), (26364, &#39;Hospital&#39;), (23810, &#39;Hospital&#39;), (11106, &#39;Hospital&#39;), (12652, &#39;Hospital&#39;)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4) Selecting only up to 5 rows that match a certain value in 1 column</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM </span><span class="si">{tn}</span><span class="s1"> WHERE </span><span class="si">{cn}</span><span class="s1">=&quot;Phy&quot; LIMIT 5&#39;</span><span class="o">.</span>\
+        <span class="nb">format</span><span class="p">(</span><span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
+<span class="n">five_rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4):&#39;</span><span class="p">,</span> <span class="n">five_rows</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4): [(18196, 2017, &#39;Closed&#39;, &#39;Burl \xa0&#39;, &#39;Katan&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 887535, &#39;2013-02-05 00:00:00&#39;, &#39;2017-07-02 00:00:00&#39;, &#39;2017-01-03 00:00:00&#39;, &#39;2018-01-03 00:00:00&#39;, &#39;CM&#39;, 212515, 50000, 20000, None, 55733, 101685), (37658, 2017, &#39;Closed&#39;, &#39;Towanda \xa0&#39;, &#39;Israeli&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 884102, &#39;2013-03-06 00:00:00&#39;, &#39;2018-05-22 00:00:00&#39;, &#39;2017-11-29 00:00:00&#39;, &#39;2018-11-29 00:00:00&#39;, &#39;OCC&#39;, 122708, 50000, 20000, None, 92617, 244446), (10700, 2017, &#39;Closed&#39;, &#39;Sabra \xa0&#39;, &#39;Higgenbotham&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 880205, &#39;2012-12-23 00:00:00&#39;, &#39;2013-12-05 00:00:00&#39;, &#39;2017-10-07 00:00:00&#39;, &#39;2018-10-07 00:00:00&#39;, &#39;OCC&#39;, 12021, 50000, 20000, None, 37639, 97247), (10948, 2017, &#39;Closed&#39;, &#39;Florencia \xa0&#39;, &#39;Bilyk&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 880208, &#39;2013-01-11 00:00:00&#39;, &#39;2017-04-22 00:00:00&#39;, &#39;2017-06-05 00:00:00&#39;, &#39;2018-06-05 00:00:00&#39;, &#39;CM&#39;, 5132, 50000, 20000, None, 289389, 38573), (26445, 2017, &#39;Closed&#39;, &#39;Saturnina \xa0&#39;, &#39;Lamperouge&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 889713, &#39;2013-03-22 00:00:00&#39;, &#39;2018-02-11 00:00:00&#39;, &#39;2017-03-01 00:00:00&#39;, &#39;2018-03-01 00:00:00&#39;, &#39;OCC&#39;, 110571, 50000, 20000, None, 31063, 122436)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5) Check if a certain claim number exists and print its column contents</span>
+<span class="n">id_column</span> <span class="o">=</span> <span class="s1">&#39;ClaimNumber&#39;</span>
+<span class="n">some_id</span> <span class="o">=</span> <span class="mi">887535</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM </span><span class="si">{tn}</span><span class="s2"> WHERE </span><span class="si">{idf}</span><span class="s2">=</span><span class="si">{my_id}</span><span class="s2">&quot;</span><span class="o">.</span>\
+        <span class="nb">format</span><span class="p">(</span><span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">,</span> <span class="n">idf</span><span class="o">=</span><span class="n">id_column</span><span class="p">,</span> <span class="n">my_id</span><span class="o">=</span><span class="n">some_id</span><span class="p">))</span>
+<span class="n">id_exists</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">id_exists</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;5): </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">id_exists</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;5): </span><span class="si">{}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">some_id</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5): (18196, 2017, &#39;Closed&#39;, &#39;Burl \xa0&#39;, &#39;Katan&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 887535, &#39;2013-02-05 00:00:00&#39;, &#39;2017-07-02 00:00:00&#39;, &#39;2017-01-03 00:00:00&#39;, &#39;2018-01-03 00:00:00&#39;, &#39;CM&#39;, 212515, 50000, 20000, None, 55733, 101685)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -1582,7 +1776,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Premium table before inserting new column</span>
@@ -1603,7 +1797,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -1717,7 +1911,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option A - use DML to add a column :-|</span>
@@ -1749,7 +1943,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -1869,7 +2063,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option B - use to_sql to add a column - much easier and more native to PANDAS way of doing things</span>
@@ -1890,7 +2084,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -2019,7 +2213,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Closing the connection to the database file</span>
+<span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 </div>
