@@ -1575,7 +1575,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option B : Selecting row   ???? how to print out??? 8/8/2018</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Option B : Selecting row   </span>
 <span class="c1"># 1) Select from reinsurance table with Line of Business is Hospital</span>
 
 <span class="n">cur</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -1616,7 +1616,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2) Select one column - policy column for rows that match a LOB is hosptial</span>
@@ -1625,6 +1625,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
         <span class="nb">format</span><span class="p">(</span><span class="n">coi</span><span class="o">=</span><span class="n">column_1</span><span class="p">,</span> <span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
 <span class="n">all_rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2):&#39;</span><span class="p">,</span> <span class="n">all_rows</span><span class="p">)</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">description</span>
 </pre></div>
 
 </div>
@@ -1644,6 +1646,19 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <pre>2): [(47653,), (46048,), (43112,), (37955,), (43242,), (13418,), (26364,), (23810,), (11106,), (12652,)]
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>((&#39;PolicyNumber&#39;, None, None, None, None, None, None),)</pre>
+</div>
+
 </div>
 
 </div>
@@ -1687,7 +1702,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4) Selecting only up to 5 rows that match a certain value in 1 column</span>
@@ -1695,7 +1710,16 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM </span><span class="si">{tn}</span><span class="s1"> WHERE </span><span class="si">{cn}</span><span class="s1">=&quot;Phy&quot; LIMIT 5&#39;</span><span class="o">.</span>\
         <span class="nb">format</span><span class="p">(</span><span class="n">tn</span><span class="o">=</span><span class="n">table_name</span><span class="p">,</span> <span class="n">cn</span><span class="o">=</span><span class="n">column_2</span><span class="p">))</span>
 <span class="n">five_rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;4):&#39;</span><span class="p">,</span> <span class="n">five_rows</span><span class="p">)</span>
+<span class="c1"># print(&#39;4):&#39;, five_rows)</span>
+
+
+<span class="c1"># Print results in comma delimited format</span>
+<span class="c1"># cur.execute(&quot;SELECT * FROM song&quot;)</span>
+<span class="c1"># rows = cur.fetchall()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">five_rows</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,&quot;</span> <span class="o">%</span> <span class="n">col</span><span class="p">)</span>
+<span class="c1">#     print &quot;\n&quot;</span>
 </pre></div>
 
 </div>
@@ -1712,7 +1736,101 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>4): [(18196, 2017, &#39;Closed&#39;, &#39;Burl \xa0&#39;, &#39;Katan&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 887535, &#39;2013-02-05 00:00:00&#39;, &#39;2017-07-02 00:00:00&#39;, &#39;2017-01-03 00:00:00&#39;, &#39;2018-01-03 00:00:00&#39;, &#39;CM&#39;, 212515, 50000, 20000, None, 55733, 101685), (37658, 2017, &#39;Closed&#39;, &#39;Towanda \xa0&#39;, &#39;Israeli&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 884102, &#39;2013-03-06 00:00:00&#39;, &#39;2018-05-22 00:00:00&#39;, &#39;2017-11-29 00:00:00&#39;, &#39;2018-11-29 00:00:00&#39;, &#39;OCC&#39;, 122708, 50000, 20000, None, 92617, 244446), (10700, 2017, &#39;Closed&#39;, &#39;Sabra \xa0&#39;, &#39;Higgenbotham&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 880205, &#39;2012-12-23 00:00:00&#39;, &#39;2013-12-05 00:00:00&#39;, &#39;2017-10-07 00:00:00&#39;, &#39;2018-10-07 00:00:00&#39;, &#39;OCC&#39;, 12021, 50000, 20000, None, 37639, 97247), (10948, 2017, &#39;Closed&#39;, &#39;Florencia \xa0&#39;, &#39;Bilyk&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 880208, &#39;2013-01-11 00:00:00&#39;, &#39;2017-04-22 00:00:00&#39;, &#39;2017-06-05 00:00:00&#39;, &#39;2018-06-05 00:00:00&#39;, &#39;CM&#39;, 5132, 50000, 20000, None, 289389, 38573), (26445, 2017, &#39;Closed&#39;, &#39;Saturnina \xa0&#39;, &#39;Lamperouge&#39;, &#39;Phy&#39;, &#39;500K/1.5M&#39;, 889713, &#39;2013-03-22 00:00:00&#39;, &#39;2018-02-11 00:00:00&#39;, &#39;2017-03-01 00:00:00&#39;, &#39;2018-03-01 00:00:00&#39;, &#39;OCC&#39;, 110571, 50000, 20000, None, 31063, 122436)]
+<pre>18196,
+2017,
+Closed,
+Burl  ,
+Katan,
+Phy,
+500K/1.5M,
+887535,
+2013-02-05 00:00:00,
+2017-07-02 00:00:00,
+2017-01-03 00:00:00,
+2018-01-03 00:00:00,
+CM,
+212515,
+50000,
+20000,
+None,
+55733,
+101685,
+37658,
+2017,
+Closed,
+Towanda  ,
+Israeli,
+Phy,
+500K/1.5M,
+884102,
+2013-03-06 00:00:00,
+2018-05-22 00:00:00,
+2017-11-29 00:00:00,
+2018-11-29 00:00:00,
+OCC,
+122708,
+50000,
+20000,
+None,
+92617,
+244446,
+10700,
+2017,
+Closed,
+Sabra  ,
+Higgenbotham,
+Phy,
+500K/1.5M,
+880205,
+2012-12-23 00:00:00,
+2013-12-05 00:00:00,
+2017-10-07 00:00:00,
+2018-10-07 00:00:00,
+OCC,
+12021,
+50000,
+20000,
+None,
+37639,
+97247,
+10948,
+2017,
+Closed,
+Florencia  ,
+Bilyk,
+Phy,
+500K/1.5M,
+880208,
+2013-01-11 00:00:00,
+2017-04-22 00:00:00,
+2017-06-05 00:00:00,
+2018-06-05 00:00:00,
+CM,
+5132,
+50000,
+20000,
+None,
+289389,
+38573,
+26445,
+2017,
+Closed,
+Saturnina  ,
+Lamperouge,
+Phy,
+500K/1.5M,
+889713,
+2013-03-22 00:00:00,
+2018-02-11 00:00:00,
+2017-03-01 00:00:00,
+2018-03-01 00:00:00,
+OCC,
+110571,
+50000,
+20000,
+None,
+31063,
+122436,
 </pre>
 </div>
 </div>
@@ -1723,7 +1841,7 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5) Check if a certain claim number exists and print its column contents</span>
@@ -2202,6 +2320,61 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### ** Dashboards **</span>
+<span class="o">-</span> <span class="n">often</span> <span class="n">provide</span> <span class="n">at</span><span class="o">-</span><span class="n">a</span><span class="o">-</span><span class="n">glance</span> <span class="n">views</span> <span class="n">of</span> <span class="n">KPIs</span> <span class="p">(</span><span class="n">key</span> <span class="n">performance</span> <span class="n">indicators</span><span class="p">)</span> <span class="n">relevant</span> <span class="n">to</span> <span class="n">a</span> <span class="n">particular</span> <span class="n">objective</span> <span class="ow">or</span> <span class="n">business</span> <span class="n">process</span>
+<span class="o">-</span> <span class="n">The</span> <span class="s2">&quot;dashboard&quot;</span> <span class="ow">is</span> <span class="n">often</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">a</span> <span class="n">web</span> <span class="n">page</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">linked</span> <span class="n">to</span> <span class="n">a</span> <span class="n">database</span> <span class="n">that</span> <span class="n">allows</span> <span class="n">the</span> <span class="n">report</span> <span class="n">to</span> <span class="n">be</span> <span class="n">constantly</span> <span class="n">updated</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">plot</span><span class="o">.</span><span class="n">ly</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">big</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">analytics</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">pandas</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">sqlite</span><span class="o">/</span>
+<span class="kn">import</span> <span class="nn">plotly.tools</span> <span class="k">as</span> <span class="nn">tls</span>   <span class="err">?</span><span class="o">??</span>
+
+<span class="n">tls</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="s1">&#39;https://plot.ly/~chris/7365&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-29-b306e0ba4b4e&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">import</span> plotly<span class="ansi-yellow-intense-fg ansi-bold">.</span>tools <span class="ansi-green-intense-fg ansi-bold">as</span> tls
+<span class="ansi-green-fg">      2</span> tls<span class="ansi-yellow-intense-fg ansi-bold">.</span>embed<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;https://plot.ly/~chris/7365&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">ModuleNotFoundError</span>: No module named &#39;plotly&#39;</pre>
+</div>
 </div>
 
 </div>
