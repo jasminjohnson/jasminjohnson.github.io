@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-08-01T10:00:00-04:00</updated><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/08/01/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-08-01T10:00:00-04:00</published><updated>2018-08-01T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-01:blog/2018/08/01/SQLite-database-for-financial-analysis/</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-08-15T00:00:00-04:00</updated><entry><title>MongoDB</title><link href="http://jasminjohnson.github.io/blog/2018/08/15/MongoDB/" rel="alternate"></link><published>2018-08-15T00:00:00-04:00</published><updated>2018-08-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-15:blog/2018/08/15/MongoDB/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="MongoDB"></category><category term="pymongo"></category></entry><entry><title>SQLite Database for Financial Analysis</title><link href="http://jasminjohnson.github.io/blog/2018/08/01/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-08-01T10:00:00-04:00</published><updated>2018-08-01T10:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-01:blog/2018/08/01/SQLite-database-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
 SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
