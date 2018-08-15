@@ -1429,10 +1429,17 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="MongoDB-for-Reinsurance-Data-Analysis">MongoDB for Reinsurance Data Analysis<a class="anchor-link" href="#MongoDB-for-Reinsurance-Data-Analysis">&#182;</a></h3><ul>
-<li>Create sample data in MongoDB</li>
-<li>Read webpage data into MongoDB and retrieve it for data analysis</li>
-<li>Read Excel into MongoDB</li>
-<li>Example - investment gain and loss from broker website download data</li>
+<li>Create sample data in MongoDB<ul>
+<li>reinsurance treaty by reinsurer/year/treaty type</li>
+</ul>
+</li>
+<li>Read webpage data into MongoDB and <ul>
+<li>example : read twitter page about what type of insurance people are interesting buying</li>
+</ul>
+</li>
+<li>Retrieve from MongoDB to Excel for data analysis</li>
+<li>Read investment gain and loss from broker website into MongoDB for analysis</li>
+<li>how to use BSON-NumPy to pull data out of Mongo and into pandas</li>
 </ul>
 
 </div>
@@ -1474,21 +1481,18 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### *Getting a Database*</span>
-<span class="o">-</span> <span class="n">A</span> <span class="n">single</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">MongoDB</span> <span class="n">can</span> <span class="n">support</span> <span class="n">multiple</span> <span class="n">independent</span> <span class="n">databases</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">When</span> <span class="n">working</span> <span class="k">with</span> <span class="n">PyMongo</span> <span class="n">you</span> <span class="n">access</span> <span class="n">databases</span> <span class="n">using</span> <span class="n">attribute</span> <span class="n">style</span> <span class="n">access</span> <span class="n">on</span> <span class="n">MongoClient</span> <span class="n">instances</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">database</span> <span class="n">name</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">attribute</span> <span class="n">style</span> <span class="n">access</span> <span class="p">(</span><span class="n">like</span> <span class="n">sample</span><span class="o">-</span><span class="n">data</span><span class="p">),</span> <span class="n">but</span> <span class="n">sample_data</span> <span class="ow">is</span> <span class="n">okay</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Getting-a-Database"><em>Getting a Database</em><a class="anchor-link" href="#Getting-a-Database">&#182;</a></h4><ul>
+<li>A single instance of MongoDB can support multiple independent databases.</li>
+<li>When working with PyMongo you access databases using attribute style access on MongoClient instances.</li>
+<li>database name can not use attribute style access (like sample-data), but sample_data is okay</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1601,7 +1605,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b733f8da68b144b14aa4fda&#39;)</pre>
+<pre>ObjectId(&#39;5b747db3760df74924ecbe28&#39;)</pre>
 </div>
 
 </div>
@@ -1639,13 +1643,25 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\ipykernel_launcher.py:1: DeprecationWarning: collection_names is deprecated. Use list_collection_names instead.
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
 <div class="prompt output_prompt">Out[6]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;posts&#39;]</pre>
+<pre>[&#39;posts&#39;, &#39;profiles&#39;]</pre>
 </div>
 
 </div>
@@ -1684,7 +1700,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b733fb2a68b144b14aa4fdb&#39;)</pre>
+<pre>ObjectId(&#39;5b747db8760df74924ecbe29&#39;)</pre>
 </div>
 
 </div>
@@ -1844,7 +1860,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b733fb2a68b144b14aa4fdb&#39;)</pre>
+<pre>ObjectId(&#39;5b747db8760df74924ecbe29&#39;)</pre>
 </div>
 
 </div>
@@ -1875,8 +1891,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b733fb2a68b144b14aa4fdb&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 14, 20, 46, 42, 222000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b747db8760df74924ecbe29&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 36, 998000),
  &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
  &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
  &#39;treaty&#39;: &#39;Clash Layer&#39;}
@@ -1898,7 +1914,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">post_id_as_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span>
@@ -1915,13 +1931,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;5b733fb2a68b144b14aa4fdb&#39;</pre>
+<pre>&#39;5b747db8760df74924ecbe29&#39;</pre>
 </div>
 
 </div>
@@ -1932,7 +1948,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">posts</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="n">post_id_as_str</span><span class="p">})</span> <span class="c1"># No result</span>
@@ -1957,10 +1973,11 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bson.objectid</span> <span class="k">import</span> <span class="n">ObjectId</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># follow up @8/14/18</span>
+<span class="kn">from</span> <span class="nn">bson.objectid</span> <span class="k">import</span> <span class="n">ObjectId</span>
 
 <span class="c1"># The web framework gets post_id from the URL and passes it as a string</span>
 <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">post_id</span><span class="p">):</span>
@@ -1973,24 +1990,21 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### * A Note On Unicode Strings*</span>
-<span class="o">-</span> <span class="n">You</span> <span class="n">probably</span> <span class="n">noticed</span> <span class="n">that</span> <span class="n">the</span> <span class="n">regular</span> <span class="n">Python</span> <span class="n">strings</span> <span class="n">we</span> <span class="n">stored</span> <span class="n">earlier</span> <span class="n">look</span> <span class="n">different</span> <span class="n">when</span> <span class="n">retrieved</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">server</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">u</span><span class="err">’</span><span class="n">AIG</span><span class="err">’</span> <span class="n">instead</span> <span class="n">of</span> <span class="err">‘</span><span class="n">AIG</span><span class="err">’</span><span class="p">)</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">A</span> <span class="n">short</span> <span class="n">explanation</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">order</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">MongoDB</span> <span class="n">stores</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">BSON</span> <span class="nb">format</span><span class="o">.</span> <span class="n">BSON</span> <span class="n">strings</span> <span class="n">are</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">encoded</span> <span class="n">so</span> <span class="n">PyMongo</span> <span class="n">must</span> <span class="n">ensure</span> <span class="n">that</span> <span class="nb">any</span> <span class="n">strings</span> <span class="n">it</span> <span class="n">stores</span> <span class="n">contain</span> <span class="n">only</span> <span class="n">valid</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">data</span><span class="o">.</span>
-<span class="o">-</span> <span class="n">Regular</span> <span class="n">strings</span> <span class="p">(</span><span class="o">&lt;</span><span class="nb">type</span> <span class="err">‘</span><span class="nb">str</span><span class="err">’</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">are</span> <span class="n">validated</span> <span class="ow">and</span> <span class="n">stored</span> <span class="n">unaltered</span><span class="o">.</span> <span class="n">Unicode</span> <span class="n">strings</span> <span class="p">(</span><span class="o">&lt;</span><span class="nb">type</span> <span class="err">‘</span><span class="n">unicode</span><span class="err">’</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">are</span> <span class="n">encoded</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">first</span><span class="o">.</span> 
-<span class="o">-</span> <span class="n">The</span> <span class="n">reason</span> <span class="n">our</span> <span class="n">example</span> <span class="n">string</span> <span class="ow">is</span> <span class="n">represented</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">shell</span> <span class="k">as</span> <span class="n">u</span><span class="err">’</span><span class="n">AIG</span><span class="err">’</span> <span class="n">instead</span> <span class="n">of</span> <span class="err">‘</span><span class="n">AIG</span><span class="err">’</span> 
-<span class="o">-</span> <span class="ow">is</span> <span class="n">that</span> <span class="n">PyMongo</span> <span class="n">decodes</span> <span class="n">each</span> <span class="n">BSON</span> <span class="n">string</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">unicode</span> <span class="n">string</span><span class="p">,</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">regular</span> <span class="nb">str</span><span class="o">.</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="-A-Note-On-Unicode-Strings"><em> A Note On Unicode Strings</em><a class="anchor-link" href="#-A-Note-On-Unicode-Strings">&#182;</a></h4><ul>
+<li>You probably noticed that the regular Python strings we stored earlier look different when retrieved from the server (e.g. u’AIG’ instead of ‘AIG’).</li>
+<li>A short explanation is in order.</li>
+<li>MongoDB stores data in BSON format. BSON strings are UTF-8 encoded so PyMongo must ensure that any strings it stores contain only valid UTF-8 data.</li>
+<li>Regular strings (&lt;type ‘str’&gt;) are validated and stored unaltered. Unicode strings (&lt;type ‘unicode’&gt;) are encoded UTF-8 first. </li>
+<li>The reason our example string is represented in the Python shell as u’AIG’ instead of ‘AIG’ </li>
+<li>is that PyMongo decodes each BSON string to a Python unicode string, not a regular str.</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -2007,7 +2021,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># new_posts[1] has a different “shape” than the other posts </span>
@@ -2037,13 +2051,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[ObjectId(&#39;5b7340e5a68b144b14aa4fdc&#39;), ObjectId(&#39;5b7340e5a68b144b14aa4fdd&#39;)]</pre>
+<pre>[ObjectId(&#39;5b747dcf760df74924ecbe2a&#39;), ObjectId(&#39;5b747dcf760df74924ecbe2b&#39;)]</pre>
 </div>
 
 </div>
@@ -2066,7 +2080,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="o">.</span><span class="n">find</span><span class="p">():</span>
@@ -2107,6 +2121,46 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
  &#39;reinsurer&#39;: &#39;Munich Re&#39;,
  &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
  &#39;treaty&#39;: &#39;QS 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b74590c760df751508616c1&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 16, 47, 4, 939000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b74594e760df751508616c2&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 16, 48, 14, 644000),
+ &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;Clash Layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b745967760df751508616c3&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b745967760df751508616c4&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
+ &#39;reinsurer&#39;: &#39;Munich Re&#39;,
+ &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
+ &#39;treaty&#39;: &#39;QS 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747db3760df74924ecbe28&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 28, 222000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747db8760df74924ecbe29&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 36, 998000),
+ &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;Clash Layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747dcf760df74924ecbe2a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747dcf760df74924ecbe2b&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
+ &#39;reinsurer&#39;: &#39;Munich Re&#39;,
+ &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
+ &#39;treaty&#39;: &#39;QS 2018&#39;}
 </pre>
 </div>
 </div>
@@ -2117,11 +2171,11 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### **Below is the screenshot of the MongoDB structures showing list of dataset**</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/images/MongoDB1.PNG&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;[img: MongoDB view]&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MongoDB View&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/images/MongoDB1.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;[img: MongoDB view]&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MongoDB View&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 
 </div>
@@ -2139,8 +2193,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-cyan-intense-fg ansi-bold">  File </span><span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-22-4f816d9bcbdd&gt;&#34;</span><span class="ansi-cyan-intense-fg ansi-bold">, line </span><span class="ansi-green-intense-fg ansi-bold">2</span>
-<span class="ansi-yellow-intense-fg ansi-bold">    &lt;img src=&#34;/images/MongoDB1.PNG&#34; alt=&#34;[img: MongoDB view]&#34; title=&#34;MongoDB View&#34; /&gt;</span>
+<span class="ansi-cyan-intense-fg ansi-bold">  File </span><span class="ansi-green-intense-fg ansi-bold">&#34;&lt;ipython-input-20-ea8111e655ce&gt;&#34;</span><span class="ansi-cyan-intense-fg ansi-bold">, line </span><span class="ansi-green-intense-fg ansi-bold">3</span>
+<span class="ansi-yellow-intense-fg ansi-bold">    &lt;img src=&#34;/images/SQLflowchart.png&#34; alt=&#34;[img: SQL flowchart]&#34; title=&#34;SQLite flowchart&#34; /&gt;</span>
 <span class="ansi-white-intense-fg ansi-bold">    ^</span>
 <span class="ansi-red-intense-fg ansi-bold">SyntaxError</span><span class="ansi-red-intense-fg ansi-bold">:</span> invalid syntax
 </pre>
@@ -2153,7 +2207,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># different than find_one</span>
@@ -2185,6 +2239,26 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
  &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b74590c760df751508616c1&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 16, 47, 4, 939000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b745967760df751508616c3&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747db3760df74924ecbe28&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 28, 222000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747dcf760df74924ecbe2a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
 </pre>
 </div>
 </div>
@@ -2195,7 +2269,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">posts</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;AIG&quot;</span><span class="p">}))</span>
@@ -2242,7 +2316,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">posts</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -2258,13 +2332,25 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\ipykernel_launcher.py:1: DeprecationWarning: count is deprecated. Use estimated_document_count or count_documents instead. Please note that $where must be replaced by $expr, $near must be replaced by $geoWithin with $center, and $nearSphere must be replaced by $geoWithin with $centerSphere
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4</pre>
+<pre>12</pre>
 </div>
 
 </div>
@@ -2275,7 +2361,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">posts</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;AIG&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -2291,13 +2377,25 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\ipykernel_launcher.py:1: DeprecationWarning: count is deprecated. Use Collection.count_documents instead.
+  &#34;&#34;&#34;Entry point for launching an IPython kernel.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
+<pre>6</pre>
 </div>
 
 </div>
@@ -2321,7 +2419,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
@@ -2353,13 +2451,53 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
  &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b74590c760df751508616c1&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 16, 47, 4, 939000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b745967760df751508616c3&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747db3760df74924ecbe28&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 28, 222000),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;XOL layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747dcf760df74924ecbe2a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
+ &#39;reinsurer&#39;: &#39;AIG&#39;,
+ &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
+ &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
 {&#39;_id&#39;: ObjectId(&#39;5b7340e5a68b144b14aa4fdd&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
+ &#39;reinsurer&#39;: &#39;Munich Re&#39;,
+ &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
+ &#39;treaty&#39;: &#39;QS 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b745967760df751508616c4&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
+ &#39;reinsurer&#39;: &#39;Munich Re&#39;,
+ &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
+ &#39;treaty&#39;: &#39;QS 2018&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747dcf760df74924ecbe2b&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
  &#39;reinsurer&#39;: &#39;Munich Re&#39;,
  &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
  &#39;treaty&#39;: &#39;QS 2018&#39;}
 {&#39;_id&#39;: ObjectId(&#39;5b733fb2a68b144b14aa4fdb&#39;),
  &#39;date&#39;: datetime.datetime(2018, 8, 14, 20, 46, 42, 222000),
+ &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;Clash Layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b74594e760df751508616c2&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 16, 48, 14, 644000),
+ &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
+ &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
+ &#39;treaty&#39;: &#39;Clash Layer&#39;}
+{&#39;_id&#39;: ObjectId(&#39;5b747db8760df74924ecbe29&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 8, 15, 19, 23, 36, 998000),
  &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
  &#39;tags&#39;: [&#39;mongodb&#39;, &#39;python&#39;, &#39;pymongo&#39;],
  &#39;treaty&#39;: &#39;Clash Layer&#39;}
@@ -2386,7 +2524,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> <span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">profiles</span><span class="o">.</span><span class="n">create_index</span><span class="p">([(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">ASCENDING</span><span class="p">)],</span>
@@ -2404,7 +2542,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -2433,16 +2571,16 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># set up some user profiles:</span>
 
 <span class="n">user_profiles</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">211</span><span class="p">,</span> <span class="s1">&#39;reinsurer&#39;</span><span class="p">:</span> <span class="s1">&#39;AIG&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">212</span><span class="p">,</span> <span class="s1">&#39;reinsurer&#39;</span><span class="p">:</span> <span class="s1">&#39;SCOR&#39;</span><span class="p">}]</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">profiles</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">user_profiles</span><span class="p">)</span>     
-   
+    <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">218</span><span class="p">,</span> <span class="s1">&#39;reinsurer&#39;</span><span class="p">:</span> <span class="s1">&#39;Partner Re&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">219</span><span class="p">,</span> <span class="s1">&#39;reinsurer&#39;</span><span class="p">:</span> <span class="s1">&#39;General Re&#39;</span><span class="p">}]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">profiles</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">user_profiles</span><span class="p">)</span> 
+  
 </pre></div>
 
 </div>
@@ -2471,15 +2609,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Display-the-webpage-data-using-node.jc-to-MongoDB-then-retrieced-it"><em>Display the webpage data using node.jc to MongoDB then retrieced it</em><a class="anchor-link" href="#Display-the-webpage-data-using-node.jc-to-MongoDB-then-retrieced-it">&#182;</a></h4><h1 id="https://stackoverflow.com/questions/17256710/display-the-data-onto-webpage-retrieved-from-mongodb-using-node-js"><a href="https://stackoverflow.com/questions/17256710/display-the-data-onto-webpage-retrieved-from-mongodb-using-node-js">https://stackoverflow.com/questions/17256710/display-the-data-onto-webpage-retrieved-from-mongodb-using-node-js</a><a class="anchor-link" href="#https://stackoverflow.com/questions/17256710/display-the-data-onto-webpage-retrieved-from-mongodb-using-node-js">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Convert-Excel-to-MongoDB"><em> Convert Excel to MongoDB</em><a class="anchor-link" href="#-Convert-Excel-to-MongoDB">&#182;</a></h4><h1 id="https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb"><a href="https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb">https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb</a><a class="anchor-link" href="#https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb">&#182;</a></h1><ul>
+<h4 id="-Convert-Excel-to-MongoDB"><em> Convert Excel to MongoDB</em><a class="anchor-link" href="#-Convert-Excel-to-MongoDB">&#182;</a></h4><ul>
+<li><a href="https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb">https://stackoverflow.com/questions/21901209/convert-excel-to-mongodb</a></li>
 <li>I want to move data from Excel files into MongoDB.</li>
 <li>The Excel data is updated daily so I want to add the new data on daily reads.</li>
 <li>I'm using Python and so far have only been trying to make a Python dictionary object to represent the Excel data</li>
@@ -2488,6 +2619,233 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Collection-data-from-twitter-into-MongoDB"><em>Collection data from twitter into MongoDB</em><a class="anchor-link" href="#Collection-data-from-twitter-into-MongoDB">&#182;</a></h4><ul>
+<li>ref:  <a href="http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/">http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="k">import</span> <span class="n">MongoClient</span>
+ 
+<span class="n">MONGO_HOST</span><span class="o">=</span> <span class="s1">&#39;mongodb://localhost/twitterdb&#39;</span>  <span class="c1"># assuming you have mongoDB installed locally</span>
+                                             <span class="c1"># and a database called &#39;twitterdb&#39;</span>
+ 
+<span class="n">WORDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#insurance&#39;</span><span class="p">,</span> <span class="s1">&#39;#AI&#39;</span><span class="p">,</span> <span class="s1">&#39;#datascience&#39;</span><span class="p">,</span> <span class="s1">&#39;#machinelearning&#39;</span><span class="p">,</span> <span class="s1">&#39;#auto&#39;</span><span class="p">,</span> <span class="s1">&#39;#reinsurance&#39;</span><span class="p">]</span>
+ 
+<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s2">&quot;8hXSibjBqguYXf4vVNDliDCOY&quot;</span>
+<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s2">&quot;fUwZ4PJbK8wwaTpF5uEz6xniac9P5ACzXIMsk7pCSAiUHjViJA&quot;</span>
+<span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;2994396687-mpkDqjV6xQzfhtqvDncWy2JjAiORScTtbOOwRqD&quot;</span>
+<span class="n">ACCESS_TOKEN_SECRET</span> <span class="o">=</span> <span class="s2">&quot;bfqOVgKhkW9r9fiRFNIGNp70Wottrc3E5zoBNCi7xthtQ&quot;</span>
+ 
+ 
+<span class="k">class</span> <span class="nc">StreamListener</span><span class="p">(</span><span class="n">tweepy</span><span class="o">.</span><span class="n">StreamListener</span><span class="p">):</span>    
+    <span class="c1">#This is a class provided by tweepy to access the Twitter Streaming API. </span>
+ 
+    <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Called initially to connect to the Streaming API</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You are now connected to the streaming API.&quot;</span><span class="p">)</span>
+ 
+    <span class="k">def</span> <span class="nf">on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status_code</span><span class="p">):</span>
+        <span class="c1"># On error - if an error occurs, display the error / status code</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An Error has occured: &#39;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">status_code</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
+ 
+    <span class="k">def</span> <span class="nf">on_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1">#This is the meat of the script...it connects to your mongoDB and stores the tweet</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">MONGO_HOST</span><span class="p">)</span>
+            
+            <span class="c1"># Use twitterdb database. If it doesn&#39;t exist, it will be created.</span>
+            <span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">twitterdb</span>
+    
+            <span class="c1"># Decode the JSON from Twitter</span>
+            <span class="n">datajson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            
+            <span class="c1">#grab the &#39;created_at&#39; data from the Tweet to use for display</span>
+            <span class="n">created_at</span> <span class="o">=</span> <span class="n">datajson</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+ 
+            <span class="c1">#print out a message to the screen that we have collected a tweet</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tweet collected at &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">created_at</span><span class="p">))</span>
+            
+            <span class="c1">#insert the data into the mongoDB into a collection called twitter_search</span>
+            <span class="c1">#if twitter_search doesn&#39;t exist, it will be created.</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">twitter_search</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">datajson</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+           <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+ 
+<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">CONSUMER_KEY</span><span class="p">,</span> <span class="n">CONSUMER_SECRET</span><span class="p">)</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">ACCESS_TOKEN</span><span class="p">,</span> <span class="n">ACCESS_TOKEN_SECRET</span><span class="p">)</span>
+<span class="c1">#Set up the listener. The &#39;wait_on_rate_limit=True&#39; is needed to help with Twitter API rate limiting.</span>
+<span class="n">listener</span> <span class="o">=</span> <span class="n">StreamListener</span><span class="p">(</span><span class="n">api</span><span class="o">=</span><span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">wait_on_rate_limit</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> 
+<span class="n">streamer</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Stream</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">listener</span><span class="o">=</span><span class="n">listener</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tracking: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">WORDS</span><span class="p">))</span>
+<span class="n">streamer</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">track</span><span class="o">=</span><span class="n">WORDS</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tracking: [&#39;#insurance&#39;, &#39;#AI&#39;, &#39;#datascience&#39;, &#39;#machinelearning&#39;, &#39;#auto&#39;, &#39;#reinsurance&#39;]
+You are now connected to the streaming API.
+Tweet collected at Wed Aug 15 19:29:12 +0000 2018
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\ipykernel_launcher.py:48: DeprecationWarning: insert is deprecated. Use insert_one or insert_many instead.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tweet collected at Wed Aug 15 19:29:13 +0000 2018
+Tweet collected at Wed Aug 15 19:29:13 +0000 2018
+Tweet collected at Wed Aug 15 19:29:16 +0000 2018
+Tweet collected at Wed Aug 15 19:29:16 +0000 2018
+Tweet collected at Wed Aug 15 19:29:17 +0000 2018
+Tweet collected at Wed Aug 15 19:29:19 +0000 2018
+Tweet collected at Wed Aug 15 19:29:21 +0000 2018
+Tweet collected at Wed Aug 15 19:29:22 +0000 2018
+Tweet collected at Wed Aug 15 19:29:25 +0000 2018
+Tweet collected at Wed Aug 15 19:29:26 +0000 2018
+Tweet collected at Wed Aug 15 19:29:28 +0000 2018
+Tweet collected at Wed Aug 15 19:29:34 +0000 2018
+Tweet collected at Wed Aug 15 19:29:38 +0000 2018
+Tweet collected at Wed Aug 15 19:29:39 +0000 2018
+Tweet collected at Wed Aug 15 19:29:41 +0000 2018
+Tweet collected at Wed Aug 15 19:29:44 +0000 2018
+Tweet collected at Wed Aug 15 19:29:49 +0000 2018
+Tweet collected at Wed Aug 15 19:29:49 +0000 2018
+Tweet collected at Wed Aug 15 19:29:53 +0000 2018
+Tweet collected at Wed Aug 15 19:29:55 +0000 2018
+Tweet collected at Wed Aug 15 19:29:56 +0000 2018
+Tweet collected at Wed Aug 15 19:30:00 +0000 2018
+Tweet collected at Wed Aug 15 19:30:00 +0000 2018
+Tweet collected at Wed Aug 15 19:30:00 +0000 2018
+Tweet collected at Wed Aug 15 19:30:00 +0000 2018
+Tweet collected at Wed Aug 15 19:30:01 +0000 2018
+Tweet collected at Wed Aug 15 19:30:04 +0000 2018
+Tweet collected at Wed Aug 15 19:30:04 +0000 2018
+Tweet collected at Wed Aug 15 19:30:05 +0000 2018
+Tweet collected at Wed Aug 15 19:30:05 +0000 2018
+Tweet collected at Wed Aug 15 19:30:06 +0000 2018
+Tweet collected at Wed Aug 15 19:30:06 +0000 2018
+Tweet collected at Wed Aug 15 19:30:07 +0000 2018
+Tweet collected at Wed Aug 15 19:30:07 +0000 2018
+Tweet collected at Wed Aug 15 19:30:08 +0000 2018
+Tweet collected at Wed Aug 15 19:30:09 +0000 2018
+Tweet collected at Wed Aug 15 19:30:09 +0000 2018
+Tweet collected at Wed Aug 15 19:30:09 +0000 2018
+Tweet collected at Wed Aug 15 19:30:11 +0000 2018
+Tweet collected at Wed Aug 15 19:30:12 +0000 2018
+Tweet collected at Wed Aug 15 19:30:13 +0000 2018
+Tweet collected at Wed Aug 15 19:30:13 +0000 2018
+Tweet collected at Wed Aug 15 19:30:13 +0000 2018
+Tweet collected at Wed Aug 15 19:30:14 +0000 2018
+Tweet collected at Wed Aug 15 19:30:15 +0000 2018
+Tweet collected at Wed Aug 15 19:30:15 +0000 2018
+Tweet collected at Wed Aug 15 19:30:15 +0000 2018
+Tweet collected at Wed Aug 15 19:30:16 +0000 2018
+Tweet collected at Wed Aug 15 19:30:17 +0000 2018
+Tweet collected at Wed Aug 15 19:30:17 +0000 2018
+Tweet collected at Wed Aug 15 19:30:17 +0000 2018
+Tweet collected at Wed Aug 15 19:30:18 +0000 2018
+Tweet collected at Wed Aug 15 19:30:19 +0000 2018
+Tweet collected at Wed Aug 15 19:30:19 +0000 2018
+Tweet collected at Wed Aug 15 19:30:19 +0000 2018
+Tweet collected at Wed Aug 15 19:30:19 +0000 2018
+Tweet collected at Wed Aug 15 19:30:19 +0000 2018
+Tweet collected at Wed Aug 15 19:30:20 +0000 2018
+Tweet collected at Wed Aug 15 19:30:20 +0000 2018
+Tweet collected at Wed Aug 15 19:30:21 +0000 2018
+Tweet collected at Wed Aug 15 19:30:22 +0000 2018
+Tweet collected at Wed Aug 15 19:30:23 +0000 2018
+Tweet collected at Wed Aug 15 19:30:24 +0000 2018
+Tweet collected at Wed Aug 15 19:30:25 +0000 2018
+Tweet collected at Wed Aug 15 19:30:25 +0000 2018
+Tweet collected at Wed Aug 15 19:30:26 +0000 2018
+Tweet collected at Wed Aug 15 19:30:27 +0000 2018
+Tweet collected at Wed Aug 15 19:30:29 +0000 2018
+Tweet collected at Wed Aug 15 19:30:29 +0000 2018
+Tweet collected at Wed Aug 15 19:30:30 +0000 2018
+Tweet collected at Wed Aug 15 19:30:32 +0000 2018
+Tweet collected at Wed Aug 15 19:30:33 +0000 2018
+Tweet collected at Wed Aug 15 19:30:33 +0000 2018
+Tweet collected at Wed Aug 15 19:30:34 +0000 2018
+Tweet collected at Wed Aug 15 19:30:35 +0000 2018
+Tweet collected at Wed Aug 15 19:30:35 +0000 2018
+Tweet collected at Wed Aug 15 19:30:38 +0000 2018
+Tweet collected at Wed Aug 15 19:30:38 +0000 2018
+Tweet collected at Wed Aug 15 19:30:40 +0000 2018
+Tweet collected at Wed Aug 15 19:30:41 +0000 2018
+Tweet collected at Wed Aug 15 19:30:43 +0000 2018
+Tweet collected at Wed Aug 15 19:30:44 +0000 2018
+Tweet collected at Wed Aug 15 19:30:44 +0000 2018
+Tweet collected at Wed Aug 15 19:30:46 +0000 2018
+Tweet collected at Wed Aug 15 19:30:48 +0000 2018
+Tweet collected at Wed Aug 15 19:30:48 +0000 2018
+Tweet collected at Wed Aug 15 19:30:49 +0000 2018
+Tweet collected at Wed Aug 15 19:30:51 +0000 2018
+Tweet collected at Wed Aug 15 19:30:51 +0000 2018
+Tweet collected at Wed Aug 15 19:30:52 +0000 2018
+Tweet collected at Wed Aug 15 19:30:52 +0000 2018
+Tweet collected at Wed Aug 15 19:30:53 +0000 2018
+Tweet collected at Wed Aug 15 19:30:56 +0000 2018
+Tweet collected at Wed Aug 15 19:30:59 +0000 2018
+Tweet collected at Wed Aug 15 19:31:00 +0000 2018
+Tweet collected at Wed Aug 15 19:31:01 +0000 2018
+Tweet collected at Wed Aug 15 19:31:01 +0000 2018
+Tweet collected at Wed Aug 15 19:31:02 +0000 2018
+Tweet collected at Wed Aug 15 19:31:03 +0000 2018
+Tweet collected at Wed Aug 15 19:31:04 +0000 2018
+Tweet collected at Wed Aug 15 19:31:05 +0000 2018
+Tweet collected at Wed Aug 15 19:31:08 +0000 2018
+Tweet collected at Wed Aug 15 19:31:08 +0000 2018
+Tweet collected at Wed Aug 15 19:31:09 +0000 2018
+Tweet collected at Wed Aug 15 19:31:12 +0000 2018
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
  
 
