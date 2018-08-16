@@ -1418,6 +1418,8 @@ h6:hover .anchor-link {
 
 <p>As a CPA, I have had to work with datasets from data processing applications, such as insurance application, general ledger,
 regulatory reporting system and etc.</p>
+<p>I found python len function is very useful when dealing with Excel files have been updated with many tabs over time. 
+We can use Python to view/list/count all the tabs which including hidden tabs.</p>
 <p>The process is to incorporate all the data then create reinsurance analysis for pricing treaties, pro-forma financial analysis
 for new business opportunity, regulatory compliance and risk assessment for stress test.</p>
 <p>As an old saying that the data needs to be valid, otherwise will be "Garbage In and Garbage Out".</p>
@@ -1476,7 +1478,8 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="-View-Excel-File-with-Mulitple-Tabs"><strong> View Excel File with Mulitple Tabs</strong><a class="anchor-link" href="#-View-Excel-File-with-Mulitple-Tabs">&#182;</a></h4><ul>
-<li>List of tabs</li>
+<li>List of tabs : note the display list including hidden tabs</li>
+<li>Number of tabs: using len function to count how many tabs in the Excel file</li>
 <li>View each tabs</li>
 </ul>
 
@@ -1485,11 +1488,18 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View list of tabs including hidden tab</span>
+
+<span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df_list.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+
+<span class="c1"># Count how many tabs in the Excel file </span>
+<span class="n">number_tab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> tab(s) in the file.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number_tab</span><span class="p">))</span> 
 </pre></div>
 
 </div>
@@ -1511,13 +1521,37 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 </div>
 </div>
 
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 2 tab(s) in the file.
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
@@ -1549,7 +1583,7 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1670,7 +1704,7 @@ This is a simplified and hypothetical example, but it's a great illustration of 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -4340,6 +4374,740 @@ S0ufjzFNwYqAjDGmnbIiIGOMaacsABhjTDtlAcAYY9opCwDGGNNO/T+S2ezq2g6fggAAAABJRU5E
 rkJggg==
 "
 >
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Recape----Excel-Vlookup-function-in-python"><em>Recape -  Excel Vlookup function in python</em><a class="anchor-link" href="#Recape----Excel-Vlookup-function-in-python">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># list of tabs and how many tabs in the excel file</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> tab in the file.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number_tab</span><span class="p">))</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>df.sheet_names=[&#39;premium&#39;, &#39;loss&#39;, &#39;rein&#39;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 3 tab in the file.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># view each tab</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;rein&quot;</span><span class="p">)</span>
+<span class="n">df1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df3</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PolicyNumber</th>
+      <th>Last Name</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type</th>
+      <th>Premium</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10244</td>
+      <td>Hallsworth</td>
+      <td>2017-08-07</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>13330</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10509</td>
+      <td>Hartle</td>
+      <td>2017-02-09</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>5647</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim Number</th>
+      <th>PolicyNumber</th>
+      <th>Policy Type</th>
+      <th>Insured Last Name</th>
+      <th>Claim Report Date</th>
+      <th>LAE Paid</th>
+      <th>Loss Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>886727</td>
+      <td>33524</td>
+      <td>OCC</td>
+      <td>Hallsworth</td>
+      <td>2012-12-20</td>
+      <td>63513</td>
+      <td>244908</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>889258</td>
+      <td>35163</td>
+      <td>OCC</td>
+      <td>Hartle</td>
+      <td>2013-01-03</td>
+      <td>98914</td>
+      <td>45447</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy
+Year</th>
+      <th>Insured Last Name</th>
+      <th>PolicyNumber</th>
+      <th>Policy
+Limit</th>
+      <th>Claim
+Number</th>
+      <th>Loss
+Date</th>
+      <th>Policy
+Start Date</th>
+      <th>Policy
+End Date</th>
+      <th>Indemnity
+Reserve</th>
+      <th>ALAE
+Reserve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017</td>
+      <td>Hallsworth</td>
+      <td>10244</td>
+      <td>500K/1.5M</td>
+      <td>886727</td>
+      <td>2012-12-20</td>
+      <td>2017-08-07</td>
+      <td>2018-08-07</td>
+      <td>50000</td>
+      <td>20000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>Wilis</td>
+      <td>45474</td>
+      <td>500K/1.5M</td>
+      <td>881735</td>
+      <td>2013-02-05</td>
+      <td>2017-10-18</td>
+      <td>2018-10-18</td>
+      <td>50000</td>
+      <td>20000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Policy&#39;s claim and reinsurance history in one table </span>
+<span class="c1"># make the common column (the one used as the joining reference) the dataframe index:</span>
+<span class="n">dfi</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">)</span>
+
+<span class="c1"># join the three excel&#39;s tabs</span>
+<span class="n">dfj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dfj</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># save to a new file:</span>
+<span class="n">dfj</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/myjointfile.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>10244</td>
+      <td>10509</td>
+      <td>10700</td>
+      <td>10880</td>
+      <td>10948</td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td>Hallsworth</td>
+      <td>Hartle</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Bilyk</td>
+    </tr>
+    <tr>
+      <th>Policy Effective Date</th>
+      <td>2017-08-07 00:00:00</td>
+      <td>2017-02-09 00:00:00</td>
+      <td>2017-10-07 00:00:00</td>
+      <td>2017-07-08 00:00:00</td>
+      <td>2017-06-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <td>Dentist</td>
+      <td>Podiatrist</td>
+      <td>PA</td>
+      <td>Phy</td>
+      <td>Podiatrist</td>
+    </tr>
+    <tr>
+      <th>Policy Type</th>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>CM</td>
+      <td>CM</td>
+    </tr>
+    <tr>
+      <th>Premium</th>
+      <td>13330</td>
+      <td>5647</td>
+      <td>12021</td>
+      <td>232058</td>
+      <td>5132</td>
+    </tr>
+    <tr>
+      <th>Claim Number</th>
+      <td>886727</td>
+      <td>889258</td>
+      <td>883006</td>
+      <td>881123</td>
+      <td>880205</td>
+    </tr>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>33524</td>
+      <td>35163</td>
+      <td>35937</td>
+      <td>14841</td>
+      <td>39619</td>
+    </tr>
+    <tr>
+      <th>Policy Type</th>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>CM</td>
+      <td>CM</td>
+    </tr>
+    <tr>
+      <th>Insured Last Name</th>
+      <td>Hallsworth</td>
+      <td>Hartle</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Bilyk</td>
+    </tr>
+    <tr>
+      <th>Claim Report Date</th>
+      <td>2012-12-20 00:00:00</td>
+      <td>2013-01-03 00:00:00</td>
+      <td>2013-07-03 00:00:00</td>
+      <td>2013-11-14 00:00:00</td>
+      <td>2013-12-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>LAE Paid</th>
+      <td>63513</td>
+      <td>98914</td>
+      <td>77095</td>
+      <td>53824</td>
+      <td>97247</td>
+    </tr>
+    <tr>
+      <th>Loss Paid</th>
+      <td>244908</td>
+      <td>45447</td>
+      <td>88560</td>
+      <td>98160</td>
+      <td>37639</td>
+    </tr>
+    <tr>
+      <th>Policy\nYear</th>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+    </tr>
+    <tr>
+      <th>Insured Last Name</th>
+      <td>Hallsworth</td>
+      <td>Wilis</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Katan</td>
+    </tr>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>10244</td>
+      <td>45474</td>
+      <td>10700</td>
+      <td>10880</td>
+      <td>18196</td>
+    </tr>
+    <tr>
+      <th>Policy\nLimit</th>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+    </tr>
+    <tr>
+      <th>Claim\nNumber</th>
+      <td>886727</td>
+      <td>881735</td>
+      <td>883006</td>
+      <td>881123</td>
+      <td>887535</td>
+    </tr>
+    <tr>
+      <th>Loss\nDate</th>
+      <td>2012-12-20 00:00:00</td>
+      <td>2013-02-05 00:00:00</td>
+      <td>2012-12-23 00:00:00</td>
+      <td>2013-01-03 00:00:00</td>
+      <td>2013-02-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Policy\nStart Date</th>
+      <td>2017-08-07 00:00:00</td>
+      <td>2017-10-18 00:00:00</td>
+      <td>2017-10-07 00:00:00</td>
+      <td>2017-07-08 00:00:00</td>
+      <td>2017-01-03 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Policy\nEnd Date</th>
+      <td>2018-08-07 00:00:00</td>
+      <td>2018-10-18 00:00:00</td>
+      <td>2018-10-07 00:00:00</td>
+      <td>2018-07-08 00:00:00</td>
+      <td>2018-01-03 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Indemnity\nReserve</th>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+    </tr>
+    <tr>
+      <th>ALAE\nReserve</th>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Recape---Excel-Index-Match-function-in-python"><em>Recape - Excel Index-Match function in python</em><a class="anchor-link" href="#Recape---Excel-Index-Match-function-in-python">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;List&quot;</span><span class="p">])</span>
+<span class="n">x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Small&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Medium&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;Large&quot;</span><span class="p">)],</span> 
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;List&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">])</span>
+<span class="n">y</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">List</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>List</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>List</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1</td>
+      <td>Small</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>Large</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     Small
+1     Small
+2     Small
+3     Small
+4     Small
+5    Medium
+6    Medium
+7    Medium
+8     Large
+9     Large
+Name: List, dtype: category
+Categories (3, object): [Small &lt; Medium &lt; Large]</pre>
 </div>
 
 </div>

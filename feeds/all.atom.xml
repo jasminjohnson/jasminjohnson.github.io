@@ -21,6 +21,8 @@ The file is in Excel format with two tabs.&lt;/p&gt;
 
 &lt;p&gt;As a CPA, I have had to work with datasets from data processing applications, such as insurance application, general ledger,
 regulatory reporting system and etc.&lt;/p&gt;
+&lt;p&gt;I found python len function is very useful when dealing with Excel files have been updated with many tabs over time. 
+We can use Python to view/list/count all the tabs which including hidden tabs.&lt;/p&gt;
 &lt;p&gt;The process is to incorporate all the data then create reinsurance analysis for pricing treaties, pro-forma financial analysis
 for new business opportunity, regulatory compliance and risk assessment for stress test.&lt;/p&gt;
 &lt;p&gt;As an old saying that the data needs to be valid, otherwise will be "Garbage In and Garbage Out".&lt;/p&gt;
