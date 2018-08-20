@@ -1440,7 +1440,12 @@ h6:hover .anchor-link {
 <li>Use pandas to read function to import data</li>
 <li>You can execute the code when new data avaiable on the daily or weekly or quarterly basis</li>
 <li>Create the table</li>
-<li>Then plot the interactive dashboard inline or offline</li>
+<li>Then plot the dashboard online or offline</li>
+<li>View dasboard offline<ul>
+<li>ref: <a href="https://plot.ly/python/offline/">https://plot.ly/python/offline/</a></li>
+<li>ref: <a href="https://plot.ly/python/ipython-notebook-tutorial/#import-data">https://plot.ly/python/ipython-notebook-tutorial/#import-data</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -1499,19 +1504,6 @@ h6:hover .anchor-link {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>View dasboard offline</strong></p>
-<ul>
-<li>ref: <a href="https://plot.ly/python/offline/">https://plot.ly/python/offline/</a></li>
-<li>ref: <a href="https://plot.ly/python/ipython-notebook-tutorial/#import-data">https://plot.ly/python/ipython-notebook-tutorial/#import-data</a></li>
-</ul>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1708,7 +1700,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Code to View table offline</strong>
+<p><strong> Code to View Table Offline</strong>
 plotly.offline.iplot(table, filename='world population table')</p>
 
 </div>
@@ -1718,7 +1710,7 @@ plotly.offline.iplot(table, filename='world population table')</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Plot a Dashboard online or offline </strong></p>
+<p><strong>Plot a Dashboard Online or Offline </strong></p>
 <ul>
 <li>We can view the dashboard - "Birthrate by Country"" online or offline</li>
 <li>view online code "py.iplot"</li>
@@ -1785,7 +1777,7 @@ plotly.offline.iplot(table, filename='world population table')</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Code to view dashboard offline</strong>
+<p><strong>Code to View Dashboard Offline</strong>
 plotly.offline.iplot({
     "data": [go.Bar(x=df.CountryName, y=df.Birthrate)],
     "layout": go.Layout(title="Birthrate_by_Country")})</p>
@@ -1852,14 +1844,18 @@ plotly.offline.iplot({
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Recap - Example of Creat Dashboard</strong></p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Recap</span> <span class="o">-</span> <span class="n">Example</span> <span class="n">of</span> <span class="n">Creating</span> <span class="n">a</span> <span class="n">Dashboard</span><span class="o">**</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
