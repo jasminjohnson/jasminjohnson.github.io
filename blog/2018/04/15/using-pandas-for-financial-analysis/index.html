@@ -1447,24 +1447,30 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Python-Pandas-to-Read-Excel-Files"><strong> Python Pandas to Read Excel Files</strong><a class="anchor-link" href="#-Python-Pandas-to-Read-Excel-Files">&#182;</a></h4>
+<p><strong> First Example - 2015 USA Census Data in Excel </strong></p>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-First-Example---2015-USA-Census-Data-in-Excel"><strong> First Example - 2015 USA Census Data in Excel</strong><a class="anchor-link" href="#-First-Example---2015-USA-Census-Data-in-Excel">&#182;</a></h4>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">*</span><span class="n">Python</span> <span class="n">Pandas</span> <span class="n">to</span> <span class="n">Read</span> <span class="n">Excel</span> <span class="n">Files</span><span class="o">*</span>
+</pre></div>
+
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># head to show the first 3 rows only</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel and head(3) to show the first 3 rows only</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/sample.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1682,10 +1688,10 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-How-to-filter-data-in-Python-instead-of-in-Excel?"><strong> How to filter data in Python instead of in Excel?</strong><a class="anchor-link" href="#-How-to-filter-data-in-Python-instead-of-in-Excel?">&#182;</a></h4><ul>
-<li>The income data in the zipcode 35210 from 2015 Census Report</li>
-<li>Now, you might come away with the impression that the Excel can provide the same result and in this case it certainly is.</li>
-<li>But I did this here because it demonstrates an approach that can scale to complicated datasets, and can provide nice results in Python then save it to Excel file. </li>
+<h4 id="How-to-filter-data-in-Python-instead-of-in-Excel?"><em>How to filter data in Python instead of in Excel?</em><a class="anchor-link" href="#How-to-filter-data-in-Python-instead-of-in-Excel?">&#182;</a></h4><ul>
+<li>To show income from zipcode 35210</li>
+<li>Now, you might have the impression that you can get the filter result in Excel. In this case it certainly is.</li>
+<li>But I did this here because it demonstrates an approach that can scale to complicated datasets, and can provide the results in Python then save it to Excel file. </li>
 </ul>
 
 </div>
