@@ -23,7 +23,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.&l
 SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
 into a number of popular scripting languages, including Python.
 This database tool can also be useful for accountants doing financial analysis.&lt;/p&gt;
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Pandas TimeSeries</title><link href="http://jasminjohnson.github.io/blog/2018/06/01/pandas-timeseries-analysis/" rel="alternate"></link><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-01:blog/2018/06/01/pandas-timeseries-analysis/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis Tool - Pandas TimeSeries</title><link href="http://jasminjohnson.github.io/blog/2018/06/01/pandas-timeseries-analysis/" rel="alternate"></link><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-01:blog/2018/06/01/pandas-timeseries-analysis/</id><summary type="html">
 
 &lt;p&gt;Time Series can be useful to analyze financial data in different frequencies based on data distribution.
 We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.
