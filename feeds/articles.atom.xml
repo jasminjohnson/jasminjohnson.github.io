@@ -16,7 +16,7 @@ The file is in Excel format with two tabs.&lt;/p&gt;
 &lt;p&gt;MongoDB is a document-oriented database. Instead of storing your data in tables made out of individual rows,
 like a relational database does, it stores your data in collections made out of individual documents.
 In MongoDB, a document is a big JSON blob with no particular format or schema.&lt;/p&gt;
-&lt;p&gt;You can have all your data in one single table or collection.&lt;/p&gt;
+&lt;p&gt;You can have all your data in one single collection.&lt;/p&gt;
 </summary><category term="excel"></category><category term="analysis"></category><category term="mongodb"></category></entry><entry><title>Database for Financial Analysis I - SQLite</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
