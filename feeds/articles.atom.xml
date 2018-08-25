@@ -28,10 +28,17 @@ This database tool can also be useful for accountants doing financial analysis.&
 &lt;p&gt;Time Series can be useful to analyze financial data in different frequencies based on data distribution.
 We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.
 For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.&lt;/p&gt;
-</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/using-pandas-for-financial-analysis/</id><summary type="html">
+</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/summarizing-data-using-pandas/</id><summary type="html">
+
+&lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.&lt;/p&gt;
+&lt;p&gt;This can be an effective tool when we need to summarize datasets for analysis.
+</summary><category term="pandas"></category><category term="summarization"></category><category term="aggregation"></category><category term="validation"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/validating-data-using-pandas/</id><summary type="html">
+A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
+&lt;br&gt;My objective here is to go through some examples for how to perform basic data validation.
+</summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis I - Sourcing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/sourcing-data-using-pandas/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/sourcing-data-using-pandas/</id><summary type="html">
 ** Goal: Use Python to load data into a dataframe and get basic statistics. **  
 &lt;br&gt;Specifically, I plan to use Python to: 
 - Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
 - Get preliminary dataframe statistics: sum, mean, min/max 
 - Visualize the dataframe as a time series graph
-</summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
+</summary><category term="importing"></category><category term="loading"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
