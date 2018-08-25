@@ -42,7 +42,7 @@ We can use Python to view/list/count all the tabs which including hidden tabs.&l
 This can be very effective when we need to quickly verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/using-pandas-for-financial-analysis/</id><summary type="html">
 The goal of this post is to use Python to 
-&lt;br&gt;1) import a medium sized Excel dataset with ~20k rows and 132 columns into a dataframe, 
+&lt;br&gt;1) import a smaller but wide Excel dataset with 1k rows and 132 columns into a dataframe, 
 &lt;br&gt;2) get preliminary dataframe statistics (sum/mean/min/max), 
 &lt;br&gt;3) to visualize the dataframe as a time series graph
 
