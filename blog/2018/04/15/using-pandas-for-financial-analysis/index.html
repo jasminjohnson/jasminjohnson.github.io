@@ -1457,12 +1457,12 @@ The goal of this post is to use Python to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel and head(3) to show the first 3 rows only</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/sample.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/blog1/sample.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
@@ -1476,7 +1476,7 @@ The goal of this post is to use Python to
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -1626,14 +1626,14 @@ The goal of this post is to use Python to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_excelfile</span><span class="p">():</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;data/sample.xlsx&quot;</span><span class="p">)</span>  <span class="c1"># this code is faster...use panda timeit library to compare </span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;data/blog1/sample.xlsx&quot;</span><span class="p">)</span>  <span class="c1"># this code is faster...use panda timeit library to compare </span>
     
 <span class="k">def</span> <span class="nf">test_read_excel</span><span class="p">():</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/sample.xlsx&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/blog1/sample.xlsx&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pd.read_excel: time=&quot;</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> test_read_excel()
@@ -1656,9 +1656,9 @@ The goal of this post is to use Python to
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>pd.read_excel: time=
-1.62 s ± 15.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+734 ms ± 40.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 pd.ExcelFile: time=
-1.42 s ± 8.94 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+618 ms ± 4.53 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1682,7 +1682,7 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;zipcode&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">35210</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1699,7 +1699,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -1828,184 +1828,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>STATEFIPS</th>
-      <th>STATE</th>
-      <th>zipcode</th>
-      <th>agi_stub</th>
-      <th>income1</th>
-      <th>income2</th>
-      <th>income3</th>
-      <th>income4</th>
-      <th>income5</th>
-      <th>income6</th>
-      <th>...</th>
-      <th>A10300</th>
-      <th>N85530</th>
-      <th>A85530</th>
-      <th>N85300</th>
-      <th>A85300</th>
-      <th>N11901</th>
-      <th>A11901</th>
-      <th>N11902</th>
-      <th>A11902</th>
-      <th>total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>New Hampshere</td>
-      <td>0</td>
-      <td>1</td>
-      <td>836320</td>
-      <td>481570</td>
-      <td>109790</td>
-      <td>233260</td>
-      <td>455560</td>
-      <td>1356760</td>
-      <td>...</td>
-      <td>328469</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>61920</td>
-      <td>48150</td>
-      <td>732670</td>
-      <td>1933120</td>
-      <td>1427680</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>New Yok</td>
-      <td>0</td>
-      <td>2</td>
-      <td>494830</td>
-      <td>206630</td>
-      <td>146250</td>
-      <td>129390</td>
-      <td>275920</td>
-      <td>1010990</td>
-      <td>...</td>
-      <td>965011</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>73720</td>
-      <td>107304</td>
-      <td>415410</td>
-      <td>1187403</td>
-      <td>847710</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>Floria</td>
-      <td>0</td>
-      <td>3</td>
-      <td>261250</td>
-      <td>80720</td>
-      <td>139280</td>
-      <td>36130</td>
-      <td>155100</td>
-      <td>583910</td>
-      <td>...</td>
-      <td>1333418</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>64200</td>
-      <td>139598</td>
-      <td>193030</td>
-      <td>536699</td>
-      <td>481250</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>New York</td>
-      <td>0</td>
-      <td>4</td>
-      <td>166690</td>
-      <td>28510</td>
-      <td>124650</td>
-      <td>10630</td>
-      <td>99950</td>
-      <td>423990</td>
-      <td>...</td>
-      <td>1414283</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>45460</td>
-      <td>128823</td>
-      <td>116440</td>
-      <td>377177</td>
-      <td>319850</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>New York</td>
-      <td>0</td>
-      <td>5</td>
-      <td>212660</td>
-      <td>19520</td>
-      <td>184320</td>
-      <td>4830</td>
-      <td>126860</td>
-      <td>589490</td>
-      <td>...</td>
-      <td>3820152</td>
-      <td>420</td>
-      <td>168</td>
-      <td>60</td>
-      <td>31</td>
-      <td>83330</td>
-      <td>421004</td>
-      <td>121570</td>
-      <td>483682</td>
-      <td>416500</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 132 columns</p>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -2034,10 +1857,10 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Stock_px.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/blog1/Stock_px.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
@@ -2051,7 +1874,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 
@@ -2152,7 +1975,7 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;GE&quot;</span><span class="p">]</span>
@@ -2169,7 +1992,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -2265,7 +2088,7 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## now get the sum / mean / min / max for stock AA</span>
@@ -2282,7 +2105,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[42]:</div>
 
 
 
@@ -2312,7 +2135,7 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## TODO: add back the original string date and demonstrate how to convert to datetime</span>
@@ -2332,7 +2155,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -2349,11 +2172,11 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Reload the dataframe with the index specified as the date </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/blog1/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
@@ -2367,7 +2190,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 
@@ -2468,7 +2291,7 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now we use the dataframe resample method to create a line graph with multiple series</span>
@@ -2485,13 +2308,13 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x273c81f5940&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x273ca38cfd0&gt;</pre>
 </div>
 
 </div>
