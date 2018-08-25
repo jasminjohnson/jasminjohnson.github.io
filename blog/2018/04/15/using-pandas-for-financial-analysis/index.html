@@ -1415,7 +1415,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>
-The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze huge datasets.</p>
+The goal of this post is to use Python to import Excel datasets, perform some financial analysis, and to put some python code into practice.</p>
 
 </div>
 </div>
@@ -1424,7 +1424,11 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>How to analyze large datasets with endless rows and columns from the dataset dump? how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? Two examples illustrated here are in either csv or xlsx format since most likely that IS department would only provide the output data in either format.
+<p>Some of the goals I will cover here are to:
+<br>1) analyze a large dataset with many rows and columns
+<br>2) use code to extract data and perform some basic analysis - e.g., merging, pivoting, and summarizing datasets
+<br>3) visualize the results</p>
+<p>The two examples I use here deal with csv and xlsx format since these formats are fairly common.
 </p>
 
 </div>
@@ -1434,10 +1438,10 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here are two sample data files:</p>
+<p>The 2 sample data files I will use are:</p>
 <ul>
-<li>First sample data is "2015 USA Census Data" with 20000 rows and 150 columns from gov.org</li>
-<li>Second sample data is "10 stocks historical daily price from 1990-2011" with 5473 rows and 11 columns</li>
+<li>"2015 USA Census Data" with 20000 rows and 150 columns from gov.org</li>
+<li>"Historical daily price data for 10 stocks from 1990-2011" with 5473 rows and 11 columns</li>
 </ul>
 
 </div>
@@ -1463,7 +1467,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel and head(3) to show the first 3 rows only</span>
@@ -1482,7 +1486,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[1]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1617,24 +1621,14 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>scroll on the bottem of the table to view the whold table</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Two Commands in Python Pandas to Read Excel Files</strong>
-<strong> pd = pd.read_excel(“sample.xlsx”) or 
- pd = pd.ExcelFile(‘sample.xlsx’) </strong></p>
+<br>pd = pd.read_excel(“sample.xlsx”) 
+<br>or 
+<br>pd = pd.ExcelFile(‘sample.xlsx’)</p>
 <ul>
 <li>Both commands can read Excel file</li>
 <li>Use Pandas Timeit to time how long does it take to run the reports</li>
-<li>General speaking, ExcelFile command is faster</li>
+<li>in general, the ExcelFile command will be faster</li>
 </ul>
 
 </div>
@@ -1642,7 +1636,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_excelfile</span><span class="p">():</span>
@@ -1651,9 +1645,10 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 <span class="k">def</span> <span class="nf">test_read_excel</span><span class="p">():</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/sample.xlsx&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_excelfile(): time=&quot;</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> test_excelfile()
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pd.read_excel: time=&quot;</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> test_read_excel()
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pd.ExcelFile: time=&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> test_excelfile()
 </pre></div>
 
 </div>
@@ -1670,9 +1665,10 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>test_excelfile(): time=
-608 ms ± 14.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-694 ms ± 6.98 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>pd.read_excel: time=
+1.63 s ± 35.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+pd.ExcelFile: time=
+1.45 s ± 96 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1687,9 +1683,8 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How to filter data in Python instead of in Excel?</strong></p>
 <ul>
-<li>To show income from zipcode 35210</li>
-<li>Now, you might have the impression that you can get the filter result in Excel. In this case it certainly is.</li>
-<li>But I did this here because it demonstrates an approach that can scale to complicated datasets, and can provide the results in Python then save it to Excel file. </li>
+<li>The following example filters the dataframe for zipcode 35210</li>
+<li>This approach can easily scale to more complicated datasets, and provides results using Python pandas dataframe.</li>
 </ul>
 
 </div>
@@ -1858,7 +1853,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Stock_px.xlsx&#39;</span><span class="p">)</span>
@@ -1875,7 +1870,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -1969,18 +1964,18 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Insert New Column &amp; Sum, Minimum, Maximum and Average of Data </strong></p>
+<p>Insert a new column that is the sum of 3 existing columns.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;GE&quot;</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1993,7 +1988,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -2089,10 +2084,11 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## now get the sum / mean / min / max for stock AA</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2105,7 +2101,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[31]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -2135,10 +2131,14 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## TODO: add back the original string date and demonstrate how to convert to datetime</span>
+<span class="c1">## check the type</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">## the type is a timestamp</span>
 </pre></div>
 
 </div>
@@ -2151,7 +2151,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -2168,10 +2168,11 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Reload the dataframe with the index specified as the date </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
@@ -2185,7 +2186,7 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -2289,7 +2290,8 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now we use the dataframe resample method to create a line graph with multiple series</span>
+<span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
 </div>
