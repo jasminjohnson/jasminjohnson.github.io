@@ -41,7 +41,7 @@ We can use Python to view/list/count all the tabs which including hidden tabs.&l
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
 This can be very effective when we need to quickly verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/using-pandas-for-financial-analysis/</id><summary type="html">
-The goal of this post is to use Python to import Excel datasets, performing the financial analysis, and to show some Python implementations putting the code into practice. My hope is that this post will give accountants like myself another way to analyze huge datasets.&lt;/p&gt;
+The goal of this post is to use Python to import Excel datasets, perform some financial analysis, and to put some python code into practice.&lt;/p&gt;
 
 
 
@@ -50,5 +50,9 @@ The goal of this post is to use Python to import Excel datasets, performing the 
 
 
 
-&lt;p&gt;How to analyze large datasets with endless rows and columns from the dataset dump? how to use Python to extract the data and perform the meaningful analysis? How to visualize the financial analysis? Two examples illustrated here are in either csv or xlsx format since most likely that IS department would only provide the output data in either format.
+&lt;p&gt;Some of the goals I will cover here are to:
+&lt;br&gt;1) analyze a large dataset with many rows and columns
+&lt;br&gt;2) use code to extract data and perform some basic analysis - e.g., merging, pivoting, and summarizing datasets
+&lt;br&gt;3) visualize the results&lt;/p&gt;
+&lt;p&gt;The two examples I use here deal with csv and xlsx format since these formats are fairly common.
 </summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
