@@ -41,18 +41,9 @@ We can use Python to view/list/count all the tabs which including hidden tabs.&l
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to verify the data distribution.
 This can be very effective when we need to quickly verify datasets for financial analysis.&lt;/p&gt;
 </summary><category term="financial"></category><category term="pandas"></category><category term="data validation"></category></entry><entry><title>Data Analysis With Python for Excel Users I - Import File</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/using-pandas-for-financial-analysis/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/using-pandas-for-financial-analysis/</id><summary type="html">
-The goal of this post is to use Python to import Excel datasets, perform some financial analysis, and to put some python code into practice.&lt;/p&gt;
+The goal of this post is to use Python to 
+&lt;br&gt;1) import a medium sized Excel dataset with ~20k rows and 132 columns into a dataframe, 
+&lt;br&gt;2) get preliminary dataframe statistics (sum/mean/min/max), 
+&lt;br&gt;3) to visualize the dataframe as a time series graph
 
-
-
-
-
-
-
-
-&lt;p&gt;Some of the goals I will cover here are to:
-&lt;br&gt;1) analyze a large dataset with many rows and columns
-&lt;br&gt;2) use code to extract data and perform some basic analysis - e.g., merging, pivoting, and summarizing datasets
-&lt;br&gt;3) visualize the results&lt;/p&gt;
-&lt;p&gt;The two examples I use here deal with csv and xlsx format since these formats are fairly common.
 </summary><category term="financial"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
