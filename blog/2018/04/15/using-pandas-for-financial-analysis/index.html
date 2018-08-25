@@ -1416,7 +1416,7 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 
 The goal of this post is to use Python to 
-<br>1) import a medium sized Excel dataset with ~20k rows and 132 columns into a dataframe, 
+<br>1) import a smaller but wide Excel dataset with 1k rows and 132 columns into a dataframe, 
 <br>2) get preliminary dataframe statistics (sum/mean/min/max), 
 <br>3) to visualize the dataframe as a time series graph
 
@@ -1430,8 +1430,8 @@ The goal of this post is to use Python to
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The 2 sample data files I will use are:</p>
 <ul>
-<li>"2015 USA Census Data" with 20000 rows and 150 columns from gov.org</li>
-<li>"Historical daily price data for 10 stocks from 1990-2011" with 5473 rows and 11 columns</li>
+<li>"2015 USA Census Data" with 1000 rows and 132 columns from gov.org (data/blog1/sample.xlsx)</li>
+<li>"Historical daily price data for 10 stocks from 1990-2011" with 5472 rows and 11 columns (data/blog1/Stock_px.xlsx) </li>
 </ul>
 
 </div>
@@ -1457,13 +1457,14 @@ The goal of this post is to use Python to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel and head(3) to show the first 3 rows only</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/blog1/sample.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -1476,7 +1477,7 @@ The goal of this post is to use Python to
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -1599,6 +1600,19 @@ The goal of this post is to use Python to
 </table>
 <p>3 rows × 132 columns</p>
 </div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1000, 132)</pre>
 </div>
 
 </div>
@@ -1857,11 +1871,12 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/blog1/Stock_px.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -1874,7 +1889,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -1956,6 +1971,19 @@ pd.ExcelFile: time=
   </tbody>
 </table>
 </div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(5472, 11)</pre>
 </div>
 
 </div>
