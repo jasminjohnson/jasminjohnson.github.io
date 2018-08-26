@@ -1415,7 +1415,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-** Goal: Use Python to load data into a dataframe and get basic statistics. **  
+Goal: Use Python to load data into a dataframe and get basic statistics. 
 <br>Specifically, I plan to use Python to: 
 - Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
 - Get preliminary dataframe statistics: sum, mean, min/max 
@@ -1430,8 +1430,8 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The 2 sample data files I will use are:</p>
 <ul>
-<li>"2015 USA Census Data" with 1000 rows and 132 columns from gov.org (data/blog1/sample.xlsx)</li>
-<li>"Historical daily price data for 10 stocks from 1990-2011" with 5472 rows and 11 columns (data/blog1/Stock_px.xlsx) </li>
+<li>"2015 USA Census Data" with 1000 rows and 132 columns from gov.org (data/analysis1/sample.xlsx)</li>
+<li>"Historical daily price data for 10 stocks from 1990-2011" with 5472 rows and 11 columns (data/analysis1/Stock_px.xlsx) </li>
 </ul>
 
 </div>
@@ -1457,10 +1457,10 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel and head(3) to show the first 3 rows only</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel, head(3) to show the first 3 rows only, shape to show how many rows/columns</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/sample.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -1477,7 +1477,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1606,7 +1606,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1632,7 +1632,7 @@ h6:hover .anchor-link {
 <ul>
 <li>Both commands can read Excel file</li>
 <li>Use Pandas Timeit to time how long does it take to run the reports</li>
-<li>in general, the ExcelFile command will be faster</li>
+<li>In general, the ExcelFile command will be faster</li>
 </ul>
 
 </div>
@@ -1640,7 +1640,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_excelfile</span><span class="p">():</span>
@@ -1670,9 +1670,9 @@ h6:hover .anchor-link {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>pd.read_excel: time=
-734 ms ± 40.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+738 ms ± 21.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 pd.ExcelFile: time=
-618 ms ± 4.53 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+637 ms ± 4.13 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -1687,8 +1687,8 @@ pd.ExcelFile: time=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How to filter data in Python instead of in Excel?</strong></p>
 <ul>
-<li>The following example filters the dataframe for zipcode 35210</li>
-<li>This approach can easily scale to more complicated datasets, and provides results using Python pandas dataframe.</li>
+<li>The following example filters and count ("shape") the dataframe for zipcode 35210</li>
+<li>This approach can easily scale to more complicated datasets, and provides results using Python pandas dataframe</li>
 </ul>
 
 </div>
@@ -1696,11 +1696,13 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;zipcode&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">35210</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_filtered</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;zipcode&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">35210</span><span class="p">]</span>
+
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df_filtered</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -1713,7 +1715,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1842,13 +1844,13 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(1000, 132)</pre>
+<pre>(6, 132)</pre>
 </div>
 
 </div>
@@ -1871,12 +1873,12 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/Stock_px.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_stock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/Stock_px.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_stock</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df_stock</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -1889,7 +1891,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1977,7 +1979,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1996,18 +1998,19 @@ pd.ExcelFile: time=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Insert a new column that is the sum of 3 existing columns.</p>
+<p><strong>Insert a new column that is the sum of 3 existing columns</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;GE&quot;</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Tail to show the last 3 rows</span>
+<span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;GE&quot;</span><span class="p">]</span>
+<span class="n">df_stock</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2020,7 +2023,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -2116,11 +2119,11 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## now get the sum / mean / min / max for stock AA</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2133,7 +2136,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -2154,7 +2157,7 @@ pd.ExcelFile: time=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Pandas Time Series Analysis: DatetimeIndex and Resample</strong></p>
 <ul>
-<li>Change column DATE type from string to timeseries </li>
+<li>Change column DATE type from string to timeseries (see Pandas TimeSeries blog)</li>
 <li>Set column "DATE" as index</li>
 </ul>
 
@@ -2163,12 +2166,11 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## TODO: add back the original string date and demonstrate how to convert to datetime</span>
-<span class="c1">## check the type</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## check the type</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df_stock</span><span class="o">.</span><span class="n">DATE</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1">## the type is a timestamp</span>
 </pre></div>
@@ -2183,7 +2185,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -2200,12 +2202,12 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Reload the dataframe with the index specified as the date </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df_stock_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/Stock_px.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DATE&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;DATE&quot;</span><span class="p">)</span>
+<span class="n">df_stock_index</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2218,7 +2220,7 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -2319,11 +2321,11 @@ pd.ExcelFile: time=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now we use the dataframe resample method to create a line graph with multiple series</span>
-<span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df_stock_index</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2336,13 +2338,13 @@ pd.ExcelFile: time=
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x241d4211470&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x249f9b68160&gt;</pre>
 </div>
 
 </div>
