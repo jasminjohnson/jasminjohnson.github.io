@@ -28,7 +28,13 @@ This database tool can also be useful for accountants doing financial analysis.&
 &lt;p&gt;Time Series can be useful to analyze financial data in different frequencies based on data distribution.
 We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.
 For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.&lt;/p&gt;
-</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/summarizing-data-using-pandas/</id><summary type="html">
+</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">
+Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
+Many people choose to do ad hoc processing of data from one form to another using a general purpose programming. 
+
+Fortunately, pandas along with the Python standard library provide you with a high-level, flexible, and high-performance set of core manipulations
+and algorithms to enable you to wrangle data into the right form without much trouble
+</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/summarizing-data-using-pandas/</id><summary type="html">
 
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.&lt;/p&gt;
 &lt;p&gt;This can be an effective tool when we need to summarize datasets for analysis.
