@@ -1452,7 +1452,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 <li>ie: df = pd.DataFrame(np.random.randn(10,5),columns = ['A','B','C'])</li>
 </ul>
 </li>
-<li>The input data is an excel file consisting of 2 tabs: premium and loss    </li>
+<li>The input data is an excel file consisting of 2 tabs: premium and loss and 8 hidden tabs   </li>
 </ul>
 
 </div>
@@ -1489,10 +1489,10 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View list of tabs including hidden tab</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View list of tabs including hidden tab</span>
 
 <span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df_list.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
@@ -1517,20 +1517,20 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>df_list.sheet_names=[&#39;premium&#39;, &#39;loss&#39;]
+<pre>df_list.sheet_names=[&#39;premium&#39;, &#39;loss&#39;, &#39;hidden1&#39;, &#39;hidden2&#39;, &#39;hidden3&#39;, &#39;hidden4&#39;, &#39;hidden5&#39;, &#39;hidden6&#39;, &#39;hidden7&#39;, &#39;hidden8&#39;, &#39;hidden9&#39;, &#39;hidden10&#39;]
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
+<pre>12</pre>
 </div>
 
 </div>
@@ -1541,7 +1541,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 2 tab(s) in the file.
+<pre>There are 12 tab(s) in the file.
 </pre>
 </div>
 </div>
@@ -1552,7 +1552,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
@@ -1584,7 +1584,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1705,7 +1705,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1790,7 +1790,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span> 
@@ -1809,7 +1809,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -1944,7 +1944,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
@@ -1976,7 +1976,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -2136,31 +2136,29 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span> <span class="n">Which</span> <span class="n">policy</span> <span class="n">has</span> <span class="n">no</span> <span class="n">incurred</span> <span class="n">losses</span><span class="err">?</span> <span class="n">use</span> <span class="n">Outer</span> <span class="n">join</span> <span class="n">to</span> <span class="n">merge</span> <span class="n">the</span> <span class="n">data</span><span class="o">**</span>
-<span class="o">-</span> <span class="n">Other</span> <span class="n">possible</span> <span class="n">options</span> <span class="n">are</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;outer&#39;</span><span class="o">.</span> 
-<span class="o">-</span> <span class="n">The</span> <span class="n">outer</span> <span class="n">join</span> <span class="n">takes</span> <span class="n">the</span> <span class="n">union</span> <span class="n">of</span> <span class="n">the</span> <span class="n">keys</span><span class="p">,</span> <span class="n">combining</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">of</span> <span class="n">applying</span> <span class="n">both</span> <span class="n">left</span> <span class="ow">and</span> <span class="n">right</span> <span class="n">joins</span>
-<span class="o">-</span> <span class="n">Policy</span> <span class="mi">10962</span> <span class="n">has</span> <span class="n">no</span> <span class="n">associated</span> <span class="n">loss</span> <span class="n">data</span><span class="p">,</span> <span class="n">the</span> <span class="n">missing</span> <span class="n">loss</span> <span class="n">result</span> <span class="n">marks</span> <span class="k">as</span> <span class="n">NaN</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Which policy has no incurred losses? use Outer join to merge the data</strong></p>
+<ul>
+<li>Other possible options are 'left', 'right', and 'outer'. </li>
+<li>The outer join takes the union of the keys, combining the effect of applying both left and right joins</li>
+<li>Policy 10962 has no associated loss data, the missing loss result marks as NaN</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
 <span class="n">df_loss</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
 <span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2173,7 +2171,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -2322,111 +2320,6 @@ and algorithms to enable you to wrangle data into the right form without much tr
       <td>NaN</td>
       <td>NaN</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>10948</td>
-      <td>Florencia</td>
-      <td>Bilyk</td>
-      <td>2017-06-05</td>
-      <td>Podiatrist</td>
-      <td>CM</td>
-      <td>5132.0</td>
-      <td>1000000.0</td>
-      <td>3900000.0</td>
-      <td>99671.0</td>
-      <td>880208.0</td>
-      <td>CM</td>
-      <td>Florencia</td>
-      <td>Bilyk</td>
-      <td>2018-04-22</td>
-      <td>38573.0</td>
-      <td>800000.0</td>
-      <td>5132.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>10244</td>
-      <td>Wonda</td>
-      <td>Hallsworth</td>
-      <td>2017-08-07</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13330.0</td>
-      <td>1000000.0</td>
-      <td>3900000.0</td>
-      <td>92319.0</td>
-      <td>880016.0</td>
-      <td>OCC</td>
-      <td>Wonda</td>
-      <td>Hallsworth</td>
-      <td>2017-09-14</td>
-      <td>44072.0</td>
-      <td>1500000.0</td>
-      <td>13330.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>11106</td>
-      <td>NaN</td>
-      <td>Sarasota Hospital</td>
-      <td>2017-08-14</td>
-      <td>Hospital</td>
-      <td>OCC</td>
-      <td>446997.0</td>
-      <td>1000000.0</td>
-      <td>3900000.0</td>
-      <td>97303.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaT</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>11271</td>
-      <td>Zola</td>
-      <td>Fitzwallace</td>
-      <td>2017-07-15</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>24252.0</td>
-      <td>1000000.0</td>
-      <td>3900000.0</td>
-      <td>97474.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaT</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10509</td>
-      <td>Patrica</td>
-      <td>Hartle</td>
-      <td>2017-02-09</td>
-      <td>Podiatrist</td>
-      <td>OCC</td>
-      <td>5647.0</td>
-      <td>1000000.0</td>
-      <td>3900000.0</td>
-      <td>96730.0</td>
-      <td>880041.0</td>
-      <td>OCC</td>
-      <td>Patrica</td>
-      <td>Hartle</td>
-      <td>2017-11-16</td>
-      <td>88069.0</td>
-      <td>1000000.0</td>
-      <td>5647.0</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -2458,7 +2351,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dupes</span><span class="o">=</span><span class="n">df_merge</span><span class="p">[</span><span class="n">df_merge</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
@@ -2487,7 +2380,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -2586,7 +2479,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge_clean</span><span class="o">=</span><span class="n">df_merge</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
@@ -2603,7 +2496,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -2788,7 +2681,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss_greater_than_1M</span> <span class="o">=</span> <span class="n">df_loss</span><span class="p">[</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">]</span>
@@ -2818,7 +2711,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -2915,7 +2808,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st output - Sepaprated loss into bins and print out first five rows</span>
@@ -2937,7 +2830,7 @@ and algorithms to enable you to wrangle data into the right form without much tr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -2956,7 +2849,7 @@ Categories (5, interval[int64]): [(1, 50000] &lt; (50000, 75000] &lt; (75000, 50
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -2978,7 +2871,7 @@ Name: Loss, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st output - Show first 3 claims according to the matching loss categories</span>
@@ -2999,7 +2892,7 @@ Name: Loss, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -3016,7 +2909,7 @@ Categories (5, interval[int64]): [[1, 50000) &lt; [50000, 75000) &lt; [75000, 50
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -3060,7 +2953,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Group claims by Line of Business LOB and set Loss_Date as index</span>
@@ -3082,7 +2975,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -3168,13 +3061,13 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;pandas.core.groupby.DataFrameGroupBy object at 0x0000025ABA214F98&gt;</pre>
+<pre>&lt;pandas.core.groupby.DataFrameGroupBy object at 0x000001FB46FDE128&gt;</pre>
 </div>
 
 </div>
@@ -3185,7 +3078,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View claim by LOB - Nurse </span>
@@ -3202,7 +3095,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -3303,7 +3196,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default by sorint the first sortable column which is LAE in this example</span>
@@ -3322,7 +3215,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -3403,7 +3296,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -3484,7 +3377,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -3569,7 +3462,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default by sorint the first sortable column which is LAE in this example</span>
@@ -3603,7 +3496,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -3688,7 +3581,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -3773,7 +3666,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -3865,7 +3758,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
@@ -3881,7 +3774,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -4186,7 +4079,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/claim_distribution.xlsx&#39;</span><span class="p">)</span>
@@ -4204,7 +4097,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[41]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -4347,11 +4240,10 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_claims_by_lob[&#39;Loss&#39;].plot(legend=True)</span>
-
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## How to add dollars signs to the y-axis</span>
 <span class="c1">## ref: https://stackoverflow.com/questions/40566413/matplotlib-pyplot-auto-adjust-unit-of-y-axis</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
 <span class="k">def</span> <span class="nf">y_fmt</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -4690,12 +4582,12 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># list of tabs and how many tabs in the excel file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## list of tabs and how many tabs in the excel file</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/analysis3/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
 <span class="n">number_tab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
 <span class="n">number_tab</span>
@@ -4723,7 +4615,7 @@ rkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -4751,14 +4643,14 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># view each tab</span>
-<span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis3/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis3/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis3/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
-<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis3/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;rein&quot;</span><span class="p">)</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;rein&quot;</span><span class="p">)</span>
 <span class="n">df1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">df2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">df3</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -4774,7 +4666,7 @@ rkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -4833,7 +4725,7 @@ rkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -4895,7 +4787,7 @@ rkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -4978,11 +4870,11 @@ Reserve</th>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Policy&#39;s claim and reinsurance history in one table </span>
-<span class="c1"># make the common column (the one used as the joining reference) the dataframe index:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Claim and reinsurance history by policy in one table </span>
+<span class="c1">## Select the common column (the one used as the joining reference) as the dataframe index:</span>
 <span class="n">dfi</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">)</span>
 
 <span class="c1"># join the three excel&#39;s tabs</span>
@@ -4990,7 +4882,7 @@ Reserve</th>
 <span class="n">dfj</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
 
 <span class="c1"># save to a new file:</span>
-<span class="n">dfj</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis3/myjointfile.xlsx&#39;</span><span class="p">)</span>
+<span class="n">dfj</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/myjointfile.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5003,7 +4895,7 @@ Reserve</th>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -5221,192 +5113,6 @@ Reserve</th>
   </tbody>
 </table>
 </div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Recape - Excel Index-Match function in python</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;List&quot;</span><span class="p">])</span>
-<span class="n">x</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Small&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Medium&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;Large&quot;</span><span class="p">)],</span> 
-                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;List&quot;</span><span class="p">,</span> <span class="s2">&quot;Category&quot;</span><span class="p">])</span>
-<span class="n">y</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">List</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>List</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>List</th>
-      <th>Category</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-1</td>
-      <td>Small</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>Medium</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>Large</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>0     Small
-1     Small
-2     Small
-3     Small
-4     Small
-5    Medium
-6    Medium
-7    Medium
-8     Large
-9     Large
-Name: List, dtype: category
-Categories (3, object): [Small &lt; Medium &lt; Large]</pre>
 </div>
 
 </div>

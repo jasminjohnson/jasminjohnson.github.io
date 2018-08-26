@@ -6,7 +6,7 @@
         <meta name="author" content="Jasmin Johnson">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <title>Data Analysis III - Validating Data | Financial Analysis Journal</title>
+        <title>Data Analysis II - Summarizing Data | Financial Analysis Journal</title>
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -433,8 +433,8 @@ article .meta a.comments_btn:hover {
 <div class="container post">
     <article>
         <header>
-            <h1>Data Analysis III - Validating Data</h1>
-            <time datetime="article.date.isoformat()" pubdate>Mon 30 April 2018</time>
+            <h1>Data Analysis II - Summarizing Data</h1>
+            <time datetime="article.date.isoformat()" pubdate>Fri 20 April 2018</time>
         </header>
 
         <div class="article_content">
@@ -1415,8 +1415,10 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
-<br>My objective here is to go through some examples for how to perform basic data validation.
+
+<p>When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.</p>
+<p>This can be an effective tool when we need to summarize datasets for analysis.
+</p>
 
 </div>
 </div>
@@ -1425,31 +1427,836 @@ A favorite old saying of mine with respect to data quality is "Garbage In and Ga
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Goals: How to get a clean and valid dataset?</strong></p>
+<p><strong>Goal: Apply Python functions to summarize a Dataset</strong>
+<br>Specifically, I plan to use Python to:</p>
 <ul>
-<li>Join two or more dataframes by using a key or composite key</li>
-<li>Spot invalid data by using pandas <ul>
-<li>Pandas offers functionality similar to Excel Vlookup, Sumif etc.</li>
+<li>Sum up columns or rows in python</li>
+<li>Get the maximum, mean, average value in the datasets </li>
+<li>Filter data to isolate invalid data </li>
+<li>Transpose columns</li>
 </ul>
-</li>
-<li>Remove duplicate data</li>
-<li>Calculate the average value or the maximum value of certain dataset</li>
-</ul>
-<p>I plan to demonstrate how to validate data using a "dirty" dataset.
-<br>Specifically, how to 
-<br>- detect/eliminate outlier data
-<br>- detect/eliminate duplicate data
-<br>- deal with missing data
-<br>- add default values
-<br>- remove incomplete data/rows
-<br>- deal with error-prone columns
-<br>- normalize data types
-<br>- change casing
-<br>- rename columns
-<br>- make bulk corrections to string/number values where appropriate</p>
+<p>Ultimately, I am looking to supplement excel-like functions to perform dataset summarization with the equivalent operations using python pandas dataframes.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example - Dow Jones Index 30 Stocks' Dividends</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Using dow 30 dividend data sourced from yahoo finance</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis2/Dow.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stock Symbol</th>
+      <th>Company Name</th>
+      <th>Dividend Yield</th>
+      <th>Closing Price</th>
+      <th>Annualized Dividend</th>
+      <th>Ex-Div Date</th>
+      <th>Pay Date</th>
+      <th>50-day moving average</th>
+      <th>200-day moving average</th>
+      <th>Dif 50-day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>WMT</td>
+      <td>Wal-Mart Stores</td>
+      <td>0.0242</td>
+      <td>85.91</td>
+      <td>2.08</td>
+      <td>2018-12-06</td>
+      <td>2019-01-02</td>
+      <td>82.35</td>
+      <td>78.6800</td>
+      <td>-3.56</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>V</td>
+      <td>Visa</td>
+      <td>0.0070</td>
+      <td>119.78</td>
+      <td>0.84</td>
+      <td>2018-02-15</td>
+      <td>2018-03-06</td>
+      <td>106.44</td>
+      <td>98.9627</td>
+      <td>-13.34</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>VZ</td>
+      <td>Verizon</td>
+      <td>0.0496</td>
+      <td>47.58</td>
+      <td>2.36</td>
+      <td>2018-04-09</td>
+      <td>2018-05-01</td>
+      <td>48.73</td>
+      <td>47.0300</td>
+      <td>1.15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(30, 10)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Which Stock Has the Maximum Dividend Yield?</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Find the stock with the maximum dividend yield</span>
+<span class="n">max_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+<span class="n">max_div_stock</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The stock with the max dividend yield is </span><span class="si">%s</span><span class="s2"> with yield </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">max_div_stock</span><span class="p">[</span><span class="s1">&#39;Company Name&#39;</span><span class="p">],</span><span class="n">max_div_stock</span><span class="p">[</span><span class="s1">&#39;Dividend Yield&#39;</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Stock Symbol                               VZ
+Company Name                          Verizon
+Dividend Yield                         0.0496
+Closing Price                           47.58
+Annualized Dividend                      2.36
+Ex-Div Date               2018-04-09 00:00:00
+Pay Date                  2018-05-01 00:00:00
+50-day moving average                   48.73
+200-day moving average                  47.03
+Dif 50-day                               1.15
+Name: 2, dtype: object</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The stock with the max dividend yield is Verizon with yield 0.0496
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Which Stock Has the Minimum Dividend Yield?</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Find the stock with the minimum dividend yield</span>
+<span class="n">min_div_stock</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<span class="n">min_div_stock</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The stock with the minimum dividend yield is </span><span class="si">%s</span><span class="s2"> with yield </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">min_div_stock</span><span class="p">[</span><span class="s1">&#39;Company Name&#39;</span><span class="p">],</span><span class="n">min_div_stock</span><span class="p">[</span><span class="s1">&#39;Dividend Yield&#39;</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Stock Symbol                                V
+Company Name                             Visa
+Dividend Yield                          0.007
+Closing Price                          119.78
+Annualized Dividend                      0.84
+Ex-Div Date               2018-02-15 00:00:00
+Pay Date                  2018-03-06 00:00:00
+50-day moving average                  106.44
+200-day moving average                98.9627
+Dif 50-day                             -13.34
+Name: 1, dtype: object</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The stock with the minimum dividend yield is Visa with yield 0.007
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Which Stock Price is Currently Below 50-day Moving Average?</strong></p>
+<ul>
+<li>Calculate the difference between 50-day moving average and the closing price </li>
+<li>Use min() to show the the stock with the smallest 50-day average</li>
+<li>Filter the difference below zero, this showed a list of stocks below 50-day average</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;50-day moving average&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]</span>  
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>  
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dif 50-day&quot;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-71.970000000000027</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stock Symbol</th>
+      <th>Company Name</th>
+      <th>Dividend Yield</th>
+      <th>Closing Price</th>
+      <th>Annualized Dividend</th>
+      <th>Ex-Div Date</th>
+      <th>Pay Date</th>
+      <th>50-day moving average</th>
+      <th>200-day moving average</th>
+      <th>Dif 50-day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>WMT</td>
+      <td>Wal-Mart Stores</td>
+      <td>0.0242</td>
+      <td>85.91</td>
+      <td>2.08</td>
+      <td>2018-12-06</td>
+      <td>2019-01-02</td>
+      <td>82.35</td>
+      <td>78.6800</td>
+      <td>-3.56</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>V</td>
+      <td>Visa</td>
+      <td>0.0070</td>
+      <td>119.78</td>
+      <td>0.84</td>
+      <td>2018-02-15</td>
+      <td>2018-03-06</td>
+      <td>106.44</td>
+      <td>98.9627</td>
+      <td>-13.34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>UNH</td>
+      <td>UnitedHealth Group</td>
+      <td>0.0135</td>
+      <td>221.90</td>
+      <td>3.00</td>
+      <td>2018-03-08</td>
+      <td>2018-03-20</td>
+      <td>198.85</td>
+      <td>187.4800</td>
+      <td>-23.05</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(20, 10)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Insert Column and Assign Value in Python Instead of in Excel</strong></p>
+<ul>
+<li>Test Insert new column after columns 2 with 5% Commission Rate</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Com Rate %&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stock Symbol</th>
+      <th>Company Name</th>
+      <th>Com Rate %</th>
+      <th>Dividend Yield</th>
+      <th>Closing Price</th>
+      <th>Annualized Dividend</th>
+      <th>Ex-Div Date</th>
+      <th>Pay Date</th>
+      <th>50-day moving average</th>
+      <th>200-day moving average</th>
+      <th>Dif 50-day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>WMT</td>
+      <td>Wal-Mart Stores</td>
+      <td>5</td>
+      <td>0.0242</td>
+      <td>85.91</td>
+      <td>2.08</td>
+      <td>2018-12-06</td>
+      <td>2019-01-02</td>
+      <td>82.35</td>
+      <td>78.6800</td>
+      <td>-3.56</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>V</td>
+      <td>Visa</td>
+      <td>5</td>
+      <td>0.0070</td>
+      <td>119.78</td>
+      <td>0.84</td>
+      <td>2018-02-15</td>
+      <td>2018-03-06</td>
+      <td>106.44</td>
+      <td>98.9627</td>
+      <td>-13.34</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>VZ</td>
+      <td>Verizon</td>
+      <td>5</td>
+      <td>0.0496</td>
+      <td>47.58</td>
+      <td>2.36</td>
+      <td>2018-04-09</td>
+      <td>2018-05-01</td>
+      <td>48.73</td>
+      <td>47.0300</td>
+      <td>1.15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Save the Calculation and the New Column to Excel</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis2/Dow2.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stock Symbol</th>
+      <th>Company Name</th>
+      <th>Com Rate %</th>
+      <th>Dividend Yield</th>
+      <th>Closing Price</th>
+      <th>Annualized Dividend</th>
+      <th>Ex-Div Date</th>
+      <th>Pay Date</th>
+      <th>50-day moving average</th>
+      <th>200-day moving average</th>
+      <th>Dif 50-day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27</th>
+      <td>AAPL</td>
+      <td>Apple Inc.</td>
+      <td>5</td>
+      <td>0.0146</td>
+      <td>172.44</td>
+      <td>2.52</td>
+      <td>2018-02-09</td>
+      <td>2018-02-15</td>
+      <td>156.641</td>
+      <td>152.6100</td>
+      <td>-15.799</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>AXP</td>
+      <td>American Express</td>
+      <td>5</td>
+      <td>0.0153</td>
+      <td>91.60</td>
+      <td>1.40</td>
+      <td>2018-04-05</td>
+      <td>2018-05-10</td>
+      <td>90.340</td>
+      <td>84.1304</td>
+      <td>-1.260</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>MMM</td>
+      <td>3M</td>
+      <td>5</td>
+      <td>0.0254</td>
+      <td>214.33</td>
+      <td>5.44</td>
+      <td>2018-02-15</td>
+      <td>2018-03-12</td>
+      <td>216.330</td>
+      <td>206.6900</td>
+      <td>2.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>two new columns created in python is saved in the Excel file</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Count Rows and Columns When Dealing With Huge Dataset</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Count_Row</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+<span class="n">Count_Col</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> rows in this file&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> columns in this file&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Col</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 30 rows in this file
+There are 11 columns in this file
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Sum up total for specific columns</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sum_row</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Dividend Yield&quot;</span><span class="p">,</span><span class="s2">&quot;Closing Price&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">sum_row</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Dividend Yield       0.7648
+Closing Price     3513.1300
+dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Transpose columns - This code is very helpful for viewing the output</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Initially, think of this as similar to a pivot in excel - but more flexible</span>
+<span class="n">df_sum</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sum_row</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">df_sum</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dividend Yield</th>
+      <th>Closing Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.7648</td>
+      <td>3513.13</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
  
 
@@ -1486,6 +2293,8 @@ A favorite old saying of mine with respect to data quality is "Garbage In and Ga
         <div class="meta">
             <div>
                     <a href="http://jasminjohnson.github.io/tag/pandas.html" class="tag">pandas</a>
+                    <a href="http://jasminjohnson.github.io/tag/summarization.html" class="tag">summarization</a>
+                    <a href="http://jasminjohnson.github.io/tag/aggregation.html" class="tag">aggregation</a>
                     <a href="http://jasminjohnson.github.io/tag/validation.html" class="tag">validation</a>
             </div>
         </div>

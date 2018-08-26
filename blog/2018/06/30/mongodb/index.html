@@ -2790,10 +2790,11 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
  
 <span class="n">WORDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#insurance&#39;</span><span class="p">,</span> <span class="s1">&#39;#AI&#39;</span><span class="p">,</span> <span class="s1">&#39;#datascience&#39;</span><span class="p">,</span> <span class="s1">&#39;#machinelearning&#39;</span><span class="p">,</span> <span class="s1">&#39;#auto&#39;</span><span class="p">,</span> <span class="s1">&#39;#reinsurance&#39;</span><span class="p">]</span>
  
-<span class="c1"># CONSUMER_KEY = &quot;your key&quot;</span>
-<span class="c1"># CONSUMER_SECRET = &quot;your secret&quot;</span>
-<span class="c1"># ACCESS_TOKEN = &quot;your token&quot;</span>
-<span class="c1"># ACCESS_TOKEN_SECRET = &quot;your token secret&quot;</span>
+<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="o">%</span><span class="k">env</span> TWITTER_CONSUMER_KEY
+<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="o">%</span><span class="k">env</span> TWITTER_CONSUMER_SECRET
+<span class="n">ACCESS_TOKEN</span> <span class="o">=%</span><span class="k">env</span> TWITTER_ACCESS_TOKEN
+<span class="n">ACCESS_TOKEN_SECRET</span> <span class="o">=</span> <span class="o">%</span><span class="k">env</span> TWITTER_ACCESS_TOKEN_SECRET
+
  
  
 <span class="k">class</span> <span class="nc">StreamListener</span><span class="p">(</span><span class="n">tweepy</span><span class="o">.</span><span class="n">StreamListener</span><span class="p">):</span>    
