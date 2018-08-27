@@ -36,6 +36,11 @@ Fortunately, pandas along with the Python standard library provide you with a hi
 and algorithms to enable you to wrangle data into the right form without much trouble
 </summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
 A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
+Your analysis is only ever as good as your dataset.
+
+Pandas is a popular Python library used for data science and analysis. Used in conjunction with other data science toolsets like SciPy, NumPy, and Matplotlib,
+a modeler can create end-to-end analytic workflows to solve business problems.
+
 &lt;br&gt;My objective here is to go through some examples for how to perform basic data validation.
 </summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-20T00:00:00-04:00</published><updated>2018-04-20T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/summarizing-data-using-pandas/</id><summary type="html">
 
