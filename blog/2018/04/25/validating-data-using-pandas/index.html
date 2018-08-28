@@ -1585,7 +1585,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
       <td>Australia and Oceania</td>
       <td>Papua New Guinea</td>
       <td>Meat</td>
-      <td>Offline</td>
+      <td>NaN</td>
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
@@ -1627,7 +1627,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <pre>count     371706
 unique         4
 top            C
-freq       93092
+freq       93091
 Name: OrderPriority, dtype: object</pre>
 </div>
 
@@ -1731,8 +1731,8 @@ Name: OrderPriority, dtype: object</pre>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>count    3.717050e+05
-mean     3.924671e+05
-std      3.786008e+05
+mean     3.924652e+05
+std      3.785990e+05
 min      2.410000e+00
 25%      9.544770e+04
 50%      2.819860e+05
@@ -1752,9 +1752,9 @@ Name: TotalProfit, dtype: float64</pre>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>count        371706
-unique       371701
-top       601245963
-freq              2
+unique       371699
+top       198927056
+freq              3
 Name: OrderID, dtype: object</pre>
 </div>
 
@@ -1891,7 +1891,7 @@ Name: OrderID, dtype: object</pre>
       <td>Australia and Oceania</td>
       <td>Papua New Guinea</td>
       <td>Meat</td>
-      <td>Offline</td>
+      <td>NaN</td>
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
@@ -2257,23 +2257,6 @@ Name: OrderID, dtype: object</pre>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>940995585</td>
-      <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
-      <td>Meat</td>
-      <td>Offline</td>
-      <td>M</td>
-      <td>5/15/2015</td>
-      <td>6/4/2015</td>
-      <td>360.0</td>
-      <td>NaN</td>
-      <td>364.69</td>
-      <td>151880.40</td>
-      <td>131288.40</td>
-      <td>20592.00</td>
-    </tr>
-    <tr>
       <th>4</th>
       <td>174590194</td>
       <td>Europe</td>
@@ -2289,6 +2272,23 @@ Name: OrderID, dtype: object</pre>
       <td>188518.85</td>
       <td>126301.67</td>
       <td>62217.18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>174590194</td>
+      <td>Asia</td>
+      <td>Sri Lanka</td>
+      <td>NaN</td>
+      <td>Online</td>
+      <td>L</td>
+      <td>11/7/2011</td>
+      <td>12/18/2011</td>
+      <td>1379.0</td>
+      <td>9.33</td>
+      <td>6.92</td>
+      <td>12866.07</td>
+      <td>9542.68</td>
+      <td>3323.39</td>
     </tr>
   </tbody>
 </table>
@@ -2472,14 +2472,13 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Delete duplicated data</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsDuplicated.csv&#39;</span><span class="p">)</span>
-<span class="n">df1_dup</span><span class="o">=</span><span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate order IDs&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df1_dup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
-<span class="n">df1_dup</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_dup</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate order IDs&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_dup</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2496,14 +2495,14 @@ Name: OrderID, dtype: object</pre>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 6 duplicate order IDs
+<pre>There are 5 duplicate order IDs
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -2544,7 +2543,7 @@ Name: OrderID, dtype: object</pre>
   </thead>
   <tbody>
     <tr>
-      <th>2</th>
+      <th>3</th>
       <td>940995585</td>
       <td>Australia and Oceania</td>
       <td>Papua New Guinea</td>
@@ -2553,7 +2552,7 @@ Name: OrderID, dtype: object</pre>
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
-      <td>360</td>
+      <td>360.0</td>
       <td>NaN</td>
       <td>364.69</td>
       <td>151880.40</td>
@@ -2561,72 +2560,72 @@ Name: OrderID, dtype: object</pre>
       <td>20592.00</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>659878194</td>
+      <th>9</th>
+      <td>601245963</td>
       <td>Sub-Saharan Africa</td>
-      <td>Tanzania</td>
-      <td>Beverages</td>
+      <td>Ghana</td>
+      <td>Office Supplies</td>
       <td>Online</td>
       <td>L</td>
-      <td>11/30/2016</td>
-      <td>1/16/2017</td>
-      <td>1476</td>
-      <td>47.45</td>
-      <td>31.79</td>
-      <td>70036.20</td>
-      <td>46922.04</td>
-      <td>23114.16</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>647164094</td>
-      <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
-      <td>Clothes</td>
-      <td>Offline</td>
-      <td>L</td>
-      <td>6/20/2011</td>
-      <td>7/14/2011</td>
-      <td>9092</td>
-      <td>109.28</td>
-      <td>35.84</td>
-      <td>993573.76</td>
-      <td>325857.28</td>
-      <td>667716.48</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>953361213</td>
-      <td>Sub-Saharan Africa</td>
-      <td>Zimbabwe</td>
-      <td>Office Supplies</td>
-      <td>Offline</td>
-      <td>C</td>
-      <td>3/28/2011</td>
-      <td>4/8/2011</td>
-      <td>9623</td>
+      <td>3/23/2017</td>
+      <td>4/15/2017</td>
+      <td>896.0</td>
       <td>651.21</td>
       <td>524.96</td>
-      <td>6266593.83</td>
-      <td>5051690.08</td>
-      <td>1214903.75</td>
+      <td>583484.16</td>
+      <td>470364.16</td>
+      <td>113120.00</td>
     </tr>
     <tr>
-      <th>33</th>
-      <td>937431466</td>
-      <td>Australia and Oceania</td>
-      <td>Samoa</td>
-      <td>Household</td>
+      <th>18</th>
+      <td>807785928</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Ethiopia</td>
+      <td>Cosmetics</td>
       <td>Online</td>
-      <td>L</td>
-      <td>12/5/2016</td>
-      <td>12/8/2016</td>
-      <td>5657</td>
-      <td>668.27</td>
-      <td>502.54</td>
-      <td>3780403.39</td>
-      <td>2842868.78</td>
-      <td>937534.61</td>
+      <td>M</td>
+      <td>7/7/2011</td>
+      <td>7/25/2011</td>
+      <td>662.0</td>
+      <td>437.20</td>
+      <td>263.33</td>
+      <td>289426.40</td>
+      <td>174324.46</td>
+      <td>115101.94</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>198927056</td>
+      <td>Asia</td>
+      <td>China</td>
+      <td>Office Supplies</td>
+      <td>Online</td>
+      <td>M</td>
+      <td>2/10/2016</td>
+      <td>3/29/2016</td>
+      <td>5791.0</td>
+      <td>651.21</td>
+      <td>524.96</td>
+      <td>3771157.11</td>
+      <td>3040043.36</td>
+      <td>731113.75</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>198927056</td>
+      <td>Asia</td>
+      <td>China</td>
+      <td>Office Supplies</td>
+      <td>Online</td>
+      <td>M</td>
+      <td>2/10/2016</td>
+      <td>3/29/2016</td>
+      <td>5791.0</td>
+      <td>651.21</td>
+      <td>524.96</td>
+      <td>3771157.11</td>
+      <td>3040043.36</td>
+      <td>731113.75</td>
     </tr>
   </tbody>
 </table>
@@ -2641,51 +2640,14 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop duplicated data</span>
-<span class="n">df1_dup_list</span><span class="o">=</span><span class="n">df1_dup</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-
-<span class="n">df1_dup_list</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsDupList.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop/delete duplicated data</span>
+<span class="n">df_dup_list</span><span class="o">=</span><span class="n">df_dup</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## List of 6 duplicated data </span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsDupList.csv&#39;</span><span class="p">)</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[24]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(6, 15)</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -2701,7 +2663,7 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##change all our movie titles to uppercase:</span>
@@ -2722,15 +2684,15 @@ Name: OrderID, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3                   SUB-SAHARAN AFRICA
-4                AUSTRALIA AND OCEANIA
-5    CENTRAL AMERICA AND THE CARIBBEAN
+<pre>371704         MIDDLE EAST AND NORTH AFRICA
+371705    CENTRAL AMERICA AND THE CARIBBEAN
+371706    CENTRAL AMERICA AND THE CARIBBEAN
 Name: Region, dtype: object</pre>
 </div>
 
@@ -2738,15 +2700,15 @@ Name: Region, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3    Zimbabwe
-4       Samoa
-5    Dominica
+<pre>371704     Algeria
+371705    Dominica
+371706      Panama
 Name: Country, dtype: object</pre>
 </div>
 
@@ -2767,7 +2729,7 @@ Name: Country, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_rename</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Region&#39;</span><span class="p">:</span><span class="s1">&#39;Continent&#39;</span><span class="p">,</span> <span class="s1">&#39;TotalProfit&#39;</span><span class="p">:</span><span class="s1">&#39;Net Income&#39;</span><span class="p">})</span>
@@ -2780,10 +2742,10 @@ Name: Country, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_rename</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsRename.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_rename</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsCleanRename.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>

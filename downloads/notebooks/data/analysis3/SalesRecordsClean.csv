@@ -1,7 +1,0 @@
-,OrderID,Region,Country,ItemType,SalesChannel,OrderPriority,OrderDate,Ship Date    ,UnitsSold,UnitPrice,UnitCost,TotalRevenue,TotalCost,TotalProfit
-2,940995585,Australia and Oceania,Papua New Guinea,Meat,,M,5/15/2015,6/4/2015,360,,364.69,151880.4,131288.4,20592.0
-7,659878194,Sub-Saharan Africa,Tanzania,Beverages,Online,L,11/30/2016,1/16/2017,1476,47.45,31.79,70036.2,46922.04,23114.16
-13,647164094,Australia and Oceania,Papua New Guinea,Clothes,Offline,L,6/20/2011,7/14/2011,9092,109.28,35.84,993573.76,325857.28,667716.48
-16,953361213,Sub-Saharan Africa,Zimbabwe,Office Supplies,Offline,C,3/28/2011,4/8/2011,9623,651.21,524.96,6266593.83,5051690.08,1214903.75
-33,937431466,Australia and Oceania,Samoa ,Household,Online,L,12/5/2016,12/8/2016,5657,668.27,502.54,3780403.39,2842868.78,937534.61
-39,274930989,Central America and the Caribbean,Dominica,Household,Offline,C,11/19/2011,12/13/2011,7044,668.27,502.54,4707293.88,3539891.76,1167402.12
