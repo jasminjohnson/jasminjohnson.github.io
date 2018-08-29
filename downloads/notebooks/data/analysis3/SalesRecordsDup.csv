@@ -1,0 +1,6 @@
+,OrderID,Region,Country,ItemType,SalesChannel,OrderPriority,OrderDate,Ship Date    ,UnitsSold,UnitPrice,UnitCost,TotalRevenue,TotalCost,TotalProfit
+8,601245963,Sub-Saharan Africa,Ghana,Office Supplies,Online,L,3/23/2017,4/15/2017,896,651.21,524.96,583484.16,470364.16,113120.0
+17,807785928,Sub-Saharan Africa,Ethiopia,Cosmetics,Online,M,7/7/2011,7/25/2011,662,437.2,263.33,289426.4,174324.46,115101.94
+23,135178029,Europe,United Kingdom,Cosmetics,Online,L,5/1/2015,5/16/2015,1038,437.2,263.33,453813.6,273336.54,180477.06
+25,198927056,Asia,China,Office Supplies,Online,M,2/10/2016,3/29/2016,5791,651.21,524.96,3771157.11,3040043.36,731113.75
+26,198927056,Asia,China,Office Supplies,Online,M,2/10/2016,3/29/2016,5791,651.21,524.96,3771157.11,3040043.36,731113.75

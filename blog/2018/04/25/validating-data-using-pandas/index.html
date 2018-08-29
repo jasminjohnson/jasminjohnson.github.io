@@ -1431,7 +1431,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Goals: How to get a clean and valid dataset?</strong>
-<br>Sample file is a sales records with more than 300,000 rows
+<br>Sample file is a sales records
 <br>I plan to demonstrate how to validate data using a "dirty" dataset.
 <br>Specifically, how to</p>
 <ul>
@@ -1462,7 +1462,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The file has 1M rows and 14 columns</span>
@@ -1488,7 +1488,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1530,7 +1530,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
   <tbody>
     <tr>
       <th>0</th>
-      <td>443368995.0</td>
+      <td>443368995</td>
       <td>Sub-Saharan Africa</td>
       <td>South Africa</td>
       <td>NaN</td>
@@ -1538,7 +1538,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
       <td>M</td>
       <td>7/27/2012</td>
       <td>7/28/2012</td>
-      <td>1593.0</td>
+      <td>1593</td>
       <td>9.33</td>
       <td>6.92</td>
       <td>14862.69</td>
@@ -1547,24 +1547,24 @@ a modeler can create end-to-end analytic workflows to solve business problems.
     </tr>
     <tr>
       <th>1</th>
+      <td>940995585</td>
+      <td>Australia and Oceania</td>
       <td>NaN</td>
+      <td>Meat</td>
       <td>NaN</td>
+      <td>M</td>
+      <td>5/15/2015</td>
+      <td>6/4/2015</td>
+      <td>360</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>364.69</td>
+      <td>151880.40</td>
+      <td>131288.40</td>
+      <td>20592.00</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>940995585.0</td>
+      <td>940995585</td>
       <td>Australia and Oceania</td>
       <td>Papua New Guinea</td>
       <td>Meat</td>
@@ -1572,7 +1572,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
-      <td>360.0</td>
+      <td>360</td>
       <td>NaN</td>
       <td>364.69</td>
       <td>151880.40</td>
@@ -1581,20 +1581,20 @@ a modeler can create end-to-end analytic workflows to solve business problems.
     </tr>
     <tr>
       <th>3</th>
-      <td>940995585.0</td>
-      <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
-      <td>Meat</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>5/15/2015</td>
-      <td>6/4/2015</td>
-      <td>360.0</td>
-      <td>NaN</td>
-      <td>364.69</td>
-      <td>151880.40</td>
-      <td>131288.40</td>
-      <td>20592.00</td>
+      <td>174590194</td>
+      <td>Europe</td>
+      <td>Slovakia</td>
+      <td>Beverages</td>
+      <td>Offline</td>
+      <td>L</td>
+      <td>10/26/2016</td>
+      <td>12/4/2016</td>
+      <td>3973</td>
+      <td>47.45</td>
+      <td>31.79</td>
+      <td>188518.85</td>
+      <td>126301.67</td>
+      <td>62217.18</td>
     </tr>
   </tbody>
 </table>
@@ -1605,29 +1605,29 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(371707, 14)</pre>
+<pre>(99, 14)</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>count     371706
-unique         4
-top            C
-freq       93091
+<pre>count     99
+unique     4
+top        M
+freq      35
 Name: OrderPriority, dtype: object</pre>
 </div>
 
@@ -1635,7 +1635,7 @@ Name: OrderPriority, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1700,16 +1700,14 @@ Name: OrderPriority, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## This tells Pandas that the column ‘TotalProfit’ needs to be a float (real numbers and are written with a decimal point) value.</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecords.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TotalProfit&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>                                                          
 <span class="n">df</span><span class="o">.</span><span class="n">TotalProfit</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
-
 <span class="c1">## This tells Pandas that the column ‘OrderID’ needs to be a string and not a number</span>
-
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecords.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;OrderID&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
 <span class="n">df</span><span class="o">.</span><span class="n">OrderID</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -1724,20 +1722,20 @@ Name: OrderPriority, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>count    3.717050e+05
-mean     3.924652e+05
-std      3.785990e+05
-min      2.410000e+00
-25%      9.544770e+04
-50%      2.819860e+05
-75%      5.657079e+05
-max      1.738700e+06
+<pre>count    9.900000e+01
+mean     3.992225e+05
+std      4.345282e+05
+min      3.188430e+03
+25%      6.653090e+04
+50%      2.360073e+05
+75%      6.386010e+05
+max      1.681149e+06
 Name: TotalProfit, dtype: float64</pre>
 </div>
 
@@ -1745,14 +1743,14 @@ Name: TotalProfit, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>count        371706
-unique       371699
+<pre>count            99
+unique           91
 top       198927056
 freq              3
 Name: OrderID, dtype: object</pre>
@@ -1775,12 +1773,12 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Add in a default value for the missing data</span>
 <span class="c1">## Detect missing data in Country columns and replaced &quot;NaN&quot; with &quot;Missing&quot;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">Country</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Country</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Missing&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Country</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Country</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Missing Country&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 
@@ -1794,7 +1792,7 @@ Name: OrderID, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1844,7 +1842,7 @@ Name: OrderID, dtype: object</pre>
       <td>M</td>
       <td>7/27/2012</td>
       <td>7/28/2012</td>
-      <td>1593.0</td>
+      <td>1593</td>
       <td>9.33</td>
       <td>6.92</td>
       <td>14862.69</td>
@@ -1853,20 +1851,20 @@ Name: OrderID, dtype: object</pre>
     </tr>
     <tr>
       <th>1</th>
+      <td>940995585</td>
+      <td>Australia and Oceania</td>
+      <td>Missing Country</td>
+      <td>Meat</td>
       <td>NaN</td>
+      <td>M</td>
+      <td>5/15/2015</td>
+      <td>6/4/2015</td>
+      <td>360</td>
       <td>NaN</td>
-      <td>Missing</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>364.69</td>
+      <td>151880.40</td>
+      <td>131288.40</td>
+      <td>20592.00</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1878,7 +1876,7 @@ Name: OrderID, dtype: object</pre>
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
-      <td>360.0</td>
+      <td>360</td>
       <td>NaN</td>
       <td>364.69</td>
       <td>151880.40</td>
@@ -1887,20 +1885,20 @@ Name: OrderID, dtype: object</pre>
     </tr>
     <tr>
       <th>3</th>
-      <td>940995585</td>
-      <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
-      <td>Meat</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>5/15/2015</td>
-      <td>6/4/2015</td>
-      <td>360.0</td>
-      <td>NaN</td>
-      <td>364.69</td>
-      <td>151880.40</td>
-      <td>131288.40</td>
-      <td>20592.00</td>
+      <td>174590194</td>
+      <td>Europe</td>
+      <td>Slovakia</td>
+      <td>Beverages</td>
+      <td>Offline</td>
+      <td>L</td>
+      <td>10/26/2016</td>
+      <td>12/4/2016</td>
+      <td>3973</td>
+      <td>47.45</td>
+      <td>31.79</td>
+      <td>188518.85</td>
+      <td>126301.67</td>
+      <td>62217.18</td>
     </tr>
   </tbody>
 </table>
@@ -1924,7 +1922,7 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop all rows with any NA values</span>
@@ -1954,555 +1952,7 @@ Name: OrderID, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>OrderID</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>ItemType</th>
-      <th>SalesChannel</th>
-      <th>OrderPriority</th>
-      <th>OrderDate</th>
-      <th>Ship Date</th>
-      <th>UnitsSold</th>
-      <th>UnitPrice</th>
-      <th>UnitCost</th>
-      <th>TotalRevenue</th>
-      <th>TotalCost</th>
-      <th>TotalProfit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>174590194</td>
-      <td>Europe</td>
-      <td>Slovakia</td>
-      <td>Beverages</td>
-      <td>Offline</td>
-      <td>L</td>
-      <td>10/26/2016</td>
-      <td>12/4/2016</td>
-      <td>3973.0</td>
-      <td>47.45</td>
-      <td>31.79</td>
-      <td>188518.85</td>
-      <td>126301.67</td>
-      <td>62217.18</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>425793445</td>
-      <td>Sub-Saharan Africa</td>
-      <td>Seychelles</td>
-      <td>Beverages</td>
-      <td>Online</td>
-      <td>M</td>
-      <td>1/18/2013</td>
-      <td>2/16/2013</td>
-      <td>597.0</td>
-      <td>47.45</td>
-      <td>31.79</td>
-      <td>28327.65</td>
-      <td>18978.63</td>
-      <td>9349.02</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>OrderID</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>ItemType</th>
-      <th>SalesChannel</th>
-      <th>OrderPriority</th>
-      <th>OrderDate</th>
-      <th>Ship Date</th>
-      <th>UnitsSold</th>
-      <th>UnitPrice</th>
-      <th>UnitCost</th>
-      <th>TotalRevenue</th>
-      <th>TotalCost</th>
-      <th>TotalProfit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>443368995</td>
-      <td>Sub-Saharan Africa</td>
-      <td>South Africa</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>7/27/2012</td>
-      <td>7/28/2012</td>
-      <td>1593.0</td>
-      <td>9.33</td>
-      <td>6.92</td>
-      <td>14862.69</td>
-      <td>11023.56</td>
-      <td>3839.13</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Missing</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>OrderID</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>ItemType</th>
-      <th>SalesChannel</th>
-      <th>OrderPriority</th>
-      <th>OrderDate</th>
-      <th>Ship Date</th>
-      <th>UnitsSold</th>
-      <th>UnitPrice</th>
-      <th>UnitCost</th>
-      <th>TotalRevenue</th>
-      <th>TotalCost</th>
-      <th>TotalProfit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>443368995</td>
-      <td>Sub-Saharan Africa</td>
-      <td>South Africa</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>7/27/2012</td>
-      <td>7/28/2012</td>
-      <td>1593.0</td>
-      <td>9.33</td>
-      <td>6.92</td>
-      <td>14862.69</td>
-      <td>11023.56</td>
-      <td>3839.13</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>940995585</td>
-      <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
-      <td>Meat</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>5/15/2015</td>
-      <td>6/4/2015</td>
-      <td>360.0</td>
-      <td>NaN</td>
-      <td>364.69</td>
-      <td>151880.40</td>
-      <td>131288.40</td>
-      <td>20592.00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(371707, 14)</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[16]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>OrderID</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>ItemType</th>
-      <th>SalesChannel</th>
-      <th>OrderPriority</th>
-      <th>OrderDate</th>
-      <th>Ship Date</th>
-      <th>UnitsSold</th>
-      <th>UnitPrice</th>
-      <th>UnitCost</th>
-      <th>TotalRevenue</th>
-      <th>TotalCost</th>
-      <th>TotalProfit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>174590194</td>
-      <td>Europe</td>
-      <td>Slovakia</td>
-      <td>Beverages</td>
-      <td>Offline</td>
-      <td>L</td>
-      <td>10/26/2016</td>
-      <td>12/4/2016</td>
-      <td>3973.0</td>
-      <td>47.45</td>
-      <td>31.79</td>
-      <td>188518.85</td>
-      <td>126301.67</td>
-      <td>62217.18</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>174590194</td>
-      <td>Asia</td>
-      <td>Sri Lanka</td>
-      <td>NaN</td>
-      <td>Online</td>
-      <td>L</td>
-      <td>11/7/2011</td>
-      <td>12/18/2011</td>
-      <td>1379.0</td>
-      <td>9.33</td>
-      <td>6.92</td>
-      <td>12866.07</td>
-      <td>9542.68</td>
-      <td>3323.39</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Delete the columns that have a high incidence of missing data</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop the columns with that are all NA values</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1">## Drop all columns with any NA values - &quot;Country&quot; is the only column without any NA values</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>OrderID</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>ItemType</th>
-      <th>SalesChannel</th>
-      <th>OrderPriority</th>
-      <th>OrderDate</th>
-      <th>Ship Date</th>
-      <th>UnitsSold</th>
-      <th>UnitPrice</th>
-      <th>UnitCost</th>
-      <th>TotalRevenue</th>
-      <th>TotalCost</th>
-      <th>TotalProfit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>443368995</td>
-      <td>Sub-Saharan Africa</td>
-      <td>South Africa</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>7/27/2012</td>
-      <td>7/28/2012</td>
-      <td>1593.0</td>
-      <td>9.33</td>
-      <td>6.92</td>
-      <td>14862.69</td>
-      <td>11023.56</td>
-      <td>3839.13</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Missing</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[17]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>South Africa</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Missing</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Detect/eliminate duplicate data</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Delete duplicated data</span>
-<span class="n">df_dup</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate order IDs&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
-<span class="n">df_dup</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 5 duplicate order IDs
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -2544,23 +1994,637 @@ Name: OrderID, dtype: object</pre>
   <tbody>
     <tr>
       <th>3</th>
+      <td>174590194</td>
+      <td>Europe</td>
+      <td>Slovakia</td>
+      <td>Beverages</td>
+      <td>Offline</td>
+      <td>L</td>
+      <td>10/26/2016</td>
+      <td>12/4/2016</td>
+      <td>3973</td>
+      <td>47.45</td>
+      <td>31.79</td>
+      <td>188518.85</td>
+      <td>126301.67</td>
+      <td>62217.18</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>425793445</td>
+      <td>Sub-Saharan Africa</td>
+      <td>Missing Country</td>
+      <td>Beverages</td>
+      <td>Online</td>
+      <td>M</td>
+      <td>1/18/2013</td>
+      <td>2/16/2013</td>
+      <td>597</td>
+      <td>47.45</td>
+      <td>31.79</td>
+      <td>28327.65</td>
+      <td>18978.63</td>
+      <td>9349.02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>ItemType</th>
+      <th>SalesChannel</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitPrice</th>
+      <th>UnitCost</th>
+      <th>TotalRevenue</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>443368995</td>
+      <td>Sub-Saharan Africa</td>
+      <td>South Africa</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>7/27/2012</td>
+      <td>7/28/2012</td>
+      <td>1593</td>
+      <td>9.33</td>
+      <td>6.92</td>
+      <td>14862.69</td>
+      <td>11023.56</td>
+      <td>3839.13</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>940995585</td>
       <td>Australia and Oceania</td>
-      <td>Papua New Guinea</td>
+      <td>Missing Country</td>
       <td>Meat</td>
       <td>NaN</td>
       <td>M</td>
       <td>5/15/2015</td>
       <td>6/4/2015</td>
-      <td>360.0</td>
+      <td>360</td>
       <td>NaN</td>
       <td>364.69</td>
       <td>151880.40</td>
       <td>131288.40</td>
       <td>20592.00</td>
     </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>ItemType</th>
+      <th>SalesChannel</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitPrice</th>
+      <th>UnitCost</th>
+      <th>TotalRevenue</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>9</th>
+      <th>0</th>
+      <td>443368995</td>
+      <td>Sub-Saharan Africa</td>
+      <td>South Africa</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>7/27/2012</td>
+      <td>7/28/2012</td>
+      <td>1593</td>
+      <td>9.33</td>
+      <td>6.92</td>
+      <td>14862.69</td>
+      <td>11023.56</td>
+      <td>3839.13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>940995585</td>
+      <td>Australia and Oceania</td>
+      <td>Missing Country</td>
+      <td>Meat</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>5/15/2015</td>
+      <td>6/4/2015</td>
+      <td>360</td>
+      <td>NaN</td>
+      <td>364.69</td>
+      <td>151880.40</td>
+      <td>131288.40</td>
+      <td>20592.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(99, 14)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>ItemType</th>
+      <th>SalesChannel</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitPrice</th>
+      <th>UnitCost</th>
+      <th>TotalRevenue</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>174590194</td>
+      <td>Europe</td>
+      <td>Slovakia</td>
+      <td>Beverages</td>
+      <td>Offline</td>
+      <td>L</td>
+      <td>10/26/2016</td>
+      <td>12/4/2016</td>
+      <td>3973</td>
+      <td>47.45</td>
+      <td>31.79</td>
+      <td>188518.85</td>
+      <td>126301.67</td>
+      <td>62217.18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>174590194</td>
+      <td>Asia</td>
+      <td>Sri Lanka</td>
+      <td>NaN</td>
+      <td>Online</td>
+      <td>L</td>
+      <td>11/7/2011</td>
+      <td>12/18/2011</td>
+      <td>1379</td>
+      <td>9.33</td>
+      <td>6.92</td>
+      <td>12866.07</td>
+      <td>9542.68</td>
+      <td>3323.39</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Delete the columns that have a high incidence of missing data</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop the columns with that are all NA values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">## Drop all columns with any NA values - &quot;Country&quot; is the only column without any NA values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>ItemType</th>
+      <th>SalesChannel</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitPrice</th>
+      <th>UnitCost</th>
+      <th>TotalRevenue</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>443368995</td>
+      <td>Sub-Saharan Africa</td>
+      <td>South Africa</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>7/27/2012</td>
+      <td>7/28/2012</td>
+      <td>1593</td>
+      <td>9.33</td>
+      <td>6.92</td>
+      <td>14862.69</td>
+      <td>11023.56</td>
+      <td>3839.13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>940995585</td>
+      <td>Australia and Oceania</td>
+      <td>Missing Country</td>
+      <td>Meat</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>5/15/2015</td>
+      <td>6/4/2015</td>
+      <td>360</td>
+      <td>NaN</td>
+      <td>364.69</td>
+      <td>151880.40</td>
+      <td>131288.40</td>
+      <td>20592.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitCost</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>443368995</td>
+      <td>Sub-Saharan Africa</td>
+      <td>South Africa</td>
+      <td>M</td>
+      <td>7/27/2012</td>
+      <td>7/28/2012</td>
+      <td>1593</td>
+      <td>6.92</td>
+      <td>11023.56</td>
+      <td>3839.13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>940995585</td>
+      <td>Australia and Oceania</td>
+      <td>Missing Country</td>
+      <td>M</td>
+      <td>5/15/2015</td>
+      <td>6/4/2015</td>
+      <td>360</td>
+      <td>364.69</td>
+      <td>131288.40</td>
+      <td>20592.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Detect/eliminate duplicate data</strong></p>
+<ul>
+<li>Identify which observations are duplicates</li>
+<li>List of duplicated data and save the list to a csv file</li>
+<li>Delete duplicated data<ul>
+<li>Return DataFrame with duplicate rows removed, optionally only considering certain columns</li>
+</ul>
+</li>
+<li>Save clean data to a csv file</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Identify which observations are duplicates</span>
+<span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    False
+1    False
+2    False
+3    False
+4    False
+5    False
+6    False
+7    False
+8     True
+9    False
+dtype: bool</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## List of duplicatedDelete duplicated data</span>
+<span class="n">df_dup</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate order IDs&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_dup</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1">## Save the list of duplicated data to CSV</span>
+<span class="n">df_dup</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsDup.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 5 duplicate order IDs
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderID</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>ItemType</th>
+      <th>SalesChannel</th>
+      <th>OrderPriority</th>
+      <th>OrderDate</th>
+      <th>Ship Date</th>
+      <th>UnitsSold</th>
+      <th>UnitPrice</th>
+      <th>UnitCost</th>
+      <th>TotalRevenue</th>
+      <th>TotalCost</th>
+      <th>TotalProfit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
       <td>601245963</td>
       <td>Sub-Saharan Africa</td>
       <td>Ghana</td>
@@ -2569,7 +2633,7 @@ Name: OrderID, dtype: object</pre>
       <td>L</td>
       <td>3/23/2017</td>
       <td>4/15/2017</td>
-      <td>896.0</td>
+      <td>896</td>
       <td>651.21</td>
       <td>524.96</td>
       <td>583484.16</td>
@@ -2577,7 +2641,7 @@ Name: OrderID, dtype: object</pre>
       <td>113120.00</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>17</th>
       <td>807785928</td>
       <td>Sub-Saharan Africa</td>
       <td>Ethiopia</td>
@@ -2586,12 +2650,46 @@ Name: OrderID, dtype: object</pre>
       <td>M</td>
       <td>7/7/2011</td>
       <td>7/25/2011</td>
-      <td>662.0</td>
+      <td>662</td>
       <td>437.20</td>
       <td>263.33</td>
       <td>289426.40</td>
       <td>174324.46</td>
       <td>115101.94</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>135178029</td>
+      <td>Europe</td>
+      <td>United Kingdom</td>
+      <td>Cosmetics</td>
+      <td>Online</td>
+      <td>L</td>
+      <td>5/1/2015</td>
+      <td>5/16/2015</td>
+      <td>1038</td>
+      <td>437.20</td>
+      <td>263.33</td>
+      <td>453813.60</td>
+      <td>273336.54</td>
+      <td>180477.06</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>198927056</td>
+      <td>Asia</td>
+      <td>China</td>
+      <td>Office Supplies</td>
+      <td>Online</td>
+      <td>M</td>
+      <td>2/10/2016</td>
+      <td>3/29/2016</td>
+      <td>5791</td>
+      <td>651.21</td>
+      <td>524.96</td>
+      <td>3771157.11</td>
+      <td>3040043.36</td>
+      <td>731113.75</td>
     </tr>
     <tr>
       <th>26</th>
@@ -2603,24 +2701,7 @@ Name: OrderID, dtype: object</pre>
       <td>M</td>
       <td>2/10/2016</td>
       <td>3/29/2016</td>
-      <td>5791.0</td>
-      <td>651.21</td>
-      <td>524.96</td>
-      <td>3771157.11</td>
-      <td>3040043.36</td>
-      <td>731113.75</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>198927056</td>
-      <td>Asia</td>
-      <td>China</td>
-      <td>Office Supplies</td>
-      <td>Online</td>
-      <td>M</td>
-      <td>2/10/2016</td>
-      <td>3/29/2016</td>
-      <td>5791.0</td>
+      <td>5791</td>
       <td>651.21</td>
       <td>524.96</td>
       <td>3771157.11</td>
@@ -2640,11 +2721,14 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop/delete duplicated data</span>
-<span class="n">df_dup_list</span><span class="o">=</span><span class="n">df_dup</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Delete duplicated data</span>
+<span class="n">df_clean</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;OrderID&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">## Save clean data to a csv file</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsClean.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2663,14 +2747,13 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##change all our movie titles to uppercase:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## change all region to uppercase:</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-
-<span class="c1">##get rid of trailing whitespace</span>
+<span class="c1">## remove trailing whitespace</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
@@ -2684,15 +2767,15 @@ Name: OrderID, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>371704         MIDDLE EAST AND NORTH AFRICA
-371705    CENTRAL AMERICA AND THE CARIBBEAN
-371706    CENTRAL AMERICA AND THE CARIBBEAN
+<pre>96       SUB-SAHARAN AFRICA
+97    AUSTRALIA AND OCEANIA
+98       SUB-SAHARAN AFRICA
 Name: Region, dtype: object</pre>
 </div>
 
@@ -2700,15 +2783,15 @@ Name: Region, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>371704     Algeria
-371705    Dominica
-371706      Panama
+<pre>96     Malawi
+97    Vanuatu
+98       Mali
 Name: Country, dtype: object</pre>
 </div>
 
@@ -2729,7 +2812,7 @@ Name: Country, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_rename</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Region&#39;</span><span class="p">:</span><span class="s1">&#39;Continent&#39;</span><span class="p">,</span> <span class="s1">&#39;TotalProfit&#39;</span><span class="p">:</span><span class="s1">&#39;Net Income&#39;</span><span class="p">})</span>
@@ -2742,10 +2825,11 @@ Name: Country, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_rename.to_csv(&#39;data/analysis3/SalesRecordsCleanRename.csv&#39;)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## save the file with new columns name to CSV file</span>
+<span class="n">df_rename</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/analysis3/SalesRecordsRename.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
