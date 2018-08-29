@@ -1,0 +1,5228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Jasmin Johnson">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>Data Analysis IV - Merging and Reshaping Data | Financial Analysis Journal</title>
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" title="Financial Analysis Journal blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/theme/css/icons.css"/>
+        <style>.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+        <style>body {
+  margin: 0;
+  padding: 0;
+  font: 15px 'Source Sans Pro', sans-serif;
+  line-height: 1.6em;
+  color: #222;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #007EE5;
+  text-decoration: none;
+}
+a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+header.main-header {
+  background: none repeat scroll 0% 0% #205F29;
+  margin-bottom: 0px;
+}
+header.main-header a {
+  color: #fff;
+}
+header.main-header .container {
+  max-width: 1000px;
+}
+header.main-header .container nav a:hover {
+  background-color: #5C881C;
+}
+article {
+  margin: 0;
+}
+article header.about {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+article header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+article header h1 {
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: #000;
+}
+article header time {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: right;
+}
+article header time.left {
+  color: #9E9E9E;
+  font-size: 0.85em;
+  float: left;
+}
+article div.social-links ul {
+  padding: 0px;
+}
+article div.social-links li {
+  display: inline;
+  font-size: 20px;
+}
+article div.social-links li a {
+  color: #000;
+  padding: 10px;
+}
+article div.social-links li a:hover {
+  color: #666;
+  text-decoration: none;
+}
+article p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6em;
+}
+article p.note {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 0.533em 0.733em;
+}
+article p.update {
+  background-color: #FEEFB3;
+  border: 1px solid #e6e68a;
+  padding: 0.533em 0.733em;
+}
+article p.alert {
+  background-color: #ffe2e2;
+  border: 1px solid #ffb2b2;
+  padding: 0.533em 0.733em;
+}
+article ul,
+article ol {
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+article li {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+article a:hover {
+  text-decoration: underline;
+}
+article blockquote {
+  border-left: 2px solid #c7c7cc;
+  color: #666;
+  margin: 30px 0;
+  padding: 0 0 0 25px;
+}
+article img {
+  max-width: 100%;
+}
+article code {
+  color: #333;
+  background-color: #EEE;
+  border-radius: 0;
+  font-size: 13px;
+}
+article .meta {
+  font-size: 11px;
+}
+article .meta a:hover {
+  text-decoration: none;
+}
+article .meta div {
+  margin-bottom: 20px;
+  display: block;
+}
+article .meta a.tag {
+  margin: 0 10px 10px 0;
+  padding: 1px 12px;
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.05);
+}
+article .meta a.tag:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+article .meta a.read_more,
+article .meta a.comments_btn {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 20px;
+  color: #205F29;
+  background: #FFF;
+  border: 1px solid #205F29;
+}
+article .meta a.read_more:hover,
+article .meta a.comments_btn:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.index {
+  max-width: 700px;
+}
+.index article header h2 {
+  font-size: 36px;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.index article header h2 a {
+  color: #000;
+}
+.index article header h2 a:hover {
+  color: #007EE5;
+  text-decoration: none;
+}
+.index .separator {
+  padding: 40px 0 0 0;
+  margin: 0 0 40px 0;
+  height: 10px;
+  border-bottom: solid 1px #CCC;
+}
+.index .pagination {
+  display: block;
+  margin-bottom: 100px;
+}
+.index .pagination .left {
+  text-align: right;
+}
+.index .pagination .right {
+  text-align: left;
+}
+.index .pagination a {
+  display: inline-block;
+  border: 2px solid #5C881C;
+  margin: 0 5px;
+  padding: 8px 20px;
+  font-weight: bold;
+  color: #5C881C;
+}
+.index .pagination a:hover {
+  color: #FFF;
+  background: #5C881C;
+}
+.post {
+//  max-width: 700px;
+  max-width: 100%;
+}
+.post h2:before {
+  content: "# ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h3:before {
+  content: "## ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post h4:before {
+  content: "### ";
+  font-weight: bold;
+  color: #DDD;
+}
+.post article .meta {
+  margin: 50px 0 100px;
+}
+.list {
+  max-width: 700px;
+}
+.list ul.double-list {
+  margin: 0 auto 60px;
+  padding: 0;
+  list-style-type: none;
+}
+.list ul.double-list li {
+  padding: 5px 0;
+}
+.list ul.double-list li h2 {
+  font-size: 1em;
+  display: inline;
+  font-weight: normal;
+}
+.list ul.double-list li span {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: right;
+  float: right;
+  padding-top: 3px;
+  font-size: 12px;
+  color: #999;
+}
+.full-width-content {
+  padding-top: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  padding-right: 0px;
+  padding-left: 0px;
+}</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!--<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>-->
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML">
+        </script>
+        <script type="text/javascript">
+        init_mathjax = function() {
+            if (window.MathJax) {
+                // MathJax loaded
+                MathJax.Hub.Config({
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+                    },
+                    displayAlign: 'left', // Change this to 'center' to center equations.
+                    "HTML-CSS": {
+                        styles: {'.MathJax_Display': {"margin": 0}}
+                    }
+                });
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+        init_mathjax();
+        </script>
+
+    </head>
+
+    <body>
+        <header class="navbar navbar-inverse bs-docs-nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbar">
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span> 
+		  </button>
+                  <a class="navbar-brand" href="/" title="Home" class="title">Financial Analysis Journal</a>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="theNavbar">
+		    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/pages/about.html" title="About">About</a></li>
+                            <li><a href="/archives.html" title="Archive">Archive</a></li>
+                            <li><a class="nodec icon-rss" href="/feeds/all.atom.xml" title="jasminjohnson.github.io RSS feed" rel="me"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="wrap">
+<div class="container post">
+    <article>
+        <header>
+            <h1>Data Analysis IV - Merging and Reshaping Data</h1>
+            <time datetime="article.date.isoformat()" pubdate>Mon 30 April 2018</time>
+        </header>
+
+        <div class="article_content">
+            <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
+Many people choose to do ad hoc processing of data from one form to another using a general purpose programming. 
+
+Fortunately, pandas along with the Python standard library provide you with a high-level, flexible, and high-performance set of core manipulations
+and algorithms to enable you to wrangle data into the right form without much trouble
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Goals: How to merge/reshape data?</strong>
+<br>Specifically, I will cover</p>
+<ul>
+<li>Combining and Merging Data sets</li>
+<li>Reshaping and Pivoting Data</li>
+<li>Data Transformation</li>
+<li>String Manipulation</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example - Reinsurance Premium Loss Data</strong></p>
+<ul>
+<li>The example is to merge and reshape data from different applications and ultimately determing business reinsurance coverage.</li>
+<li>This is a simplified and hypothetical example, but it's a great illustration of what Python can do for financial analysis. </li>
+<li>The example data is generated by randomization function<ul>
+<li>ie: df = pd.DataFrame(np.random.randn(10,5),columns = ['A','B','C'])</li>
+</ul>
+</li>
+<li>The input data is an excel file consisting of 2 tabs: premium and loss and 8 hidden tabs   </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Understand the business, what is abnormal value for this business?</strong></p>
+<ul>
+<li>If average premium per policy is between 10K to 200K, the premium outside this range is invalid</li>
+<li>If maximum ceded reinsurance retention is 500K, the ceded recoverable greater than 500K is invalid </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>View Excel File with Mulitple Tabs</strong></p>
+<ul>
+<li>List of tabs : note the display list including hidden tabs</li>
+<li>Number of tabs: using len function to count how many tabs in the Excel file</li>
+<li>View each tabs</li>
+</ul>
+<p>I found python "len" function is very useful when dealing with Excel files have been updated with many tabs over time. 
+<br>We can use Python to view/list/count all the tabs including hidden tabs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View list of tabs including hidden tab</span>
+
+<span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df_list.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+
+<span class="c1"># Count how many tabs in the Excel file </span>
+<span class="n">number_tab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_list</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> tab(s) in the file.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number_tab</span><span class="p">))</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>df_list.sheet_names=[&#39;premium&#39;, &#39;loss&#39;, &#39;hidden1&#39;, &#39;hidden2&#39;, &#39;hidden3&#39;, &#39;hidden4&#39;, &#39;hidden5&#39;, &#39;hidden6&#39;, &#39;hidden7&#39;, &#39;hidden8&#39;, &#39;hidden9&#39;, &#39;hidden10&#39;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>12</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 12 tab(s) in the file.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_premium</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_premium</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> 
+<span class="n">df_prem_dupes</span><span class="o">=</span><span class="n">df_premium</span><span class="p">[</span><span class="n">df_premium</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate policies&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_prem_dupes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_prem_dupes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 200 policies - here are the first 5:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type</th>
+      <th>Premium</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10880</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-07-08</td>
+      <td>Phy</td>
+      <td>CM</td>
+      <td>232058</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>96289.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91809.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91809.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91367.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91367.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 2 duplicate policies
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type</th>
+      <th>Premium</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91809.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>91367.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>        *duplicate rows were found in the file, more detail about removing duplicate rows at the end of the blog*</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span> 
+<span class="n">df_loss</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1">## yes - I know I could have used head() but just demonstrating that slicing can achieve the same results</span>
+<span class="n">Count_Row</span><span class="o">=</span><span class="n">df_loss</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> claims with losses&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span>  
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>Claim Number</th>
+      <th>Policy Type</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>35033</td>
+      <td>880247</td>
+      <td>OCC</td>
+      <td>Adolph</td>
+      <td>Iwan</td>
+      <td>2017-03-17</td>
+      <td>84373.0</td>
+      <td>10000000</td>
+      <td>176966.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>35033</td>
+      <td>880247</td>
+      <td>OCC</td>
+      <td>Adolph</td>
+      <td>Iwan</td>
+      <td>2017-03-17</td>
+      <td>84373.0</td>
+      <td>5000000</td>
+      <td>176966.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47755</td>
+      <td>880255</td>
+      <td>OCC</td>
+      <td>Cherryl</td>
+      <td>Aven</td>
+      <td>2017-11-25</td>
+      <td>88205.0</td>
+      <td>4000000</td>
+      <td>116133.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47755</td>
+      <td>880255</td>
+      <td>OCC</td>
+      <td>Cherryl</td>
+      <td>Aven</td>
+      <td>2017-11-25</td>
+      <td>88205.0</td>
+      <td>54785</td>
+      <td>116133.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36838</td>
+      <td>880258</td>
+      <td>OCC</td>
+      <td>Franklin</td>
+      <td>Maen</td>
+      <td>2017-03-18</td>
+      <td>36440.0</td>
+      <td>54880</td>
+      <td>65872.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 216 claims with losses
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>How many policies have incurred losses? and save the result to Excel</strong></p>
+<ul>
+<li>Use Merge function with key identifier Policy Number</li>
+<li>Pandas.merge connects rows in DataFrames based on one or more keys</li>
+<li>By default merge does an 'inner' join - the keys in the result are the intersection with prepend X and Y</li>
+<li>Save the merge file to Excel</li>
+<li>How many policies have incurred losses? use shape function</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df_loss</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with incurred losses - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/incurredloss.xlsx&#39;</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 24 policies with incurred losses - here are the first 5:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10880</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-07-08</td>
+      <td>Phy</td>
+      <td>CM</td>
+      <td>232058</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>96289.0</td>
+      <td>880206</td>
+      <td>CM</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-09-24</td>
+      <td>74793.0</td>
+      <td>250000</td>
+      <td>232058.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10948</td>
+      <td>Florencia</td>
+      <td>Bilyk</td>
+      <td>2017-06-05</td>
+      <td>Podiatrist</td>
+      <td>CM</td>
+      <td>5132</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>99671.0</td>
+      <td>880208</td>
+      <td>CM</td>
+      <td>Florencia</td>
+      <td>Bilyk</td>
+      <td>2018-04-22</td>
+      <td>38573.0</td>
+      <td>800000</td>
+      <td>5132.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10244</td>
+      <td>Wonda</td>
+      <td>Hallsworth</td>
+      <td>2017-08-07</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>13330</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>92319.0</td>
+      <td>880016</td>
+      <td>OCC</td>
+      <td>Wonda</td>
+      <td>Hallsworth</td>
+      <td>2017-09-14</td>
+      <td>44072.0</td>
+      <td>1500000</td>
+      <td>13330.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10509</td>
+      <td>Patrica</td>
+      <td>Hartle</td>
+      <td>2017-02-09</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>5647</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>96730.0</td>
+      <td>880041</td>
+      <td>OCC</td>
+      <td>Patrica</td>
+      <td>Hartle</td>
+      <td>2017-11-16</td>
+      <td>88069.0</td>
+      <td>1000000</td>
+      <td>5647.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10700</td>
+      <td>Sabra</td>
+      <td>Higgenbotham</td>
+      <td>2017-10-07</td>
+      <td>PA</td>
+      <td>OCC</td>
+      <td>12021</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>90239.0</td>
+      <td>880205</td>
+      <td>OCC</td>
+      <td>Sabra</td>
+      <td>Higgenbotham</td>
+      <td>2017-12-05</td>
+      <td>97247.0</td>
+      <td>2500000</td>
+      <td>12021.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Which policy has no incurred losses? use Outer join to merge the data</strong></p>
+<ul>
+<li>Other possible options are 'left', 'right', and 'outer'. </li>
+<li>The outer join takes the union of the keys, combining the effect of applying both left and right joins</li>
+<li>Policy 10962 has no associated loss data, the missing loss result marks as NaN</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_premium</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df_loss</span> <span class="o">=</span> <span class="n">df_list</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10880</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-07-08</td>
+      <td>Phy</td>
+      <td>CM</td>
+      <td>232058.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>96289.0</td>
+      <td>880206.0</td>
+      <td>CM</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-09-24</td>
+      <td>74793.0</td>
+      <td>250000.0</td>
+      <td>232058.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Data Transformation - Removing Duplicates</strong></p>
+<ul>
+<li>The DataFrame method Duplicated returns a boolean series</li>
+<li>True means duplicated data</li>
+<li>drop_duplicates returns a DataFrame where the duplicated array is True<ul>
+<li>Our example showing duplicated policy 10962, the output showed as "True"</li>
+</ul>
+</li>
+<li>Both of these methods by default consider all of the columns must be duplicated</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dupes</span><span class="o">=</span><span class="n">df_merge</span><span class="p">[</span><span class="n">df_merge</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate policies - here are the first 10, if more than 10:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dupes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_dupes</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 2 duplicate policies - here are the first 10, if more than 10:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge_clean</span><span class="o">=</span><span class="n">df_merge</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df_merge_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy Number</th>
+      <th>First Name_x</th>
+      <th>Last Name_x</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type_x</th>
+      <th>Premium_x</th>
+      <th>Coverage</th>
+      <th>Excess Coverage</th>
+      <th>Excess Policy</th>
+      <th>Claim Number</th>
+      <th>Policy Type_y</th>
+      <th>First Name_y</th>
+      <th>Last Name_y</th>
+      <th>LossDate</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10880</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-07-08</td>
+      <td>Phy</td>
+      <td>CM</td>
+      <td>232058.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>96289.0</td>
+      <td>880206.0</td>
+      <td>CM</td>
+      <td>Kurtis</td>
+      <td>Dumm</td>
+      <td>2017-09-24</td>
+      <td>74793.0</td>
+      <td>250000.0</td>
+      <td>232058.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10962</td>
+      <td>Taisha</td>
+      <td>Whack</td>
+      <td>2017-09-19</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>11308.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91809.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11339</td>
+      <td>Ricarda</td>
+      <td>Hotaka</td>
+      <td>2017-12-25</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>2651.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>91367.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10948</td>
+      <td>Florencia</td>
+      <td>Bilyk</td>
+      <td>2017-06-05</td>
+      <td>Podiatrist</td>
+      <td>CM</td>
+      <td>5132.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>99671.0</td>
+      <td>880208.0</td>
+      <td>CM</td>
+      <td>Florencia</td>
+      <td>Bilyk</td>
+      <td>2018-04-22</td>
+      <td>38573.0</td>
+      <td>800000.0</td>
+      <td>5132.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10244</td>
+      <td>Wonda</td>
+      <td>Hallsworth</td>
+      <td>2017-08-07</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>13330.0</td>
+      <td>1000000.0</td>
+      <td>3900000.0</td>
+      <td>92319.0</td>
+      <td>880016.0</td>
+      <td>OCC</td>
+      <td>Wonda</td>
+      <td>Hallsworth</td>
+      <td>2017-09-14</td>
+      <td>44072.0</td>
+      <td>1500000.0</td>
+      <td>13330.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Analyze loss data for placing reinsurance treaty</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Detecting and Filtering Outliers - how to detecting abnormal loss value?</strong></p>
+<ul>
+<li>Filtering or transforming outliers by applying array operations</li>
+<li>Loss should not exceeded 1 million since the policy limit is 1M</li>
+<li>Use the abs method in column Loss when loss is exceeding 1M </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss_greater_than_1M</span> <span class="o">=</span> <span class="n">df_loss</span><span class="p">[</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> claims with losses &gt; 1M - here they are:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_loss_greater_than_1M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
+<span class="n">df_loss_greater_than_1M</span><span class="p">[[</span><span class="s1">&#39;Claim Number&#39;</span><span class="p">,</span><span class="s1">&#39;Loss&#39;</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 8 claims with losses &gt; 1M - here they are:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim Number</th>
+      <th>Loss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>880247</td>
+      <td>10000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>880247</td>
+      <td>5000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>880255</td>
+      <td>4000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>880016</td>
+      <td>1500000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>880205</td>
+      <td>2500000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>880489</td>
+      <td>10000000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>880754</td>
+      <td>7000000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>880979</td>
+      <td>3000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Discretization and Binning - how to seperate loss into reinsurance layer?</strong></p>
+<ul>
+<li>Separated loss into “bins” for reinsurance analysis</li>
+<li>We can group the loss range and analyze the loss layer for placing reinsurance treaty</li>
+<li>Group claim data into discrete loss buckets</li>
+<li>Let’s divide these into bins of 1 to 500000, 50001 to 75000, 75001 to 1000000, and finally 1000001 and greater</li>
+<li>To do so, use cut function in pandas</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st output - Sepaprated loss into bins and print out first five rows</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span> <span class="p">]</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">cats</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 2nd output - Count how many loss in the speific bins - ie there are 150 claims in the loss range 75K to 500K</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    (1000000, 20000000]
+1    (1000000, 20000000]
+2    (1000000, 20000000]
+3         (50000, 75000]
+4         (50000, 75000]
+Name: Loss, dtype: category
+Categories (5, interval[int64]): [(1, 50000] &lt; (50000, 75000] &lt; (75000, 500000] &lt; (500000, 1000000] &lt; (1000000, 20000000]]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(75000, 500000]        150
+(50000, 75000]          35
+(1, 50000]              18
+(1000000, 20000000]      8
+(500000, 1000000]        5
+Name: Loss, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st output - Show first 3 claims according to the matching loss categories</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span><span class="p">],</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 2nd ouput - Group claim data into discrete loss bins by assigning group names, ie. showing first loss is a Clash coverage etc.</span>
+<span class="n">group_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Layer1&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer2&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer3&#39;</span><span class="p">,</span> <span class="s1">&#39;XOL&#39;</span><span class="p">,</span><span class="s1">&#39;Clash&#39;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group_names</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [1000000, 20000000)
+1    [1000000, 20000000)
+2    [1000000, 20000000)
+Name: Loss, dtype: category
+Categories (5, interval[int64]): [[1, 50000) &lt; [50000, 75000) &lt; [75000, 500000) &lt; [500000, 1000000) &lt; [1000000, 20000000)]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0     Clash
+1     Clash
+2     Clash
+3    Layer2
+4    Layer2
+Name: Loss, dtype: category
+Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Plotting and Visualization - Dashboard to show loss distribution by line of business</strong></p>
+<ul>
+<li>Pandas has an increasing number of high-level plotting methods for creating standard visualizations that take advantage of how data is organized in DataFrame objects</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Use panda.DataFrame to plot </strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Group claims by Line of Business LOB and set Loss_Date as index</span>
+<span class="n">df_claims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Claim.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claims</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">df_claims</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Loss_Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_claims_by_lob</span> <span class="o">=</span> <span class="n">df_claims</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
+<span class="n">df_claims_by_lob</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim_Number</th>
+      <th>Loss_Date</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+      <th>LOB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>883745</td>
+      <td>2016-09-24</td>
+      <td>95846.0</td>
+      <td>147030</td>
+      <td>165910.0</td>
+      <td>Podiatrist</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>884654</td>
+      <td>2016-05-14</td>
+      <td>95514.0</td>
+      <td>121666</td>
+      <td>72314.0</td>
+      <td>Podiatrist</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>880247</td>
+      <td>2017-03-17</td>
+      <td>84373.0</td>
+      <td>10000000</td>
+      <td>176966.0</td>
+      <td>Physician</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>880247</td>
+      <td>2017-03-17</td>
+      <td>84373.0</td>
+      <td>5000000</td>
+      <td>176966.0</td>
+      <td>Physician</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>884476</td>
+      <td>2016-10-23</td>
+      <td>66484.0</td>
+      <td>141288</td>
+      <td>74632.0</td>
+      <td>Podiatrist</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;pandas.core.groupby.DataFrameGroupBy object at 0x000001FB46FDE128&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View claim by LOB - Nurse </span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Nurse&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim_Number</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+      <th>LOB</th>
+    </tr>
+    <tr>
+      <th>Loss_Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-03-28</th>
+      <td>889851</td>
+      <td>25422.0</td>
+      <td>161796</td>
+      <td>208103.0</td>
+      <td>Nurse</td>
+    </tr>
+    <tr>
+      <th>2016-01-01</th>
+      <td>889591</td>
+      <td>75493.0</td>
+      <td>279318</td>
+      <td>81236.0</td>
+      <td>Nurse</td>
+    </tr>
+    <tr>
+      <th>2016-08-09</th>
+      <td>889877</td>
+      <td>80758.0</td>
+      <td>54114</td>
+      <td>60416.0</td>
+      <td>Nurse</td>
+    </tr>
+    <tr>
+      <th>2016-12-26</th>
+      <td>889550</td>
+      <td>81824.0</td>
+      <td>52413</td>
+      <td>127804.0</td>
+      <td>Nurse</td>
+    </tr>
+    <tr>
+      <th>2016-05-26</th>
+      <td>889443</td>
+      <td>38710.0</td>
+      <td>138060</td>
+      <td>211168.0</td>
+      <td>Nurse</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Identify Maxium, Mininum and Average Loss Adjusted Expenses (LAE) by LOB</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default by sorint the first sortable column which is LAE in this example</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim_Number</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>889215</td>
+      <td>98396.0</td>
+      <td>290832</td>
+      <td>240383.0</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>886684</td>
+      <td>99984.0</td>
+      <td>298038</td>
+      <td>245159.0</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>889877</td>
+      <td>98914.0</td>
+      <td>279318</td>
+      <td>246635.0</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>881144</td>
+      <td>266019.0</td>
+      <td>10000000</td>
+      <td>248063.0</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>884888</td>
+      <td>98013.0</td>
+      <td>294633</td>
+      <td>248669.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim_Number</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>886716</td>
+      <td>26077.0</td>
+      <td>28162</td>
+      <td>11067.0</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>881331</td>
+      <td>26687.0</td>
+      <td>27063</td>
+      <td>11604.0</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>889258</td>
+      <td>25422.0</td>
+      <td>34679</td>
+      <td>16548.0</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>880016</td>
+      <td>36440.0</td>
+      <td>25404</td>
+      <td>3555.0</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>883421</td>
+      <td>25720.0</td>
+      <td>26062</td>
+      <td>32051.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim_Number</th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>887691.615385</td>
+      <td>58849.846154</td>
+      <td>1.204308e+05</td>
+      <td>132381.153846</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>884071.576923</td>
+      <td>67452.857143</td>
+      <td>1.341324e+05</td>
+      <td>128511.779221</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>889543.666667</td>
+      <td>67108.809524</td>
+      <td>1.198330e+05</td>
+      <td>156925.095238</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>880730.512821</td>
+      <td>91185.393939</td>
+      <td>1.289591e+06</td>
+      <td>92691.666667</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>884066.743590</td>
+      <td>63871.210526</td>
+      <td>1.370890e+05</td>
+      <td>147778.447368</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sorting is default by sorint the first sortable column which is LAE in this example</span>
+<span class="n">df_claims_by_lob2</span> <span class="o">=</span> <span class="n">df_claims</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Claim_Number&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;LOB&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max:&quot;</span><span class="p">)</span>
+<span class="n">df_claims_by_lob2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min:&quot;</span><span class="p">)</span>
+<span class="n">df_claims_by_lob2</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">)</span>
+<span class="n">df_claims_by_lob2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Max:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>98396.0</td>
+      <td>290832</td>
+      <td>240383.0</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>99984.0</td>
+      <td>298038</td>
+      <td>245159.0</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>98914.0</td>
+      <td>279318</td>
+      <td>246635.0</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>266019.0</td>
+      <td>10000000</td>
+      <td>248063.0</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>98013.0</td>
+      <td>294633</td>
+      <td>248669.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Min:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>26077.0</td>
+      <td>28162</td>
+      <td>11067.0</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>26687.0</td>
+      <td>27063</td>
+      <td>11604.0</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>25422.0</td>
+      <td>34679</td>
+      <td>16548.0</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>36440.0</td>
+      <td>25404</td>
+      <td>3555.0</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>25720.0</td>
+      <td>26062</td>
+      <td>32051.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mean:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LAE</th>
+      <th>Loss</th>
+      <th>Premium</th>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dentist</th>
+      <td>58849.846154</td>
+      <td>1.204308e+05</td>
+      <td>132381.153846</td>
+    </tr>
+    <tr>
+      <th>Hospital</th>
+      <td>67452.857143</td>
+      <td>1.341324e+05</td>
+      <td>128511.779221</td>
+    </tr>
+    <tr>
+      <th>Nurse</th>
+      <td>67108.809524</td>
+      <td>1.198330e+05</td>
+      <td>156925.095238</td>
+    </tr>
+    <tr>
+      <th>Physician</th>
+      <td>91185.393939</td>
+      <td>1.289591e+06</td>
+      <td>92691.666667</td>
+    </tr>
+    <tr>
+      <th>Podiatrist</th>
+      <td>63871.210526</td>
+      <td>1.370890e+05</td>
+      <td>147778.447368</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Sumarize Statistics Value by Describe function</strong></p>
+<ul>
+<li>Describe generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values</li>
+<li>Transpose the results</li>
+<li>Save the result to Excel called claim_distribution.xlsx</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LOB</th>
+      <th>Dentist</th>
+      <th>Hospital</th>
+      <th>Nurse</th>
+      <th>Physician</th>
+      <th>Podiatrist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">Claim_Number</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>78.000000</td>
+      <td>21.000000</td>
+      <td>3.900000e+01</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>887691.615385</td>
+      <td>884071.576923</td>
+      <td>889543.666667</td>
+      <td>8.807305e+05</td>
+      <td>884066.743590</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>696.825494</td>
+      <td>1885.292368</td>
+      <td>164.153993</td>
+      <td>3.919108e+02</td>
+      <td>426.330531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>886716.000000</td>
+      <td>881331.000000</td>
+      <td>889258.000000</td>
+      <td>8.800160e+05</td>
+      <td>883421.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>887096.500000</td>
+      <td>882258.750000</td>
+      <td>889453.000000</td>
+      <td>8.803075e+05</td>
+      <td>883704.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>887629.000000</td>
+      <td>884159.000000</td>
+      <td>889536.000000</td>
+      <td>8.808280e+05</td>
+      <td>884098.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>888210.500000</td>
+      <td>885918.250000</td>
+      <td>889627.000000</td>
+      <td>8.811165e+05</td>
+      <td>884333.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>889215.000000</td>
+      <td>886684.000000</td>
+      <td>889877.000000</td>
+      <td>8.811440e+05</td>
+      <td>884888.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">LAE</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>77.000000</td>
+      <td>21.000000</td>
+      <td>3.300000e+01</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>58849.846154</td>
+      <td>67452.857143</td>
+      <td>67108.809524</td>
+      <td>9.118539e+04</td>
+      <td>63871.210526</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>22419.689897</td>
+      <td>20667.968208</td>
+      <td>24679.796034</td>
+      <td>6.140598e+04</td>
+      <td>24470.395554</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>26077.000000</td>
+      <td>26687.000000</td>
+      <td>25422.000000</td>
+      <td>3.644000e+04</td>
+      <td>25720.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>39682.500000</td>
+      <td>52542.000000</td>
+      <td>38710.000000</td>
+      <td>4.407200e+04</td>
+      <td>40691.750000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>55733.000000</td>
+      <td>65949.000000</td>
+      <td>74536.000000</td>
+      <td>8.380300e+04</td>
+      <td>64691.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>82280.000000</td>
+      <td>83906.000000</td>
+      <td>87607.000000</td>
+      <td>8.820500e+04</td>
+      <td>84944.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>98396.000000</td>
+      <td>99984.000000</td>
+      <td>98914.000000</td>
+      <td>2.660190e+05</td>
+      <td>98013.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Loss</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>78.000000</td>
+      <td>21.000000</td>
+      <td>3.900000e+01</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>120430.846154</td>
+      <td>134132.435897</td>
+      <td>119832.952381</td>
+      <td>1.289591e+06</td>
+      <td>137089.025641</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>65823.016078</td>
+      <td>74520.857552</td>
+      <td>66931.409306</td>
+      <td>2.548037e+06</td>
+      <td>68111.792047</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>28162.000000</td>
+      <td>27063.000000</td>
+      <td>34679.000000</td>
+      <td>2.540400e+04</td>
+      <td>26062.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>76317.000000</td>
+      <td>75668.500000</td>
+      <td>56682.000000</td>
+      <td>7.030800e+04</td>
+      <td>87240.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>101685.000000</td>
+      <td>115942.000000</td>
+      <td>102922.000000</td>
+      <td>1.665280e+05</td>
+      <td>125148.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>150865.000000</td>
+      <td>185442.750000</td>
+      <td>161796.000000</td>
+      <td>8.250000e+05</td>
+      <td>181604.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>290832.000000</td>
+      <td>298038.000000</td>
+      <td>279318.000000</td>
+      <td>1.000000e+07</td>
+      <td>294633.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Premium</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>77.000000</td>
+      <td>21.000000</td>
+      <td>3.300000e+01</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>132381.153846</td>
+      <td>128511.779221</td>
+      <td>156925.095238</td>
+      <td>9.269167e+04</td>
+      <td>147778.447368</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>68173.058611</td>
+      <td>71271.028006</td>
+      <td>65437.784797</td>
+      <td>7.203135e+04</td>
+      <td>61953.865303</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>11067.000000</td>
+      <td>11604.000000</td>
+      <td>16548.000000</td>
+      <td>3.555000e+03</td>
+      <td>32051.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>82629.000000</td>
+      <td>68693.000000</td>
+      <td>110571.000000</td>
+      <td>4.740600e+04</td>
+      <td>87153.750000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>129721.000000</td>
+      <td>127505.000000</td>
+      <td>179483.000000</td>
+      <td>6.901200e+04</td>
+      <td>158876.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>191241.000000</td>
+      <td>189094.000000</td>
+      <td>211991.000000</td>
+      <td>1.573400e+05</td>
+      <td>188406.750000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>240383.000000</td>
+      <td>245159.000000</td>
+      <td>246635.000000</td>
+      <td>2.480630e+05</td>
+      <td>248669.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/claim_distribution.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claim_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/claim_distribution.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_claim_dist</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Dentist</th>
+      <th>Hospital</th>
+      <th>Nurse</th>
+      <th>Physician</th>
+      <th>Podiatrist</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Claim_Number</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>78.000000</td>
+      <td>21.000000</td>
+      <td>39.000000</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">NaN</th>
+      <th>mean</th>
+      <td>887691.615385</td>
+      <td>884071.576923</td>
+      <td>889543.666667</td>
+      <td>880730.512821</td>
+      <td>884066.743590</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>696.825494</td>
+      <td>1885.292368</td>
+      <td>164.153993</td>
+      <td>391.910763</td>
+      <td>426.330531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>886716.000000</td>
+      <td>881331.000000</td>
+      <td>889258.000000</td>
+      <td>880016.000000</td>
+      <td>883421.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>887096.500000</td>
+      <td>882258.750000</td>
+      <td>889453.000000</td>
+      <td>880307.500000</td>
+      <td>883704.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>887629.000000</td>
+      <td>884159.000000</td>
+      <td>889536.000000</td>
+      <td>880828.000000</td>
+      <td>884098.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>888210.500000</td>
+      <td>885918.250000</td>
+      <td>889627.000000</td>
+      <td>881116.500000</td>
+      <td>884333.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>889215.000000</td>
+      <td>886684.000000</td>
+      <td>889877.000000</td>
+      <td>881144.000000</td>
+      <td>884888.000000</td>
+    </tr>
+    <tr>
+      <th>LAE</th>
+      <th>count</th>
+      <td>39.000000</td>
+      <td>77.000000</td>
+      <td>21.000000</td>
+      <td>33.000000</td>
+      <td>38.000000</td>
+    </tr>
+    <tr>
+      <th>NaN</th>
+      <th>mean</th>
+      <td>58849.846154</td>
+      <td>67452.857143</td>
+      <td>67108.809524</td>
+      <td>91185.393939</td>
+      <td>63871.210526</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Loss distribution by LOB - use groupby plot</strong></p>
+<ul>
+<li>After saving the loss distribution to a dataframe, we can use groupby function to plot the result</li>
+<li>This can be very helpful, that means we can reuse this code when reload the data from IS or other application on the weekly, monthly, or quarterly basis</li>
+<li>To label y-axis in million, I found a code to do so.  I plan to explore more codes about label plt in the future blogs.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## How to add dollars signs to the y-axis</span>
+<span class="c1">## ref: https://stackoverflow.com/questions/40566413/matplotlib-pyplot-auto-adjust-unit-of-y-axis</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
+<span class="k">def</span> <span class="nf">y_fmt</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="n">decades</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e9</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e0</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-9</span> <span class="p">]</span>
+    <span class="n">suffix</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">,</span> <span class="s2">&quot;m&quot;</span> <span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span>  <span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">decades</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;=</span><span class="n">d</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">signf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">signf</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{val:d}</span><span class="s1"> </span><span class="si">{suffix}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">signf</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="c1">#                     print(val, signf)</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+                       <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{val:d}</span><span class="s1"> </span><span class="si">{suffix}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">)),</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+                <span class="n">tx</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="o">+</span><span class="s2">&quot;val:.</span><span class="si">{signf}</span><span class="s2">f&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">signf</span> <span class="o">=</span> <span class="n">signf</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;} </span><span class="si">{suffix}</span><span class="s2">&quot;</span>
+                <span class="k">return</span> <span class="n">tx</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="c1">#return y</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">y_fmt2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:2.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;x10^&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df_claims_by_lob</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">y_fmt</span><span class="p">))</span>
+<span class="c1"># ax[0].yaxis.set_major_formatter(FuncFormatter(y_fmt2))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+/fr14x//+Ae33norXq+XLl268NZbbzFr1izmzp1LIBDgiy++4KKLLuKWW24BnCyjvLycG264gY8+
++oiSkhIuu+wyxo4dy7hx42LDS8yYMSOWLRiTMzIdCiI6IYz1A0hJ2w4ArSQ6FETU1q1bOeOMMwCY
+PHkyl156KZdddhkPPfQQ11xzDfPmzWPatGn861//Yt99960129eiRYtYuXIlRUVFHHXUUZx++ukM
+HbqnE9/vfvc7br/9dl544QUAKioqePXVVykoKOCTTz7hwgsvpG5vaWPavAzrAGw46PS07QDQiCf1
+xojOCBY1a9as2E34vffe45lnngFg3Lhx/OIXvwBg5MiRjB8/nvPOO4+zzjortu1JJ51E9+7dATjr
+rLN45513agWAukKhEJMnT6a0tBSv18uaNWua/PqMaXWZtgIKWCugdLTtANAGRFPYe++9l4ULF/LP
+f/6TkpKSWACpm+ImS3nvuOMOevXqxQcffEAkEqGgoKB5TtyYVtXIjmCWAaTEKoGb2IgRI5g9ezYA
+jz/+eGzCl88++4yjjz6aadOmUVxczPr16wF49dVX2bp1K5WVlcybN4+RI0fW2l/doZ937NhB7969
+8Xg8PProo4TD4Ra6MmNakGbYCsiGg06LBYAmdtdddzFz5kwOO+wwHn30Uf785z8DcN111zF48GAG
+DRrEcccdx+GHHw7Asccey7hx4ygpKeHss8+uV/xz2GGH4fP5OPzww7njjjuYOHEiDz/8MMOHD2fN
+mjV06NChxa/RmOYWHaU440rgcHhPSyITlxUBZaC8vLzW+/HjxzN+/HgABgwYwOuvv15vm2i9QF09
+e/ZkxowZcY/h9/t57bXXan22YsWK2Ov/+7//ix135cqVqV+EMdkskmklcCD2Wqurkby8pjyrnGMZ
+gDEm+2Q8FESNsn+rB0jKMoBWVDNzMMbUkPFQEDUyAAsASVkGYIzJQo1rBQRWEZwKCwDGmKwTm6o2
+3QlhLANIiwUAY0z2id7/PendoiKhILjbWAaQnAUAY0z2iTXhTL8nsKeoyHltGUBSFgAyICL8/Oc/
+j72//fbbmTp1auudkDG5phFTQnrcvjFqA8Il1agAICI/E5FVIrJSRJ4QkXrjEojILBGpEJFONZb9
+WURURIobc/zWkp+fzzPPPMPmzZsz2t567xqTTOatgPYEAMsAksm4GaiI7AtcA3xXVStF5CngAmBW
+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
+rkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Recape -  Excel Vlookup function in python</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## list of tabs and how many tabs in the excel file</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;df.sheet_names=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">number_tab</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> tab in the file.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">number_tab</span><span class="p">))</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>df.sheet_names=[&#39;premium&#39;, &#39;loss&#39;, &#39;rein&#39;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are 3 tab in the file.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># view each tab</span>
+<span class="n">df0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;premium&quot;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/ExampleMatch.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;rein&quot;</span><span class="p">)</span>
+<span class="n">df1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df3</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PolicyNumber</th>
+      <th>Last Name</th>
+      <th>Policy Effective Date</th>
+      <th>LOB</th>
+      <th>Policy Type</th>
+      <th>Premium</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10244</td>
+      <td>Hallsworth</td>
+      <td>2017-08-07</td>
+      <td>Dentist</td>
+      <td>OCC</td>
+      <td>13330</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10509</td>
+      <td>Hartle</td>
+      <td>2017-02-09</td>
+      <td>Podiatrist</td>
+      <td>OCC</td>
+      <td>5647</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Claim Number</th>
+      <th>PolicyNumber</th>
+      <th>Policy Type</th>
+      <th>Insured Last Name</th>
+      <th>Claim Report Date</th>
+      <th>LAE Paid</th>
+      <th>Loss Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>886727</td>
+      <td>33524</td>
+      <td>OCC</td>
+      <td>Hallsworth</td>
+      <td>2012-12-20</td>
+      <td>63513</td>
+      <td>244908</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>889258</td>
+      <td>35163</td>
+      <td>OCC</td>
+      <td>Hartle</td>
+      <td>2013-01-03</td>
+      <td>98914</td>
+      <td>45447</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Policy
+Year</th>
+      <th>Insured Last Name</th>
+      <th>PolicyNumber</th>
+      <th>Policy
+Limit</th>
+      <th>Claim
+Number</th>
+      <th>Loss
+Date</th>
+      <th>Policy
+Start Date</th>
+      <th>Policy
+End Date</th>
+      <th>Indemnity
+Reserve</th>
+      <th>ALAE
+Reserve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017</td>
+      <td>Hallsworth</td>
+      <td>10244</td>
+      <td>500K/1.5M</td>
+      <td>886727</td>
+      <td>2012-12-20</td>
+      <td>2017-08-07</td>
+      <td>2018-08-07</td>
+      <td>50000</td>
+      <td>20000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>Wilis</td>
+      <td>45474</td>
+      <td>500K/1.5M</td>
+      <td>881735</td>
+      <td>2013-02-05</td>
+      <td>2017-10-18</td>
+      <td>2018-10-18</td>
+      <td>50000</td>
+      <td>20000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Claim and reinsurance history by policy in one table </span>
+<span class="c1">## Select the common column (the one used as the joining reference) as the dataframe index:</span>
+<span class="n">dfi</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">)</span>
+
+<span class="c1"># join the three excel&#39;s tabs</span>
+<span class="n">dfj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dfj</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># save to a new file:</span>
+<span class="n">dfj</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/myjointfile.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>10244</td>
+      <td>10509</td>
+      <td>10700</td>
+      <td>10880</td>
+      <td>10948</td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td>Hallsworth</td>
+      <td>Hartle</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Bilyk</td>
+    </tr>
+    <tr>
+      <th>Policy Effective Date</th>
+      <td>2017-08-07 00:00:00</td>
+      <td>2017-02-09 00:00:00</td>
+      <td>2017-10-07 00:00:00</td>
+      <td>2017-07-08 00:00:00</td>
+      <td>2017-06-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>LOB</th>
+      <td>Dentist</td>
+      <td>Podiatrist</td>
+      <td>PA</td>
+      <td>Phy</td>
+      <td>Podiatrist</td>
+    </tr>
+    <tr>
+      <th>Policy Type</th>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>CM</td>
+      <td>CM</td>
+    </tr>
+    <tr>
+      <th>Premium</th>
+      <td>13330</td>
+      <td>5647</td>
+      <td>12021</td>
+      <td>232058</td>
+      <td>5132</td>
+    </tr>
+    <tr>
+      <th>Claim Number</th>
+      <td>886727</td>
+      <td>889258</td>
+      <td>883006</td>
+      <td>881123</td>
+      <td>880205</td>
+    </tr>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>33524</td>
+      <td>35163</td>
+      <td>35937</td>
+      <td>14841</td>
+      <td>39619</td>
+    </tr>
+    <tr>
+      <th>Policy Type</th>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>OCC</td>
+      <td>CM</td>
+      <td>CM</td>
+    </tr>
+    <tr>
+      <th>Insured Last Name</th>
+      <td>Hallsworth</td>
+      <td>Hartle</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Bilyk</td>
+    </tr>
+    <tr>
+      <th>Claim Report Date</th>
+      <td>2012-12-20 00:00:00</td>
+      <td>2013-01-03 00:00:00</td>
+      <td>2013-07-03 00:00:00</td>
+      <td>2013-11-14 00:00:00</td>
+      <td>2013-12-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>LAE Paid</th>
+      <td>63513</td>
+      <td>98914</td>
+      <td>77095</td>
+      <td>53824</td>
+      <td>97247</td>
+    </tr>
+    <tr>
+      <th>Loss Paid</th>
+      <td>244908</td>
+      <td>45447</td>
+      <td>88560</td>
+      <td>98160</td>
+      <td>37639</td>
+    </tr>
+    <tr>
+      <th>Policy\nYear</th>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+      <td>2017</td>
+    </tr>
+    <tr>
+      <th>Insured Last Name</th>
+      <td>Hallsworth</td>
+      <td>Wilis</td>
+      <td>Higgenbotham</td>
+      <td>Dumm</td>
+      <td>Katan</td>
+    </tr>
+    <tr>
+      <th>PolicyNumber</th>
+      <td>10244</td>
+      <td>45474</td>
+      <td>10700</td>
+      <td>10880</td>
+      <td>18196</td>
+    </tr>
+    <tr>
+      <th>Policy\nLimit</th>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+      <td>500K/1.5M</td>
+    </tr>
+    <tr>
+      <th>Claim\nNumber</th>
+      <td>886727</td>
+      <td>881735</td>
+      <td>883006</td>
+      <td>881123</td>
+      <td>887535</td>
+    </tr>
+    <tr>
+      <th>Loss\nDate</th>
+      <td>2012-12-20 00:00:00</td>
+      <td>2013-02-05 00:00:00</td>
+      <td>2012-12-23 00:00:00</td>
+      <td>2013-01-03 00:00:00</td>
+      <td>2013-02-05 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Policy\nStart Date</th>
+      <td>2017-08-07 00:00:00</td>
+      <td>2017-10-18 00:00:00</td>
+      <td>2017-10-07 00:00:00</td>
+      <td>2017-07-08 00:00:00</td>
+      <td>2017-01-03 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Policy\nEnd Date</th>
+      <td>2018-08-07 00:00:00</td>
+      <td>2018-10-18 00:00:00</td>
+      <td>2018-10-07 00:00:00</td>
+      <td>2018-07-08 00:00:00</td>
+      <td>2018-01-03 00:00:00</td>
+    </tr>
+    <tr>
+      <th>Indemnity\nReserve</th>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+      <td>50000</td>
+    </tr>
+    <tr>
+      <th>ALAE\nReserve</th>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+      <td>20000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+        </div>
+
+        <div class="meta">
+            <div>
+                    <a href="http://jasminjohnson.github.io/tag/pandas.html" class="tag">pandas</a>
+                    <a href="http://jasminjohnson.github.io/tag/merging.html" class="tag">merging</a>
+                    <a href="http://jasminjohnson.github.io/tag/reshaping.html" class="tag">reshaping</a>
+            </div>
+        </div>
+    </article>
+
+
+</div>
+
+<style type="text/css">
+{
+    max-width: 700px;
+}
+
+.text_cell .prompt {
+    display: none;
+}
+
+div.cell {
+    padding: 0;
+}
+
+div.text_cell_render {
+    padding: 0;
+}
+
+div.prompt {
+    font-size: 13px;
+}
+
+div.input_prompt {
+    padding: .7em 0.2em;
+}
+
+div.output_prompt {
+    padding: .4em .2em;
+}
+
+div.input_area {
+    margin: .2em 0.4em;
+    max-width: 580px;
+}
+
+table.dataframe {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+table.dataframe th, td {
+    padding: 4px;
+    text-align: left;
+}
+
+pre code {
+    background-color: inherit;
+}</style>
+
+        </div>
+<!--
+    <footer>
+      <p>
+        © 2012-2017 Jasmin Johnson, license <a href="https://github.com/jasminjohnson/jasminjohnson.github.io-source/blob/master/LICENSE"> </a>
+        unless otherwise noted.
+        Generated by <a href= "http://docs.getpelican.com/">Pelican</a>.
+      </p>
+    </footer>
+-->
+    </body>
+</html>

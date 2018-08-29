@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Financial Analysis Journal</title><link href="http://jasminjohnson.github.io/" rel="alternate"></link><link href="http://jasminjohnson.github.io/feeds/all.atom.xml" rel="self"></link><id>http://jasminjohnson.github.io/</id><updated>2018-08-15T00:00:00-04:00</updated><entry><title>Data Visualization II - Plotly</title><link href="http://jasminjohnson.github.io/blog/2018/08/15/plotly/" rel="alternate"></link><published>2018-08-15T00:00:00-04:00</published><updated>2018-08-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-15:blog/2018/08/15/plotly/</id><summary type="html">
+
+&lt;p&gt;A data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators, metrics and key data points.&lt;/p&gt;
+&lt;p&gt;Behind the scenes, a dashboard connects to your files, attachments, services and API’s, but on the surface displays all this data in the form of tables, line charts, bar charts and gauges.&lt;/p&gt;
+&lt;p&gt;Plotly provides a web-service for hosting graphs and we can view the dashboard offline as well.&lt;/p&gt;
+</summary><category term="analysis"></category><category term="visualization"></category><category term="plotly"></category></entry><entry><title>Data Visualization I - Python</title><link href="http://jasminjohnson.github.io/blog/2018/07/15/SQLite-Python-Pandas-financial-analysis/" rel="alternate"></link><published>2018-07-15T00:00:00-04:00</published><updated>2018-07-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-07-15:blog/2018/07/15/SQLite-Python-Pandas-financial-analysis/</id><summary type="html">
+
+&lt;p&gt;Data visualizations and static or interactive visualizations are one of the data analysis tools to helping identify outliers
+or data transformations and ideals for financial models.&lt;/p&gt;
+&lt;p&gt;The example file "1960-2017 world population and life expectancy by country" is from &lt;a href="https://data.worldbank.org/indicator/SP.POP.TOTL"&gt;https://data.worldbank.org/indicator/SP.POP.TOTL&lt;/a&gt; and &lt;a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN"&gt;https://data.worldbank.org/indicator/SP.DYN.LE00.IN&lt;/a&gt;. 
+The file is in Excel format with two tabs.&lt;/p&gt;
+&lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.&lt;/p&gt;
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="python"></category><category term="visualization"></category></entry><entry><title>Database for Financial Analysis II - MongoDB</title><link href="http://jasminjohnson.github.io/blog/2018/06/30/mongodb/" rel="alternate"></link><published>2018-06-30T00:00:00-04:00</published><updated>2018-06-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-30:blog/2018/06/30/mongodb/</id><summary type="html">
+
+&lt;p&gt;MongoDB is a document-oriented database. Instead of storing your data in tables made out of individual rows,
+like a relational database does, it stores your data in collections made out of individual documents.
+In MongoDB, a document is a big JSON blob with no particular format or schema.&lt;/p&gt;
+&lt;p&gt;You can have all your data in one single collection.&lt;/p&gt;
+</summary><category term="excel"></category><category term="analysis"></category><category term="mongodb"></category></entry><entry><title>Database for Financial Analysis I - SQLite</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">
+
+&lt;p&gt;After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
+SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
+into a number of popular scripting languages, including Python.
+This database tool can also be useful for accountants doing financial analysis.&lt;/p&gt;
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis Tool - Pandas TimeSeries</title><link href="http://jasminjohnson.github.io/blog/2018/06/01/pandas-timeseries-analysis/" rel="alternate"></link><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-01:blog/2018/06/01/pandas-timeseries-analysis/</id><summary type="html">
+
+&lt;p&gt;Time Series can be useful to analyze financial data in different frequencies based on data distribution.
+We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.
+For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.&lt;/p&gt;
+</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">
+Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
+Many people choose to do ad hoc processing of data from one form to another using a general purpose programming. 
+
+Fortunately, pandas along with the Python standard library provide you with a high-level, flexible, and high-performance set of core manipulations
+and algorithms to enable you to wrangle data into the right form without much trouble
+</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
+A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
+Your analysis is only ever as good as your dataset.
+
+Pandas is a popular Python library used for data science and analysis. Used in conjunction with other data science toolsets like SciPy, NumPy, and Matplotlib,
+a modeler can create end-to-end analytic workflows to solve business problems.
+
+&lt;br&gt;My objective here is to go through some examples for how to perform basic data validation.
+</summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-20T00:00:00-04:00</published><updated>2018-04-20T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/summarizing-data-using-pandas/</id><summary type="html">
+
+&lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.&lt;/p&gt;
+&lt;p&gt;This can be an effective tool when we need to summarize datasets for analysis.
+</summary><category term="pandas"></category><category term="summarization"></category><category term="aggregation"></category><category term="validation"></category></entry><entry><title>Data Analysis I - Sourcing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/sourcing-data-using-pandas/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/sourcing-data-using-pandas/</id><summary type="html">
+Goal: Use Python to load data into a dataframe and get basic statistics. 
+&lt;br&gt;Specifically, I plan to use Python to: 
+- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
+- Get preliminary dataframe statistics: sum, mean, min/max 
+- Visualize the dataframe as a time series graph
+</summary><category term="importing"></category><category term="loading"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
