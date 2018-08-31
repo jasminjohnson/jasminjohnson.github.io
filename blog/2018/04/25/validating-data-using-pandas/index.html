@@ -1431,22 +1431,21 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Goals: How to get a clean and valid dataset?</strong>
-<br>Sample file is a sales records
+<br>Sample file is a sales records - orginal file is with $1M rows, the sample file is with 100 rows
 <br>I plan to demonstrate how to validate data using a "dirty" dataset.
 <br>Specifically, how to</p>
-<ul>
-<li>detect/eliminate outlier data</li>
-<li>deal with missing data</li>
-<li>add default values</li>
-<li>detect/eliminate duplicate data</li>
-<li>remove incomplete data/rows</li>
-<li>deal with error-prone columns</li>
-<li>normalize data types</li>
-<li>make bulk corrections to string/number values where appropriate</li>
-<li>change casing</li>
-<li>rename columns</li>
-<li>save clean data to CSV or Excel file</li>
-</ul>
+
+<pre><code>- detect/eliminate outlier data
+- deal with missing data
+- add default values
+- detect/eliminate duplicate data
+- remove incomplete data/rows
+- deal with error-prone columns
+- normalize data types
+- make bulk corrections to string/number values where appropriate
+- change casing
+- rename columns
+- save clean data to CSV or Excel file</code></pre>
 
 </div>
 </div>
@@ -1455,7 +1454,8 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Detect/eliminate outlier data</strong></p>
+<p><br>
+<strong>Detect/eliminate outlier data</strong></p>
 
 </div>
 </div>
@@ -1690,10 +1690,11 @@ Name: OrderPriority, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Normalized data type</strong></p>
-<ul>
-<li>When reading in a CSV with a bunch of numbers, some of the numbers will read in as strings instead of numeric values, or vice versa</li>
-</ul>
+<p><br>
+<strong>Normalized data type</strong></p>
+
+<pre><code>- When reading data from a CSV, some of the numbers will read in as strings instead of numeric values, or vice versa
+- We can tell pandas to read the column as float or string</code></pre>
 
 </div>
 </div>
@@ -1766,7 +1767,8 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Add in a default value for the missing data</strong></p>
+<p><br>
+<strong>Add in a default value for the missing data</strong></p>
 
 </div>
 </div>
@@ -1915,7 +1917,8 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Delete the rows that have missing data</strong></p>
+<p><br>
+<strong>Delete the rows that have missing data</strong></p>
 
 </div>
 </div>
@@ -2303,7 +2306,8 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Delete the columns that have a high incidence of missing data</strong></p>
+<p><br>
+<strong>Delete the columns that have a high incidence of missing data</strong></p>
 
 </div>
 </div>
@@ -2490,16 +2494,14 @@ Name: OrderID, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Detect/eliminate duplicate data</strong></p>
-<ul>
-<li>Identify which observations are duplicates</li>
-<li>List of duplicated data and save the list to a csv file</li>
-<li>Delete duplicated data<ul>
-<li>Return DataFrame with duplicate rows removed, optionally only considering certain columns</li>
-</ul>
-</li>
-<li>Save clean data to a csv file</li>
-</ul>
+<p><br>
+<strong>Detect/eliminate duplicate data</strong></p>
+
+<pre><code>- Identify which observations are duplicates
+- List of duplicated data and save the list to a csv file
+- Delete duplicated data
+  - Return DataFrame with duplicate rows removed, optionally only considering certain columns
+- Save clean data to a csv file</code></pre>
 
 </div>
 </div>
@@ -2740,7 +2742,8 @@ dtype: bool</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Change column to uppercase and remove trailing whitespce</strong></p>
+<p><br>
+<strong>Change column to uppercase and remove trailing whitespce</strong></p>
 
 </div>
 </div>
@@ -2805,7 +2808,8 @@ Name: Country, dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Rename column</strong></p>
+<p><br>
+<strong>Rename column</strong></p>
 
 </div>
 </div>
@@ -2822,6 +2826,16 @@ Name: Country, dtype: object</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Save the file</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

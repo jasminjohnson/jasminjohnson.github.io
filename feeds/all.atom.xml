@@ -30,8 +30,7 @@ We can reload/repeat the data analysis process in Python and export the result t
 For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.&lt;/p&gt;
 </summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">
 Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
-
-
+&lt;br&gt;
 Pandas along with the Python standard library provide us with a high-level, flexible, and high-performance set of core manipulations
 &lt;br&gt;and algorithms to enable us to wrangle data into the right form without much trouble.
 </summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
@@ -48,8 +47,4 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 &lt;p&gt;This can be an effective tool when we need to summarize datasets for analysis.
 </summary><category term="pandas"></category><category term="summarization"></category><category term="aggregation"></category><category term="validation"></category></entry><entry><title>Data Analysis I - Sourcing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/sourcing-data-using-pandas/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/sourcing-data-using-pandas/</id><summary type="html">
 Goal: Use Python to load data into a dataframe and get basic statistics. 
-&lt;br&gt;Specifically, I plan to use Python to: 
-&lt;br&gt;- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
-&lt;br&gt;- Get preliminary dataframe statistics: sum, mean, min/max 
-&lt;br&gt;- Visualize the dataframe as a time series graph
 </summary><category term="importing"></category><category term="loading"></category><category term="pandas"></category><category term="excel"></category></entry></feed>
