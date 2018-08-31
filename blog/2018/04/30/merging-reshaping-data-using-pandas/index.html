@@ -1456,8 +1456,7 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example - Reinsurance Premium Loss Data</strong>
-<br></p>
+<p><strong>Example - Reinsurance Premium Loss Data</strong></p>
 
 <pre><code>- The example is to merge and reshape data from different applications and ultimately determing business reinsurance coverage.
 - This is a simplified and hypothetical example, but it's a great illustration of what Python can do for financial analysis. 
@@ -1472,8 +1471,7 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>View Excel File with Mulitple Tabs</strong>
-<br></p>
+<p><strong>View Excel File with Mulitple Tabs</strong></p>
 
 <pre><code>- List of tabs : note the display list including hidden tabs
 - Number of tabs: using "len" function to count how many tabs in the Excel file
@@ -1489,10 +1487,9 @@ Pandas along with the Python standard library provide us with a high-level, flex
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Understand the business, what is abnormal value for this business?</strong></p>
-<ul>
-<li>If average premium per policy is between 10K to 200K, the premium outside this range is invalid</li>
-<li>If maximum ceded reinsurance retention is 500K, the ceded recoverable greater than 500K is invalid </li>
-</ul>
+
+<pre><code>- If average premium per policy is between 10K to 200K, the premium outside this range is invalid
+- If maximum ceded reinsurance retention is 500K, the ceded recoverable greater than 500K is invalid </code></pre>
 
 </div>
 </div>
@@ -1801,8 +1798,7 @@ There are 12 tab(s) in the file.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Merge premium and loss tabs</strong>
-<br></p>
+<strong>Merge premium and loss tabs</strong></p>
 
 <pre><code>- Use Merge function with key identifier "Policy Number"
 - Pandas.merge connects rows in DataFrames based on one or more keys
@@ -1951,8 +1947,7 @@ There are 12 tab(s) in the file.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong> Combined tabs - Outer Join</strong>
-<br></p>
+<strong> Combined tabs - Outer Join</strong></p>
 
 <pre><code>- Other possible options beside "inner" join are 'left', 'right', and 'outer'. 
 - The outer join takes the union of the keys, combining the effect of applying both left and right joins
@@ -2161,8 +2156,7 @@ There are 12 tab(s) in the file.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Delete/Removing Duplicates after merging data</strong>
-<br></p>
+<strong>Delete/Removing Duplicates after merging data</strong></p>
 
 <pre><code>- The DataFrame method Duplicated returns a boolean series
 - True means duplicated data
@@ -2601,7 +2595,7 @@ dtype: bool</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Discretization/Binning and Index Matching</strong> -- no page break</p>
+<strong>Discretization/Binning and Index Matching</strong></p>
 
 <pre><code>- Group claim data into discrete bins
 - Divide data into 4 bins: $1 to $50,000, $50,001 to $75,000, $75,001 to $1,000,000, and greater than $1,000,000 and less than $20M
@@ -2748,8 +2742,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Example - a list of claim file</strong> - with page break
-<br></p>
+<strong>Example - a list of claim file</strong></p>
 
 <pre><code>- Group claims by line of business
 - Set Index
@@ -3052,8 +3045,8 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Sumarize Statistics Value by Describe function</strong>
-<br></p>
+<p><br>
+<strong>Sumarize Statistics Value by Describe function</strong></p>
 
 <pre><code>- Describe generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values
 - Transpose the results
@@ -3184,8 +3177,8 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Loss distribution by LOB - use groupby plot</strong>
-<br></p>
+<p><br>
+<strong>Loss distribution by LOB - use groupby plot</strong></p>
 
 <pre><code>- Use groupby function to plot the result
 - This can be very helpful, that means we can reuse this code when reload the data from other application on the weekly, monthly, or quarterly basis
