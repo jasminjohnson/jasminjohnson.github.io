@@ -30,26 +30,52 @@ We can reload/repeat the data analysis process in Python and export the result t
 For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.&lt;/p&gt;
 </summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">
 Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
-Many people choose to do ad hoc processing of data from one form to another using a general purpose programming. 
 
-Fortunately, pandas along with the Python standard library provide you with a high-level, flexible, and high-performance set of core manipulations
-and algorithms to enable you to wrangle data into the right form without much trouble
-</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
-A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
-Your analysis is only ever as good as your dataset.
 
-Pandas is a popular Python library used for data science and analysis. Used in conjunction with other data science toolsets like SciPy, NumPy, and Matplotlib,
-a modeler can create end-to-end analytic workflows to solve business problems.
-
-&lt;br&gt;My objective here is to go through some examples for how to perform basic data validation.
-</summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-20T00:00:00-04:00</published><updated>2018-04-20T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/summarizing-data-using-pandas/</id><summary type="html">
+Pandas along with the Python standard library provide us with a high-level, flexible, and high-performance set of core manipulations
+&lt;br&gt;and algorithms to enable us to wrangle data into the right form without much trouble.
+</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-20T00:00:00-04:00</published><updated>2018-04-20T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/summarizing-data-using-pandas/</id><summary type="html">
 
 &lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.&lt;/p&gt;
 &lt;p&gt;This can be an effective tool when we need to summarize datasets for analysis.
 </summary><category term="pandas"></category><category term="summarization"></category><category term="aggregation"></category><category term="validation"></category></entry><entry><title>Data Analysis I - Sourcing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/sourcing-data-using-pandas/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/sourcing-data-using-pandas/</id><summary type="html">
 Goal: Use Python to load data into a dataframe and get basic statistics. 
 &lt;br&gt;Specifically, I plan to use Python to: 
-- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
-- Get preliminary dataframe statistics: sum, mean, min/max 
-- Visualize the dataframe as a time series graph
+&lt;br&gt;- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
+&lt;br&gt;- Get preliminary dataframe statistics: sum, mean, min/max 
+&lt;br&gt;- Visualize the dataframe as a time series graph
 </summary><category term="importing"></category><category term="loading"></category><category term="pandas"></category><category term="excel"></category></entry></feed>

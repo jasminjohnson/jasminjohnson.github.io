@@ -1417,9 +1417,9 @@ h6:hover .anchor-link {
 
 Goal: Use Python to load data into a dataframe and get basic statistics. 
 <br>Specifically, I plan to use Python to: 
-- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
-- Get preliminary dataframe statistics: sum, mean, min/max 
-- Visualize the dataframe as a time series graph
+<br>- Import an Excel dataset with 1k rows and 132 columns into a dataframe, 
+<br>- Get preliminary dataframe statistics: sum, mean, min/max 
+<br>- Visualize the dataframe as a time series graph
 
 </div>
 </div>
@@ -1430,8 +1430,8 @@ Goal: Use Python to load data into a dataframe and get basic statistics.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The 2 sample data files I will use are:</p>
 <ul>
-<li>"2015 USA Census Data" with 1000 rows and 132 columns from gov.org (data/analysis1/sample.xlsx)</li>
-<li>"Historical daily price data for 10 stocks from 1990-2011" with 5472 rows and 11 columns (data/analysis1/Stock_px.xlsx) </li>
+<li>"2015 USA Census Data" from gov.org (data/analysis1/sample.xlsx)</li>
+<li>"Historical daily price data for 9 stocks from 2010-2011" (data/analysis1/Stock_px.xlsx) </li>
 </ul>
 
 </div>
@@ -1457,11 +1457,10 @@ Goal: Use Python to load data into a dataframe and get basic statistics.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import pandas to read Excel, head(3) to show the first 3 rows only, shape to show how many rows/columns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis1/sample.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
@@ -1477,7 +1476,7 @@ Goal: Use Python to load data into a dataframe and get basic statistics.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1606,7 +1605,7 @@ Goal: Use Python to load data into a dataframe and get basic statistics.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1688,7 +1687,7 @@ pd.read_excel: time=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>How to filter data in Python instead of in Excel?</strong></p>
 <ul>
-<li>The following example filters and count ("shape") the dataframe for zipcode 35210</li>
+<li>The following example filters and count ("shape") the dataframe for zipcode 35005</li>
 <li>This approach can easily scale to more complicated datasets, and provides results using Python pandas dataframe</li>
 </ul>
 
@@ -1864,7 +1863,7 @@ pd.read_excel: time=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Second Example - 10 stocks historical price from 1990-2011</strong></p>
+<p><strong> Second Example - 9 stocks historical price from 2010-2011</strong></p>
 <ul>
 <li>Import pandas and read the Excel file (specified the directory)      </li>
 </ul>
@@ -2009,7 +2008,7 @@ pd.read_excel: time=
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Tail to show the last 3 rows</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Show the last 3 rows of data</span>
 <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;GE&quot;</span><span class="p">]</span>
 <span class="n">df_stock</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -2123,7 +2122,7 @@ pd.read_excel: time=
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## now get the sum / mean / min / max for stock AA</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Now get the sum / mean / min / max for stock AA</span>
 <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">df_stock</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 
@@ -2170,7 +2169,7 @@ pd.read_excel: time=
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## check the type</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Check the data type</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">df_stock</span><span class="o">.</span><span class="n">DATE</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1">## the type is a timestamp</span>
