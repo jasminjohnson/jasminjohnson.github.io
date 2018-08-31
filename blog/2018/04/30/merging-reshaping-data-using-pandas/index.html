@@ -1424,35 +1424,38 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Goals</span><span class="p">:</span> <span class="n">How</span> <span class="n">to</span> <span class="n">merge</span><span class="o">/</span><span class="n">reshape</span> <span class="n">data</span><span class="err">?</span><span class="o">**</span>
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="n">Specifically</span><span class="p">,</span> <span class="n">I</span> <span class="n">will</span> <span class="n">cover</span>
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="n">Data</span> <span class="n">Overview</span>
-<span class="o">-</span> <span class="n">View</span> <span class="n">Data</span> <span class="k">with</span> <span class="n">hidden</span> <span class="n">tabs</span>
-<span class="o">-</span> <span class="n">Combining</span> <span class="ow">and</span> <span class="n">Merging</span> <span class="n">Data</span> <span class="n">sets</span> <span class="n">by</span> <span class="n">index</span>
-  <span class="o">-</span> <span class="n">Delete</span><span class="o">/</span><span class="n">Remove</span> <span class="n">duplicated</span> <span class="n">data</span> <span class="n">after</span> <span class="n">merging</span>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Goals: How to merge/reshape data?</strong>
+<br>Specifically, I will cover
+<br>Data Overview</p>
+<ul>
+<li>View Data with hidden tabs</li>
+<li>Combining and Merging Data sets by index<ul>
+<li>Delete/Remove duplicated data after merging</li>
+</ul>
+</li>
+</ul>
+<p><br>Data Transformation</p>
+<ul>
+<li>Detecting and Filtering Outliers </li>
+<li>Reshaping  <ul>
+<li>Discretization and Binning to group data</li>
+<li>Index matching data </li>
+</ul>
+</li>
+</ul>
+<p><br> Visualize Data</p>
 
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span><span class="n">Data</span> <span class="n">Transformation</span>
-  <span class="o">-</span> <span class="n">Detecting</span> <span class="ow">and</span> <span class="n">Filtering</span> <span class="n">Outliers</span> 
-  <span class="o">-</span> <span class="n">Reshaping</span>  
-    <span class="o">-</span> <span class="n">Discretization</span> <span class="ow">and</span> <span class="n">Binning</span> <span class="n">to</span> <span class="n">group</span> <span class="n">data</span>
-    <span class="o">-</span> <span class="n">Index</span> <span class="n">matching</span> <span class="n">data</span> 
-    
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span> <span class="n">Visualize</span> <span class="n">Data</span>     
-    <span class="o">-</span> <span class="n">Group</span> <span class="n">by</span> <span class="n">function</span>
-    <span class="o">-</span> <span class="n">Pivoting</span> <span class="n">Data</span>
-    <span class="o">-</span> <span class="n">Set</span> <span class="n">Index</span>  
-    <span class="o">-</span> <span class="n">Plot</span> <span class="n">data</span>  
-</pre></div>
+<pre><code>- Group by function
+- Pivoting Data
+- Set Index  
+- Plot data  </code></pre>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -1800,22 +1803,20 @@ There are 12 tab(s) in the file.
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Merge</span> <span class="n">premium</span> <span class="ow">and</span> <span class="n">loss</span> <span class="n">tabs</span><span class="o">**</span>
-<span class="o">-</span> <span class="n">Use</span> <span class="n">Merge</span> <span class="n">function</span> <span class="k">with</span> <span class="n">key</span> <span class="n">identifier</span> <span class="s2">&quot;Policy Number&quot;</span>
-<span class="o">-</span> <span class="n">Pandas</span><span class="o">.</span><span class="n">merge</span> <span class="n">connects</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">DataFrames</span> <span class="n">based</span> <span class="n">on</span> <span class="n">one</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">keys</span>
-<span class="o">-</span> <span class="n">By</span> <span class="n">default</span> <span class="n">merge</span> <span class="n">does</span> <span class="n">an</span> <span class="s1">&#39;inner&#39;</span> <span class="n">join</span> <span class="o">-</span> <span class="n">the</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">result</span> <span class="n">are</span> <span class="n">the</span> <span class="n">intersection</span> <span class="k">with</span> <span class="n">prepend</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span>
-<span class="o">-</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">merge</span> <span class="n">file</span> <span class="n">to</span> <span class="n">Excel</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Merge premium and loss tabs</strong></p>
+<ul>
+<li>Use Merge function with key identifier "Policy Number"</li>
+<li>Pandas.merge connects rows in DataFrames based on one or more keys</li>
+<li>By default merge does an 'inner' join - the keys in the result are the intersection with prepend X and Y</li>
+<li>Save the merge file to Excel</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1951,21 +1952,19 @@ There are 12 tab(s) in the file.
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span> <span class="n">Combined</span> <span class="n">tabs</span> <span class="o">-</span> <span class="n">Outer</span> <span class="n">Join</span><span class="o">**</span>
-<span class="o">-</span> <span class="n">Other</span> <span class="n">possible</span> <span class="n">options</span> <span class="n">beside</span> <span class="s2">&quot;inner&quot;</span> <span class="n">join</span> <span class="n">are</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="ow">and</span> <span class="s1">&#39;outer&#39;</span><span class="o">.</span> 
-<span class="o">-</span> <span class="n">The</span> <span class="n">outer</span> <span class="n">join</span> <span class="n">takes</span> <span class="n">the</span> <span class="n">union</span> <span class="n">of</span> <span class="n">the</span> <span class="n">keys</span><span class="p">,</span> <span class="n">combining</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">of</span> <span class="n">applying</span> <span class="n">both</span> <span class="n">left</span> <span class="ow">and</span> <span class="n">right</span> <span class="n">joins</span>
-<span class="o">-</span> <span class="n">ie</span><span class="p">:</span> <span class="n">Policy</span> <span class="mi">10962</span> <span class="n">has</span> <span class="n">no</span> <span class="n">associated</span> <span class="n">loss</span> <span class="n">data</span><span class="p">,</span> <span class="n">the</span> <span class="n">missing</span> <span class="n">loss</span> <span class="n">result</span> <span class="n">marks</span> <span class="k">as</span> <span class="n">NaN</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Combined tabs - Outer Join</strong></p>
+<ul>
+<li>Other possible options beside "inner" join are 'left', 'right', and 'outer'. </li>
+<li>The outer join takes the union of the keys, combining the effect of applying both left and right joins</li>
+<li>ie: Policy 10962 has no associated loss data, the missing loss result marks as NaN</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2480,21 +2479,19 @@ dtype: bool</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Detecting</span> <span class="ow">and</span> <span class="n">Filtering</span> <span class="n">Outliers</span> <span class="o">-</span> <span class="n">how</span> <span class="n">to</span> <span class="n">detecting</span> <span class="n">abnormal</span> <span class="n">loss</span> <span class="n">value</span><span class="err">?</span><span class="o">**</span>
-  <span class="o">-</span> <span class="n">Filtering</span> <span class="ow">or</span> <span class="n">transforming</span> <span class="n">outliers</span> <span class="n">by</span> <span class="n">applying</span> <span class="n">array</span> <span class="n">operations</span>
-  <span class="o">-</span> <span class="n">Loss</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">exceeded</span> <span class="mi">1</span> <span class="n">million</span> <span class="n">since</span> <span class="n">the</span> <span class="n">policy</span> <span class="n">limit</span> <span class="ow">is</span> <span class="mi">1</span><span class="n">M</span>
-  <span class="o">-</span> <span class="n">Use</span> <span class="n">the</span> <span class="nb">abs</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">column</span> <span class="n">Loss</span> <span class="n">when</span> <span class="n">loss</span> <span class="ow">is</span> <span class="n">exceeding</span> <span class="mi">1</span><span class="n">M</span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Detecting and Filtering Outliers - how to detecting abnormal loss value?</strong></p>
+<ul>
+<li>Filtering or transforming outliers by applying array operations</li>
+<li>Loss should not exceeded 1 million since the policy limit is 1M</li>
+<li>Use the abs method in column Loss when loss is exceeding 1M </li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2607,21 +2604,19 @@ dtype: bool</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Discretization</span><span class="o">/</span><span class="n">Binning</span> <span class="ow">and</span> <span class="n">Index</span> <span class="n">Matching</span><span class="o">**</span>
-<span class="o">-</span> <span class="n">Group</span> <span class="n">claim</span> <span class="n">data</span> <span class="n">into</span> <span class="n">discrete</span> <span class="n">bins</span>
-<span class="o">-</span> <span class="n">Divide</span> <span class="n">data</span> <span class="n">into</span> <span class="mi">4</span> <span class="n">bins</span><span class="p">:</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">50001</span> <span class="n">to</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">75001</span> <span class="n">to</span> <span class="mi">1000000</span><span class="p">,</span> <span class="ow">and</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">1000001</span>
-<span class="o">-</span> <span class="n">Use</span> <span class="s2">&quot;cut&quot;</span> <span class="n">function</span> <span class="k">for</span> <span class="n">data</span> <span class="n">index</span> <span class="n">matching</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Discretization/Binning and Index Matching</strong></p>
+<ul>
+<li>Group claim data into discrete bins</li>
+<li>Divide data into 4 bins: 1 to 50000, 50001 to 75000, 75001 to 1000000, and greater than 1000001</li>
+<li>Use "cut" function for data index matching</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2756,21 +2751,19 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Example</span> <span class="o">-</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">claim</span> <span class="n">file</span><span class="o">**</span>
-<span class="o">-</span> <span class="n">Group</span> <span class="n">claims</span> <span class="n">by</span> <span class="n">line</span> <span class="n">of</span> <span class="n">business</span>
-<span class="o">-</span> <span class="n">Set</span> <span class="n">Index</span>
-<span class="o">-</span> <span class="n">Identify</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span> <span class="n">value</span> <span class="n">by</span> <span class="n">group</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example - a list of claim file</strong></p>
+<ul>
+<li>Group claims by line of business</li>
+<li>Set Index</li>
+<li>Identify min, max value by group</li>
+</ul>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
