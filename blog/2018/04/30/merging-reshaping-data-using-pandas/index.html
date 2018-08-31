@@ -1428,7 +1428,8 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Goals: How to merge/reshape data?</strong>
+<p><br>
+<strong>Goals: How to merge/reshape data?</strong>
 <br> <strong>Data Overview:</strong></p>
 
 <pre><code> - View Data with hidden tabs
@@ -2460,15 +2461,6 @@ dtype: bool</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Dat Transforamtion</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
 <strong>Data Transformation</strong></p>
 
@@ -2597,7 +2589,7 @@ dtype: bool</pre>
 <p><br>
 <strong>Discretization/Binning and Index Matching</strong></p>
 
-<pre><code>- Group claim data into discrete bins
+<pre><code>- Group data into discrete bins
 - Divide data into 4 bins: $1 to $50,000, $50,001 to $75,000, $75,001 to $1,000,000, and greater than $1,000,000 and less than $20M
 - Use "cut" function for data index matching</code></pre>
 
@@ -2742,11 +2734,12 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Example - a list of claim file</strong></p>
+<strong>Reshaping Data</strong></p>
 
-<pre><code>- Group claims by line of business
+<pre><code>- Group claims by line of business (LOB), not dollar amount
 - Set Index
-- Identify min, max value by group</code></pre>
+- View data by group
+- Get max, min and mean value of the group</code></pre>
 
 </div>
 </div>
@@ -2756,7 +2749,8 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Claim.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Example file is a list of claims data</span>
+<span class="n">df_claims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Claim.xlsx&#39;</span><span class="p">)</span>
 <span class="n">df_claims</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 
@@ -2931,21 +2925,13 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Maxium, Mininum and Average value by group</strong></p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Maximum value by LOB</span>
+<span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 
 </div>
