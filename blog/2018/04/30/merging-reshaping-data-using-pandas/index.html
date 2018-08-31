@@ -1472,14 +1472,14 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>View Excel File with Mulitple Tabs</strong></p>
-<ul>
-<li>List of tabs : note the display list including hidden tabs</li>
-<li>Number of tabs: using "len" function to count how many tabs in the Excel file</li>
-<li>View each tabs</li>
-</ul>
-<p>I found python "len" function is very useful when dealing with Excel files have been updated with many tabs over time. 
-<br>We can use Python to view/list/count all the tabs including hidden tabs.</p>
+<p><strong>View Excel File with Mulitple Tabs</strong>
+<br></p>
+
+<pre><code>- List of tabs : note the display list including hidden tabs
+- Number of tabs: using "len" function to count how many tabs in the Excel file
+- View each tabs
+- I found python "len" function is very useful when dealing with Excel files have been updated with many tabs over time. 
+- We can use Python to view/list/count all the tabs including hidden tabs. </code></pre>
 
 </div>
 </div>
@@ -1499,7 +1499,7 @@ Pandas along with the Python standard library provide us with a high-level, flex
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View list of tabs including hidden tab</span>
@@ -1537,7 +1537,7 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Detect duplicated data from the first tab -&quot;premium&quot;</span>
@@ -1570,7 +1570,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -1656,7 +1656,7 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View data from the second tab -&quot;loss&quot;</span>
@@ -1679,7 +1679,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1800,20 +1800,20 @@ There are 12 tab(s) in the file.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Merge premium and loss tabs</strong></p>
-<ul>
-<li>Use Merge function with key identifier "Policy Number"</li>
-<li>Pandas.merge connects rows in DataFrames based on one or more keys</li>
-<li>By default merge does an 'inner' join - the keys in the result are the intersection with prepend X and Y</li>
-<li>Save the merge file to Excel</li>
-</ul>
+<p><strong>Merge premium and loss tabs</strong>
+<br></p>
+
+<pre><code>- Use Merge function with key identifier "Policy Number"
+- Pandas.merge connects rows in DataFrames based on one or more keys
+- By default merge does an 'inner' join - the keys in the result are the intersection with prepend X and Y
+- Save the merge file to Excel</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Merge tabs - Inner Join</span>
@@ -1848,7 +1848,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1949,19 +1949,19 @@ There are 12 tab(s) in the file.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Combined tabs - Outer Join</strong></p>
-<ul>
-<li>Other possible options beside "inner" join are 'left', 'right', and 'outer'. </li>
-<li>The outer join takes the union of the keys, combining the effect of applying both left and right joins</li>
-<li>ie: Policy 10962 has no associated loss data, the missing loss result marks as NaN</li>
-</ul>
+<p><strong> Combined tabs - Outer Join</strong>
+<br></p>
+
+<pre><code>- Other possible options beside "inner" join are 'left', 'right', and 'outer'. 
+- The outer join takes the union of the keys, combining the effect of applying both left and right joins
+- ie: Policy 10962 has no associated loss data, the missing loss result marks as NaN</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Combined tabs - Outer Join</span>
@@ -1994,7 +1994,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -2158,25 +2158,21 @@ There are 12 tab(s) in the file.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Delete/Removing Duplicates after merging data</strong></p>
-<ul>
-<li>The DataFrame method Duplicated returns a boolean series<ul>
-<li>True means duplicated data</li>
-</ul>
-</li>
-<li>drop_duplicates returns a DataFrame where the duplicated array is True<ul>
-<li>Our example showing duplicated policy 10962 and 11339, the output showed as "True"</li>
-</ul>
-</li>
-<li>Both of these methods by default consider all of the columns must be duplicated</li>
-</ul>
+<p><strong>Delete/Removing Duplicates after merging data</strong>
+<br></p>
+
+<pre><code>- The DataFrame method Duplicated returns a boolean series
+- True means duplicated data
+- drop_duplicates returns a DataFrame where the duplicated array is True
+     - Our example showing duplicated policy 10962 and 11339, the output showed as "True"
+- Both of these methods by default consider all of the columns must be duplicated</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_combine</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -2192,7 +2188,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -2219,7 +2215,7 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View duplicated data after merging</span>
@@ -2249,7 +2245,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -2348,7 +2344,7 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Drop duplicated data after merging </span>
@@ -2366,7 +2362,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -2476,19 +2472,19 @@ dtype: bool</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Detecting and Filtering Outliers - how to detecting abnormal loss value?</strong></p>
-<ul>
-<li>Filtering or transforming outliers by applying array operations</li>
-<li>Loss should not exceeded 1 million since the policy limit is 1M</li>
-<li>Use the abs method in column Loss when loss is exceeding 1M </li>
-</ul>
+<p><strong>Detecting and Filtering Outliers - how to detecting abnormal loss value?</strong>
+<br></p>
+
+<pre><code>- Filtering or transforming outliers by applying array operations
+- Loss should not exceeded 1 million since the policy limit is 1M
+- Use the abs method in column Loss when loss is exceeding 1M </code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_loss_1M</span> <span class="o">=</span> <span class="n">df_loss</span><span class="p">[</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">]</span>
@@ -2518,7 +2514,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[31]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -2601,23 +2597,23 @@ dtype: bool</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Discretization/Binning and Index Matching</strong></p>
-<ul>
-<li>Group claim data into discrete bins</li>
-<li>Divide data into 4 bins: 1 to 50000, 50001 to 75000, 75001 to 1000000, and greater than 1000001</li>
-<li>Use "cut" function for data index matching</li>
-</ul>
+<p><strong>Discretization/Binning and Index Matching</strong>
+<br></p>
+
+<pre><code>- Group claim data into discrete bins
+- Divide data into 4 bins: $1 to $50,000, $50,001 to $75,000, $75,001 to $1,000,000, and greater than $1,000,000 and less than $20M
+- Use "cut" function for data index matching</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Sepaprated loss into bins and print out first five rows</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">20000000</span> <span class="p">]</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span><span class="mi">20000000</span><span class="p">]</span>
 <span class="n">cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;Loss&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
 </pre></div>
 
@@ -2628,7 +2624,7 @@ dtype: bool</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Count how many claims in each bins - ie. there are 150 claims in the loss range from $75K to $500K</span>
@@ -2645,7 +2641,7 @@ dtype: bool</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[33]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -2667,7 +2663,7 @@ Name: Loss, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Show first 3 claims according to the matching discrete loss bin categories</span>
@@ -2684,7 +2680,7 @@ Name: Loss, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -2705,7 +2701,7 @@ Categories (5, interval[int64]): [[1, 50000) &lt; [50000, 75000) &lt; [75000, 50
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Group claim data into discrete loss bins by assigning group names, ie. first loss is a Clash coverage etc.</span>
@@ -2723,7 +2719,7 @@ Categories (5, interval[int64]): [[1, 50000) &lt; [50000, 75000) &lt; [75000, 50
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -2748,19 +2744,19 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example - a list of claim file</strong></p>
-<ul>
-<li>Group claims by line of business</li>
-<li>Set Index</li>
-<li>Identify min, max value by group</li>
-</ul>
+<p><strong>Example - a list of claim file</strong>
+<br></p>
+
+<pre><code>- Group claims by line of business
+- Set Index
+- Identify min, max value by group</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Claim.xlsx&#39;</span><span class="p">)</span>
@@ -2777,7 +2773,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -2840,7 +2836,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Group claims by Line of Business LOB and set Loss_Date as index</span>
@@ -2855,7 +2851,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View claim by LOB - Nurse </span>
@@ -2872,7 +2868,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -2949,7 +2945,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_claims_by_lob</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -2965,7 +2961,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[31]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -3052,19 +3048,19 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Sumarize Statistics Value by Describe function</strong></p>
-<ul>
-<li>Describe generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values</li>
-<li>Transpose the results</li>
-<li>Save the result to Excel called claim_distribution.xlsx</li>
-</ul>
+<p><strong>Sumarize Statistics Value by Describe function</strong>
+<br></p>
+
+<pre><code>- Describe generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values
+- Transpose the results
+- Save the result to Excel called claim_distribution.xlsx</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Traspose the describe </span>
@@ -3082,7 +3078,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -3168,7 +3164,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Save the describe result to excel</span>
@@ -3184,19 +3180,19 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Loss distribution by LOB - use groupby plot</strong></p>
-<ul>
-<li>Use groupby function to plot the result</li>
-<li>This can be very helpful, that means we can reuse this code when reload the data from other application on the weekly, monthly, or quarterly basis</li>
-<li>To label y-axis in million, I found a code to do so.  I plan to explore more codes about label plt in the future blogs.</li>
-</ul>
+<p><strong>Loss distribution by LOB - use groupby plot</strong>
+<br></p>
+
+<pre><code>- Use groupby function to plot the result
+- This can be very helpful, that means we can reuse this code when reload the data from other application on the weekly, monthly, or quarterly basis
+- To label y-axis in million, I found a code to do so.  I plan to explore more codes about label plt in the future blogs.</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## How to add dollars signs to the y-axis</span>
