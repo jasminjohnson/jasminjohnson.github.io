@@ -1414,11 +1414,10 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-
-<p>Time Series can be useful to analyze financial data in different frequencies based on data distribution.
-We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.
-For data testing, We can use data time series to generate dates (with/without business day, weekends) for data testing.</p>
+<p>
+Time Series can be useful to analyze financial data in different frequencies based on data distribution.<br>We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.</p>
+<p>
+<strong>Goals: Generate Mock Data - use Data Time Series and Numpy to generate dates and number for data testing</strong></p>
 
 </div>
 </div>
@@ -1427,7 +1426,21 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Example-of-Amazon-stock-daily-closing-prices-from-1997---2018-in-CSV-format."><strong>Example of Amazon stock daily closing prices from 1997 - 2018 in CSV format.</strong><a class="anchor-link" href="#Example-of-Amazon-stock-daily-closing-prices-from-1997---2018-in-CSV-format.">&#182;</a></h4>
+<p><br>
+<strong> Overview Data Time Series Basics</strong></p>
+
+<pre><code>- Example is Amazon stock daily closing prices from 1997 - 2018 in CSV format
+- View date type: convert string to time sereies
+- Set date as index : retrieve range of data 
+- Resample function : for plotting
+- Assign date to the stock price without date column : with date frequency options
+</code></pre>
+<p><strong> Mock Data</strong></p>
+
+<pre><code>- Generate date range 
+- Use Numpy to geneerate random number
+- Set index to match date and number     </code></pre>
+
 </div>
 </div>
 </div>
@@ -1436,7 +1449,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the file from CSV format</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read the file from CSV format</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1545,13 +1558,22 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Find out Date type: the Date type here is a string, not time series type</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find out Date type: the Date type here is a string, not time series type</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -1579,13 +1601,22 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Convert string into time series type by adding Parse to read the CSV file</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert string into time series type by adding Parse to read the CSV file</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -1698,7 +1729,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find out Date type again: the Date type is Timestamp which is one of the time series</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Find out Date type again: the Date type is Timestamp which is one of the time series</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
@@ -1727,13 +1758,23 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Set index to Date by adding Index column (index_col) to Date</strong>
+    -The benefit of setting index is we can retrieve specific date ranges of Amazon stock prices</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set index to Date by adding Index column (index_col) to Date</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 
@@ -1769,21 +1810,13 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-The-benefit-of-setting-index-is-we-can-retrieve-specific-date-ranges-of-Amazon-stock-prices-"><strong> The benefit of setting index is we can retrieve specific date ranges of Amazon stock prices </strong><a class="anchor-link" href="#-The-benefit-of-setting-index-is-we-can-retrieve-specific-date-ranges-of-Amazon-stock-prices-">&#182;</a></h4>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieve March 2018 stock price</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03&quot;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieve March 2018 stock price</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -1796,7 +1829,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -1841,7 +1874,7 @@ For data testing, We can use data time series to generate dates (with/without bu
       <th>2018-03-01</th>
       <td>1513.599976</td>
       <td>1518.489990</td>
-      <td>1465.000000</td>
+      <td>1465.00000</td>
       <td>1493.449951</td>
       <td>1493.449951</td>
       <td>6835200</td>
@@ -1850,7 +1883,7 @@ For data testing, We can use data time series to generate dates (with/without bu
       <th>2018-03-02</th>
       <td>1469.099976</td>
       <td>1501.050049</td>
-      <td>1455.010010</td>
+      <td>1455.01001</td>
       <td>1500.250000</td>
       <td>1500.250000</td>
       <td>6587600</td>
@@ -1859,7 +1892,7 @@ For data testing, We can use data time series to generate dates (with/without bu
       <th>2018-03-05</th>
       <td>1494.239990</td>
       <td>1525.380005</td>
-      <td>1481.000000</td>
+      <td>1481.00000</td>
       <td>1523.609985</td>
       <td>1523.609985</td>
       <td>5233900</td>
@@ -1868,7 +1901,7 @@ For data testing, We can use data time series to generate dates (with/without bu
       <th>2018-03-06</th>
       <td>1533.199951</td>
       <td>1542.130005</td>
-      <td>1528.000000</td>
+      <td>1528.00000</td>
       <td>1537.640015</td>
       <td>1537.640015</td>
       <td>4561700</td>
@@ -1877,154 +1910,10 @@ For data testing, We can use data time series to generate dates (with/without bu
       <th>2018-03-07</th>
       <td>1526.520020</td>
       <td>1545.900024</td>
-      <td>1522.510010</td>
+      <td>1522.51001</td>
       <td>1545.000000</td>
       <td>1545.000000</td>
       <td>4174100</td>
-    </tr>
-    <tr>
-      <th>2018-03-08</th>
-      <td>1550.000000</td>
-      <td>1554.880005</td>
-      <td>1545.250000</td>
-      <td>1551.859985</td>
-      <td>1551.859985</td>
-      <td>3862600</td>
-    </tr>
-    <tr>
-      <th>2018-03-09</th>
-      <td>1563.500000</td>
-      <td>1578.939941</td>
-      <td>1559.079956</td>
-      <td>1578.890015</td>
-      <td>1578.890015</td>
-      <td>4534300</td>
-    </tr>
-    <tr>
-      <th>2018-03-12</th>
-      <td>1592.599976</td>
-      <td>1605.329956</td>
-      <td>1586.699951</td>
-      <td>1598.390015</td>
-      <td>1598.390015</td>
-      <td>5174200</td>
-    </tr>
-    <tr>
-      <th>2018-03-13</th>
-      <td>1615.959961</td>
-      <td>1617.540039</td>
-      <td>1578.010010</td>
-      <td>1588.180054</td>
-      <td>1588.180054</td>
-      <td>6531900</td>
-    </tr>
-    <tr>
-      <th>2018-03-14</th>
-      <td>1597.000000</td>
-      <td>1606.439941</td>
-      <td>1590.890015</td>
-      <td>1591.000000</td>
-      <td>1591.000000</td>
-      <td>4259400</td>
-    </tr>
-    <tr>
-      <th>2018-03-15</th>
-      <td>1595.000000</td>
-      <td>1596.910034</td>
-      <td>1578.109985</td>
-      <td>1582.319946</td>
-      <td>1582.319946</td>
-      <td>4069700</td>
-    </tr>
-    <tr>
-      <th>2018-03-16</th>
-      <td>1583.449951</td>
-      <td>1589.439941</td>
-      <td>1567.500000</td>
-      <td>1571.680054</td>
-      <td>1571.680054</td>
-      <td>5425000</td>
-    </tr>
-    <tr>
-      <th>2018-03-19</th>
-      <td>1554.530029</td>
-      <td>1561.660034</td>
-      <td>1525.349976</td>
-      <td>1544.930054</td>
-      <td>1544.930054</td>
-      <td>6580800</td>
-    </tr>
-    <tr>
-      <th>2018-03-20</th>
-      <td>1550.339966</td>
-      <td>1587.000000</td>
-      <td>1545.410034</td>
-      <td>1586.510010</td>
-      <td>1586.510010</td>
-      <td>4581600</td>
-    </tr>
-    <tr>
-      <th>2018-03-21</th>
-      <td>1586.449951</td>
-      <td>1590.000000</td>
-      <td>1563.170044</td>
-      <td>1581.859985</td>
-      <td>1581.859985</td>
-      <td>4750800</td>
-    </tr>
-    <tr>
-      <th>2018-03-22</th>
-      <td>1565.469971</td>
-      <td>1573.849976</td>
-      <td>1542.400024</td>
-      <td>1544.920044</td>
-      <td>1544.920044</td>
-      <td>6320600</td>
-    </tr>
-    <tr>
-      <th>2018-03-23</th>
-      <td>1539.010010</td>
-      <td>1549.020020</td>
-      <td>1495.359985</td>
-      <td>1495.560059</td>
-      <td>1495.560059</td>
-      <td>8006000</td>
-    </tr>
-    <tr>
-      <th>2018-03-26</th>
-      <td>1530.000000</td>
-      <td>1556.989990</td>
-      <td>1499.250000</td>
-      <td>1555.859985</td>
-      <td>1555.859985</td>
-      <td>5624700</td>
-    </tr>
-    <tr>
-      <th>2018-03-27</th>
-      <td>1572.400024</td>
-      <td>1575.969971</td>
-      <td>1482.319946</td>
-      <td>1497.050049</td>
-      <td>1497.050049</td>
-      <td>6999600</td>
-    </tr>
-    <tr>
-      <th>2018-03-28</th>
-      <td>1447.000000</td>
-      <td>1455.900024</td>
-      <td>1386.170044</td>
-      <td>1431.420044</td>
-      <td>1431.420044</td>
-      <td>13705300</td>
-    </tr>
-    <tr>
-      <th>2018-03-29</th>
-      <td>1406.000000</td>
-      <td>1455.469971</td>
-      <td>1365.199951</td>
-      <td>1447.339966</td>
-      <td>1447.339966</td>
-      <td>12581100</td>
     </tr>
   </tbody>
 </table>
@@ -2041,22 +1930,23 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Time-Series-enable-us-to-do-more-financial-analysis-by-few-coding-steps"><strong>Time Series enable us to do more financial analysis by few coding steps</strong><a class="anchor-link" href="#Time-Series-enable-us-to-do-more-financial-analysis-by-few-coding-steps">&#182;</a></h4><ul>
-<li>Get the average closing price of Amazon stock in March 2018</li>
-<li>Retrieve the specific date price</li>
-<li>Weekly, Monthly or Yearly average of the stock price</li>
-<li>Plot the stock price</li>
-</ul>
+<p><br>
+<strong>Time Series enable us to do more financial analysis by few coding steps</strong></p>
+
+<pre><code>- Get the average closing price of Amazon stock in March 2018
+- Retrieve the specific date price
+- Weekly, Monthly or Yearly average of the stock price
+- Plot the stock price</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get the average closing price in March 2018</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Get the average closing price in March 2018</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
@@ -2070,7 +1960,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -2087,11 +1977,11 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieving one specific day - can use loc slice function, but it&#39;s not necessary </span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">]</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving one specific day - can use loc slice function, but it&#39;s not necessary </span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2104,7 +1994,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -2167,10 +2057,10 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieving with a date range</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving with a date range</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-05&quot;</span><span class="p">]</span> 
 </pre></div>
 
@@ -2184,7 +2074,7 @@ For data testing, We can use data time series to generate dates (with/without bu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -2265,11 +2155,11 @@ For data testing, We can use data time series to generate dates (with/without bu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Yearly average of the stock price</span>
-<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yearly average of the stock price</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2282,35 +2172,18 @@ For data testing, We can use data time series to generate dates (with/without bu
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>Date
-1997-12-31       3.126400
-1998-12-31      15.661112
-1999-12-31      69.062314
-2000-12-31      46.533668
-2001-12-31      12.200426
-2002-12-31      16.484127
-2003-12-31      37.741389
-2004-12-31      43.565238
-2005-12-31      39.897103
-2006-12-31      35.909323
-2007-12-31      67.229482
-2008-12-31      69.880040
-2009-12-31      87.281825
-2010-12-31     139.140397
-2011-12-31     196.672024
-2012-12-31     220.303640
-2013-12-31     298.031588
-2014-12-31     332.551033
-2015-12-31     478.138295
-2016-12-31     699.523135
-2017-12-31     968.167012
-2018-12-31    1469.684801
+1997-12-31     3.126400
+1998-12-31    15.661112
+1999-12-31    69.062314
+2000-12-31    46.533668
+2001-12-31    12.200426
 Freq: A-DEC, Name: Close, dtype: float64</pre>
 </div>
 
@@ -2320,12 +2193,25 @@ Freq: A-DEC, Name: Close, dtype: float64</pre>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Resample data function</strong></p>
+
+<pre><code>- shift+tab to view all the possibilities of the Resample data function
+- Without Resample, the chart is more grannuily</code></pre>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Average monthly price - shift+tab to view all the possibilities of the Resample data function </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot with resample - average monthly price </span>
 <span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
@@ -2339,13 +2225,13 @@ Freq: A-DEC, Name: Close, dtype: float64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x210fb40ed30&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1bbc8b18208&gt;</pre>
 </div>
 
 </div>
@@ -2582,10 +2468,10 @@ CCIiAiggiIhIQAFBREQABQQREQkoIIiICAD/H34v7e5Yifd7AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Without Resample, the chart is more grannuily</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot without Resample</span>
 <span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
@@ -2599,13 +2485,13 @@ CCIiAiggiIhIQAFBREQABQQREQkoIIiICAD/H34v7e5Yifd7AAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x210fcdb3a20&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1bbc8b18128&gt;</pre>
 </div>
 
 </div>
@@ -2841,23 +2727,24 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Assigning-date-to-a-dataset-with-missing-date"><strong>Assigning date to a dataset with missing date</strong><a class="anchor-link" href="#Assigning-date-to-a-dataset-with-missing-date">&#182;</a></h4><ul>
-<li>The following example is the April 2018 Amazon stock prices but without any date</li>
-<li>Read the stock closing price with the missing date</li>
-<li>Assign the date to match the stock price</li>
-</ul>
+<p><br>
+<strong>Assigning date to a dataset with missing date</strong></p>
+
+<pre><code>- The following example is the April 2018 Amazon stock prices but without any date
+- Read the stock closing price with the missing date
+- Assign the date to match the stock price</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read April 2018 Amazon stock price without date column</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read April 2018 Amazon stock price without date column</span>
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data\Amazon_No_Date.csv&#39;</span><span class="p">)</span>
-<span class="n">df1</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2870,7 +2757,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -2947,150 +2834,6 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
       <td>1405.229980</td>
       <td>5882300</td>
     </tr>
-    <tr>
-      <th>5</th>
-      <td>1425.030029</td>
-      <td>1438.479980</td>
-      <td>1402.569946</td>
-      <td>1406.079956</td>
-      <td>1406.079956</td>
-      <td>4208200</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1431.989990</td>
-      <td>1438.380005</td>
-      <td>1415.699951</td>
-      <td>1436.219971</td>
-      <td>1436.219971</td>
-      <td>4254100</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1439.439941</td>
-      <td>1448.780029</td>
-      <td>1424.890015</td>
-      <td>1427.050049</td>
-      <td>1427.050049</td>
-      <td>3582500</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1439.500000</td>
-      <td>1452.119995</td>
-      <td>1435.060059</td>
-      <td>1448.500000</td>
-      <td>1448.500000</td>
-      <td>3135000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>1445.000000</td>
-      <td>1447.000000</td>
-      <td>1427.479980</td>
-      <td>1441.500000</td>
-      <td>1441.500000</td>
-      <td>2808600</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>1462.300049</td>
-      <td>1507.189941</td>
-      <td>1457.020020</td>
-      <td>1503.829956</td>
-      <td>1503.829956</td>
-      <td>5114400</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1514.650024</td>
-      <td>1533.800049</td>
-      <td>1504.109985</td>
-      <td>1527.839966</td>
-      <td>1527.839966</td>
-      <td>5227500</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>1543.219971</td>
-      <td>1568.520020</td>
-      <td>1539.060059</td>
-      <td>1556.910034</td>
-      <td>1556.910034</td>
-      <td>6523700</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>1546.689941</td>
-      <td>1548.000000</td>
-      <td>1503.410034</td>
-      <td>1517.859985</td>
-      <td>1517.859985</td>
-      <td>4465400</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>1535.800049</td>
-      <td>1539.500000</td>
-      <td>1448.449951</td>
-      <td>1460.089966</td>
-      <td>1460.089966</td>
-      <td>7494700</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>1458.000000</td>
-      <td>1469.989990</td>
-      <td>1415.020020</td>
-      <td>1460.170044</td>
-      <td>1460.170044</td>
-      <td>6587300</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>1485.010010</td>
-      <td>1529.420044</td>
-      <td>1478.500000</td>
-      <td>1517.959961</td>
-      <td>1517.959961</td>
-      <td>8801100</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>1582.500000</td>
-      <td>1596.000000</td>
-      <td>1560.939941</td>
-      <td>1566.130005</td>
-      <td>1566.130005</td>
-      <td>5464100</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -3104,12 +2847,28 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assign the date to match the stock price, the month of April started at 4/1/18 and ended at 4/30/18 with Business day as the frequency</span>
-<span class="c1"># The Business day function does not consider holidays</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;4/1/2018&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;4/30/2018&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="o">**</span><span class="n">Assign</span> <span class="n">the</span> <span class="n">date</span> <span class="n">to</span> <span class="n">match</span> <span class="n">the</span> <span class="n">data</span><span class="o">**</span>
+    <span class="o">-</span> <span class="n">Use</span> <span class="s2">&quot;rng&quot;</span> <span class="n">function</span> <span class="n">to</span> <span class="n">assign</span> <span class="n">date</span> <span class="n">to</span> <span class="n">matach</span> <span class="n">stock</span> <span class="n">price</span>
+    <span class="o">-</span> <span class="n">April</span> <span class="n">started</span> <span class="n">at</span> <span class="mi">4</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">18</span> <span class="ow">and</span> <span class="n">ended</span> <span class="n">at</span> <span class="mi">4</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mi">18</span> <span class="ow">and</span> <span class="n">apply</span> <span class="s2">&quot;B&quot;</span> <span class="p">(</span><span class="n">Business</span> <span class="n">Day</span><span class="p">)</span> <span class="k">as</span> <span class="n">the</span> <span class="n">frequency</span>
+    <span class="o">-</span> <span class="n">Shift</span><span class="o">+</span> <span class="n">tab</span> <span class="n">twice</span> <span class="n">on</span> <span class="s2">&quot;B&quot;</span> <span class="n">to</span> <span class="n">view</span> <span class="n">the</span> <span class="n">link</span> <span class="n">to</span> <span class="n">view</span> <span class="n">more</span> <span class="n">day</span> <span class="n">function</span>
+    <span class="o">-</span> <span class="n">The</span> <span class="n">Business</span> <span class="n">day</span> <span class="n">function</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">consider</span> <span class="n">holidays</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;4/1/2018&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;4/30/2018&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">rng</span>
 </pre></div>
 
@@ -3123,7 +2882,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -3144,14 +2903,23 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Set the date column as the index</strong><br> - You must specify "True" to modify the original dataframe</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the date column as the index. You must specify &quot;True&quot; to modify the original dataframe</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3164,7 +2932,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -3241,150 +3009,6 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
       <td>1405.229980</td>
       <td>5882300</td>
     </tr>
-    <tr>
-      <th>2018-04-09</th>
-      <td>1425.030029</td>
-      <td>1438.479980</td>
-      <td>1402.569946</td>
-      <td>1406.079956</td>
-      <td>1406.079956</td>
-      <td>4208200</td>
-    </tr>
-    <tr>
-      <th>2018-04-10</th>
-      <td>1431.989990</td>
-      <td>1438.380005</td>
-      <td>1415.699951</td>
-      <td>1436.219971</td>
-      <td>1436.219971</td>
-      <td>4254100</td>
-    </tr>
-    <tr>
-      <th>2018-04-11</th>
-      <td>1439.439941</td>
-      <td>1448.780029</td>
-      <td>1424.890015</td>
-      <td>1427.050049</td>
-      <td>1427.050049</td>
-      <td>3582500</td>
-    </tr>
-    <tr>
-      <th>2018-04-12</th>
-      <td>1439.500000</td>
-      <td>1452.119995</td>
-      <td>1435.060059</td>
-      <td>1448.500000</td>
-      <td>1448.500000</td>
-      <td>3135000</td>
-    </tr>
-    <tr>
-      <th>2018-04-13</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
-    </tr>
-    <tr>
-      <th>2018-04-16</th>
-      <td>1445.000000</td>
-      <td>1447.000000</td>
-      <td>1427.479980</td>
-      <td>1441.500000</td>
-      <td>1441.500000</td>
-      <td>2808600</td>
-    </tr>
-    <tr>
-      <th>2018-04-17</th>
-      <td>1462.300049</td>
-      <td>1507.189941</td>
-      <td>1457.020020</td>
-      <td>1503.829956</td>
-      <td>1503.829956</td>
-      <td>5114400</td>
-    </tr>
-    <tr>
-      <th>2018-04-18</th>
-      <td>1514.650024</td>
-      <td>1533.800049</td>
-      <td>1504.109985</td>
-      <td>1527.839966</td>
-      <td>1527.839966</td>
-      <td>5227500</td>
-    </tr>
-    <tr>
-      <th>2018-04-19</th>
-      <td>1543.219971</td>
-      <td>1568.520020</td>
-      <td>1539.060059</td>
-      <td>1556.910034</td>
-      <td>1556.910034</td>
-      <td>6523700</td>
-    </tr>
-    <tr>
-      <th>2018-04-20</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
-    </tr>
-    <tr>
-      <th>2018-04-23</th>
-      <td>1546.689941</td>
-      <td>1548.000000</td>
-      <td>1503.410034</td>
-      <td>1517.859985</td>
-      <td>1517.859985</td>
-      <td>4465400</td>
-    </tr>
-    <tr>
-      <th>2018-04-24</th>
-      <td>1535.800049</td>
-      <td>1539.500000</td>
-      <td>1448.449951</td>
-      <td>1460.089966</td>
-      <td>1460.089966</td>
-      <td>7494700</td>
-    </tr>
-    <tr>
-      <th>2018-04-25</th>
-      <td>1458.000000</td>
-      <td>1469.989990</td>
-      <td>1415.020020</td>
-      <td>1460.170044</td>
-      <td>1460.170044</td>
-      <td>6587300</td>
-    </tr>
-    <tr>
-      <th>2018-04-26</th>
-      <td>1485.010010</td>
-      <td>1529.420044</td>
-      <td>1478.500000</td>
-      <td>1517.959961</td>
-      <td>1517.959961</td>
-      <td>8801100</td>
-    </tr>
-    <tr>
-      <th>2018-04-27</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
-    </tr>
-    <tr>
-      <th>2018-04-30</th>
-      <td>1582.500000</td>
-      <td>1596.000000</td>
-      <td>1560.939941</td>
-      <td>1566.130005</td>
-      <td>1566.130005</td>
-      <td>5464100</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -3398,311 +3022,10 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Chart Amazon April 2017 stock closing price</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[30]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x210fcf24eb8&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-b9m1sPV6wwAAAABJRU5ErkJggg==
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Average Amazon price between 4/1/18 - 4/10/18</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Average Amazon price between 4/1/18 - 4/10/18</span>
 <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;2018-04-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-04-10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
 </pre></div>
 
@@ -3731,13 +3054,22 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Add weekends to the list. The price would be the same as the previous business day's closing price</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add weekends to the list. The price would be the same as the previous business day&#39;s closing price</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -3750,7 +3082,7 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -3827,222 +3159,6 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
       <td>1405.229980</td>
       <td>5882300</td>
     </tr>
-    <tr>
-      <th>2018-04-07</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
-    </tr>
-    <tr>
-      <th>2018-04-08</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
-    </tr>
-    <tr>
-      <th>2018-04-09</th>
-      <td>1425.030029</td>
-      <td>1438.479980</td>
-      <td>1402.569946</td>
-      <td>1406.079956</td>
-      <td>1406.079956</td>
-      <td>4208200</td>
-    </tr>
-    <tr>
-      <th>2018-04-10</th>
-      <td>1431.989990</td>
-      <td>1438.380005</td>
-      <td>1415.699951</td>
-      <td>1436.219971</td>
-      <td>1436.219971</td>
-      <td>4254100</td>
-    </tr>
-    <tr>
-      <th>2018-04-11</th>
-      <td>1439.439941</td>
-      <td>1448.780029</td>
-      <td>1424.890015</td>
-      <td>1427.050049</td>
-      <td>1427.050049</td>
-      <td>3582500</td>
-    </tr>
-    <tr>
-      <th>2018-04-12</th>
-      <td>1439.500000</td>
-      <td>1452.119995</td>
-      <td>1435.060059</td>
-      <td>1448.500000</td>
-      <td>1448.500000</td>
-      <td>3135000</td>
-    </tr>
-    <tr>
-      <th>2018-04-13</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
-    </tr>
-    <tr>
-      <th>2018-04-14</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
-    </tr>
-    <tr>
-      <th>2018-04-15</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
-    </tr>
-    <tr>
-      <th>2018-04-16</th>
-      <td>1445.000000</td>
-      <td>1447.000000</td>
-      <td>1427.479980</td>
-      <td>1441.500000</td>
-      <td>1441.500000</td>
-      <td>2808600</td>
-    </tr>
-    <tr>
-      <th>2018-04-17</th>
-      <td>1462.300049</td>
-      <td>1507.189941</td>
-      <td>1457.020020</td>
-      <td>1503.829956</td>
-      <td>1503.829956</td>
-      <td>5114400</td>
-    </tr>
-    <tr>
-      <th>2018-04-18</th>
-      <td>1514.650024</td>
-      <td>1533.800049</td>
-      <td>1504.109985</td>
-      <td>1527.839966</td>
-      <td>1527.839966</td>
-      <td>5227500</td>
-    </tr>
-    <tr>
-      <th>2018-04-19</th>
-      <td>1543.219971</td>
-      <td>1568.520020</td>
-      <td>1539.060059</td>
-      <td>1556.910034</td>
-      <td>1556.910034</td>
-      <td>6523700</td>
-    </tr>
-    <tr>
-      <th>2018-04-20</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
-    </tr>
-    <tr>
-      <th>2018-04-21</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
-    </tr>
-    <tr>
-      <th>2018-04-22</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
-    </tr>
-    <tr>
-      <th>2018-04-23</th>
-      <td>1546.689941</td>
-      <td>1548.000000</td>
-      <td>1503.410034</td>
-      <td>1517.859985</td>
-      <td>1517.859985</td>
-      <td>4465400</td>
-    </tr>
-    <tr>
-      <th>2018-04-24</th>
-      <td>1535.800049</td>
-      <td>1539.500000</td>
-      <td>1448.449951</td>
-      <td>1460.089966</td>
-      <td>1460.089966</td>
-      <td>7494700</td>
-    </tr>
-    <tr>
-      <th>2018-04-25</th>
-      <td>1458.000000</td>
-      <td>1469.989990</td>
-      <td>1415.020020</td>
-      <td>1460.170044</td>
-      <td>1460.170044</td>
-      <td>6587300</td>
-    </tr>
-    <tr>
-      <th>2018-04-26</th>
-      <td>1485.010010</td>
-      <td>1529.420044</td>
-      <td>1478.500000</td>
-      <td>1517.959961</td>
-      <td>1517.959961</td>
-      <td>8801100</td>
-    </tr>
-    <tr>
-      <th>2018-04-27</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
-    </tr>
-    <tr>
-      <th>2018-04-28</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
-    </tr>
-    <tr>
-      <th>2018-04-29</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
-    </tr>
-    <tr>
-      <th>2018-04-30</th>
-      <td>1582.500000</td>
-      <td>1596.000000</td>
-      <td>1560.939941</td>
-      <td>1566.130005</td>
-      <td>1566.130005</td>
-      <td>5464100</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -4054,13 +3170,22 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>View stock data by weekly</strong><br> - 4/1/18 is Sunday (non-business day), the first weekly date starts at 4/8/18</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Change the dataframe to Weekly</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -4156,22 +3281,32 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Generating-Dates-and-Random-Data-for-Testing"><strong> Generating Dates and Random Data for Testing</strong><a class="anchor-link" href="#-Generating-Dates-and-Random-Data-for-Testing">&#182;</a></h4><ul>
-<li>Set the date frequency to 'B' for business days</li>
-<li>Import numpy to generate random numbers</li>
-<li>Set the index to match the random numbers</li>
-</ul>
+<p><br>
+<strong> Mock Data - Generating Dates and Random Data for Testing</strong></p>
+
+<pre><code>- Set the date frequency to 'B' for business days
+- Import numpy to generate random numbers
+- Set the index to match the random numbers</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Generating 30 business days starting from 8/15/2018</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generating 60 business days starting from 7/1/2018</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;7/1/2018&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;8/15/2018&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">rng</span>
 </pre></div>
 
@@ -4185,27 +3320,20 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>DatetimeIndex([&#39;2018-07-02&#39;, &#39;2018-07-03&#39;, &#39;2018-07-04&#39;, &#39;2018-07-05&#39;,
-               &#39;2018-07-06&#39;, &#39;2018-07-09&#39;, &#39;2018-07-10&#39;, &#39;2018-07-11&#39;,
-               &#39;2018-07-12&#39;, &#39;2018-07-13&#39;, &#39;2018-07-16&#39;, &#39;2018-07-17&#39;,
-               &#39;2018-07-18&#39;, &#39;2018-07-19&#39;, &#39;2018-07-20&#39;, &#39;2018-07-23&#39;,
-               &#39;2018-07-24&#39;, &#39;2018-07-25&#39;, &#39;2018-07-26&#39;, &#39;2018-07-27&#39;,
-               &#39;2018-07-30&#39;, &#39;2018-07-31&#39;, &#39;2018-08-01&#39;, &#39;2018-08-02&#39;,
-               &#39;2018-08-03&#39;, &#39;2018-08-06&#39;, &#39;2018-08-07&#39;, &#39;2018-08-08&#39;,
-               &#39;2018-08-09&#39;, &#39;2018-08-10&#39;, &#39;2018-08-13&#39;, &#39;2018-08-14&#39;,
-               &#39;2018-08-15&#39;, &#39;2018-08-16&#39;, &#39;2018-08-17&#39;, &#39;2018-08-20&#39;,
+<pre>DatetimeIndex([&#39;2018-08-15&#39;, &#39;2018-08-16&#39;, &#39;2018-08-17&#39;, &#39;2018-08-20&#39;,
                &#39;2018-08-21&#39;, &#39;2018-08-22&#39;, &#39;2018-08-23&#39;, &#39;2018-08-24&#39;,
                &#39;2018-08-27&#39;, &#39;2018-08-28&#39;, &#39;2018-08-29&#39;, &#39;2018-08-30&#39;,
                &#39;2018-08-31&#39;, &#39;2018-09-03&#39;, &#39;2018-09-04&#39;, &#39;2018-09-05&#39;,
                &#39;2018-09-06&#39;, &#39;2018-09-07&#39;, &#39;2018-09-10&#39;, &#39;2018-09-11&#39;,
                &#39;2018-09-12&#39;, &#39;2018-09-13&#39;, &#39;2018-09-14&#39;, &#39;2018-09-17&#39;,
-               &#39;2018-09-18&#39;, &#39;2018-09-19&#39;, &#39;2018-09-20&#39;, &#39;2018-09-21&#39;],
+               &#39;2018-09-18&#39;, &#39;2018-09-19&#39;, &#39;2018-09-20&#39;, &#39;2018-09-21&#39;,
+               &#39;2018-09-24&#39;, &#39;2018-09-25&#39;],
               dtype=&#39;datetime64[ns]&#39;, freq=&#39;B&#39;)</pre>
 </div>
 
@@ -4215,13 +3343,22 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Import numpy to generate random numbers between 1 to 20 for the length of 30 days</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import numpy to generate random numbers between 1 to 20 for the length of 60 days</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">))</span>
 </pre></div>
 
@@ -4235,16 +3372,14 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[38]:</div>
+<div class="prompt output_prompt">Out[26]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([ 5, 11,  7, 15, 10, 17, 14,  7, 12, 13,  7, 15,  8, 12, 19,  5,  9,
-        6, 17,  3, 19,  1, 17, 14, 18, 11, 19, 18, 13,  3, 10,  5, 18,  1,
-       10,  8,  2, 14,  7,  3, 11,  3, 10, 11, 15, 19,  4, 13,  4,  8,  4,
-        2, 11, 10,  5,  7, 17, 13,  1,  3])</pre>
+<pre>array([ 7, 14,  7,  2, 16,  9, 12,  5, 15,  8,  3, 18,  5,  5,  9,  8, 10,
+        8, 13, 15, 12, 12, 19,  4, 18, 12, 15,  8, 16, 13])</pre>
 </div>
 
 </div>
@@ -4252,14 +3387,23 @@ b9m1sPV6wwAAAABJRU5ErkJggg==
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Set index to match the random numbers</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set index to match the random numbers</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
 <span class="n">ts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
