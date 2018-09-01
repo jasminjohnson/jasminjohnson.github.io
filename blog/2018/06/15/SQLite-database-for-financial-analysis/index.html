@@ -1416,10 +1416,10 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 
 
-<p>After merging and reshaping the datasets, we can use SQLite to safely store, organize and manipulate data in smaller environments.
-SQLite is a flexible database that can do real work in real business environments and the SQLite library is also integrated
+<p>After merging and reshaping the datasets, we can use SQLite to store, organize and manipulate data in smaller environments.
+<br>SQLite is a public-domain software package that provides a relational database management system, or RDBMSSQLite. It is a flexible database that can do real work in real business environments and the SQLite library is also integrated
 into a number of popular scripting languages, including Python.
-This database tool can also be useful for accountants doing financial analysis.</p>
+</p>
 
 </div>
 </div>
@@ -1437,27 +1437,7 @@ This database tool can also be useful for accountants doing financial analysis.<
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>What is SQLite?</strong>
-from "Using SQLite" by Jay A. Kreibich</p>
-<p>What is SQLite: In the simplest terms, SQLite is a public-domain software package that provides a
-relational database management system, or RDBMS. Relational database systems are
-used to store user-defined records in large tables. In addition to data storage and management, a database engine can process complex query commands that combine data
-from multiple tables to generate reports and data summaries.
-The “Lite” in SQLite does not refer to its capabilities. Rather, SQLite is lightweight
-when it comes to setup complexity, administrative overhead, and resource usage</p>
-<p><strong>What is DB Browser for SQLite?</strong>
-DB Browser for SQLite is a high quality, visual, open source tool used to create, design, and edit database files compatible with SQLite.</p>
-<p>It is for users and developers wanting to create, search, and edit databases. It uses a familiar spreadsheet-like interface,
-and you don't need to learn complicated SQL commands. This program is not a visual shell for the sqlite command line tool.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Why would we use SQLite to read Excel Files?</strong></p>
+<p><strong>Goals: Manipulate Data in SQLite</strong></p>
 <ul>
 <li>Sort data on several fields</li>
 <li>Combine data from different spreadheets </li>
@@ -1478,7 +1458,13 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <ul>
 <li>The example is an Excel file "PremiumLossSQLite.xlsx" </li>
 <li>The file has three tabs - premium, loss and reinsurance</li>
-<li>The first row in each sheet should have legal column names. Here is the conversion code:</li>
+<li>The first row in each sheet should have legal column names.</li>
+<li>Here is the conversion codes:<ul>
+<li>Import library</li>
+<li>Name of Excel xlsx file. SQLite database will have the same name and extension .db (filename+".db")</li>
+<li>Use if_exists so we can repeat the process when new data is available for rerun</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -1489,14 +1475,9 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import library</span>
-<span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 
-<span class="c1"># Name of Excel xlsx file. SQLite database will have the same name and extension .db</span>
 <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PremiumLossSQLite&quot;</span>   
-
-<span class="c1"># filename+&quot;.db&quot;</span>
-<span class="c1"># use if_exists so we can repeat the process when new data is available for rerun</span>
 
 <span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span> 
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1516,11 +1497,13 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>A handy tool to visualize and access SQLite databases is the free DB Browser</strong></p>
-<ul>
-<li>Below is the screenshot of the database structures after connecting from Excel to SQLite by using Python
-<img src="/images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></li>
-</ul>
+<p><br>
+<strong>A handy tool to visualize and access SQLite databases is the free DB Browser</strong></p>
+
+<pre><code>- DB Browser for SQLite is a high quality, visual, open source tool used to create, design, and edit database files compatible with SQLite.
+- Below is the screenshot of the database structures after connecting from Excel to SQLite by using Python
+</code></pre>
+<p><img src="/images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></p>
 
 </div>
 </div>
@@ -1529,9 +1512,9 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Query the database - query list of policies with incurred losses that covered under the reinsurance treaty</strong></p>
+<p><br>
+<strong>Query the database</strong></p>
 <ul>
-<li>Instead of Excel VLookup function that has certian limitation</li>
 <li>We can repeat/automate the query process when new data get updated </li>
 <li>Save the query result to SQLite or Excel</li>
 <li>Option A : Inner join between the reinsurance, premium and loss data </li>
@@ -1701,7 +1684,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Save the query result in SQLite</strong>
+<p><br>
+<strong>Save the query result to SQLite</strong>
 <img src="/images/SQLQuery.png" alt="[img: Reinsurance Query Save in SQLite]" title="Reinsurance Query SQL " /></p>
 
 </div>
@@ -1711,7 +1695,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Save the query result as an Excel file</strong>
+<p><br>
+<strong>Save the query result to Excel</strong>
 <img src="/images/reinsurance.jpg" alt="[img: Reinsurance Query Save in Excel from SQLite]" title="Reinsurance Query Excel" /></p>
 
 </div>
@@ -1806,7 +1791,8 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Insert a column to table - "premium"</strong></p>
+<p><br>
+<strong>Insert a column to table - "premium"</strong></p>
 <ul>
 <li>Option A - use DML to add a column :-|</li>
 <li>Option B - use to_sql to add a column - much easier and more native to PANDAS way of doing things</li>
@@ -1820,12 +1806,12 @@ and you don't need to learn complicated SQL commands. This program is not a visu
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Premium table before inserting new column</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Premium table before inserting new column</span>
 <span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">select p.* from premium as p</span>
 <span class="s1">&#39;&#39;&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
