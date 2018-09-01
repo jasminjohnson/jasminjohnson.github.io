@@ -1437,15 +1437,15 @@ into a number of popular scripting languages, including Python.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Goals: Manipulate Data in SQLite</strong></p>
-<ul>
-<li>Sort data on several fields</li>
-<li>Combine data from different spreadheets </li>
-<li>Use free graphical user interface (GUI) tools to run SQL queries on database</li>
-<li>Convert Excel files to tables</li>
-<li>Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code</li>
-<li>Note: Excel tab name cannot have spaces, but underscores are acceptable</li>
-</ul>
+<p><br>
+<strong>Goals: Manipulate Data in SQLite</strong></p>
+
+<pre><code>- Sort data on several fields
+- Combine data from different spreadheets 
+- Use free graphical user interface (GUI) tools to run SQL queries on database
+- Convert Excel files to tables
+- Install Scientific Python to convert Excel file in SQLite database in just 8 lines of code
+- Note: Excel tab name cannot have spaces, but underscores are acceptable</code></pre>
 
 </div>
 </div>
@@ -1455,17 +1455,14 @@ into a number of popular scripting languages, including Python.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Connecting SQLite </strong></p>
-<ul>
-<li>The example is an Excel file "PremiumLossSQLite.xlsx" </li>
-<li>The file has three tabs - premium, loss and reinsurance</li>
-<li>The first row in each sheet should have legal column names.</li>
-<li>Here is the conversion codes:<ul>
-<li>Import library</li>
-<li>Name of Excel xlsx file. SQLite database will have the same name and extension .db (filename+".db")</li>
-<li>Use if_exists so we can repeat the process when new data is available for rerun</li>
-</ul>
-</li>
-</ul>
+
+<pre><code>- The example is an Excel file "PremiumLossSQLite.xlsx" 
+- The file has three tabs - premium, loss and reinsurance
+- The first row in each sheet should have legal column names.
+- Here is the conversion codes:
+    - Import library
+    - Name of Excel xlsx file. SQLite database will have the same name and extension .db (filename+".db")
+    - Use if_exists so we can repeat the process when new data is available for rerun</code></pre>
 
 </div>
 </div>
@@ -1514,12 +1511,11 @@ into a number of popular scripting languages, including Python.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
 <strong>Query the database</strong></p>
-<ul>
-<li>We can repeat/automate the query process when new data get updated </li>
-<li>Save the query result to SQLite or Excel</li>
-<li>Option A : Inner join between the reinsurance, premium and loss data </li>
-<li>Option B : Selecting row</li>
-</ul>
+
+<pre><code>- We can repeat/automate the query process when new data get updated 
+- Save the query result to SQLite or Excel
+- Option A : Inner join between the reinsurance, premium and loss data 
+- Option B : Selecting row</code></pre>
 
 </div>
 </div>
@@ -1793,10 +1789,9 @@ into a number of popular scripting languages, including Python.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
 <strong>Insert a column to table - "premium"</strong></p>
-<ul>
-<li>Option A - use DML to add a column :-|</li>
-<li>Option B - use to_sql to add a column - much easier and more native to PANDAS way of doing things</li>
-</ul>
+
+<pre><code>- Option A - use DML to add a column :-|
+- Option B - use to_sql to add a column - much easier and more native to PANDAS way of doing things</code></pre>
 
 </div>
 </div>
