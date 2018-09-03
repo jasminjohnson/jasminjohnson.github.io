@@ -1496,21 +1496,6 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>DB Browser - a tool to visualize and access SQLite databases</strong></p>
-
-<pre><code>- DB Browser for SQLite is a high quality, visual, open source tool used to create, design, and edit database files compatible with SQLite.
-- Below is the screenshot of the database structures after connecting from Excel to SQLite by using Python
-</code></pre>
-<p><img src="/images/DBimage.png" alt="[img: DB Browser after import Excel to SQLite and view the table]" title="DbBrowser Query" /></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
 <strong>Query the database</strong></p>
 
 <pre><code>- We can repeat/automate the query process when new data get updated 
@@ -1688,16 +1673,23 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Save the query result to SQLite</strong>
-<img src="/images/SQLQuery.png" alt="[img: Reinsurance Query Save in SQLite]" title="Reinsurance Query SQL " /></p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="o">**</span><span class="n">DB</span> <span class="n">Browser</span> <span class="o">-</span> <span class="n">a</span> <span class="n">tool</span> <span class="n">to</span> <span class="n">visualize</span> <span class="ow">and</span> <span class="n">access</span> <span class="n">SQLite</span> <span class="n">databases</span><span class="o">**</span>
+    <span class="o">-</span> <span class="n">DB</span> <span class="n">Browser</span> <span class="k">for</span> <span class="n">SQLite</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">high</span> <span class="n">quality</span><span class="p">,</span> <span class="n">visual</span><span class="p">,</span> <span class="nb">open</span> <span class="n">source</span> <span class="n">tool</span> <span class="n">used</span> <span class="n">to</span> <span class="n">create</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="ow">and</span> <span class="n">edit</span> <span class="n">database</span> <span class="n">files</span> <span class="n">compatible</span> <span class="k">with</span> <span class="n">SQLite</span><span class="o">.</span>
+    <span class="o">-</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">query</span> <span class="n">result</span> <span class="n">to</span> <span class="n">SQLite</span>
+    <span class="o">-</span> <span class="n">Below</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">screenshot</span> <span class="n">of</span> <span class="n">the</span> <span class="n">database</span> <span class="n">structures</span> <span class="n">after</span> <span class="n">connecting</span> <span class="kn">from</span> <span class="nn">Excel</span> <span class="n">to</span> <span class="n">SQLite</span> <span class="n">by</span> <span class="n">using</span> <span class="n">Python</span>    
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;/images/SQLQuery.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;[img: Reinsurance Query Save in SQLite]&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Reinsurance Query SQL &quot;</span> <span class="o">/&gt;</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -1810,7 +1802,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Insert a column to table - "premium"</strong></p>
+<strong>Insert a column to table</strong></p>
 
 <pre><code>- Option A - use DML to add a column :-|
 - Option B - use to_sql to add a column - much easier and more native to PANDAS way of doing things</code></pre>
