@@ -1414,47 +1414,12 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Plotly-Interactive-Dashboard">Plotly Interactive Dashboard<a class="anchor-link" href="#Plotly-Interactive-Dashboard">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 
 
-<p>A data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators, metrics and key data points.</p>
-<p>Behind the scenes, a dashboard connects to your files, attachments, services and API’s, but on the surface displays all this data in the form of tables, line charts, bar charts and gauges.</p>
-<p>Plotly provides a web-service for hosting graphs and we can view the dashboard offline as well.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Goal: Data Visualization in Plotly</strong></p>
-
-<pre><code>- Import Data into Plotly
-- You can execute the code when new data avaiable on the daily or weekly or quarterly basis
-- Create the table then view the table online or offline
-- Plot the dashboard online or offline</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Plotyly - View dasboard using python instructions *
-<pre><code>- ref: https://plot.ly/python/offline/
-- ref: https://plot.ly/python/ipython-notebook-tutorial/#import-data</code></pre>
-</li>
-</ul>
+<p>A data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators, metrics and key data points.
+Behind the scenes, a dashboard connects to your files, attachments, services and API’s, but on the surface displays all this data in the form of tables, line charts, bar charts and gauges.</p>
+<p>Plotly provides a web-service for hosting graphs and we can view the dashboard offline as well.
+</p>
 
 </div>
 </div>
@@ -1464,7 +1429,34 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Import Plotly</strong></p>
+<strong>Goal:  Data Visualization in Plotly</strong></p>
+
+<pre><code>- Import Data into Plotly
+- You can execute the code when new data avaiable on the daily or weekly or quarterly basis
+- Create the table then view the table online or offline
+- Plot the dashboard online or offline  </code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>*Plotly instruction reference</p>
+
+<pre><code>  - ref: https://plot.ly/python/offline/
+  - ref: https://plot.ly/python/ipython-notebook-tutorial/#import-data</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Import Plotly Library</strong></p>
 
 </div>
 </div>
@@ -1527,7 +1519,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Overview of the example csv. file -"Population, Birthrate and Deathrate by Country"</strong></p>
+<p><strong>Overview Data -"Population, Birthrate and Deathrate by Country"</strong></p>
 
 </div>
 </div>
@@ -1537,19 +1529,19 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Import the file</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/LifePlotly.csv&#39;</span><span class="p">)</span>
 
-<span class="c1"># You can import the file from sepecific website, for example if store the file in github</span>
-<span class="c1"># df = pd.read_csv(&quot;https://raw.githubusercontent.com/plotly/datasets/master/LifePlotly.csv&quot;)</span>
+<span class="c1">## You can import the file from sepecific website, for example if store the file in github</span>
+<span class="c1">## df = pd.read_csv(&quot;https://raw.githubusercontent.com/plotly/datasets/master/LifePlotly.csv&quot;)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="c1"># View the country in 88th row</span>
+<span class="c1">## View the country in 88th row</span>
 <span class="n">country</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CountryName</span>
 <span class="n">country</span><span class="p">[</span><span class="mi">88</span><span class="p">]</span>
 
-<span class="c1"># Calculates the standard deviation for each column.</span>
+<span class="c1">## Calculates the standard deviation for each column.</span>
 <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 
@@ -1719,8 +1711,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>*Link to Plotly Table**
-<a href="https://plot.ly/~jasmin.c.johnson/14/#/">https://plot.ly/~jasmin.c.johnson/14/#/</a></p>
+<p>*Link to Plotly Table - <a href="https://plot.ly/~jasmin.c.johnson/14/#/">https://plot.ly/~jasmin.c.johnson/14/#/</a></p>
 
 </div>
 </div>
@@ -1730,23 +1721,10 @@ dtype: float64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong> Code to View Table Offline</strong></p>
+<strong> Code to View Table Offline</strong> <br> - plotly.offline.iplot(table, filename='world population table')</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;world population table&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -1817,7 +1795,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>*Linke to Plotly Dashboard - Bar Graph**<a href="https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/">https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/</a></p>
+<p>*Linke to Plotly Dashboard - Bar Graph - <a href="https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/">https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/</a></p>
 
 </div>
 </div>
@@ -1908,8 +1886,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Link to Plotly Dashboard - Scatter Chart </strong>
-<a href="https://plot.ly/~jasmin.c.johnson/18/birthrate-vs-population/#/">https://plot.ly/~jasmin.c.johnson/18/birthrate-vs-population/#/</a></p>
+<p>*Link to Plotly Dashboard - Scatter Chart - <a href="https://plot.ly/~jasmin.c.johnson/18/birthrate-vs-population/#/">https://plot.ly/~jasmin.c.johnson/18/birthrate-vs-population/#/</a></p>
 
 </div>
 </div>
@@ -1918,7 +1895,8 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example of How to Creat a Scatter Graph Dashboard</strong></p>
+<p><br>
+<strong>Example of How to Creat a Scatter Graph Dashboard</strong></p>
 
 </div>
 </div>

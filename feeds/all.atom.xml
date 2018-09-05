@@ -3,9 +3,9 @@
 Time Series can be useful to analyze financial data in different frequencies based on data distribution.&lt;br&gt;We can reload/repeat the data analysis process in Python and export the result to Excel or CSV on daily, weekly, monthly, quarterly or yearly basis.&lt;/p&gt;
 &lt;p&gt;</summary><category term="pandas"></category><category term="timeseries"></category><category term="analysis"></category></entry><entry><title>Data Visualization II - Plotly</title><link href="http://jasminjohnson.github.io/blog/2018/08/15/plotly/" rel="alternate"></link><published>2018-08-15T00:00:00-04:00</published><updated>2018-08-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-08-15:blog/2018/08/15/plotly/</id><summary type="html">
 
-&lt;p&gt;A data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators, metrics and key data points.&lt;/p&gt;
-&lt;p&gt;Behind the scenes, a dashboard connects to your files, attachments, services and API’s, but on the surface displays all this data in the form of tables, line charts, bar charts and gauges.&lt;/p&gt;
-&lt;p&gt;Plotly provides a web-service for hosting graphs and we can view the dashboard offline as well.&lt;/p&gt;
+&lt;p&gt;A data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators, metrics and key data points.
+Behind the scenes, a dashboard connects to your files, attachments, services and API’s, but on the surface displays all this data in the form of tables, line charts, bar charts and gauges.&lt;/p&gt;
+&lt;p&gt;Plotly provides a web-service for hosting graphs and we can view the dashboard offline as well.
 </summary><category term="analysis"></category><category term="visualization"></category><category term="plotly"></category></entry><entry><title>Data Visualization I - Python</title><link href="http://jasminjohnson.github.io/blog/2018/07/15/SQLite-Python-Pandas-financial-analysis/" rel="alternate"></link><published>2018-07-15T00:00:00-04:00</published><updated>2018-07-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-07-15:blog/2018/07/15/SQLite-Python-Pandas-financial-analysis/</id><summary type="html">
 
 &lt;p&gt;Data visualizations and static or interactive visualizations are one of the data analysis tools to helping identify outliers
