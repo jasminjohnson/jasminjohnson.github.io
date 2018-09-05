@@ -10,9 +10,7 @@ Time Series can be useful to analyze financial data in different frequencies bas
 
 &lt;p&gt;Data visualizations and static or interactive visualizations are one of the data analysis tools to helping identify outliers
 or data transformations and ideals for financial models.&lt;/p&gt;
-&lt;p&gt;The example file "1960-2017 world population and life expectancy by country" is from &lt;a href="https://data.worldbank.org/indicator/SP.POP.TOTL"&gt;https://data.worldbank.org/indicator/SP.POP.TOTL&lt;/a&gt; and &lt;a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN"&gt;https://data.worldbank.org/indicator/SP.DYN.LE00.IN&lt;/a&gt;. 
-The file is in Excel format with two tabs.&lt;/p&gt;
-&lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.&lt;/p&gt;
+&lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to plot a huge dataset is very useful.
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="python"></category><category term="visualization"></category></entry><entry><title>Database for Financial Analysis II - MongoDB</title><link href="http://jasminjohnson.github.io/blog/2018/06/30/mongodb/" rel="alternate"></link><published>2018-06-30T00:00:00-04:00</published><updated>2018-06-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-30:blog/2018/06/30/mongodb/</id><summary type="html">
 
 &lt;p&gt;MongoDB is a document-oriented database. Instead of storing your data in tables made out of individual rows,

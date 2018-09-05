@@ -1418,22 +1418,8 @@ h6:hover .anchor-link {
 
 <p>Data visualizations and static or interactive visualizations are one of the data analysis tools to helping identify outliers
 or data transformations and ideals for financial models.</p>
-<p>The example file "1960-2017 world population and life expectancy by country" is from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">https://data.worldbank.org/indicator/SP.POP.TOTL</a> and <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">https://data.worldbank.org/indicator/SP.DYN.LE00.IN</a>. 
-The file is in Excel format with two tabs.</p>
-<p>The maximum number of data series per chart in Excel is 255, so using Python to chart a huge dataset is very useful.</p>
-
-
-<p><strong>Use Python to read Excel file into SQLite and plot visualization chart for Financial Analysis</strong></p>
-<ul>
-<li>Convert Excel file in SQLite database </li>
-<li>Set index</li>
-<li>Join Tables and Query Data in Python </li>
-<li>Reading results into a pandas DataFrame</li>
-<li>Create query result table in SQLite and Excel</li>
-<li>Creating and altering tables with pandas</li>
-<li>Modifying primary key in SQLite or in Python</li>
-<li>Visualize popluation and life expectancy comparison between US and Japan from 1960 to 2017</li>
-</ul>
+<p>The maximum number of data series per chart in Excel is 255, so using Python to plot a huge dataset is very useful.
+</p>
 
 </div>
 </div>
@@ -1442,843 +1428,7 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Convert Excel to SQLite Database</strong></p>
-<ul>
-<li>Connect SQlite file</li>
-<li>Changes make in Excel, will automatically update in SQLite after reconnect</li>
-<li>This is very helpful, no need to save and reopen Excel file</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read excel file &quot;PopLife.xlsx&quot; into SQlite</span>
-<span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/PopLife&quot;</span> 
-<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
-
-<span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="p">:</span>
-    <span class="n">wb</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">sheet</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
-   
-<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-<span class="c1">#con.close()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Set index</strong></p>
-<ul>
-<li>Set primary key for tables "Pop" and "Life" in SQLite</li>
-<li>The benefit of SQlite is we can set up unique identifer as primay key</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the first tab and set index</span>
-<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Pop&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> countries - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
-<span class="n">population</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 264 countries - here are the first 5:
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CountryCode</th>
-      <th>1960</th>
-      <th>1961</th>
-      <th>1962</th>
-      <th>1963</th>
-      <th>1964</th>
-      <th>1965</th>
-      <th>1966</th>
-      <th>1967</th>
-      <th>1968</th>
-      <th>...</th>
-      <th>2008</th>
-      <th>2009</th>
-      <th>2010</th>
-      <th>2011</th>
-      <th>2012</th>
-      <th>2013</th>
-      <th>2014</th>
-      <th>2015</th>
-      <th>2016</th>
-      <th>2017</th>
-    </tr>
-    <tr>
-      <th>CountryName</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Aruba</th>
-      <td>ABW</td>
-      <td>54211.0</td>
-      <td>55438.0</td>
-      <td>56225.0</td>
-      <td>56695.0</td>
-      <td>57032.0</td>
-      <td>57360.0</td>
-      <td>57715.0</td>
-      <td>58055.0</td>
-      <td>58386.0</td>
-      <td>...</td>
-      <td>101353.0</td>
-      <td>101453.0</td>
-      <td>101669.0</td>
-      <td>102053.0</td>
-      <td>102577.0</td>
-      <td>103187.0</td>
-      <td>103795.0</td>
-      <td>104341.0</td>
-      <td>104822.0</td>
-      <td>105264.0</td>
-    </tr>
-    <tr>
-      <th>Afghanistan</th>
-      <td>AFG</td>
-      <td>8996351.0</td>
-      <td>9166764.0</td>
-      <td>9345868.0</td>
-      <td>9533954.0</td>
-      <td>9731361.0</td>
-      <td>9938414.0</td>
-      <td>10152331.0</td>
-      <td>10372630.0</td>
-      <td>10604346.0</td>
-      <td>...</td>
-      <td>27294031.0</td>
-      <td>28004331.0</td>
-      <td>28803167.0</td>
-      <td>29708599.0</td>
-      <td>30696958.0</td>
-      <td>31731688.0</td>
-      <td>32758020.0</td>
-      <td>33736494.0</td>
-      <td>34656032.0</td>
-      <td>35530081.0</td>
-    </tr>
-    <tr>
-      <th>Angola</th>
-      <td>AGO</td>
-      <td>5643182.0</td>
-      <td>5753024.0</td>
-      <td>5866061.0</td>
-      <td>5980417.0</td>
-      <td>6093321.0</td>
-      <td>6203299.0</td>
-      <td>6309770.0</td>
-      <td>6414995.0</td>
-      <td>6523791.0</td>
-      <td>...</td>
-      <td>21759420.0</td>
-      <td>22549547.0</td>
-      <td>23369131.0</td>
-      <td>24218565.0</td>
-      <td>25096150.0</td>
-      <td>25998340.0</td>
-      <td>26920466.0</td>
-      <td>27859305.0</td>
-      <td>28813463.0</td>
-      <td>29784193.0</td>
-    </tr>
-    <tr>
-      <th>Albania</th>
-      <td>ALB</td>
-      <td>1608800.0</td>
-      <td>1659800.0</td>
-      <td>1711319.0</td>
-      <td>1762621.0</td>
-      <td>1814135.0</td>
-      <td>1864791.0</td>
-      <td>1914573.0</td>
-      <td>1965598.0</td>
-      <td>2022272.0</td>
-      <td>...</td>
-      <td>2947314.0</td>
-      <td>2927519.0</td>
-      <td>2913021.0</td>
-      <td>2905195.0</td>
-      <td>2900401.0</td>
-      <td>2895092.0</td>
-      <td>2889104.0</td>
-      <td>2880703.0</td>
-      <td>2876101.0</td>
-      <td>2873457.0</td>
-    </tr>
-    <tr>
-      <th>Andorra</th>
-      <td>AND</td>
-      <td>13411.0</td>
-      <td>14375.0</td>
-      <td>15370.0</td>
-      <td>16412.0</td>
-      <td>17469.0</td>
-      <td>18549.0</td>
-      <td>19647.0</td>
-      <td>20758.0</td>
-      <td>21890.0</td>
-      <td>...</td>
-      <td>83861.0</td>
-      <td>84462.0</td>
-      <td>84449.0</td>
-      <td>83751.0</td>
-      <td>82431.0</td>
-      <td>80788.0</td>
-      <td>79223.0</td>
-      <td>78014.0</td>
-      <td>77281.0</td>
-      <td>76965.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 59 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the second tab and set index</span>
-<span class="n">life</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Life&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
-<span class="n">life</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CountryCode</th>
-      <th>1960</th>
-      <th>1961</th>
-      <th>1962</th>
-      <th>1963</th>
-      <th>1964</th>
-      <th>1965</th>
-      <th>1966</th>
-      <th>1967</th>
-      <th>1968</th>
-      <th>...</th>
-      <th>2008</th>
-      <th>2009</th>
-      <th>2010</th>
-      <th>2011</th>
-      <th>2012</th>
-      <th>2013</th>
-      <th>2014</th>
-      <th>2015</th>
-      <th>2016</th>
-      <th>2017</th>
-    </tr>
-    <tr>
-      <th>CountryName</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Aruba</th>
-      <td>ABW</td>
-      <td>65.662</td>
-      <td>66.074</td>
-      <td>66.444</td>
-      <td>66.787</td>
-      <td>67.113</td>
-      <td>67.435</td>
-      <td>67.762</td>
-      <td>68.095</td>
-      <td>68.436</td>
-      <td>...</td>
-      <td>74.725</td>
-      <td>74.872</td>
-      <td>75.016</td>
-      <td>75.158</td>
-      <td>75.299</td>
-      <td>75.440</td>
-      <td>75.582</td>
-      <td>75.725</td>
-      <td>75.867</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>Afghanistan</th>
-      <td>AFG</td>
-      <td>32.292</td>
-      <td>32.742</td>
-      <td>33.185</td>
-      <td>33.624</td>
-      <td>34.060</td>
-      <td>34.495</td>
-      <td>34.928</td>
-      <td>35.361</td>
-      <td>35.796</td>
-      <td>...</td>
-      <td>60.243</td>
-      <td>60.754</td>
-      <td>61.226</td>
-      <td>61.666</td>
-      <td>62.086</td>
-      <td>62.494</td>
-      <td>62.895</td>
-      <td>63.288</td>
-      <td>63.673</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>Angola</th>
-      <td>AGO</td>
-      <td>33.251</td>
-      <td>33.573</td>
-      <td>33.914</td>
-      <td>34.272</td>
-      <td>34.645</td>
-      <td>35.031</td>
-      <td>35.426</td>
-      <td>35.828</td>
-      <td>36.234</td>
-      <td>...</td>
-      <td>56.189</td>
-      <td>57.231</td>
-      <td>58.192</td>
-      <td>59.042</td>
-      <td>59.770</td>
-      <td>60.373</td>
-      <td>60.858</td>
-      <td>61.241</td>
-      <td>61.547</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>Albania</th>
-      <td>ALB</td>
-      <td>62.279</td>
-      <td>63.298</td>
-      <td>64.187</td>
-      <td>64.911</td>
-      <td>65.461</td>
-      <td>65.848</td>
-      <td>66.108</td>
-      <td>66.302</td>
-      <td>66.485</td>
-      <td>...</td>
-      <td>75.943</td>
-      <td>76.281</td>
-      <td>76.652</td>
-      <td>77.031</td>
-      <td>77.389</td>
-      <td>77.702</td>
-      <td>77.963</td>
-      <td>78.174</td>
-      <td>78.345</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>Andorra</th>
-      <td>AND</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>None</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 59 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Join Tables in Python then reading results into a pandas dataFrame</strong></p>
-<ul>
-<li>Join tables and save the result to a third table in SQLite</li>
-<li>We can save the third table as Excel too</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Merge both tabs - Population and Life Expectancy</span>
-<span class="n">df_pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/PopLife.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;Pop&quot;</span><span class="p">)</span> 
-<span class="n">df_life</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/PopLife.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;Life&quot;</span><span class="p">)</span> 
-<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_pop</span><span class="p">,</span> <span class="n">df_life</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;CountryName&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with incurred losses - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
-<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 264 policies with incurred losses - here are the first 5:
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[15]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CountryName</th>
-      <th>CountryCode_x</th>
-      <th>1960_x</th>
-      <th>1961_x</th>
-      <th>1962_x</th>
-      <th>1963_x</th>
-      <th>1964_x</th>
-      <th>1965_x</th>
-      <th>1966_x</th>
-      <th>1967_x</th>
-      <th>...</th>
-      <th>2008_y</th>
-      <th>2009_y</th>
-      <th>2010_y</th>
-      <th>2011_y</th>
-      <th>2012_y</th>
-      <th>2013_y</th>
-      <th>2014_y</th>
-      <th>2015_y</th>
-      <th>2016_y</th>
-      <th>2017_y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Aruba</td>
-      <td>ABW</td>
-      <td>54211.0</td>
-      <td>55438.0</td>
-      <td>56225.0</td>
-      <td>56695.0</td>
-      <td>57032.0</td>
-      <td>57360.0</td>
-      <td>57715.0</td>
-      <td>58055.0</td>
-      <td>...</td>
-      <td>74.725</td>
-      <td>74.872</td>
-      <td>75.016</td>
-      <td>75.158</td>
-      <td>75.299</td>
-      <td>75.440</td>
-      <td>75.582</td>
-      <td>75.725</td>
-      <td>75.867</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Afghanistan</td>
-      <td>AFG</td>
-      <td>8996351.0</td>
-      <td>9166764.0</td>
-      <td>9345868.0</td>
-      <td>9533954.0</td>
-      <td>9731361.0</td>
-      <td>9938414.0</td>
-      <td>10152331.0</td>
-      <td>10372630.0</td>
-      <td>...</td>
-      <td>60.243</td>
-      <td>60.754</td>
-      <td>61.226</td>
-      <td>61.666</td>
-      <td>62.086</td>
-      <td>62.494</td>
-      <td>62.895</td>
-      <td>63.288</td>
-      <td>63.673</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Angola</td>
-      <td>AGO</td>
-      <td>5643182.0</td>
-      <td>5753024.0</td>
-      <td>5866061.0</td>
-      <td>5980417.0</td>
-      <td>6093321.0</td>
-      <td>6203299.0</td>
-      <td>6309770.0</td>
-      <td>6414995.0</td>
-      <td>...</td>
-      <td>56.189</td>
-      <td>57.231</td>
-      <td>58.192</td>
-      <td>59.042</td>
-      <td>59.770</td>
-      <td>60.373</td>
-      <td>60.858</td>
-      <td>61.241</td>
-      <td>61.547</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Albania</td>
-      <td>ALB</td>
-      <td>1608800.0</td>
-      <td>1659800.0</td>
-      <td>1711319.0</td>
-      <td>1762621.0</td>
-      <td>1814135.0</td>
-      <td>1864791.0</td>
-      <td>1914573.0</td>
-      <td>1965598.0</td>
-      <td>...</td>
-      <td>75.943</td>
-      <td>76.281</td>
-      <td>76.652</td>
-      <td>77.031</td>
-      <td>77.389</td>
-      <td>77.702</td>
-      <td>77.963</td>
-      <td>78.174</td>
-      <td>78.345</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Andorra</td>
-      <td>AND</td>
-      <td>13411.0</td>
-      <td>14375.0</td>
-      <td>15370.0</td>
-      <td>16412.0</td>
-      <td>17469.0</td>
-      <td>18549.0</td>
-      <td>19647.0</td>
-      <td>20758.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 119 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save merge result as Excel file</span>
-<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/PopLifeMergeExcel.xlsx&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save merge result as SQL file</span>
-<span class="n">df_merge</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;PopLifeMergeSQL&quot;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
-<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-<span class="c1">#con.close()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Image of DB Browser table view</strong>
-<img src="/images/MergeSQL.png" alt="[img:DB Browser after save merge result as SQL file]" title="DbBrowser Merge" /></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Inserting a new column called &quot;testing&quot; to the SQlite </span>
-<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;data/PopLife.db&quot;</span><span class="p">)</span>
-<span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE pop ADD COLUMN testing varchar(32)&quot;</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">addColumn</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Image of DB Broweser with a new column called "testing"</strong>
-<img src="/images/Insert.png" alt="[img:DB Browser insert]" title="DbBrowser Insert" /></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rename the SQLite Table</span>
-<span class="n">renameTable</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE PopT RENAME TO tranport&quot;</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">renameTable</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[23]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;sqlite3.Cursor at 0x1fa1778fb90&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Image of DB Broweser - rename column from "PopT" to "transport"</strong>
-<img src="/images/Rename.png" alt="[img:DB Browser insert new column]" title="DbBrowser Insert New Column" /></p>
+<p><strong>Goal: Use Python to read Excel file and plot visualization chart for financial analysis</strong></p>
 
 </div>
 </div>
@@ -2287,24 +1437,34 @@ The file is in Excel format with two tabs.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Visualize the data  - compare US and Japan life Expectany from 1960 to 2015</strong></p>
-<ul>
-<li>After initial data analysis, sometime we need to reshape the data for further analaysis</li>
-<li>We can reshape the data format to set index for visualization</li>
-<li>The maximum number of data series per chart in Excel is 255, this data has 264 columns as data series</li>
-</ul>
+<p><br>
+<strong>Example file - Visualize popluation and life expectancy comparison between US and Japan from 1960 to 2017</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Visualize the data  - compare US and Japan life Expectany from 1960 to 2017</strong></p>
+
+<pre><code>- After initial data analysis, sometime we need to reshape the data for further analaysis
+- We can reshape the data format to set index for visualization
+- The maximum number of data series per chart in Excel is 255, this data has 264 columns as data series</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/LifeChart.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Plot1/LifeChart.xlsx&#39;</span><span class="p">)</span>
 <span class="n">year</span> <span class="o">=</span> <span class="n">dfr</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span>
-<span class="n">country</span> <span class="o">=</span> <span class="n">dfr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Aruba&#39;</span><span class="p">:</span><span class="s1">&#39;Zimbabwe&#39;</span><span class="p">]</span>  <span class="c1">#how to select US and Japan only???? 5/24/18</span>
+<span class="n">country</span> <span class="o">=</span> <span class="n">dfr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Japan&#39;</span><span class="p">:</span><span class="s1">&#39;Zimbabwe&#39;</span><span class="p">]</span>  
 <span class="nb">print</span> <span class="p">(</span><span class="n">country</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
@@ -2322,13 +1482,17 @@ The file is in Excel format with two tabs.</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>       Aruba  Afghanistan     Angola    Albania  Andorra  Arab World  \
-0  65.569366    32.337561  33.226024  62.254366      NaN   46.815045   
-1  65.988024    32.786976  33.547756  63.273463      NaN   47.397232   
+<pre>       Japan  Kazakhstan      Kenya  Kyrgyz Republic   Cambodia   Kiribati  \
+0  67.666098   58.367585  46.362415        56.128073  41.232024  49.215976   
+1  68.310000   58.781585  47.013000        56.564122  41.357683  49.743683   
 
-   United Arab Emirates  Argentina    Armenia  American Samoa    ...      \
-0             52.288707  65.215537  65.863463             NaN    ...       
-1             53.334049  65.338512  66.284390             NaN    ...       
+   St. Kitts and Nevis  Korea, Rep.     Kuwait  \
+0                  NaN    53.001805  60.519293   
+1                  NaN    53.736732  61.260488   
+
+   Latin America &amp; Caribbean (excluding high income)    ...      \
+0                                          55.682654    ...       
+1                                          56.177946    ...       
 
    Virgin Islands (U.S.)    Vietnam    Vanuatu      World      Samoa  Kosovo  \
 0              66.224854  59.067024  46.487488  52.585685  49.969512     NaN   
@@ -2338,7 +1502,7 @@ The file is in Excel format with two tabs.</p>
 0    34.363805     52.226244  45.109805  51.541976  
 1    34.473244     52.568732  45.487512  51.914951  
 
-[2 rows x 264 columns]
+[2 rows x 147 columns]
 </pre>
 </div>
 </div>
@@ -2347,14 +1511,25 @@ The file is in Excel format with two tabs.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Compare Japan and US life Expectancy from 1960 to 2015</strong></p>
+
+<pre><code>- Save the chart as png file, then use the chart for analysis or presentation
+- It's effective to chart the dataset when dealing with huge dataset since Excel limit 255 data series</code></pre>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compare Japan and US life Expectancy from 1960 to 2015 and save the chart as png file, then use the chart for analysis or presentation</span>
-<span class="c1"># It&#39;s effective to chart the dataset when dealing with huge dataset more than Excel limite 255 data series</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country</span><span class="p">[</span><span class="s1">&#39;Japan&#39;</span><span class="p">],</span> <span class="s1">&#39;y-&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">country</span><span class="p">[</span><span class="s1">&#39;United_States&#39;</span><span class="p">],</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Japan Life Expectancy&#39;</span><span class="p">,</span><span class="s1">&#39;US Life Expectancy&#39;</span><span class="p">])</span>
@@ -2667,7 +1842,8 @@ jhWRYmPM20BYo1XKvRKpUq2kvYaUct0S4EJjTHcAY0ysMSYeiAZKgYONZuFSqt3QOwKlXCQi64wx
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Plot USA and Japan Population Growth Comparision</strong></p>
+<p><br>
+<strong>Plot USA and Japan Population Growth Comparision</strong></p>
 <ul>
 <li>The example file is 1960-2017 population</li>
 <li>Plot population in million</li>
@@ -2679,10 +1855,10 @@ jhWRYmPM20BYo1XKvRKpUq2kvYaUct0S4EJjTHcAY0ysMSYeiAZKgYONZuFSqt3QOwKlXCQi64wx
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/USALife.xlsx&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Plot1/USALife.xlsx&#39;</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">Country</span> <span class="o">==</span> <span class="s1">&#39;USA&#39;</span><span class="p">]</span>
 <span class="n">us</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">Country</span> <span class="o">==</span> <span class="s1">&#39;USA&#39;</span><span class="p">]</span>
 <span class="n">japan</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">Country</span> <span class="o">==</span> <span class="s1">&#39;Japan&#39;</span><span class="p">]</span>
@@ -2693,25 +1869,26 @@ jhWRYmPM20BYo1XKvRKpUq2kvYaUct0S4EJjTHcAY0ysMSYeiAZKgYONZuFSqt3QOwKlXCQi64wx
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>First plot with the top left corner showing le8 - scientific notation, the number is too big</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First plot with the top left corner showing le8 - scientific notation, the number is too big</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">japan</span><span class="o">.</span><span class="n">Population</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Plot in million and now we use dot plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">japan</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population (in million)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -2930,6 +2107,41 @@ RklBRERilBRERCRGSUFERGL+H1uwg6mndWKCAAAAAElFTkSuQmCC
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Plot in million and now we use dot plot</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">japan</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population (in million)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
 <div class="output_area">
 
 <div class="prompt"></div>
@@ -3102,17 +2314,18 @@ KUCIiEis/w95RA1nhvcPAwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Plot population growth rate - visiualize the growth, Japan population growth rate is starting to be lower than USA from mid-1980</strong></p>
-<ul>
-<li>Take the first year 1960 as first year, then divide to the following year for growth rate</li>
-</ul>
+<p><br>
+<strong>Plot population growth rate - visiualize the growth</strong></p>
+
+<pre><code>- Japan population growth rate is starting to be lower than USA from mid-1980
+- Take the first year 1960 as first year, then divide to the following year for growth rate</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span> <span class="o">/</span> <span class="n">us</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>

@@ -1456,7 +1456,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Making a Connection with MongoClient</span>
@@ -1478,26 +1478,23 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-<span class="o">**</span><span class="n">Getting</span> <span class="n">a</span> <span class="n">Database</span><span class="o">**</span>
-    <span class="o">-</span> <span class="n">A</span> <span class="n">single</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">MongoDB</span> <span class="n">can</span> <span class="n">support</span> <span class="n">multiple</span> <span class="n">independent</span> <span class="n">databases</span><span class="o">.</span>
-    <span class="o">-</span> <span class="n">When</span> <span class="n">working</span> <span class="k">with</span> <span class="n">PyMongo</span> <span class="n">you</span> <span class="n">access</span> <span class="n">databases</span> <span class="n">using</span> <span class="n">attribute</span> <span class="n">style</span> <span class="n">access</span> <span class="n">on</span> <span class="n">MongoClient</span> <span class="n">instances</span><span class="o">.</span>
-    <span class="o">-</span> <span class="n">Database</span> <span class="n">name</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">attribute</span> <span class="n">style</span> <span class="n">access</span> <span class="p">(</span><span class="n">ie</span><span class="o">.</span> <span class="n">test</span><span class="o">-</span><span class="n">data</span><span class="p">),</span> <span class="n">but</span> <span class="s2">&quot;test_data&quot;</span> <span class="ow">is</span> <span class="n">okay</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Getting a Database</strong></p>
+
+<pre><code>- A single instance of MongoDB can support multiple independent databases.
+- When working with PyMongo you access databases using attribute style access on MongoClient instances.
+- Database name can not use attribute style access (ie. test-data), but "test_data" is okay</code></pre>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up a collection name &quot;test_database&quot; in MongoDB</span>
@@ -1518,7 +1515,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -1551,7 +1548,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -1566,39 +1563,32 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-<span class="o">**</span><span class="n">Inserting</span> <span class="n">a</span> <span class="n">Document</span><span class="o">**</span>
-    <span class="o">-</span> <span class="n">When</span> <span class="n">a</span> <span class="n">document</span> <span class="ow">is</span> <span class="n">inserted</span> <span class="n">a</span> <span class="n">special</span> <span class="n">key</span><span class="p">,</span> <span class="s2">&quot;_id&quot;</span><span class="p">,</span> <span class="ow">is</span> <span class="n">automatically</span> <span class="n">added</span> <span class="k">if</span> <span class="n">the</span> <span class="n">document</span> <span class="n">doesn</span><span class="err">’</span><span class="n">t</span> <span class="n">already</span> <span class="n">contain</span> <span class="n">an</span> <span class="s2">&quot;_id&quot;</span> <span class="n">key</span><span class="o">.</span>
-    <span class="o">-</span> <span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="s2">&quot;_id&quot;</span> <span class="n">must</span> <span class="n">be</span> <span class="n">unique</span> <span class="n">across</span> <span class="n">the</span> <span class="n">collection</span><span class="o">.</span> <span class="n">insert_one</span><span class="p">()</span> <span class="n">returns</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">InsertOneResult</span><span class="o">.</span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Inserting a Document</strong></p>
+
+<pre><code>- When a document is inserted a special key, "_id", is automatically added if the document doesn’t already contain an "_id" key.
+- The value of "_id" must be unique across the collection. insert_one() returns an instance of InsertOneResult. </code></pre>
 
 </div>
 </div>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-<span class="o">**</span><span class="n">Insert</span> <span class="n">a</span> <span class="n">document</span> <span class="n">into</span> <span class="n">a</span> <span class="n">collection</span> <span class="o">-</span> <span class="n">we</span> <span class="n">can</span> <span class="n">use</span> <span class="n">the</span> <span class="n">insert_one</span><span class="p">()</span> <span class="n">method</span><span class="o">**</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Insert a document into a collection - we can use the insert_one() method</strong></p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaties</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">treaties</span>
@@ -1616,13 +1606,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b80259a760df7342060e4b8&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec54f760df71a8006810a&#39;)</pre>
 </div>
 
 </div>
@@ -1636,16 +1626,14 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>After inserting the first document, the posts collection has actually been created on the server.</strong></p>
-
-<pre><code>- We can verify this by listing all of the collections in our database</code></pre>
+<strong>After inserting the first document, the posts collection has actually been created on the server.</strong><br>- We can verify this by listing all of the collections in our database</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
@@ -1661,7 +1649,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -1678,7 +1666,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaty2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;Swiss Re&quot;</span><span class="p">,</span>
@@ -1700,13 +1688,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[19]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b80259e760df7342060e4b9&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec555760df71a8006810b&#39;)</pre>
 </div>
 
 </div>
@@ -1717,7 +1705,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaty3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;Parter Re&quot;</span><span class="p">,</span>
@@ -1739,13 +1727,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[10]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b8025a2760df7342060e4ba&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec557760df71a8006810c&#39;)</pre>
 </div>
 
 </div>
@@ -1758,19 +1746,20 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Getting-a-Single-Document-With-find_one()"><em> Getting a Single Document With find_one()</em><a class="anchor-link" href="#-Getting-a-Single-Document-With-find_one()">&#182;</a></h4><ul>
-<li>The most basic type of query that can be performed in MongoDB is find_one().</li>
-<li>This method returns a single document matching a query (or None if there are no matches).</li>
-<li>It is useful when you know there is only one matching document, or</li>
-<li>are only interested in the first match. Here we use find_one() to get the first document from the posts collection:</li>
-</ul>
+<p><br>
+<strong> Getting a Single Document With find_one()</strong></p>
+
+<pre><code>- The most basic type of query that can be performed in MongoDB is find_one().
+- This method returns a single document matching a query (or None if there are no matches).
+- It is useful when you know there is only one matching document, or you are only interested in the first match.
+- Here we use find_one() to get the first document from the posts collection:</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pprint</span>
@@ -1791,8 +1780,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
@@ -1806,7 +1795,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">treaties</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;AIG&quot;</span><span class="p">}))</span>
@@ -1826,8 +1815,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
@@ -1841,7 +1830,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">treaties</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;reinsurer&quot;</span><span class="p">:</span> <span class="s2">&quot;ACE&quot;</span><span class="p">}))</span>
@@ -1874,16 +1863,15 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Querying-By-ObjectId"><em> Querying By ObjectId</em><a class="anchor-link" href="#-Querying-By-ObjectId">&#182;</a></h4><ul>
-<li>We can also find a post by its _id, which in our example is an ObjectId:</li>
-</ul>
+<p><br>
+<strong>Querying By ObjectId</strong><br>- We can also find a post by its _id, which in our example is an ObjectId:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaty_id</span>  <span class="c1">##output is an object</span>
@@ -1899,13 +1887,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b8025a2760df7342060e4ba&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec557760df71a8006810c&#39;)</pre>
 </div>
 
 </div>
@@ -1916,7 +1904,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">treaties</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="n">treaty_id</span><span class="p">}))</span>
@@ -1936,8 +1924,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b8025a2760df7342060e4ba&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 58, 292000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec557760df71a8006810c&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 48, 7, 792000),
  &#39;reinsurer&#39;: &#39;Parter Re&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL 2nd Layer&#39;}
@@ -1953,13 +1941,15 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Note-that-an-ObjectId-is-not-the-same-as-its-string-representation:"><em> Note that an ObjectId is not the same as its string representation:</em><a class="anchor-link" href="#-Note-that-an-ObjectId-is-not-the-same-as-its-string-representation:">&#182;</a></h4>
+<p><br>
+<strong> Note that an ObjectId is not the same as its string representation</strong></p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaty_id_as_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">treaty_id</span><span class="p">)</span>
@@ -1976,13 +1966,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[26]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;5b8025a2760df7342060e4ba&#39;</pre>
+<pre>&#39;5b8ec557760df71a8006810c&#39;</pre>
 </div>
 
 </div>
@@ -1993,7 +1983,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">treaties</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="n">treaty_id_as_str</span><span class="p">})</span> <span class="c1"># No result</span>
@@ -2008,20 +1998,20 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Bulk Inserts</strong></p>
-<ul>
-<li>we can also perform bulk insert operations, by passing a list as the first argument to insert_many(). </li>
-<li>This will insert each document in the list, sending only a single command to the server.</li>
-<li>New_treaty has a different “shape” than the other posts - there is no "tags" field and we’ve added a new field, "title".</li>
-<li>This is what we mean when we say that MongoDB is schema-free.</li>
-</ul>
+<p><br>
+<strong>Bulk Inserts</strong></p>
+
+<pre><code>- we can also perform bulk insert operations, by passing a list as the first argument to insert_many(). 
+- This will insert each document in the list, sending only a single command to the server.
+- New_treaty has a different “shape” than the other posts - there is no "tags" field and we’ve added a new field, "title".
+- This is what we mean when we say that MongoDB is schema-free.</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># new_treaty has a different “shape” than the other posts </span>
@@ -2050,13 +2040,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[28]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[ObjectId(&#39;5b8025b7760df7342060e4bb&#39;), ObjectId(&#39;5b8025b7760df7342060e4bc&#39;)]</pre>
+<pre>[ObjectId(&#39;5b8ec56e760df71a8006810d&#39;), ObjectId(&#39;5b8ec56e760df71a8006810e&#39;)]</pre>
 </div>
 
 </div>
@@ -2078,18 +2068,18 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Query data</strong></p>
-<ul>
-<li>use find()</li>
-<li>use find_one()</li>
-</ul>
+<p><br>
+<strong>Query data</strong></p>
+
+<pre><code>- Use find()
+- Use find_one()</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">treaty</span> <span class="ow">in</span> <span class="n">treaties</span><span class="o">.</span><span class="n">find</span><span class="p">():</span>
@@ -2110,52 +2100,27 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed797760df705188fc620&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 43, 818000),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec555760df71a8006810b&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 48, 5, 695000),
  &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;Clash Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed79a760df705188fc621&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 46, 797000),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec557760df71a8006810c&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 48, 7, 792000),
  &#39;reinsurer&#39;: &#39;Parter Re&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL 2nd Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed7ad760df705188fc622&#39;),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec56e760df71a8006810d&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
  &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed7ad760df705188fc623&#39;),
- &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
- &#39;reinsurer&#39;: &#39;Munich Re&#39;,
- &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
- &#39;treaty&#39;: &#39;QS 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b80259a760df7342060e4b8&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 47, 804000),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b80259e760df7342060e4b9&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 54, 896000),
- &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;Clash Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025a2760df7342060e4ba&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 58, 292000),
- &#39;reinsurer&#39;: &#39;Parter Re&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;XOL 2nd Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025b7760df7342060e4bb&#39;),
- &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
- &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025b7760df7342060e4bc&#39;),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec56e760df71a8006810e&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
  &#39;reinsurer&#39;: &#39;Munich Re&#39;,
  &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
@@ -2170,7 +2135,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use find() for query</span>
@@ -2198,22 +2163,12 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed7ad760df705188fc622&#39;),
- &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
- &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b80259a760df7342060e4b8&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 47, 804000),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025b7760df7342060e4bb&#39;),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec56e760df71a8006810d&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
@@ -2228,7 +2183,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find one reinsurer-AIG treaty:</span>
@@ -2249,8 +2204,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
@@ -2266,17 +2221,18 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Counting"><em> Counting</em><a class="anchor-link" href="#-Counting">&#182;</a></h4><ul>
-<li>If we just want to know how many documents match a query we can perform a count() operation instead of a full query.</li>
-<li>We can get a count of all of the documents in a collection:</li>
-</ul>
+<p><br>
+<strong> Counting</strong></p>
+
+<pre><code>- If we just want to know how many documents match a query we can perform a count() operation instead of a full query.
+- We can get a count of all of the documents in a collection:</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How many AIG treaty?</span>
@@ -2301,26 +2257,26 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[32]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4</pre>
+<pre>2</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[32]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>10</pre>
+<pre>5</pre>
 </div>
 
 </div>
@@ -2333,18 +2289,18 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Range Queries</strong></p>
-<ul>
-<li>MongoDB supports many different types of advanced queries.</li>
-<li>As an example, lets perform a query where we limit results to treaties older than a certain date, but also sort the results by reinsurers</li>
-</ul>
+<p><br>
+<strong> Range Queries</strong></p>
+
+<pre><code>- MongoDB supports many different types of advanced queries.
+- As an example, lets perform a query where we limit results to treaties older than a certain date, but also sort the results by reinsurers</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
@@ -2366,53 +2322,28 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;_id&#39;: ObjectId(&#39;5b7ed794760df705188fc61f&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 36, 898000),
+<pre>{&#39;_id&#39;: ObjectId(&#39;5b8ec54f760df71a8006810a&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 47, 57, 310000),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed7ad760df705188fc622&#39;),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec56e760df71a8006810d&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
  &#39;reinsurer&#39;: &#39;AIG&#39;,
  &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
  &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b80259a760df7342060e4b8&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 47, 804000),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;XOL layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025b7760df7342060e4bb&#39;),
- &#39;date&#39;: datetime.datetime(2018, 11, 12, 11, 14),
- &#39;reinsurer&#39;: &#39;AIG&#39;,
- &#39;tags&#39;: [&#39;bulk&#39;, &#39;insert&#39;],
- &#39;treaty&#39;: &#39;XOL Layer 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed7ad760df705188fc623&#39;),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec56e760df71a8006810e&#39;),
  &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
  &#39;reinsurer&#39;: &#39;Munich Re&#39;,
  &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
  &#39;treaty&#39;: &#39;QS 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025b7760df7342060e4bc&#39;),
- &#39;date&#39;: datetime.datetime(2018, 11, 10, 10, 45),
- &#39;reinsurer&#39;: &#39;Munich Re&#39;,
- &#39;retenion&#39;: &#39;QS 20% for US business&#39;,
- &#39;treaty&#39;: &#39;QS 2018&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed79a760df705188fc621&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 46, 797000),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec557760df71a8006810c&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 48, 7, 792000),
  &#39;reinsurer&#39;: &#39;Parter Re&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;XOL 2nd Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b8025a2760df7342060e4ba&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 58, 292000),
- &#39;reinsurer&#39;: &#39;Parter Re&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;XOL 2nd Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b7ed797760df705188fc620&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 23, 15, 49, 43, 818000),
- &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
- &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
- &#39;treaty&#39;: &#39;Clash Layer&#39;}
-{&#39;_id&#39;: ObjectId(&#39;5b80259e760df7342060e4b9&#39;),
- &#39;date&#39;: datetime.datetime(2018, 8, 24, 15, 34, 54, 896000),
+{&#39;_id&#39;: ObjectId(&#39;5b8ec555760df71a8006810b&#39;),
+ &#39;date&#39;: datetime.datetime(2018, 9, 4, 17, 48, 5, 695000),
  &#39;reinsurer&#39;: &#39;Swiss Re&#39;,
  &#39;tags&#39;: [&#39;reinsurer&#39;, &#39;treaty&#39;, &#39;year&#39;],
  &#39;treaty&#39;: &#39;Clash Layer&#39;}
@@ -2428,18 +2359,19 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="-Indexing"><em> Indexing</em><a class="anchor-link" href="#-Indexing">&#182;</a></h4><ul>
-<li>Adding indexes can help accelerate certain queries and can also add additional functionality to querying and storing documents.</li>
-<li>In this example, we’ll demonstrate how to create a unique index on a key that rejects documents whose value for that key already exists in the index.</li>
-<li>First, we’ll need to create the index:</li>
-</ul>
+<p><br>
+<strong>Indexing</strong></p>
+
+<pre><code>- Adding indexes can help accelerate certain queries and can also add additional functionality to querying and storing documents.
+- In this example, we’ll demonstrate how to create a unique index on a key that rejects documents whose value for that key already exists in the index.
+- First, we’ll need to create the index</code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> <span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">profiles</span><span class="o">.</span><span class="n">create_index</span><span class="p">([(</span><span class="s1">&#39;reinsurer_id&#39;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">ASCENDING</span><span class="p">)],</span>
@@ -2457,7 +2389,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[34]:</div>
 
 
 
@@ -2476,18 +2408,15 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Notice that we have two indexes now</strong></p>
-<ul>
-<li>one is the index on _id that MongoDB creates automatically,</li>
-<li>and the other is the index on reinsurer_id we just created.</li>
-</ul>
+<p><br>
+<strong>Notice that we have two indexes now</strong><br>- One is the index on _id that MongoDB creates automatically, and the other is the index on reinsurer_id we just created.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># set up some user profiles</span>
@@ -2499,6 +2428,59 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">BulkWriteError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-36-8ab16fc55a7b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      4</span>     <span class="ansi-yellow-intense-fg ansi-bold">{</span><span class="ansi-blue-intense-fg ansi-bold">&#39;reinsurer_id&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-cyan-intense-fg ansi-bold">278</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;reinsurer&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;Atlantic Re&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">}</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">      5</span>     {&#39;reinsurer_id&#39;: 275, &#39;reinsurer&#39;: &#39;XL Re&#39;}]
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 6</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>result <span class="ansi-yellow-intense-fg ansi-bold">=</span> db<span class="ansi-yellow-intense-fg ansi-bold">.</span>profiles<span class="ansi-yellow-intense-fg ansi-bold">.</span>insert_many<span class="ansi-yellow-intense-fg ansi-bold">(</span>user_profiles<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pymongo\collection.py</span> in <span class="ansi-cyan-fg">insert_many</span><span class="ansi-blue-intense-fg ansi-bold">(self, documents, ordered, bypass_document_validation, session)</span>
+<span class="ansi-green-fg">    751</span>         blk <span class="ansi-yellow-intense-fg ansi-bold">=</span> _Bulk<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> ordered<span class="ansi-yellow-intense-fg ansi-bold">,</span> bypass_document_validation<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    752</span>         blk<span class="ansi-yellow-intense-fg ansi-bold">.</span>ops <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span>doc <span class="ansi-green-intense-fg ansi-bold">for</span> doc <span class="ansi-green-intense-fg ansi-bold">in</span> gen<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 753</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>blk<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute<span class="ansi-yellow-intense-fg ansi-bold">(</span>write_concern<span class="ansi-yellow-intense-fg ansi-bold">,</span> session<span class="ansi-yellow-intense-fg ansi-bold">=</span>session<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    754</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> InsertManyResult<span class="ansi-yellow-intense-fg ansi-bold">(</span>inserted_ids<span class="ansi-yellow-intense-fg ansi-bold">,</span> write_concern<span class="ansi-yellow-intense-fg ansi-bold">.</span>acknowledged<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    755</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pymongo\bulk.py</span> in <span class="ansi-cyan-fg">execute</span><span class="ansi-blue-intense-fg ansi-bold">(self, write_concern, session)</span>
+<span class="ansi-green-fg">    511</span>                 self<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute_no_results<span class="ansi-yellow-intense-fg ansi-bold">(</span>sock_info<span class="ansi-yellow-intense-fg ansi-bold">,</span> generator<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    512</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 513</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">return</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>execute_command<span class="ansi-yellow-intense-fg ansi-bold">(</span>generator<span class="ansi-yellow-intense-fg ansi-bold">,</span> write_concern<span class="ansi-yellow-intense-fg ansi-bold">,</span> session<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    514</span> 
+<span class="ansi-green-fg">    515</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pymongo\bulk.py</span> in <span class="ansi-cyan-fg">execute_command</span><span class="ansi-blue-intense-fg ansi-bold">(self, generator, write_concern, session)</span>
+<span class="ansi-green-fg">    339</span> 
+<span class="ansi-green-fg">    340</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> full_result<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#34;writeErrors&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-green-intense-fg ansi-bold">or</span> full_result<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">&#34;writeConcernErrors&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 341</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>_raise_bulk_write_error<span class="ansi-yellow-intense-fg ansi-bold">(</span>full_result<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    342</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> full_result
+<span class="ansi-green-fg">    343</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pymongo\bulk.py</span> in <span class="ansi-cyan-fg">_raise_bulk_write_error</span><span class="ansi-blue-intense-fg ansi-bold">(full_result)</span>
+<span class="ansi-green-fg">    138</span>         full_result[&#34;writeErrors&#34;].sort(
+<span class="ansi-green-fg">    139</span>             key=lambda error: error[&#34;index&#34;])
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 140</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">raise</span> BulkWriteError<span class="ansi-yellow-intense-fg ansi-bold">(</span>full_result<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    141</span> 
+<span class="ansi-green-fg">    142</span> 
+
+<span class="ansi-red-intense-fg ansi-bold">BulkWriteError</span>: batch op errors occurred</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -2524,7 +2506,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Create a document style data in MongoDB from Json API format</strong></p>
+<p><br>
+<strong>Create a document style data in MongoDB from Json API format</strong></p>
 <ul>
 <li>example: realtime intraday MSFT stock price</li>
 <li>example: realtime sector stock return </li>
@@ -2535,7 +2518,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">realtime_stock_data</span><span class="o">=</span><span class="p">{</span>
@@ -2566,7 +2549,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stock_data</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">stock_data</span>
@@ -2584,13 +2567,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b8025e7760df7342060e4c1&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec5eb760df71a80068113&#39;)</pre>
 </div>
 
 </div>
@@ -2601,7 +2584,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">realtime_sector_data</span><span class="o">=</span><span class="p">{</span>
@@ -2746,7 +2729,7 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sector_data</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">sector_data</span>
@@ -2764,13 +2747,13 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>ObjectId(&#39;5b8025ef760df7342060e4c2&#39;)</pre>
+<pre>ObjectId(&#39;5b8ec5fa760df71a80068114&#39;)</pre>
 </div>
 
 </div>
@@ -2783,10 +2766,8 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Collect data from Twitter into MongoDB</strong></p>
-<ul>
-<li>ref:  <a href="http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/">http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/</a></li>
-</ul>
+<p><br>
+<strong>Collect data from Twitter into MongoDB</strong><br> - ref:  <a href="http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/">http://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/</a></p>
 
 </div>
 </div>
@@ -2860,55 +2841,6 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.</
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Tracking: [&#39;#insurance&#39;, &#39;#AI&#39;, &#39;#datascience&#39;, &#39;#machinelearning&#39;, &#39;#auto&#39;, &#39;#reinsurance&#39;]
-You are now connected to the streaming API.
-Tweet collected at Fri Aug 24 15:36:42 +0000 2018
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\ipykernel_launcher.py:48: DeprecationWarning: insert is deprecated. Use insert_one or insert_many instead.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Tweet collected at Fri Aug 24 15:36:43 +0000 2018
-Tweet collected at Fri Aug 24 15:36:43 +0000 2018
-Tweet collected at Fri Aug 24 15:36:44 +0000 2018
-Tweet collected at Fri Aug 24 15:36:45 +0000 2018
-Tweet collected at Fri Aug 24 15:36:49 +0000 2018
-Tweet collected at Fri Aug 24 15:36:50 +0000 2018
-Tweet collected at Fri Aug 24 15:36:51 +0000 2018
-Tweet collected at Fri Aug 24 15:36:51 +0000 2018
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
