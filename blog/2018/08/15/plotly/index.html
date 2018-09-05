@@ -1435,18 +1435,36 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Import Data into Plotly</strong></p>
+<p><strong>Goal: Data Visualization in Plotly</strong></p>
+
+<pre><code>- Import Data into Plotly
+- You can execute the code when new data avaiable on the daily or weekly or quarterly basis
+- Create the table then view the table online or offline
+- Plot the dashboard online or offline</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Use pandas to read function to import data</li>
-<li>You can execute the code when new data avaiable on the daily or weekly or quarterly basis</li>
-<li>Create the table</li>
-<li>Then plot the dashboard online or offline</li>
-<li>View dasboard offline<ul>
-<li>ref: <a href="https://plot.ly/python/offline/">https://plot.ly/python/offline/</a></li>
-<li>ref: <a href="https://plot.ly/python/ipython-notebook-tutorial/#import-data">https://plot.ly/python/ipython-notebook-tutorial/#import-data</a></li>
-</ul>
+<li>Plotyly - View dasboard using python instructions *
+<pre><code>- ref: https://plot.ly/python/offline/
+- ref: https://plot.ly/python/ipython-notebook-tutorial/#import-data</code></pre>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Import Plotly</strong></p>
 
 </div>
 </div>
@@ -1505,6 +1523,15 @@ h6:hover .anchor-link {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Overview of the example csv. file -"Population, Birthrate and Deathrate by Country"</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
@@ -1518,11 +1545,11 @@ h6:hover .anchor-link {
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="c1"># we can see the country name for 88th</span>
+<span class="c1"># View the country in 88th row</span>
 <span class="n">country</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CountryName</span>
 <span class="n">country</span><span class="p">[</span><span class="mi">88</span><span class="p">]</span>
 
-<span class="c1"># Calling std() calculates the standard deviation for each column.</span>
+<span class="c1"># Calculates the standard deviation for each column.</span>
 <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 
@@ -1645,7 +1672,10 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>View Table Online in Plotly Website</strong></p>
+<p><br>
+<strong>Create and View Table Online/Offline</strong></p>
+
+<pre><code>- Table will automatically open in Plotly website</code></pre>
 
 </div>
 </div>
@@ -1655,10 +1685,9 @@ dtype: float64</pre>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a table</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Create a table</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># View table online, table will automatically open in Plotly website</span>
 <span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;world population table&#39;</span><span class="p">,</span> <span class="n">auto_open</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -1690,7 +1719,7 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Linke to Plotly Table</strong>
+<p>*Link to Plotly Table**
 <a href="https://plot.ly/~jasmin.c.johnson/14/#/">https://plot.ly/~jasmin.c.johnson/14/#/</a></p>
 
 </div>
@@ -1700,8 +1729,37 @@ dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong> Code to View Table Offline</strong>
-plotly.offline.iplot(table, filename='world population table')</p>
+<p><br>
+<strong> Code to View Table Offline</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;world population table&#39;</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Plot Dashboard Online or Offline </strong></p>
+
+<pre><code>- We can view the dashboard - "Birthrate by Country"" online or offline
+    - Code to View dashboard online : "py.iplot"
+    - Code to View dashboard offline: "plotly.offline.iplot"
+- Dashboard in Bar graph with/without title
+- Dashboard in Scatter graph with title</code></pre>
 
 </div>
 </div>
@@ -1710,26 +1768,18 @@ plotly.offline.iplot(table, filename='world population table')</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Plot a Dashboard Online or Offline </strong></p>
-<ul>
-<li>We can view the dashboard - "Birthrate by Country"" online or offline</li>
-<li>view online code "py.iplot"</li>
-<li>view offline code "plotly.offline.iplot"</li>
-<li>Dashboard in Bar graph with/without title</li>
-<li>Dashboard in Scatter graph with title</li>
-</ul>
+<p><br>
+<strong>View Dashbord in Bar Graph Online with Title</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View dashbord online with title</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">CountryName</span><span class="p">,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">CountryName</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Birthrate</span><span class="p">)]</span>
 
 
@@ -1749,12 +1799,12 @@ plotly.offline.iplot(table, filename='world population table')</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~jasmin.c.johnson/48.embed" height="525px" width="100%"></iframe>
+<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~jasmin.c.johnson/52.embed" height="525px" width="100%"></iframe>
 </div>
 
 </div>
@@ -1767,8 +1817,7 @@ plotly.offline.iplot(table, filename='world population table')</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Linke to Plotly Dashboard - Bar Graph</strong>
-<a href="https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/">https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/</a></p>
+<p>*Linke to Plotly Dashboard - Bar Graph**<a href="https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/">https://plot.ly/~jasmin.c.johnson/38/birthrate-by-country/#/</a></p>
 
 </div>
 </div>
@@ -1777,22 +1826,43 @@ plotly.offline.iplot(table, filename='world population table')</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Code to View Dashboard Offline</strong>
-plotly.offline.iplot({
-    "data": [go.Bar(x=df.CountryName, y=df.Birthrate)],
-    "layout": go.Layout(title="Birthrate_by_Country")})</p>
+<p><br>
+<strong>Code to View Dashboard Offline</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># View birthrate and population by country</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plotly</span><span class="o">.</span><span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">({</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">CountryName</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Birthrate</span><span class="p">)],</span>
+    <span class="s2">&quot;layout&quot;</span><span class="p">:</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Birthrate_by_Country&quot;</span><span class="p">)})</span>
+</pre></div>
 
-<span class="n">trace0</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>View Dashbord in Scatter Graph Online with Title</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trace0</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">CountryName</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Birthrate</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Birthrate&#39;</span>
@@ -1820,7 +1890,7 @@ plotly.offline.iplot({
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -1844,22 +1914,18 @@ plotly.offline.iplot({
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">**</span><span class="n">Recap</span> <span class="o">-</span> <span class="n">Example</span> <span class="n">of</span> <span class="n">Creating</span> <span class="n">a</span> <span class="n">Dashboard</span><span class="o">**</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example of How to Creat a Scatter Graph Dashboard</strong></p>
 
 </div>
 </div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">({</span>
@@ -1878,12 +1944,12 @@ plotly.offline.iplot({
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[9]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~jasmin.c.johnson/50.embed" height="525px" width="100%"></iframe>
+<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~jasmin.c.johnson/54.embed" height="525px" width="100%"></iframe>
 </div>
 
 </div>
