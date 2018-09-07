@@ -1856,11 +1856,11 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtain a Cursor object to execute SQL statements</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Obtain a Cursor object to execute SQL statements</span>
 
 <span class="n">cur</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-<span class="c1"># Add a new column to share table</span>
+<span class="c1">## Add a new column to share table</span>
 
 <span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE Share ADD COLUMN BROKER varchar(32)&quot;</span>
 
@@ -2102,7 +2102,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rename the SQLite Table</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Rename the SQLite Table</span>
 <span class="n">renameTable</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE Combined RENAME TO CombinedNew&quot;</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">renameTable</span><span class="p">)</span>
 </pre></div>
@@ -2183,7 +2183,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Closing the connection to the database file</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Closing the connection to the database file</span>
 <span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 

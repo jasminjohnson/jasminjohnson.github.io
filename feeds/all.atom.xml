@@ -13,8 +13,9 @@ or data transformations and ideals for financial models.&lt;/p&gt;
 &lt;p&gt;The maximum number of data series per chart in Excel is 255, so using Python to plot a huge dataset is very useful.
 </summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category><category term="python"></category><category term="visualization"></category></entry><entry><title>Database for Financial Analysis II - MongoDB</title><link href="http://jasminjohnson.github.io/blog/2018/06/30/mongodb/" rel="alternate"></link><published>2018-06-30T00:00:00-04:00</published><updated>2018-06-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-30:blog/2018/06/30/mongodb/</id><summary type="html">
 
-&lt;p&gt;MongoDB is a document-oriented database. Instead of storing your data in tables made out of individual rows,
-like a relational database does, it stores your data in collections made out of individual documents.
+&lt;p&gt;MongoDB is a document-oriented database.&lt;/p&gt;
+&lt;p&gt;Instead of storing your data in tables made out of individual rows, like a relational database does,
+it stores your data in collections made out of individual documents.
 In MongoDB, a document is a big JSON blob with no particular format or schema.&lt;/p&gt;
 &lt;p&gt;You can have all your data in one single collection.&lt;/p&gt;
 </summary><category term="excel"></category><category term="analysis"></category><category term="mongodb"></category></entry><entry><title>Database for Financial Analysis I - SQLite</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">
