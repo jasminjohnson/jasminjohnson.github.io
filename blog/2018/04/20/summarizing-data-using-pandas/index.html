@@ -1575,7 +1575,114 @@ This can be an effective tool when we need to summarize datasets for analysis.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Which Stock Has the Maximum Dividend Yield?</strong></p>
+<strong>To see the column headings, call the list function</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;Stock Symbol&#39;,
+ &#39;Company Name&#39;,
+ &#39;Dividend Yield&#39;,
+ &#39;Closing Price&#39;,
+ &#39;Annualized Dividend&#39;,
+ &#39;Ex-Div Date&#39;,
+ &#39;Pay Date&#39;,
+ &#39;50-day moving average&#39;,
+ &#39;200-day moving average&#39;,
+ &#39;Dif 50-day&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>To get more information about each column, we can use the info function</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 30 entries, 0 to 29
+Data columns (total 10 columns):
+Stock Symbol              30 non-null object
+Company Name              30 non-null object
+Dividend Yield            30 non-null float64
+Closing Price             30 non-null float64
+Annualized Dividend       30 non-null float64
+Ex-Div Date               30 non-null datetime64[ns]
+Pay Date                  30 non-null datetime64[ns]
+50-day moving average     30 non-null float64
+200-day moving average    30 non-null float64
+Dif 50-day                30 non-null float64
+dtypes: datetime64[ns](2), float64(6), object(2)
+memory usage: 2.6+ KB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Which Stock Has the Maximum Dividend Yield?</strong> - the loc operation is used to define the subset of the data we wish to deal with</p>
 
 </div>
 </div>

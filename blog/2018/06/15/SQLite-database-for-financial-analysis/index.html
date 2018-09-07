@@ -1437,19 +1437,15 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Goals: Manipulate Data in SQLite</strong></p>
+<strong>Goals: Automate Financial Analysis Process in SQLite</strong></p>
 
 <pre><code>- Install Scientific Python "sqlite3" to convert Excel file into SQLite database in 8 lines of code
-- Reading results into a pandas DataFrame
+- Excel file will be updated after rerun/reconnect to SQLite
 - Set index and modifying primary key in SQLite or in Python
-- Create query result table in SQLite and Excel
-- Creating and altering tables with pandas
+- Create and save query result table in SQLite and Excel
+- Create and alter tables with pandas
 - Insert columns to the tables        
-- Use free graphical user interface (GUI) tools to run SQL queries on database
-- Repeat the process when new data is available for rerun 
-- Changes make in Excel, will automatically update in SQLite after reconnect
-- This is very helpful, no need to save and reopen Excel file
-- Note: Excel tab name cannot have spaces, but underscores are acceptable        </code></pre>
+- Use free graphical user interface (GUI) tools to run SQL queries on database </code></pre>
 
 </div>
 </div>
@@ -1461,13 +1457,12 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <p><br>
 <strong>Connecting SQLite</strong></p>
 
-<pre><code>- The file file is World Population and Life Expectany by Country"
-- The second file is "Premium/Loss" with three tabs - premium, loss and reinsurance
-- The first row in each sheet should have legal column names.
+<pre><code>- The first row in each sheet should have legal column names
+- Excel tab name cannot have spaces, but underscores are acceptable 
 - Here is the conversion codes:
-    - Import library sqlite3
-    - Name of Excel .xlsx file. SQLite database will have the same name and extension .db (filename+".db")
-    - Use if_exists so we can repeat the process</code></pre>
+  - Import library sqlite3
+  - Name of Excel .xlsx file. SQLite database will have the same name and extension .db (filename+".db")
+  - Use if_exists so we can repeat the process</code></pre>
 
 </div>
 </div>
@@ -1476,31 +1471,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>First Example file "1960-2017 world population and life expectancy by country"</strong><br>-is from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">https://data.worldbank.org/indicator/SP.POP.TOTL</a> and <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN">https://data.worldbank.org/indicator/SP.DYN.LE00.IN</a>.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong> Convert Excel to SQLite Database</strong></p>
-
-<pre><code>- Connect SQlite file
-- Changes make in Excel, will automatically update in SQLite after reconnect
-- This is very helpful, no need to save and reopen Excel file</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Connect Excel file into SQlite</strong><br> - The Excel file "PopLife.xlsx" has two tabs "Pop" and "Life"</p>
+<p><strong>Connect Excel file into SQlite</strong><br> - The example file is a lsit of stocks with 4 tabs - market value, share, cost and combined</p>
 
 </div>
 </div>
@@ -1510,7 +1481,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/SQLite/PopLife&quot;</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/SQLite/Stock&quot;</span> 
 <span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span>  
 
 <span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1519,32 +1490,6 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
    
 <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 <span class="c1">#con.close()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Set Index</strong> <br> - The benefit of SQlite is we can set up unique identifer as primay key</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read the first tab and set index</span>
-<span class="n">population</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Pop&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> countries - here are the first 2:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
-<span class="n">population</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1560,153 +1505,118 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 264 countries - here are the first 2:
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\core\generic.py:1534: UserWarning: The spaces in these column names will not be changed. In pandas versions &lt; 0.14, spaces were converted to underscores.
+  chunksize=chunksize, dtype=dtype)
 </pre>
 </div>
 </div>
 
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CountryCode</th>
-      <th>1960</th>
-      <th>1961</th>
-      <th>1962</th>
-      <th>1963</th>
-      <th>1964</th>
-      <th>1965</th>
-      <th>1966</th>
-      <th>1967</th>
-      <th>1968</th>
-      <th>...</th>
-      <th>2008</th>
-      <th>2009</th>
-      <th>2010</th>
-      <th>2011</th>
-      <th>2012</th>
-      <th>2013</th>
-      <th>2014</th>
-      <th>2015</th>
-      <th>2016</th>
-      <th>2017</th>
-    </tr>
-    <tr>
-      <th>CountryName</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Aruba</th>
-      <td>ABW</td>
-      <td>54211.0</td>
-      <td>55438.0</td>
-      <td>56225.0</td>
-      <td>56695.0</td>
-      <td>57032.0</td>
-      <td>57360.0</td>
-      <td>57715.0</td>
-      <td>58055.0</td>
-      <td>58386.0</td>
-      <td>...</td>
-      <td>101353.0</td>
-      <td>101453.0</td>
-      <td>101669.0</td>
-      <td>102053.0</td>
-      <td>102577.0</td>
-      <td>103187.0</td>
-      <td>103795.0</td>
-      <td>104341.0</td>
-      <td>104822.0</td>
-      <td>105264.0</td>
-    </tr>
-    <tr>
-      <th>Afghanistan</th>
-      <td>AFG</td>
-      <td>8996351.0</td>
-      <td>9166764.0</td>
-      <td>9345868.0</td>
-      <td>9533954.0</td>
-      <td>9731361.0</td>
-      <td>9938414.0</td>
-      <td>10152331.0</td>
-      <td>10372630.0</td>
-      <td>10604346.0</td>
-      <td>...</td>
-      <td>27294031.0</td>
-      <td>28004331.0</td>
-      <td>28803167.0</td>
-      <td>29708599.0</td>
-      <td>30696958.0</td>
-      <td>31731688.0</td>
-      <td>32758020.0</td>
-      <td>33736494.0</td>
-      <td>34656032.0</td>
-      <td>35530081.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>2 rows × 59 columns</p>
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Query the database</strong></p>
+
+<pre><code>- The benefit of SQlite is we can set up unique identifer as primay key
+- We can repeat/automate the query process when new data get updated 
+- Save the query result to SQLite or Excel    </code></pre>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Join the table</strong></p>
 
+<pre><code>- Option A : Inner join between the reinsurance, premium and loss tables 
+- Option B : Selecting row</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Option A : Using SQL for Inner Join between three tables</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">select</span>
+<span class="s1">m.Symbol as Market_Tab,</span>
+<span class="s1">s.Symbol as Share_Tab,</span>
+<span class="s1">c.Symbol as Cost_Tab</span>
+<span class="s1">from Market as m</span>
+<span class="s1">join Share as s on s.Symbol=m.Symbol</span>
+<span class="s1">join Cost as c on c.Symbol=m.Symbol</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;/SQlite/QueryResult&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/SQlite/QueryResult.xlsx&#39;</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Option B : Using Pandas issuing SQL command for Inner Join between three tables</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read the second tab and set index</span>
-<span class="n">life</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from Life&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;CountryName&quot;</span><span class="p">)</span>
-<span class="n">life</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from Market&#39;</span>
+<span class="n">df_market</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
+<span class="n">df_market</span><span class="p">[</span><span class="s1">&#39;Market_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_market</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span>
+
+<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from Share&#39;</span>
+<span class="n">df_share</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
+<span class="n">df_share</span><span class="p">[</span><span class="s1">&#39;Share_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_share</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span>
+
+<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from Cost&#39;</span>
+<span class="n">df_cost</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
+<span class="n">df_cost</span><span class="p">[</span><span class="s1">&#39;Cost_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_cost</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span>
+
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_market</span><span class="p">,</span> <span class="n">df_share</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;_from_Market_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;_from_Share_Tab&#39;</span><span class="p">])</span>
+
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge</span><span class="p">,</span> <span class="n">df_cost</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;_from_Cost_Tab&#39;</span><span class="p">])</span>
+
+<span class="n">df_merge</span><span class="p">[[</span><span class="s1">&#39;Market_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;Share_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;Cost_Tab&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">df_merge</span><span class="o">=</span><span class="n">df_merge</span><span class="p">[[</span><span class="s1">&#39;Market_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;Share_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;Cost_Tab&#39;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">df_merge</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;/SQlite/QueryRresult2&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
+<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/SQlite/QueryResult2.xlsx&#39;</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -1742,156 +1652,48 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>CountryCode</th>
-      <th>1960</th>
-      <th>1961</th>
-      <th>1962</th>
-      <th>1963</th>
-      <th>1964</th>
-      <th>1965</th>
-      <th>1966</th>
-      <th>1967</th>
-      <th>1968</th>
-      <th>...</th>
-      <th>2008</th>
-      <th>2009</th>
-      <th>2010</th>
-      <th>2011</th>
-      <th>2012</th>
-      <th>2013</th>
-      <th>2014</th>
-      <th>2015</th>
-      <th>2016</th>
-      <th>2017</th>
-    </tr>
-    <tr>
-      <th>CountryName</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Market_Tab</th>
+      <th>Share_Tab</th>
+      <th>Cost_Tab</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Aruba</th>
-      <td>ABW</td>
-      <td>65.662</td>
-      <td>66.074</td>
-      <td>66.444</td>
-      <td>66.787</td>
-      <td>67.113</td>
-      <td>67.435</td>
-      <td>67.762</td>
-      <td>68.095</td>
-      <td>68.436</td>
-      <td>...</td>
-      <td>74.725</td>
-      <td>74.872</td>
-      <td>75.016</td>
-      <td>75.158</td>
-      <td>75.299</td>
-      <td>75.440</td>
-      <td>75.582</td>
-      <td>75.725</td>
-      <td>75.867</td>
-      <td>None</td>
+      <th>0</th>
+      <td>AA</td>
+      <td>AA</td>
+      <td>AA</td>
     </tr>
     <tr>
-      <th>Afghanistan</th>
-      <td>AFG</td>
-      <td>32.292</td>
-      <td>32.742</td>
-      <td>33.185</td>
-      <td>33.624</td>
-      <td>34.060</td>
-      <td>34.495</td>
-      <td>34.928</td>
-      <td>35.361</td>
-      <td>35.796</td>
-      <td>...</td>
-      <td>60.243</td>
-      <td>60.754</td>
-      <td>61.226</td>
-      <td>61.666</td>
-      <td>62.086</td>
-      <td>62.494</td>
-      <td>62.895</td>
-      <td>63.288</td>
-      <td>63.673</td>
-      <td>None</td>
+      <th>1</th>
+      <td>AAPL</td>
+      <td>AAPL</td>
+      <td>AAPL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ABBV</td>
+      <td>ABBV</td>
+      <td>ABBV</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ABT</td>
+      <td>ABT</td>
+      <td>ABT</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ADBE</td>
+      <td>ADBE</td>
+      <td>ADBE</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 59 columns</p>
 </div>
 </div>
 
 </div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Join Tables in Python then reading results into a pandas dataFrame</strong></p>
-
-<pre><code>- Join tables and save the result to a third table in SQLite
-- We can save the third table as Excel too</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Merge both tabs - Population and Life Expectancy</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/SQLite/PopLife.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;Pop&quot;</span><span class="p">)</span> 
-<span class="n">df_life</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/SQLite/PopLife.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;Life&quot;</span><span class="p">)</span> 
-<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_pop</span><span class="p">,</span> <span class="n">df_life</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;CountryName&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with incurred losses - here are the first 5:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
-<span class="n">df_merge</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 
@@ -1899,236 +1701,11 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 264 policies with incurred losses - here are the first 5:
+<pre>rows=19
 </pre>
 </div>
 </div>
 
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CountryName</th>
-      <th>CountryCode_x</th>
-      <th>1960_x</th>
-      <th>1961_x</th>
-      <th>1962_x</th>
-      <th>1963_x</th>
-      <th>1964_x</th>
-      <th>1965_x</th>
-      <th>1966_x</th>
-      <th>1967_x</th>
-      <th>...</th>
-      <th>2008_y</th>
-      <th>2009_y</th>
-      <th>2010_y</th>
-      <th>2011_y</th>
-      <th>2012_y</th>
-      <th>2013_y</th>
-      <th>2014_y</th>
-      <th>2015_y</th>
-      <th>2016_y</th>
-      <th>2017_y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Aruba</td>
-      <td>ABW</td>
-      <td>54211.0</td>
-      <td>55438.0</td>
-      <td>56225.0</td>
-      <td>56695.0</td>
-      <td>57032.0</td>
-      <td>57360.0</td>
-      <td>57715.0</td>
-      <td>58055.0</td>
-      <td>...</td>
-      <td>74.725</td>
-      <td>74.872</td>
-      <td>75.016</td>
-      <td>75.158</td>
-      <td>75.299</td>
-      <td>75.440</td>
-      <td>75.582</td>
-      <td>75.725</td>
-      <td>75.867</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Afghanistan</td>
-      <td>AFG</td>
-      <td>8996351.0</td>
-      <td>9166764.0</td>
-      <td>9345868.0</td>
-      <td>9533954.0</td>
-      <td>9731361.0</td>
-      <td>9938414.0</td>
-      <td>10152331.0</td>
-      <td>10372630.0</td>
-      <td>...</td>
-      <td>60.243</td>
-      <td>60.754</td>
-      <td>61.226</td>
-      <td>61.666</td>
-      <td>62.086</td>
-      <td>62.494</td>
-      <td>62.895</td>
-      <td>63.288</td>
-      <td>63.673</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Angola</td>
-      <td>AGO</td>
-      <td>5643182.0</td>
-      <td>5753024.0</td>
-      <td>5866061.0</td>
-      <td>5980417.0</td>
-      <td>6093321.0</td>
-      <td>6203299.0</td>
-      <td>6309770.0</td>
-      <td>6414995.0</td>
-      <td>...</td>
-      <td>56.189</td>
-      <td>57.231</td>
-      <td>58.192</td>
-      <td>59.042</td>
-      <td>59.770</td>
-      <td>60.373</td>
-      <td>60.858</td>
-      <td>61.241</td>
-      <td>61.547</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Albania</td>
-      <td>ALB</td>
-      <td>1608800.0</td>
-      <td>1659800.0</td>
-      <td>1711319.0</td>
-      <td>1762621.0</td>
-      <td>1814135.0</td>
-      <td>1864791.0</td>
-      <td>1914573.0</td>
-      <td>1965598.0</td>
-      <td>...</td>
-      <td>75.943</td>
-      <td>76.281</td>
-      <td>76.652</td>
-      <td>77.031</td>
-      <td>77.389</td>
-      <td>77.702</td>
-      <td>77.963</td>
-      <td>78.174</td>
-      <td>78.345</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Andorra</td>
-      <td>AND</td>
-      <td>13411.0</td>
-      <td>14375.0</td>
-      <td>15370.0</td>
-      <td>16412.0</td>
-      <td>17469.0</td>
-      <td>18549.0</td>
-      <td>19647.0</td>
-      <td>20758.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 119 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Save merge result as Excel file</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/SQLite/PopLifeMerge.xlsx&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Save merge result as SQL file</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_merge</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;PopLifeMerge&quot;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
-<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-<span class="c1">#con.close()</span>
-</pre></div>
-
-</div>
 </div>
 </div>
 
@@ -2148,406 +1725,6 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Inserting a new column called "testing" to the SQlite </strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;data/SQLite/PopLife.db&quot;</span><span class="p">)</span>
-<span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE pop ADD COLUMN testing varchar(32)&quot;</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">addColumn</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;sqlite3.Cursor at 0x24883da4030&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rename the SQLite Table</span>
-<span class="n">renameTable</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE tranport RENAME TO transport&quot;</span>
-<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">renameTable</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;sqlite3.Cursor at 0x24883da4030&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>2nd Example File - premium and loss data</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/SQlite/PremiumLossSQLite&quot;</span>   
-
-<span class="n">con</span><span class="o">=</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s2">&quot;.db&quot;</span><span class="p">)</span> 
-<span class="n">wb</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">wb</span><span class="p">:</span>
-    <span class="n">wb</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">sheet</span><span class="p">,</span><span class="n">con</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>  
-<span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-
-<span class="c1">#con.close()    # keep the connection open until you finish all the modification</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Query the database</strong></p>
-
-<pre><code>- We can repeat/automate the query process when new data get updated 
-- Save the query result to SQLite or Excel
-- Option A : Inner join between the reinsurance, premium and loss tables 
-- Option B : Selecting row</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Option A : Using SQL for Inner Ioin between the reinsurance, premium and loss tables</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">select</span>
-<span class="s1">r.PolicyNumber as Policy_from_Reinsurance_Tab,</span>
-<span class="s1">p.PolicyNumber as Policy_from_Premium_Tab,</span>
-<span class="s1">l.PolicyNumber as Policy_from_Loss_Tab</span>
-<span class="s1">from reinsurance as r</span>
-<span class="s1">join premium as p on p.PolicyNumber=r.PolicyNumber</span>
-<span class="s1">join loss as l on l.PolicyNumber=r.PolicyNumber</span>
-<span class="s1">&#39;&#39;&#39;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;/SQlite/reinsurace_query_results&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
-<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/SQlite/reinsurace_query_results.xlsx&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Option B : Using Pandas for Inner Join between the reinsurance, premium and loss tables</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from reinsurance&#39;</span>
-<span class="n">df_reinsurance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-<span class="n">df_reinsurance</span><span class="p">[</span><span class="s1">&#39;PolicyNumber_from_Reinsurance_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_reinsurance</span><span class="p">[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">]</span>
-
-<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from premium&#39;</span>
-<span class="n">df_premium</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-<span class="n">df_premium</span><span class="p">[</span><span class="s1">&#39;PolicyNumber_from_Premium_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_premium</span><span class="p">[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">]</span>
-
-<span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from loss&#39;</span>
-<span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-<span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;PolicyNumber_from_Loss_Tab&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_loss</span><span class="p">[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">]</span>
-
-<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_reinsurance</span><span class="p">,</span> <span class="n">df_premium</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;_from_Reinsurance_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;_from_Policy_Tab&#39;</span><span class="p">])</span>
-
-<span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;_from_Loss_Tab&#39;</span><span class="p">])</span>
-
-<span class="n">df_merge</span><span class="p">[[</span><span class="s1">&#39;PolicyNumber_from_Reinsurance_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;PolicyNumber_from_Premium_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;PolicyNumber_from_Loss_Tab&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="n">df_merge</span><span class="o">=</span><span class="n">df_merge</span><span class="p">[[</span><span class="s1">&#39;PolicyNumber_from_Reinsurance_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;PolicyNumber_from_Premium_Tab&#39;</span><span class="p">,</span><span class="s1">&#39;PolicyNumber_from_Loss_Tab&#39;</span><span class="p">]]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">df_merge</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">df_merge</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;/SQlite/reinsurace_query_results&#39;</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
-<span class="n">df_merge</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/SQlite/reinsurace_query_results.xlsx&#39;</span><span class="p">)</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PolicyNumber_from_Reinsurance_Tab</th>
-      <th>PolicyNumber_from_Premium_Tab</th>
-      <th>PolicyNumber_from_Loss_Tab</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>10244</td>
-      <td>10244</td>
-      <td>10244</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10244</td>
-      <td>10244</td>
-      <td>10244</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10509</td>
-      <td>10509</td>
-      <td>10509</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>10509</td>
-      <td>10509</td>
-      <td>10509</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>10700</td>
-      <td>10700</td>
-      <td>10700</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>rows=16
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Save the query result to Excel</strong>
-<img src="/images/reinsurance.png" alt="[img: Reinsurance Query Save in Excel from SQLite]" title="Reinsurance Query Excel" /></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Query Data in Python by issuing sql commands</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;select * from reinsurance&#39;</span>
-<span class="n">df_reinsurance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
-
-<span class="n">df_reinsurance</span><span class="p">[</span><span class="n">df_reinsurance</span><span class="p">[</span><span class="s1">&#39;LOB&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Hospital&quot;</span><span class="p">][[</span><span class="s1">&#39;PolicyNumber&#39;</span><span class="p">,</span><span class="s1">&#39;LOB&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PolicyNumber</th>
-      <th>LOB</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>44</th>
-      <td>47653</td>
-      <td>Hospital</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>46048</td>
-      <td>Hospital</td>
-    </tr>
-    <tr>
-      <th>88</th>
-      <td>43112</td>
-      <td>Hospital</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>37955</td>
-      <td>Hospital</td>
-    </tr>
-    <tr>
-      <th>115</th>
-      <td>43242</td>
-      <td>Hospital</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -2574,11 +1751,11 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">select p.* from premium as p</span>
+<span class="s1">select s.* from share as s</span>
 <span class="s1">&#39;&#39;&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2594,7 +1771,7 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -2617,83 +1794,41 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>PolicyNumber</th>
-      <th>FirstName</th>
-      <th>LastName</th>
-      <th>PolicyEffectiveDate</th>
-      <th>LOB</th>
-      <th>PolicyType</th>
-      <th>Premium</th>
-      <th>Coverage</th>
-      <th>ExcessCoverage</th>
-      <th>ExcessPolicy</th>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Quantity</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>10880</td>
-      <td>Kurtis</td>
-      <td>Dumm</td>
-      <td>2017-07-08 00:00:00</td>
-      <td>Phy</td>
-      <td>CM</td>
-      <td>232058</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>96289.0</td>
+      <td>AA</td>
+      <td>ALCOA</td>
+      <td>11.00</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10948</td>
-      <td>Florencia</td>
-      <td>Bilyk</td>
-      <td>2017-06-05 00:00:00</td>
-      <td>Podiatrist</td>
-      <td>CM</td>
-      <td>5132</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>99671.0</td>
+      <td>AAPL</td>
+      <td>APPLE</td>
+      <td>1.03</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>10962</td>
-      <td>Taisha</td>
-      <td>Whack</td>
-      <td>2017-09-19 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>11308</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>91809.0</td>
+      <td>ABBV</td>
+      <td>ABBVIE</td>
+      <td>1.06</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>11028</td>
-      <td>Yun</td>
-      <td>Linely</td>
-      <td>2017-10-11 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13381</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>94102.0</td>
+      <td>ABT</td>
+      <td>ABBOTT</td>
+      <td>2.05</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>10244</td>
-      <td>Wonda</td>
-      <td>Hallsworth</td>
-      <td>2017-08-07 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13330</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>92319.0</td>
+      <td>ADBE</td>
+      <td>ADOBE</td>
+      <td>5.00</td>
     </tr>
   </tbody>
 </table>
@@ -2718,21 +1853,21 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtain a Cursor object to execute SQL statements</span>
 
 <span class="n">cur</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-<span class="c1"># Add a new column to premium table</span>
+<span class="c1"># Add a new column to share table</span>
 
-<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE premium ADD COLUMN Reinsurers varchar(32)&quot;</span>
+<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE Share ADD COLUMN BROKER varchar(32)&quot;</span>
 
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">addColumn</span><span class="p">)</span> 
 
 <span class="n">sql_statement</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">select p.* from premium as p</span>
+<span class="s1">select s.* from Share as s</span>
 <span class="s1">&#39;&#39;&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_statement</span><span class="p">,</span><span class="n">con</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2748,20 +1883,20 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;sqlite3.Cursor at 0x2488510f880&gt;</pre>
+<pre>&lt;sqlite3.Cursor at 0x1b63ec76c00&gt;</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -2784,88 +1919,46 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>PolicyNumber</th>
-      <th>FirstName</th>
-      <th>LastName</th>
-      <th>PolicyEffectiveDate</th>
-      <th>LOB</th>
-      <th>PolicyType</th>
-      <th>Premium</th>
-      <th>Coverage</th>
-      <th>ExcessCoverage</th>
-      <th>ExcessPolicy</th>
-      <th>Reinsurers</th>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>BROKER</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>10880</td>
-      <td>Kurtis</td>
-      <td>Dumm</td>
-      <td>2017-07-08 00:00:00</td>
-      <td>Phy</td>
-      <td>CM</td>
-      <td>232058</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>96289.0</td>
+      <td>AA</td>
+      <td>ALCOA</td>
+      <td>11.00</td>
       <td>None</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10948</td>
-      <td>Florencia</td>
-      <td>Bilyk</td>
-      <td>2017-06-05 00:00:00</td>
-      <td>Podiatrist</td>
-      <td>CM</td>
-      <td>5132</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>99671.0</td>
+      <td>AAPL</td>
+      <td>APPLE</td>
+      <td>1.03</td>
       <td>None</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>10962</td>
-      <td>Taisha</td>
-      <td>Whack</td>
-      <td>2017-09-19 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>11308</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>91809.0</td>
+      <td>ABBV</td>
+      <td>ABBVIE</td>
+      <td>1.06</td>
       <td>None</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>11028</td>
-      <td>Yun</td>
-      <td>Linely</td>
-      <td>2017-10-11 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13381</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>94102.0</td>
+      <td>ABT</td>
+      <td>ABBOTT</td>
+      <td>2.05</td>
       <td>None</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>10244</td>
-      <td>Wonda</td>
-      <td>Hallsworth</td>
-      <td>2017-08-07 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13330</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>92319.0</td>
+      <td>ADBE</td>
+      <td>ADOBE</td>
+      <td>5.00</td>
       <td>None</td>
     </tr>
   </tbody>
@@ -2891,11 +1984,11 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Reinsurers2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;ABC Re&#39;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;premium&#39;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Broker2&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Fidelity LLC&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;Share&#39;</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span> 
 
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2910,7 +2003,19 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\apps\python36\python-3.6.3.amd64\lib\site-packages\pandas\core\generic.py:1534: UserWarning: The spaces in these column names will not be changed. In pandas versions &lt; 0.14, spaces were converted to underscores.
+  chunksize=chunksize, dtype=dtype)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -2933,99 +2038,138 @@ After merging and reshaping the datasets, we can use SQLite to store, organize a
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>PolicyNumber</th>
-      <th>FirstName</th>
-      <th>LastName</th>
-      <th>PolicyEffectiveDate</th>
-      <th>LOB</th>
-      <th>PolicyType</th>
-      <th>Premium</th>
-      <th>Coverage</th>
-      <th>ExcessCoverage</th>
-      <th>ExcessPolicy</th>
-      <th>Reinsurers</th>
-      <th>Reinsurers2</th>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>BROKER</th>
+      <th>Broker2</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>10880</td>
-      <td>Kurtis</td>
-      <td>Dumm</td>
-      <td>2017-07-08 00:00:00</td>
-      <td>Phy</td>
-      <td>CM</td>
-      <td>232058</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>96289.0</td>
+      <td>AA</td>
+      <td>ALCOA</td>
+      <td>11.00</td>
       <td>None</td>
-      <td>ABC Re</td>
+      <td>Fidelity LLC</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10948</td>
-      <td>Florencia</td>
-      <td>Bilyk</td>
-      <td>2017-06-05 00:00:00</td>
-      <td>Podiatrist</td>
-      <td>CM</td>
-      <td>5132</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>99671.0</td>
+      <td>AAPL</td>
+      <td>APPLE</td>
+      <td>1.03</td>
       <td>None</td>
-      <td>ABC Re</td>
+      <td>Fidelity LLC</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>10962</td>
-      <td>Taisha</td>
-      <td>Whack</td>
-      <td>2017-09-19 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>11308</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>91809.0</td>
+      <td>ABBV</td>
+      <td>ABBVIE</td>
+      <td>1.06</td>
       <td>None</td>
-      <td>ABC Re</td>
+      <td>Fidelity LLC</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>11028</td>
-      <td>Yun</td>
-      <td>Linely</td>
-      <td>2017-10-11 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13381</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>94102.0</td>
+      <td>ABT</td>
+      <td>ABBOTT</td>
+      <td>2.05</td>
       <td>None</td>
-      <td>ABC Re</td>
+      <td>Fidelity LLC</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>10244</td>
-      <td>Wonda</td>
-      <td>Hallsworth</td>
-      <td>2017-08-07 00:00:00</td>
-      <td>Dentist</td>
-      <td>OCC</td>
-      <td>13330</td>
-      <td>1000000</td>
-      <td>3900000</td>
-      <td>92319.0</td>
+      <td>ADBE</td>
+      <td>ADOBE</td>
+      <td>5.00</td>
       <td>None</td>
-      <td>ABC Re</td>
+      <td>Fidelity LLC</td>
     </tr>
   </tbody>
 </table>
 </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Rename the SQLite Table</span>
+<span class="n">renameTable</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE Combined RENAME TO CombinedNew&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">renameTable</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;sqlite3.Cursor at 0x1b63ec76c00&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Inserting a new column called "testing" to the SQlite </strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;data/SQLite/Stock.db&quot;</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">addColumn</span> <span class="o">=</span> <span class="s2">&quot;ALTER TABLE Market ADD COLUMN Broker_Name varchar(32)&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">addColumn</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;sqlite3.Cursor at 0x1b63eed4c00&gt;</pre>
 </div>
 
 </div>
