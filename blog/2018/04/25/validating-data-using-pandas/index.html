@@ -1435,17 +1435,17 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <br>Sample file is a sales records - orginal file is with $1M rows, the sample file is with 100 rows
 <br>I plan to demonstrate how to validate data using a "dirty" dataset. Specifically, how to</p>
 
-<pre><code>- detect/eliminate outlier data
-- deal with missing data
-- add default values
-- detect/eliminate duplicate data
-- remove incomplete data/rows
-- deal with error-prone columns
-- normalize data types
-- make bulk corrections to string/number values where appropriate
-- change casing
-- rename columns
-- save clean data to CSV or Excel file</code></pre>
+<pre><code>- Detect/eliminate outlier data
+- Deal with missing data
+- Add default values
+- Detect/eliminate duplicate data
+- Remove incomplete data/rows
+- Deal with error-prone columns
+- Normalize data types
+- Make bulk corrections to string/number values where appropriate
+- Change casing
+- Rename columns
+- Save clean data to CSV or Excel file</code></pre>
 
 </div>
 </div>
@@ -1455,7 +1455,7 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Detect/eliminate outlier data</strong></p>
+<strong>Detect/Eliminate outlier data</strong></p>
 
 </div>
 </div>
@@ -1473,8 +1473,8 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 <span class="c1">## Look at the some basic stats for the ‘ItemType’ column</span>
 <span class="n">df</span><span class="o">.</span><span class="n">OrderPriority</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
-<span class="c1">## Select total profit greater than $1.8M</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalProfit&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">1800000</span><span class="p">]</span>
+<span class="c1">## Select total profit greater than $1.6M</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalProfit&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">1600000</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -1674,6 +1674,40 @@ Name: OrderPriority, dtype: object</pre>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>10</th>
+      <td>761723172</td>
+      <td>Middle East and North Africa</td>
+      <td>Algeria</td>
+      <td>Cosmetics</td>
+      <td>Online</td>
+      <td>M</td>
+      <td>2/18/2011</td>
+      <td>2/24/2011</td>
+      <td>9669</td>
+      <td>437.20</td>
+      <td>263.33</td>
+      <td>4227286.80</td>
+      <td>2546137.77</td>
+      <td>1681149.03</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>835696351</td>
+      <td>Europe</td>
+      <td>Estonia</td>
+      <td>Household</td>
+      <td>Offline</td>
+      <td>H</td>
+      <td>9/1/2011</td>
+      <td>10/21/2011</td>
+      <td>9976</td>
+      <td>668.27</td>
+      <td>502.54</td>
+      <td>6666661.52</td>
+      <td>5013339.04</td>
+      <td>1653322.48</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -2510,7 +2544,7 @@ Name: OrderID, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Identify which observations are duplicates</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Identify which observations are duplicates, Trua means duplicate</span>
 <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 
@@ -2554,7 +2588,7 @@ dtype: bool</pre>
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## List of duplicatedDelete duplicated data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## List of duplicated</span>
 <span class="n">df_dup</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> duplicate order IDs&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_dup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
 <span class="n">df_dup</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>

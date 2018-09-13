@@ -36,8 +36,8 @@ a modeler can create end-to-end analytic workflows to solve business problems.
 &lt;br&gt;My objective here is to go through some examples for how to perform basic data validation.
 </summary><category term="pandas"></category><category term="validation"></category></entry><entry><title>Data Analysis II - Summarizing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/20/summarizing-data-using-pandas/" rel="alternate"></link><published>2018-04-20T00:00:00-04:00</published><updated>2018-04-20T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-20:blog/2018/04/20/summarizing-data-using-pandas/</id><summary type="html">
 
-&lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.
+&lt;p&gt;When we computed the mean, minimum and maximum of the data in Python, we are employing a technique to get information about the data distribution.&lt;br&gt;
 This can be an effective tool when we need to summarize datasets for analysis.
 </summary><category term="pandas"></category><category term="summarization"></category><category term="aggregation"></category><category term="validation"></category></entry><entry><title>Data Analysis I - Sourcing Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/15/sourcing-data-using-pandas/" rel="alternate"></link><published>2018-04-15T00:00:00-04:00</published><updated>2018-04-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-15:blog/2018/04/15/sourcing-data-using-pandas/</id><summary type="html">
-**Goal: Use Python to load data into a dataframe and get basic statistics.**
+Goal: Use Python to load data into a dataframe and get basic statistics.
 </summary><category term="importing"></category><category term="loading"></category><category term="pandas"></category><category term="excel"></category></entry></feed>

@@ -1490,7 +1490,6 @@ Pandas along with the Python standard library provide us with a high-level, flex
 <pre><code>- List of tabs : note the display list including hidden tabs
 - Number of tabs: using "len" function to count how many tabs in the Excel file
 - View each tabs
-- I found python "len" function is very useful when dealing with Excel files have been updated with many tabs over time. 
 - We can use Python to view/list/count all the tabs including hidden tabs. </code></pre>
 
 </div>
@@ -1503,14 +1502,14 @@ Pandas along with the Python standard library provide us with a high-level, flex
 <p><strong>Understand the business, what is abnormal value for this business?</strong></p>
 
 <pre><code>- If average premium per policy is between 10K to 200K, the premium outside this range is invalid
-- If maximum ceded reinsurance retention is 500K, the ceded recoverable greater than 500K is invalid </code></pre>
+- If maximum ceded reinsurance recoverable is 500K, then any ceded recoverable greater than 500K is invalid </code></pre>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View list of tabs including hidden tab</span>
@@ -1548,7 +1547,7 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Detect duplicated data from the first tab -&quot;premium&quot;</span>
@@ -1581,7 +1580,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1643,6 +1642,19 @@ There are 12 tab(s) in the file.
       <td>3900000</td>
       <td>91367.0</td>
     </tr>
+    <tr>
+      <th>8</th>
+      <td>11106</td>
+      <td>NaN</td>
+      <td>Sarasota Hospital</td>
+      <td>2017-08-14</td>
+      <td>Hospital</td>
+      <td>OCC</td>
+      <td>446997</td>
+      <td>1000000</td>
+      <td>3900000</td>
+      <td>97303.0</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -1656,7 +1668,7 @@ There are 12 tab(s) in the file.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 2 duplicate policies
+<pre>There are 3 duplicate policies
 </pre>
 </div>
 </div>
@@ -1667,14 +1679,15 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## View data from the second tab -&quot;loss&quot;</span>
 <span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/analysis4/Premium_Loss.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span> 
 
-<span class="c1">## slicing can achieve the same results as head()</span>
+<span class="c1">## Slicing can achieve the same results as head()</span>
 <span class="n">df_loss</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  
+
 
 <span class="n">Count_Row</span><span class="o">=</span><span class="n">df_loss</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> claims&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Count_Row</span><span class="p">))</span> 
@@ -1690,7 +1703,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1770,7 +1783,7 @@ There are 12 tab(s) in the file.
       <td>Aven</td>
       <td>2017-11-25</td>
       <td>88205.0</td>
-      <td>54785</td>
+      <td>4000000</td>
       <td>116133.0</td>
     </tr>
     <tr>
@@ -1824,7 +1837,7 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Merge tabs - Inner Join</span>
@@ -1859,7 +1872,7 @@ There are 12 tab(s) in the file.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -1972,12 +1985,12 @@ There are 12 tab(s) in the file.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Combined tabs - Outer Join</span>
 <span class="n">df_combine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_premium</span><span class="p">,</span> <span class="n">df_loss</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Policy Number&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are </span><span class="si">%s</span><span class="s2"> policies with or without incurred losses - here are the first 2:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_combine</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here are the listing of </span><span class="si">%s</span><span class="s2"> policies incurred losses history - here are the first 2:&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">df_combine</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> 
 <span class="n">df_combine</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1">## Save the combine file to Excel</span>
@@ -1998,14 +2011,14 @@ There are 12 tab(s) in the file.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>There are 392 policies with or without incurred losses - here are the first 2:
+<pre>Here are the listing of 392 policies incurred losses history - here are the first 2:
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[6]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -3181,7 +3194,7 @@ Categories (5, object): [Layer1 &lt; Layer2 &lt; Layer3 &lt; XOL &lt; Clash]</pr
 
 <pre><code>- Use groupby function to plot the result
 - This can be very helpful, that means we can reuse this code when reload the data from other application on the weekly, monthly, or quarterly basis
-- To label y-axis in million, I found a code to do so.  I plan to explore more codes about label plt in the future blogs.</code></pre>
+- To label y-axis in million, I found a code to do so.  I plan to explore more codes about label plot in the future blogs.</code></pre>
 
 </div>
 </div>
