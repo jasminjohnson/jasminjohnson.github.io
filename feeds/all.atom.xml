@@ -21,12 +21,41 @@ In MongoDB, a document is a big JSON blob with no particular format or schema.&l
 </summary><category term="excel"></category><category term="analysis"></category><category term="mongodb"></category></entry><entry><title>Database for Financial Analysis I - SQLite</title><link href="http://jasminjohnson.github.io/blog/2018/06/15/SQLite-database-for-financial-analysis/" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-06-15:blog/2018/06/15/SQLite-database-for-financial-analysis/</id><summary type="html">
 After merging and reshaping the datasets, we can use SQLite to store, organize and manipulate data in smaller environments.
 &lt;br&gt;SQLite is a public-domain software package that provides a relational database management system. 
-</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">
-Sometimes the way that data is stored in files or databases is not the way you need it for a data processing application.
-&lt;br&gt;
-Pandas along with the Python standard library provide us with a high-level, flexible, and high-performance set of core manipulations
-&lt;br&gt;and algorithms to enable us to wrangle data into the right form without much trouble.
-</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
+</summary><category term="financial"></category><category term="SQLite"></category><category term="database"></category></entry><entry><title>Data Analysis IV - Merging and Reshaping Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/30/merging-reshaping-data-using-pandas/" rel="alternate"></link><published>2018-04-30T00:00:00-04:00</published><updated>2018-04-30T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-30:blog/2018/04/30/merging-reshaping-data-using-pandas/</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the …&lt;/style&gt;</summary><category term="pandas"></category><category term="merging"></category><category term="reshaping"></category></entry><entry><title>Data Analysis III - Validating Data</title><link href="http://jasminjohnson.github.io/blog/2018/04/25/validating-data-using-pandas/" rel="alternate"></link><published>2018-04-25T00:00:00-04:00</published><updated>2018-04-25T00:00:00-04:00</updated><author><name>Jasmin Johnson</name></author><id>tag:jasminjohnson.github.io,2018-04-25:blog/2018/04/25/validating-data-using-pandas/</id><summary type="html">
 A favorite old saying of mine with respect to data quality is "Garbage In and Garbage Out".
 Your analysis is only ever as good as your dataset.
 
