@@ -1445,1626 +1445,12 @@ Time Series can be useful to analyze financial data in different frequencies bas
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read the file from CSV format</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Date</th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1997-05-15</td>
-      <td>2.437500</td>
-      <td>2.500000</td>
-      <td>1.927083</td>
-      <td>1.958333</td>
-      <td>1.958333</td>
-      <td>72156000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1997-05-16</td>
-      <td>1.968750</td>
-      <td>1.979167</td>
-      <td>1.708333</td>
-      <td>1.729167</td>
-      <td>1.729167</td>
-      <td>14700000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1997-05-19</td>
-      <td>1.760417</td>
-      <td>1.770833</td>
-      <td>1.625000</td>
-      <td>1.708333</td>
-      <td>1.708333</td>
-      <td>6106800</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1997-05-20</td>
-      <td>1.729167</td>
-      <td>1.750000</td>
-      <td>1.635417</td>
-      <td>1.635417</td>
-      <td>1.635417</td>
-      <td>5467200</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1997-05-21</td>
-      <td>1.635417</td>
-      <td>1.645833</td>
-      <td>1.375000</td>
-      <td>1.427083</td>
-      <td>1.427083</td>
-      <td>18853200</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Find out Date type</strong><br>- The Date type here is a string, not time series type</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>str</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Convert string into time series type</strong><br>- By adding Parse to read the CSV file</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Date</th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1997-05-15</td>
-      <td>2.437500</td>
-      <td>2.500000</td>
-      <td>1.927083</td>
-      <td>1.958333</td>
-      <td>1.958333</td>
-      <td>72156000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1997-05-16</td>
-      <td>1.968750</td>
-      <td>1.979167</td>
-      <td>1.708333</td>
-      <td>1.729167</td>
-      <td>1.729167</td>
-      <td>14700000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1997-05-19</td>
-      <td>1.760417</td>
-      <td>1.770833</td>
-      <td>1.625000</td>
-      <td>1.708333</td>
-      <td>1.708333</td>
-      <td>6106800</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1997-05-20</td>
-      <td>1.729167</td>
-      <td>1.750000</td>
-      <td>1.635417</td>
-      <td>1.635417</td>
-      <td>1.635417</td>
-      <td>5467200</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1997-05-21</td>
-      <td>1.635417</td>
-      <td>1.645833</td>
-      <td>1.375000</td>
-      <td>1.427083</td>
-      <td>1.427083</td>
-      <td>18853200</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Find out Date type again: the Date type is Timestamp which is one of the time series</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>pandas._libs.tslib.Timestamp</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Set index to Date by adding Index column (index_col) to Date</strong><br>-The benefit of setting index is we can retrieve specific date ranges of Amazon stock prices</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>DatetimeIndex([&#39;1997-05-15&#39;, &#39;1997-05-16&#39;, &#39;1997-05-19&#39;, &#39;1997-05-20&#39;,
-               &#39;1997-05-21&#39;, &#39;1997-05-22&#39;, &#39;1997-05-23&#39;, &#39;1997-05-27&#39;,
-               &#39;1997-05-28&#39;, &#39;1997-05-29&#39;,
-               ...
-               &#39;2018-05-15&#39;, &#39;2018-05-16&#39;, &#39;2018-05-17&#39;, &#39;2018-05-18&#39;,
-               &#39;2018-05-21&#39;, &#39;2018-05-22&#39;, &#39;2018-05-23&#39;, &#39;2018-05-24&#39;,
-               &#39;2018-05-25&#39;, &#39;2018-05-29&#39;],
-              dtype=&#39;datetime64[ns]&#39;, name=&#39;Date&#39;, length=5294, freq=None)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieve March 2018 stock price</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-03-01</th>
-      <td>1513.599976</td>
-      <td>1518.489990</td>
-      <td>1465.00000</td>
-      <td>1493.449951</td>
-      <td>1493.449951</td>
-      <td>6835200</td>
-    </tr>
-    <tr>
-      <th>2018-03-02</th>
-      <td>1469.099976</td>
-      <td>1501.050049</td>
-      <td>1455.01001</td>
-      <td>1500.250000</td>
-      <td>1500.250000</td>
-      <td>6587600</td>
-    </tr>
-    <tr>
-      <th>2018-03-05</th>
-      <td>1494.239990</td>
-      <td>1525.380005</td>
-      <td>1481.00000</td>
-      <td>1523.609985</td>
-      <td>1523.609985</td>
-      <td>5233900</td>
-    </tr>
-    <tr>
-      <th>2018-03-06</th>
-      <td>1533.199951</td>
-      <td>1542.130005</td>
-      <td>1528.00000</td>
-      <td>1537.640015</td>
-      <td>1537.640015</td>
-      <td>4561700</td>
-    </tr>
-    <tr>
-      <th>2018-03-07</th>
-      <td>1526.520020</td>
-      <td>1545.900024</td>
-      <td>1522.51001</td>
-      <td>1545.000000</td>
-      <td>1545.000000</td>
-      <td>4174100</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Time Series enable us to do more financial analysis by few coding steps</strong></p>
-
-<pre><code>- Get the average closing price of Amazon stock in March 2018
-- Retrieve the specific date price
-- Weekly, Monthly or Yearly average of the stock price
-- Plot the stock price</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Get the average closing price in March 2018</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1540.367629333333</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving one specific day - can use loc slice function, but it&#39;s not necessary </span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-03-01</th>
-      <td>1513.599976</td>
-      <td>1518.48999</td>
-      <td>1465.0</td>
-      <td>1493.449951</td>
-      <td>1493.449951</td>
-      <td>6835200</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving with a date range</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2018-03-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-03-05&quot;</span><span class="p">]</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-03-01</th>
-      <td>1513.599976</td>
-      <td>1518.489990</td>
-      <td>1465.00000</td>
-      <td>1493.449951</td>
-      <td>1493.449951</td>
-      <td>6835200</td>
-    </tr>
-    <tr>
-      <th>2018-03-02</th>
-      <td>1469.099976</td>
-      <td>1501.050049</td>
-      <td>1455.01001</td>
-      <td>1500.250000</td>
-      <td>1500.250000</td>
-      <td>6587600</td>
-    </tr>
-    <tr>
-      <th>2018-03-05</th>
-      <td>1494.239990</td>
-      <td>1525.380005</td>
-      <td>1481.00000</td>
-      <td>1523.609985</td>
-      <td>1523.609985</td>
-      <td>5233900</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yearly average of the stock price</span>
-<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Date
-1997-12-31     3.126400
-1998-12-31    15.661112
-1999-12-31    69.062314
-2000-12-31    46.533668
-2001-12-31    12.200426
-Freq: A-DEC, Name: Close, dtype: float64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Resample data function</strong></p>
-
-<pre><code>- Shift+tab to view all the possibilities of the Resample data function
-- Without Resample, the chart is more grannuily</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot with resample - average monthly price </span>
-<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[15]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1bbc8b18208&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot without Resample</span>
-<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1bbc8b18128&gt;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Assigning date to a dataset with missing date</strong></p>
-
-<pre><code>- The following example is the April 2018 Amazon stock prices but without any date
-- Read the stock closing price with the missing date
-- Assign the date to match the stock price</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read April 2018 Amazon stock price without date column</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data\Amazon_No_Date.csv&#39;</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1417.619995</td>
-      <td>1421.359985</td>
-      <td>1355.000000</td>
-      <td>1371.989990</td>
-      <td>1371.989990</td>
-      <td>10463600</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1391.380005</td>
-      <td>1414.000000</td>
-      <td>1355.329956</td>
-      <td>1392.050049</td>
-      <td>1392.050049</td>
-      <td>10231200</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1358.239990</td>
-      <td>1415.390015</td>
-      <td>1352.880005</td>
-      <td>1410.569946</td>
-      <td>1410.569946</td>
-      <td>6982300</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1441.989990</td>
-      <td>1459.560059</td>
-      <td>1427.069946</td>
-      <td>1451.750000</td>
-      <td>1451.750000</td>
-      <td>6413500</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Assign the date to match the data</strong></p>
-
-<pre><code>- Use "rng" function to assign date to matach stock price
-- Apply "B" (Business Day) as the frequency
-- Shift+ tab twice on "B" to follow the link for more day function
-- The Business day function does not consider holidays</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;4/1/2018&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;4/30/2018&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
-<span class="n">rng</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[20]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>DatetimeIndex([&#39;2018-04-02&#39;, &#39;2018-04-03&#39;, &#39;2018-04-04&#39;, &#39;2018-04-05&#39;,
-               &#39;2018-04-06&#39;, &#39;2018-04-09&#39;, &#39;2018-04-10&#39;, &#39;2018-04-11&#39;,
-               &#39;2018-04-12&#39;, &#39;2018-04-13&#39;, &#39;2018-04-16&#39;, &#39;2018-04-17&#39;,
-               &#39;2018-04-18&#39;, &#39;2018-04-19&#39;, &#39;2018-04-20&#39;, &#39;2018-04-23&#39;,
-               &#39;2018-04-24&#39;, &#39;2018-04-25&#39;, &#39;2018-04-26&#39;, &#39;2018-04-27&#39;,
-               &#39;2018-04-30&#39;],
-              dtype=&#39;datetime64[ns]&#39;, freq=&#39;B&#39;)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Set the date column as the index</strong><br> - You must specify "True" to modify the original dataframe</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[22]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-04-02</th>
-      <td>1417.619995</td>
-      <td>1421.359985</td>
-      <td>1355.000000</td>
-      <td>1371.989990</td>
-      <td>1371.989990</td>
-      <td>10463600</td>
-    </tr>
-    <tr>
-      <th>2018-04-03</th>
-      <td>1391.380005</td>
-      <td>1414.000000</td>
-      <td>1355.329956</td>
-      <td>1392.050049</td>
-      <td>1392.050049</td>
-      <td>10231200</td>
-    </tr>
-    <tr>
-      <th>2018-04-04</th>
-      <td>1358.239990</td>
-      <td>1415.390015</td>
-      <td>1352.880005</td>
-      <td>1410.569946</td>
-      <td>1410.569946</td>
-      <td>6982300</td>
-    </tr>
-    <tr>
-      <th>2018-04-05</th>
-      <td>1441.989990</td>
-      <td>1459.560059</td>
-      <td>1427.069946</td>
-      <td>1451.750000</td>
-      <td>1451.750000</td>
-      <td>6413500</td>
-    </tr>
-    <tr>
-      <th>2018-04-06</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Average Amazon price between 4/1/18 - 4/10/18</span>
-<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;2018-04-01&quot;</span><span class="p">:</span><span class="s2">&quot;2018-04-10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[31]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1410.555698857143</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Add weekends to the list</strong><br> - The price would be the same as the previous business day's closing price</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -3100,6 +1486,7 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Date</th>
       <th>Open</th>
       <th>High</th>
       <th>Low</th>
@@ -3110,49 +1497,54 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-02</th>
-      <td>1417.619995</td>
-      <td>1421.359985</td>
-      <td>1355.000000</td>
-      <td>1371.989990</td>
-      <td>1371.989990</td>
-      <td>10463600</td>
+      <th>6145</th>
+      <td>10/15/2021</td>
+      <td>3311.419922</td>
+      <td>3410.419922</td>
+      <td>3304.000000</td>
+      <td>3409.020020</td>
+      <td>3409.020020</td>
+      <td>5175100</td>
     </tr>
     <tr>
-      <th>2018-04-03</th>
-      <td>1391.380005</td>
-      <td>1414.000000</td>
-      <td>1355.329956</td>
-      <td>1392.050049</td>
-      <td>1392.050049</td>
-      <td>10231200</td>
+      <th>6146</th>
+      <td>10/18/2021</td>
+      <td>3388.360107</td>
+      <td>3449.169922</td>
+      <td>3385.100098</td>
+      <td>3446.739990</td>
+      <td>3446.739990</td>
+      <td>3174100</td>
     </tr>
     <tr>
-      <th>2018-04-04</th>
-      <td>1358.239990</td>
-      <td>1415.390015</td>
-      <td>1352.880005</td>
-      <td>1410.569946</td>
-      <td>1410.569946</td>
-      <td>6982300</td>
+      <th>6147</th>
+      <td>10/19/2021</td>
+      <td>3434.290039</td>
+      <td>3454.689941</td>
+      <td>3422.000000</td>
+      <td>3444.149902</td>
+      <td>3444.149902</td>
+      <td>2386100</td>
     </tr>
     <tr>
-      <th>2018-04-05</th>
-      <td>1441.989990</td>
-      <td>1459.560059</td>
-      <td>1427.069946</td>
-      <td>1451.750000</td>
-      <td>1451.750000</td>
-      <td>6413500</td>
+      <th>6148</th>
+      <td>10/20/2021</td>
+      <td>3452.659912</td>
+      <td>3462.860107</td>
+      <td>3400.370117</td>
+      <td>3415.060059</td>
+      <td>3415.060059</td>
+      <td>2139800</td>
     </tr>
     <tr>
-      <th>2018-04-06</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
+      <th>6149</th>
+      <td>10/21/2021</td>
+      <td>3414.250000</td>
+      <td>3440.280029</td>
+      <td>3403.000000</td>
+      <td>3435.010010</td>
+      <td>3435.010010</td>
+      <td>1881400</td>
     </tr>
   </tbody>
 </table>
@@ -3170,7 +1562,644 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>View stock data by weekly</strong><br> - 4/1/18 is Sunday (non-business day), the weekly date starts at 4/8/18</p>
+<strong>Find out Date type</strong><br>- The Date type here is a string, not time series type</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>str</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Convert string into time series type</strong><br>- By adding Parse to read the CSV file</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[25]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6145</th>
+      <td>2021-10-15</td>
+      <td>3311.419922</td>
+      <td>3410.419922</td>
+      <td>3304.000000</td>
+      <td>3409.020020</td>
+      <td>3409.020020</td>
+      <td>5175100</td>
+    </tr>
+    <tr>
+      <th>6146</th>
+      <td>2021-10-18</td>
+      <td>3388.360107</td>
+      <td>3449.169922</td>
+      <td>3385.100098</td>
+      <td>3446.739990</td>
+      <td>3446.739990</td>
+      <td>3174100</td>
+    </tr>
+    <tr>
+      <th>6147</th>
+      <td>2021-10-19</td>
+      <td>3434.290039</td>
+      <td>3454.689941</td>
+      <td>3422.000000</td>
+      <td>3444.149902</td>
+      <td>3444.149902</td>
+      <td>2386100</td>
+    </tr>
+    <tr>
+      <th>6148</th>
+      <td>2021-10-20</td>
+      <td>3452.659912</td>
+      <td>3462.860107</td>
+      <td>3400.370117</td>
+      <td>3415.060059</td>
+      <td>3415.060059</td>
+      <td>2139800</td>
+    </tr>
+    <tr>
+      <th>6149</th>
+      <td>2021-10-21</td>
+      <td>3414.250000</td>
+      <td>3440.280029</td>
+      <td>3403.000000</td>
+      <td>3435.010010</td>
+      <td>3435.010010</td>
+      <td>1881400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Find out Date type again: the Date type is Timestamp which is one of the time series</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>pandas._libs.tslib.Timestamp</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Set index to Date by adding Index column (index_col) to Date</strong><br>-The benefit of setting index is we can retrieve specific date ranges of Amazon stock prices</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/Amazon.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>DatetimeIndex([&#39;1997-05-16&#39;, &#39;1997-05-19&#39;, &#39;1997-05-20&#39;, &#39;1997-05-21&#39;,
+               &#39;1997-05-22&#39;, &#39;1997-05-23&#39;, &#39;1997-05-27&#39;, &#39;1997-05-28&#39;,
+               &#39;1997-05-29&#39;, &#39;1997-05-30&#39;,
+               ...
+               &#39;2021-10-08&#39;, &#39;2021-10-11&#39;, &#39;2021-10-12&#39;, &#39;2021-10-13&#39;,
+               &#39;2021-10-14&#39;, &#39;2021-10-15&#39;, &#39;2021-10-18&#39;, &#39;2021-10-19&#39;,
+               &#39;2021-10-20&#39;, &#39;2021-10-21&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;Date&#39;, length=6150, freq=None)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieve September 2021 stock price</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2021-09&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-01</th>
+      <td>3496.399902</td>
+      <td>3527.000000</td>
+      <td>3475.239990</td>
+      <td>3479.000000</td>
+      <td>3479.000000</td>
+      <td>3629900</td>
+    </tr>
+    <tr>
+      <th>2021-09-02</th>
+      <td>3494.760010</td>
+      <td>3511.959961</td>
+      <td>3455.000000</td>
+      <td>3463.120117</td>
+      <td>3463.120117</td>
+      <td>2923700</td>
+    </tr>
+    <tr>
+      <th>2021-09-03</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+    <tr>
+      <th>2021-09-07</th>
+      <td>3478.000000</td>
+      <td>3528.090088</td>
+      <td>3476.939941</td>
+      <td>3509.290039</td>
+      <td>3509.290039</td>
+      <td>2737900</td>
+    </tr>
+    <tr>
+      <th>2021-09-08</th>
+      <td>3511.649902</td>
+      <td>3545.629883</td>
+      <td>3495.669922</td>
+      <td>3525.500000</td>
+      <td>3525.500000</td>
+      <td>3053400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Time Series enable us to do more financial analysis by few coding steps</strong></p>
+
+<pre><code>- Get the average closing price of Amazon stock in March 2018
+- Retrieve the specific date price
+- Weekly, Monthly or Yearly average of the stock price
+- Plot the stock price</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Get the average closing price in March 2018</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2021-09&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3427.1828613333337</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving one specific day - can use loc slice function, but it&#39;s not necessary </span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2021-09-15&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-15&quot;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[30]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-15</th>
+      <td>3442.52002</td>
+      <td>3485.419922</td>
+      <td>3402.01001</td>
+      <td>3475.790039</td>
+      <td>3475.790039</td>
+      <td>2957500</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Retrieving with a date range</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;2021-09-10&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-14&quot;</span><span class="p">]</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-10</th>
+      <td>3501.830078</td>
+      <td>3508.449951</td>
+      <td>3462.909912</td>
+      <td>3469.149902</td>
+      <td>3469.149902</td>
+      <td>2393300</td>
+    </tr>
+    <tr>
+      <th>2021-09-13</th>
+      <td>3482.800049</td>
+      <td>3497.959961</td>
+      <td>3438.000000</td>
+      <td>3457.169922</td>
+      <td>3457.169922</td>
+      <td>2569000</td>
+    </tr>
+    <tr>
+      <th>2021-09-14</th>
+      <td>3475.550049</td>
+      <td>3486.810059</td>
+      <td>3437.709961</td>
+      <td>3450.000000</td>
+      <td>3450.000000</td>
+      <td>1936900</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Yearly average of the stock price</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Date
+1997-12-31     3.133746
+1998-12-31    15.661112
+1999-12-31    69.062314
+2000-12-31    46.533668
+2001-12-31    12.200426
+Freq: A-DEC, Name: Close, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Resample data function</strong></p>
+
+<pre><code>- Shift+tab to view all the possibilities of the Resample data function
+- Without Resample, the chart is more grannuily</code></pre>
 
 </div>
 </div>
@@ -3180,7 +2209,8 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot with resample - average monthly price </span>
+<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -3194,6 +2224,527 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="output_area">
 
 <div class="prompt output_prompt">Out[33]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20a0ddf6eb8&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+/we6OkKppNrh+QAAAABJRU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Plot without Resample</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x20a0dd019e8&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+Y8Ev8AAAAABJRU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Assigning date to a dataset with missing date</strong></p>
+
+<pre><code>- The following example is the April 2018 Amazon stock prices but without any date
+- Read the stock closing price with the missing date
+- Assign the date to match the stock price</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Read September 2021 Amazon stock price without date column</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data\Amazon_No_Date.csv&#39;</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -3226,40 +2777,478 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-08</th>
-      <td>1429.969971</td>
-      <td>1452.500000</td>
-      <td>1400.260010</td>
-      <td>1405.229980</td>
-      <td>1405.229980</td>
-      <td>5882300</td>
+      <th>0</th>
+      <td>3496.399902</td>
+      <td>3527.000000</td>
+      <td>3475.239990</td>
+      <td>3479.000000</td>
+      <td>3479.000000</td>
+      <td>3629900</td>
     </tr>
     <tr>
-      <th>2018-04-15</th>
-      <td>1449.140015</td>
-      <td>1459.780029</td>
-      <td>1424.520020</td>
-      <td>1430.790039</td>
-      <td>1430.790039</td>
-      <td>3685300</td>
+      <th>1</th>
+      <td>3494.760010</td>
+      <td>3511.959961</td>
+      <td>3455.000000</td>
+      <td>3463.120117</td>
+      <td>3463.120117</td>
+      <td>2923700</td>
     </tr>
     <tr>
-      <th>2018-04-22</th>
-      <td>1561.199951</td>
-      <td>1561.199951</td>
-      <td>1516.089966</td>
-      <td>1527.489990</td>
-      <td>1527.489990</td>
-      <td>5541600</td>
+      <th>2</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
     </tr>
     <tr>
-      <th>2018-04-29</th>
-      <td>1634.010010</td>
-      <td>1638.099976</td>
-      <td>1567.390015</td>
-      <td>1572.619995</td>
-      <td>1572.619995</td>
-      <td>13053200</td>
+      <th>3</th>
+      <td>3478.000000</td>
+      <td>3528.090088</td>
+      <td>3476.939941</td>
+      <td>3509.290039</td>
+      <td>3509.290039</td>
+      <td>2737900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3511.649902</td>
+      <td>3545.629883</td>
+      <td>3495.669922</td>
+      <td>3525.500000</td>
+      <td>3525.500000</td>
+      <td>3053400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Assign the date to match the data</strong></p>
+
+<pre><code>- Use "rng" function to assign date to matach stock price
+- Apply "B" (Business Day) as the frequency
+- Shift+ tab twice on "B" to follow the link for more day function
+- The Business day function does not consider holidays</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;9/1/2021&quot;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;9/29/2021&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">rng</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[40]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>DatetimeIndex([&#39;2021-09-01&#39;, &#39;2021-09-02&#39;, &#39;2021-09-03&#39;, &#39;2021-09-06&#39;,
+               &#39;2021-09-07&#39;, &#39;2021-09-08&#39;, &#39;2021-09-09&#39;, &#39;2021-09-10&#39;,
+               &#39;2021-09-13&#39;, &#39;2021-09-14&#39;, &#39;2021-09-15&#39;, &#39;2021-09-16&#39;,
+               &#39;2021-09-17&#39;, &#39;2021-09-20&#39;, &#39;2021-09-21&#39;, &#39;2021-09-22&#39;,
+               &#39;2021-09-23&#39;, &#39;2021-09-24&#39;, &#39;2021-09-27&#39;, &#39;2021-09-28&#39;,
+               &#39;2021-09-29&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;B&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Set the date column as the index</strong><br> - You must specify "True" to modify the original dataframe</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[41]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-01</th>
+      <td>3496.399902</td>
+      <td>3527.000000</td>
+      <td>3475.239990</td>
+      <td>3479.000000</td>
+      <td>3479.000000</td>
+      <td>3629900</td>
+    </tr>
+    <tr>
+      <th>2021-09-02</th>
+      <td>3494.760010</td>
+      <td>3511.959961</td>
+      <td>3455.000000</td>
+      <td>3463.120117</td>
+      <td>3463.120117</td>
+      <td>2923700</td>
+    </tr>
+    <tr>
+      <th>2021-09-03</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+    <tr>
+      <th>2021-09-06</th>
+      <td>3478.000000</td>
+      <td>3528.090088</td>
+      <td>3476.939941</td>
+      <td>3509.290039</td>
+      <td>3509.290039</td>
+      <td>2737900</td>
+    </tr>
+    <tr>
+      <th>2021-09-07</th>
+      <td>3511.649902</td>
+      <td>3545.629883</td>
+      <td>3495.669922</td>
+      <td>3525.500000</td>
+      <td>3525.500000</td>
+      <td>3053400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Average Amazon price between 9/1/21 - 9/15/21</span>
+<span class="n">df1</span><span class="p">[</span><span class="s2">&quot;2021-09-01&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-15&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3479.951815454546</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>Add weekends to the list</strong><br> - The price would be the same as the previous business day's closing price</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-01</th>
+      <td>3496.399902</td>
+      <td>3527.000000</td>
+      <td>3475.239990</td>
+      <td>3479.000000</td>
+      <td>3479.000000</td>
+      <td>3629900</td>
+    </tr>
+    <tr>
+      <th>2021-09-02</th>
+      <td>3494.760010</td>
+      <td>3511.959961</td>
+      <td>3455.000000</td>
+      <td>3463.120117</td>
+      <td>3463.120117</td>
+      <td>2923700</td>
+    </tr>
+    <tr>
+      <th>2021-09-03</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+    <tr>
+      <th>2021-09-04</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+    <tr>
+      <th>2021-09-05</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br>
+<strong>View stock data by weekly</strong><br> - 9/1/21 is Wednesday, the weekly date starts at 9/5/21</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pad&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[44]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-09-05</th>
+      <td>3452.000000</td>
+      <td>3482.669922</td>
+      <td>3436.439941</td>
+      <td>3478.050049</td>
+      <td>3478.050049</td>
+      <td>2575700</td>
+    </tr>
+    <tr>
+      <th>2021-09-12</th>
+      <td>3482.800049</td>
+      <td>3497.959961</td>
+      <td>3438.000000</td>
+      <td>3457.169922</td>
+      <td>3457.169922</td>
+      <td>2569000</td>
+    </tr>
+    <tr>
+      <th>2021-09-19</th>
+      <td>3396.000000</td>
+      <td>3419.000000</td>
+      <td>3305.010010</td>
+      <td>3355.729980</td>
+      <td>3355.729980</td>
+      <td>4669100</td>
+    </tr>
+    <tr>
+      <th>2021-09-26</th>
+      <td>3371.500000</td>
+      <td>3415.570068</td>
+      <td>3339.610107</td>
+      <td>3405.800049</td>
+      <td>3405.800049</td>
+      <td>3634500</td>
     </tr>
   </tbody>
 </table>
@@ -3291,17 +3280,17 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br>
-<strong>Generating business days</strong><br> - Generate 30 business days starting from 8/15/2018</p>
+<strong>Generating business days</strong><br> - Generate 30 business days starting from 9/10/2021</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;8/15/2018&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;9/10/2021&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
 <span class="n">rng</span>
 </pre></div>
 
@@ -3315,20 +3304,20 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>DatetimeIndex([&#39;2018-08-15&#39;, &#39;2018-08-16&#39;, &#39;2018-08-17&#39;, &#39;2018-08-20&#39;,
-               &#39;2018-08-21&#39;, &#39;2018-08-22&#39;, &#39;2018-08-23&#39;, &#39;2018-08-24&#39;,
-               &#39;2018-08-27&#39;, &#39;2018-08-28&#39;, &#39;2018-08-29&#39;, &#39;2018-08-30&#39;,
-               &#39;2018-08-31&#39;, &#39;2018-09-03&#39;, &#39;2018-09-04&#39;, &#39;2018-09-05&#39;,
-               &#39;2018-09-06&#39;, &#39;2018-09-07&#39;, &#39;2018-09-10&#39;, &#39;2018-09-11&#39;,
-               &#39;2018-09-12&#39;, &#39;2018-09-13&#39;, &#39;2018-09-14&#39;, &#39;2018-09-17&#39;,
-               &#39;2018-09-18&#39;, &#39;2018-09-19&#39;, &#39;2018-09-20&#39;, &#39;2018-09-21&#39;,
-               &#39;2018-09-24&#39;, &#39;2018-09-25&#39;],
+<pre>DatetimeIndex([&#39;2021-09-10&#39;, &#39;2021-09-13&#39;, &#39;2021-09-14&#39;, &#39;2021-09-15&#39;,
+               &#39;2021-09-16&#39;, &#39;2021-09-17&#39;, &#39;2021-09-20&#39;, &#39;2021-09-21&#39;,
+               &#39;2021-09-22&#39;, &#39;2021-09-23&#39;, &#39;2021-09-24&#39;, &#39;2021-09-27&#39;,
+               &#39;2021-09-28&#39;, &#39;2021-09-29&#39;, &#39;2021-09-30&#39;, &#39;2021-10-01&#39;,
+               &#39;2021-10-04&#39;, &#39;2021-10-05&#39;, &#39;2021-10-06&#39;, &#39;2021-10-07&#39;,
+               &#39;2021-10-08&#39;, &#39;2021-10-11&#39;, &#39;2021-10-12&#39;, &#39;2021-10-13&#39;,
+               &#39;2021-10-14&#39;, &#39;2021-10-15&#39;, &#39;2021-10-18&#39;, &#39;2021-10-19&#39;,
+               &#39;2021-10-20&#39;, &#39;2021-10-21&#39;],
               dtype=&#39;datetime64[ns]&#39;, freq=&#39;B&#39;)</pre>
 </div>
 
@@ -3375,55 +3364,6 @@ AIiIpKn/D0jDNHAvRVFzAAAAAElFTkSuQmCC
 <div class="output_text output_subarea output_execute_result">
 <pre>array([ 7, 14,  7,  2, 16,  9, 12,  5, 15,  8,  3, 18,  5,  5,  9,  8, 10,
         8, 13, 15, 12, 12, 19,  4, 18, 12, 15,  8, 16, 13])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<strong>Set index to match the random numbers</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[39]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2018-07-02    10
-2018-07-03     3
-2018-07-04    16
-2018-07-05     2
-2018-07-06    12
-Freq: B, dtype: int32</pre>
 </div>
 
 </div>
